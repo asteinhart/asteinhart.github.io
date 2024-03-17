@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" /> 
+    <script src="js/noframework.waypoints.min.js"></script>
+    <title>Reading Habits</title>
+</head>
+<body>
+    <div class="title-container">
+        <div class="title-info">
+            <h1>My Reading Habits</h1>
+            <p>Follow the journey of my reading habits.</p>
+            <p class="byline">By Austin Steinhart | Spring 2024</p>
+        </div>
+    </div>
+    <div class = "body-text" id = "intro">
+        <p> As a child, I was a voracious reader, if only to rack up accelerated reader points (I clearly was a competitive child). However, this good hobby dropped off in high school. 
+            In 10th grade, I watched more movies in class than books I read, and in my 12th-grade literature class, I managed to read a whopping two of the required ten-plus books 
+            we were assigned to read over the school year. </p>
+        <p>As I started college, my two closest friends were English majors and wouldn't shut up about it. Their passion for books must have reinvigorated my love for reading as the first 
+            summer after college, i dove back into reading by setting an ambitious goal of reading a book a week over the summer (which i accomplished!). After this impassioned reentry into 
+            reading, I have considered myself a generally consistent reader. Follow along as I explore my reading journal over the last eight years.</p>
+        <button type="button" class="collapsible">&#9654 Some comments about the data for those interested. </button>
+        <div class="content">
+                <p>I have tracked the date I finished every book I have read since 2016 on Goodreads (yes I know I should switch to the StoryGraph). I did not track the start date but since 
+                    I rarely read more than one book at a time, I imputed a start date using the completion date of the last book I had read. This methodology appears to exaggerated my average 
+                    reading rate. For example, it may appear it took me 30 days to read a book but in actuality, it may have taken a week but I did not start the book until 3 weeks after I 
+                    had finished the most recent book.  </p>
+        </div>
+    </div>
+    <div class="entry">
+        <div class="chartContainer" id = 'intro-chart'>
+            <h3>My Reading Habits</h3>
+            <div class="chart"></div>
+        </div>
+        <div class="scroller" id="step1">
+            <p>Here is every book I have read from Spring 2016 to Winter 2024. The y axis shows the total cumulative books I have read and the x axis shows
+                the date I was reading the book. Each bar represents a book and the length of the bar represents how long it took me to read it. However over each bar
+                to see which book it is.</p>
+        </div>
+        <div class="scroller" id="step1a">
+            <p>We are going to zoom in to four different periods to further explore my reading habits. </p>
+        </div>
+        <div class="scroller" id="step2">
+            <p>In the <span class="blue_text"> summer of 2016 </span>, I kickstarted my reading by reading a book a week. I was exploring a possible career in law as well as working in my hometown 
+                which prompted me to explore more topics related to race and socioeconomic factors. Thus, most of the books have to do with sociology or law.  </p>
+        </div>
+        <div class="scroller book left">
+            <img src="screenshots/malcolm-x.jpg" alt="image description" class = "book-img">
+            <p>Malcolm X </p>
+        </div>
+        <div class="scroller book right">
+            <img src="screenshots/just-mercy.jpeg" alt="image description" class = "book-img">
+            <p>Just Mercy</p>
+        </div>
+
+        <div class="scroller" id="step3">
+            <p>Overall, I had a hot start, first half of college where I read on average  <span class="blue_text"> 1.8 books a month </span>. The second half where I only read <span class="grey_text"> 0.4 books a month </span>. </p>
+        </div>
+        <div class="scroller" id="step4">
+            <p> As I settle into full time work and the global panademic began, somehow I had my most consistent period of reading. During this time I averaged <span class="blue_text"> 3.2 books a month</span> and reached my all time high for books in a year reading 47 books in 2020.</p>
+        </div>
+        <div class="scroller" id="step5">
+            <p>In October 2021, I started a new job and soon after moved to New York City in the start of 2022. Through all this transitions, my reading took a bit of hit as I averged only <span class="grey_text"> 1.2 books a month </span></p>
+        </div>
+        <div class="scroller" id="step6">
+            <p>Outside of a <span class="grey_text">small slowdown</span> in the fall of 2022, my reading picked back up in 2022 and 2023 as I read <span class="blue_text"> 1.9 books a month</span>.</p>
+        </div>
+        <div class="scroller" id="step7">
+            <p>In the fall of 2023, I began graduate school and my reading slowed down again to <span class="grey_text">1.7 books a month</span>.</p>
+        </div>
+        <div class="scroller" id="step8">
+            <p>Total Again</p>
+        </div>
+        <div class="scroller" style="opacity:0;">
+            &nbsp;
+        </div>
+    </div>
+    <div class = "body-text" id = "outro">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
+        <div class="chartContainer" id = 'pages-chart'>
+            <h3>My Reading Habits</h3>
+            <div class="inner-chart"></div>
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
+
+    </div>
+    <div class="chartContainer" id = 'outro-chart'>
+        <div class="chart"></div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
