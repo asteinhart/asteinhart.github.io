@@ -145,7 +145,8 @@ function fullChartStart() {
     .style("border-width", "2px")
     .style("border-radius", "5px")
     .style("padding", "5px")
-    .style("position", "relative");
+    .style("position", "relative")
+    .style("z-index", "200");
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
