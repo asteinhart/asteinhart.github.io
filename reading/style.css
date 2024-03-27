@@ -1,58 +1,82 @@
 @import url(https://fonts.googleapis.com/css?family=Public+Sans:400,400i,700,700i);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i);
 
-button, body {
-  font-family: 'Public Sans', Helvetica,sans-serif;
+:root {
+  --collegeColor: #8b80f9;
+  --covidColor: #d1495b;
+  --movingColor: #2a7f62;
+  --nycColor: #ee964b;
+  --gradColor: #f95738;
+  --nonfictionColor: #58a4b0;
+  --fictionColor: #f7c4a5;
+}
+
+body {
+  font-family: "Public Sans", Helvetica, sans-serif;
   width: 720px;
   padding: 1em;
   margin: 0 auto;
+  background: #f9f9f9;
+}
+
+button {
+  font-family: "Public Sans", Helvetica, sans-serif;
+  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  background: #f9f9f9;
+  display: inline;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  margin-top: 15px;
+}
+
+.byline {
+  margin-top: 10px;
 }
 
 .body-text {
   font-size: 18px;
   line-height: 1.56;
-  margin-bottom: 100px;
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .tooltip {
   font-size: 12px;
-  width: 30%;
+  width: 21%;
   margin-left: 30px;
 }
 
 .entry {
-	width: 900px;
+  width: 900px;
   padding: 0;
   margin-left: -100px;
 }
 
-
-h2, h3, h4, h5 {
-  font-family: 'Merriweather',Helvetica,sans-serif;
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Merriweather", Helvetica, sans-serif;
   font-weight: 700;
-
-} 
-
-.bar.positive rect {
-  fill: darkolivegreen;
-}
-.bar.negative rect {
-  fill: crimson;
 }
 
-.bar line.connector {
-  stroke: grey;
-  stroke-dasharray: 3;
-}
-
-.bar text {
-  fill: white;
-  font: 12px sans-serif;
-  text-anchor: middle;
+.y-label {
+  font-size: 14px;
 }
 
 .axis text {
-  font: 10px sans-serif;
+  font-size: 10px;
 }
 
 .axis path,
@@ -63,11 +87,11 @@ h2, h3, h4, h5 {
 }
 
 .chartContainer {
-  position:sticky;
+  position: sticky;
   z-index: 1;
   margin: auto;
   top: 20%;
-  width:100%;
+  width: 100%;
   opacity: 0;
 }
 
@@ -76,7 +100,6 @@ h2, h3, h4, h5 {
   background-color: white;
   border: 1px black solid;
   padding: 10px 20px;
-  /* margin-left: 100px; */
   width: 50%;
   margin-top: 90vh;
   margin-bottom: 20vh;
@@ -84,37 +107,71 @@ h2, h3, h4, h5 {
   text-align: left;
   margin-right: auto;
   margin-left: auto;
+  line-height: 1.2;
   z-index: 9999;
 }
 
-.scroller.book{
-  position: relative;
-  background-color: white;
-  border: 1px black solid;
-  padding: 10px 20px;
-  /* margin-left: 100px; */
-  width: 10%;
-  margin-top: 20vh;
-  margin-bottom: 20vh;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  text-align: center;
-  z-index: 9999;
+#step1 {
+  margin-top: 10vh;
 }
- .scroller.book.left {
-  margin-left: 75px;
- }
- .scroller.book.right {
-  margin-right: 75px;
- }
 
+#step8 {
+  margin-bottom: 0;
+}
 
+#stepLast {
+  opacity: 0;
+  margin-bottom: 10vh;
+}
+
+.book {
+  width: 30%;
+  margin-top: 15vh;
+  margin-bottom: 15vh;
+  z-index: 9999;
+  display: flex;
+  max-height: 20vh;
+}
+.scroller.book.left {
+  margin-left: 85px;
+}
+
+.scroller.book.right {
+  margin-right: 40px;
+}
+
+.nonfiction {
+  box-shadow: var(--nonfictionColor) 0px 5px 15px;
+  border: 1px var(--nonfictionColor) solid;
+}
+
+.fiction {
+  box-shadow: var(--fictionColor) 0px 5px 15px;
+  border: 1px var(--fictionColor) solid;
+}
+
+.book-info {
+  margin: auto;
+  font-size: 14px;
+  -ms-flex: 0 0 66.67%;
+  flex: 0 0 66.67%;
+  max-width: 66.67%;
+  padding: 0 10px 0 10px;
+  max-height: 100%;
+}
+
+img {
+  width: 100%;
+  max-height: 100%;
+}
 
 .book-img {
+  display: block;
+  margin: auto;
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
   width: 100%;
-  display: inline;
-  margin-left: 0;
-  margin-right: 0;
-
 }
 
 button {
@@ -125,34 +182,90 @@ button {
 .collapsible {
   color: black;
   cursor: pointer;
-  border: none;
-  text-align: left;
-  margin-left: 0px;
-  padding-left: 0px;
-  outline: none;
-  background-color: white;
+  display: inline;
 }
 
 .content {
-  padding: 0 18px;
-  background-color: white;
+  padding: 0;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
 
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 #college-1 {
   fill: red;
   font-weight: 500;
-  color: red
+  color: red;
 }
 
-.blue_text {
-  background-color: #a3cdf0;
+.college-text {
+  background-color: var(--collegeColor);
   font-weight: 600;
+  border-radius: 5px;
 }
 
-.grey_text {
+.covid-text {
+  background-color: var(--covidColor);
+  font-weight: 600;
+  border-radius: 5px;
+  color: white;
+}
+
+.moving-text {
+  background-color: var(--movingColor);
+  font-weight: 550;
+  border-radius: 5px;
+  color: white;
+}
+
+.nyc-text {
+  background-color: var(--nycColor);
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.grad-text {
+  background-color: var(--gradColor);
+  font-weight: 600;
+  border-radius: 5px;
+  color: white;
+}
+
+.grey-text {
   background-color: #cfd1d3;
   font-weight: 600;
+  border-radius: 5px;
+}
+
+.nonfiction-text {
+  background-color: var(--nonfictionColor);
+  font-weight: 600;
+  border-radius: 5px;
+}
+.fiction-text {
+  background-color: var(--fictionColor);
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.periods.text {
+  font-weight: 600;
+  z-index: 9999;
+}
+.goodreads {
+  text-decoration: underline;
+}
+
+span {
+  padding-left: 3px;
+  padding-right: 3px;
 }
