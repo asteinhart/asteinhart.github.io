@@ -1,6 +1,7 @@
 // force to top on reload
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
+  fullChartStart();
 };
 
 // DROPDOWN BUTTON-------------------------------------------------------------
@@ -35,9 +36,6 @@ width = 720 - margin.left - margin.right;
 height = 500 - margin.top - margin.bottom;
 padding = 0.3;
 
-// colors
-let defaultColor = "steelblue";
-
 const summers = [
   {
     start: "2016-06-01",
@@ -49,12 +47,16 @@ const summers = [
   },
 ];
 
-const collegeColor = "#8B80F9";
+const defaultColor = "steelblue";
+collegeColor = "#8B80F9";
 covidColor = "#D1495B";
 movingColor = "#2A7F62";
 nycColor = "#EE964B";
 gradColor = "#F95738";
 colors = [collegeColor, covidColor, movingColor, nycColor, gradColor];
+nonfictionColor = "#58A4B0";
+fictionColor = "#F7C4A5";
+
 labelClasses = [
   ".bar.college",
   ".bar.covid",
@@ -62,8 +64,7 @@ labelClasses = [
   ".bar.nyc",
   ".bar.grad",
 ];
-nonfictionColor = "#58A4B0";
-fictionColor = "#F7C4A5";
+
 
 const division1 = new Date("2019-04-16");
 division2 = new Date("2021-08-14");
@@ -71,7 +72,8 @@ division3 = new Date("2022-04-01");
 division4 = new Date("2023-09-01");
 divisions = [division1, division2, division3, division4];
 
-const barHeight4 = 10;
+const barHeight = 10;
+barHeight4 = 10;
 barHeight5 = 34;
 barHeight6 = 15;
 barHeight7 = 40;
@@ -217,7 +219,6 @@ function fullChartStart() {
     const totalRead = d3.max(data, function (d) {
       return d.rn;
     });
-    const barHeight = 10;
 
     x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
     y = d3.scaleLinear().range([height, 0]).domain([0, totalRead]);
@@ -268,20 +269,15 @@ function fullChartStart() {
       .append("g")
       .attr("class", (d) => assignBarClass(d.date_start, divisions))
       .attr("id", (d) => "bar-" + d.book_id)
-      .attr("transform", function (d) {
-        return "translate(" + x(d.date_start) + ",0)";
-      })
+      .attr("transform", (d) => "translate(" + x(d.date_start) + ",0)")
       .style("fill", "steelblue")
       .append("rect")
       .transition()
       .duration(1500)
-      .attr("y", function (d) {
-        return y(+d.rn) - barHeight / 2;
-      })
+      .attr("y", (d) => y(d.rn+2))
       .attr("height", barHeight)
-      .attr("width", function (d) {
-        return x(d.date_read) - x(d.date_start);
-      });
+      .attr("width", (d) => (x(d.date_read) - x(d.date_start)));
+      
 
     // allow tooltip to be enabled on top of bar
     d3.selectAll(".voronoiWrapper").raise();
@@ -424,17 +420,11 @@ function fullChartRefresh() {
       .merge(bars)
       .transition()
       .duration(1000)
-      .attr("transform", function (d) {
-        return "translate(" + x(d.date_start) + ",0)";
-      })
+      .attr("transform", (d) => "translate(" + x(d.date_start) + ",0)")
       .selectAll("rect")
-      .attr("y", function (d) {
-        return y(d.rn);
-      })
-      .attr("height", 4)
-      .attr("width", function (d) {
-        return x(d.date_read) - x(d.date_start);
-      });
+      .attr("y", (d) => y(d.rn+2))
+      .attr("height", barHeight)
+      .attr("width", (d) => (x(d.date_read) - x(d.date_start)))
   });
 }
 
@@ -490,17 +480,11 @@ function panChart(startDate, endDate, barHeight, nyc = null) {
     bars
       .transition()
       .duration(1000)
-      .attr("transform", function (d) {
-        return "translate(" + x(d.date_start) + ",0)";
-      })
+      .attr("transform", (d) => "translate(" + x(d.date_start) + ",0)")
       .selectAll("rect")
-      .attr("y", function (d) {
-        return y(d.rn);
-      })
+      .attr("y", (d) => y(d.rn))
       .attr("height", barHeight)
-      .attr("width", function (d) {
-        return x(d.date_read) - x(d.date_start);
-      });
+      .attr("width", (d) => x(d.date_read) - x(d.date_start));
 
     if (nyc === true) {
       d3.select("#g-chart")
@@ -700,6 +684,7 @@ function waypoints() {
     element: document.getElementById("step1"),
     handler: function (direction) {
       if (direction == "down") {
+        fullChartRefresh();
         removeAll();
         d3.select(".chartContainer")
           .transition()
@@ -941,8 +926,8 @@ function waypoints() {
 // MAIN------------------------------------------------------------------------
 
 function main() {
-  fullChartStart();
   waypoints();
+  fullChartStart();
 }
 
 main();
