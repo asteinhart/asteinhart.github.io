@@ -30,11 +30,20 @@ for (i = 0; i < coll.length; i++) {
 
 // CONSTANTS-------------------------------------------------------------------
 
-const margin = { top: 30, right: 30, bottom: 30, left: 50 },
-  chartWidth = 900;
-width = 720 - margin.left - margin.right;
-height = 500 - margin.top - margin.bottom;
-padding = 0.3;
+let margin = { top: 30, right: 30, bottom: 30, left: 50 };
+
+let chartWidth;
+if (window.innerWidth < 600) {
+  margin = { top: 30, right: 30, bottom: 30, left: 0 };
+  chartWidth = window.innerWidth * 0.7;
+  height = window.innerHeight * 0.5;
+} else {
+  chartWidth = window.innerWidth * 0.5;
+  height = window.innerHeight * 0.66 - margin.top - margin.bottom;
+}
+
+const width = (chartWidth * 0.8) - margin.left - margin.right;
+const padding = 0.3;
 
 const summers = [
   {
@@ -127,32 +136,32 @@ function removeAll(color = "blue") {
 // starting chart
 function fullChartStart() {
   var chart = d3
-    .select(".chart")
+    .select(".chartContainer")
     .append("svg")
     .attr("width", chartWidth + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
     .append("g")
     .attr("id", "g-chart")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-    .attr("width", chartWidth);
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // const svg = d3.select("#beeswarm")
+  //   .append("svg")
+  //   .attr("width", width + margin.left + margin.right)
+  //   .attr("height", height + margin.top + margin.bottom)
+  //   .append("g")
+  //   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
   // create a tooltip
   var Tooltip = d3
     .select(".chart")
     .append("div")
-    .style("opacity", "0")
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "2px")
-    .style("border-radius", "5px")
-    .style("padding", "5px")
-    .style("position", "relative")
-    .style("z-index", "200");
+    .attr("class", "tooltip");
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
     Tooltip.style("opacity", 1);
+    Tooltip.raise();
     id = "#bar-" + String(d.book_id);
     d3.select(id).style("stroke", "black").style("opacity", 1);
   };
