@@ -30,12 +30,22 @@ for (i = 0; i < coll.length; i++) {
 
 // CONSTANTS-------------------------------------------------------------------
 
-const margin = { top: 30, right: 30, bottom: 30, left: 50 },
-  chartWidth = 900;
-width = 720 - margin.left - margin.right;
-height = 500 - margin.top - margin.bottom;
-padding = 0.3;
+let margin = { top: 30, right: 30, bottom: 30, left: 50 };
 
+let chartWidth;
+const is_mobile = window.innerWidth < 600
+
+if (is_mobile) {
+  entry = document.getElementById("entry")
+  chartWidth = entry.getBoundingClientRect().width
+  height = window.innerHeight * 0.5;
+} else {
+  entry = document.getElementById("entry")
+  chartWidth = entry.getBoundingClientRect().width
+  height = window.innerHeight * 0.66 - margin.top - margin.bottom;
+}
+
+const padding = 0.3;
 const summers = [
   {
     start: "2016-06-01",
@@ -80,6 +90,11 @@ barHeight7 = 40;
 
 // HELPER FUNCTIONS------------------------------------------------------------
 
+function textClean(str) {
+  clean_str = str.replace(/\s+/g, '-').toLowerCase();
+  return clean_str
+};
+
 function assignBarClass(date, divisions) {
   return date < divisions[0]
     ? "bar college"
@@ -90,11 +105,11 @@ function assignBarClass(date, divisions) {
     : date < divisions[3]
     ? "bar nyc"
     : "bar grad";
-}
+};
 
 function typeColor(type) {
   return type == "nonfiction" ? nonfictionColor : fictionColor;
-}
+};
 
 function colorPeriods() {
   var i;
@@ -103,13 +118,14 @@ function colorPeriods() {
     //bars.transition().duration(500).style("fill", colors[i]);
     bars.style("fill", colors[i]);
   }
-}
+};
 
 function removeAll(color = "blue") {
   d3.selectAll("*").interrupt();
   d3.selectAll(".divisions").transition().style("opacity", "0");
   d3.selectAll(".shading").transition().duration(500).style("opacity", "0");
   d3.selectAll(".periods").transition().duration(500).style("opacity", "0");
+  d3.selectAll(".section").transition().duration(500).style("opacity", "0");
   d3.selectAll(".bar").attr("opacity", "1");
   // why two lines?
   if (color == "blue") {
@@ -120,35 +136,77 @@ function removeAll(color = "blue") {
     colorPeriods();
   }
   d3.selectAll("path").style("pointer-events", "none");
+};
+
+function periodLabelsSections(text, color) {
+
+    let id_text = "section-text-" +textClean(text)
+    let id_rect = "section-rect-" +textClean(text)
+    let chart = d3.select("#g-chart")
+
+    chart
+    .append("text")
+    .attr("class", "section text")
+    .attr("id", id_text)
+    .text(text)
+    .attr("x", 100)
+    .attr("y", 100)
+    .style("opacity", "0")
+    .style("text-anchor", "middle")
+    .style("fill", "white");
+
+    var rectBox = document.getElementById(id_text).getBBox();
+
+    chart
+    .append("rect")
+    .attr("class", "section rect")
+    .attr("id", id_rect)
+    .attr("x", rectBox.x - 5)
+    .attr("y", rectBox.y)
+    .attr("width", rectBox.width + 10)
+    .attr("height", rectBox.height)
+    .attr("rx", 6)
+    .attr("ry", 6)
+    .attr("fill", color)
+    .style("opacity", "0")
+    .lower();
 }
+
+// MOBILE CHANGES-------------------------------------------------------------
+
+if (is_mobile) {
+  text = "Let's zoom into five different time periods to further explore my reading over the years: <span class=\"college-text\">College</span>, <span class=\"covid-text\">COVID-19</span>, <span class=\"moving-text\">Moving</span>, <span class=\"nyc-text\">NYC</span>, and <span class=\"grad-text\">Grad School</span>."
+  document.getElementById("step1c-text").innerHTML = text
+
+}
+
 
 // CHART FUNCTIONS-------------------------------------------------------------
 
 // starting chart
 function fullChartStart() {
   var chart = d3
-    .select(".chart")
+    .select(".chartContainer")
     .append("svg")
-    .attr("width", chartWidth + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("id", "g-chart")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-    .attr("width", chartWidth);
+      .attr("width", chartWidth)
+      .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("id", "g-chart")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .attr("width", chartWidth-margin.left - margin.right)
+
 
   // create a tooltip
   var Tooltip = d3
-    .select(".chart")
+    .select(".chartContainer")
     .append("div")
-    .style("opacity", "0")
     .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "2px")
-    .style("border-radius", "5px")
-    .style("padding", "5px")
-    .style("position", "relative")
-    .style("z-index", "200");
+    .style("opacity", "0")
+    .style("stroke", "none")
+    .style("left","0")
+    .style("top", "0");
+
+
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
@@ -156,14 +214,17 @@ function fullChartStart() {
     id = "#bar-" + String(d.book_id);
     d3.select(id).style("stroke", "black").style("opacity", 1);
   };
-
-  function tooltipSide(mouse) {
-    if (mouse + 800 > window.innerWidth) {
-      tooltipEdit = -200;
+  let tooltipEdit;
+  function tooltipSide(mouse_x) {
+    console.log("mouse_x" + mouse_x)
+    console.log("window" + window.innerWidth)
+    if (mouse_x > document.getElementById("entry").offsetWidth/2) {
+      tooltipEdit = -300;
     } else {
-      tooltipEdit = 50;
+      tooltipEdit = 100;
     }
-    return mouse + tooltipEdit;
+    console.log(mouse_x + tooltipEdit)
+    return mouse_x + tooltipEdit;
   }
 
   var mousemove = function (d) {
@@ -196,7 +257,7 @@ function fullChartStart() {
   var mouseleave = function (d) {
     Tooltip.style("opacity", 0);
     id = "#bar-" + String(d.book_id);
-    d3.select(id).style("stroke", "none").style("opacity", 1);
+    d3.select(id).style("stroke", "none");
   };
 
   d3.csv("data/gr_js_count.csv", function (error, data) {
@@ -220,7 +281,7 @@ function fullChartStart() {
       return d.rn;
     });
 
-    x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    x = d3.scaleTime().range([0, chartWidth-margin.left-margin.right]).domain([minDate, maxDate]);
     y = d3.scaleLinear().range([height, 0]).domain([0, totalRead]);
 
     //tooltip
@@ -377,6 +438,13 @@ function fullChartStart() {
     periodLabels(2, "Moving", movingColor);
     periodLabels(3, "NYC", nycColor);
     periodLabels(4, "Grad School", gradColor);
+
+    periodLabelsSections("College", collegeColor);
+    periodLabelsSections("COVID-19", covidColor);
+    periodLabelsSections("Moving", movingColor);
+    periodLabelsSections("NYC", nycColor);
+    periodLabelsSections("Grad School", gradColor);
+
   });
 }
 
@@ -384,7 +452,7 @@ function fullChartStart() {
 function fullChartRefresh() {
   d3.selectAll("rect").attr("pointer-events", "auto");
   d3.csv("data/gr_js_count.csv", function (error, data) {
-    var chart = d3.select(".chart");
+    var chart = d3.select(".chartContainer");
     var parseDate = d3.timeParse("%Y-%m-%d");
 
     data.forEach(function (d) {
@@ -400,7 +468,7 @@ function fullChartRefresh() {
     });
 
     // Update X axis
-    x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    x = d3.scaleTime().range([0, chartWidth-margin.left-margin.right]).domain([minDate, maxDate]);
     y = d3.scaleLinear().range([height, 0]).domain([0, totalRead]);
 
     chart
@@ -430,7 +498,7 @@ function fullChartRefresh() {
 
 // zoom into a specific part of the chart
 function panChart(startDate, endDate, barHeight, nyc = null) {
-  var chart = d3.select(".chart");
+  var chart = d3.select(".chartContainer");
 
   d3.csv("data/gr_js_count.csv", function (error, data) {
     var parseDate = d3.timeParse("%Y-%m-%d");
@@ -678,7 +746,7 @@ function collegeChart() {
 // WAYPOINTS-------------------------------------------------------------------
 
 function waypoints() {
-  let offset = "80%";
+  let offset = "60%";
   // fade in chart
   new Waypoint({
     element: document.getElementById("step1"),
@@ -735,16 +803,19 @@ function waypoints() {
     element: document.getElementById("step1c"),
     handler: function () {
       removeAll((color = "periods"));
+
+      if (!is_mobile) {
+        d3.selectAll(".periods")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+      } 
       d3.selectAll(".divisions")
         .transition()
         .duration(1000)
         .style("opacity", "1");
-      d3.selectAll(".periods")
-        .transition()
-        .duration(1000)
-        .style("opacity", "1");
     },
-    offset: offset,
+    offset: "75%",
   });
 
   // zoom into 2019
@@ -754,6 +825,17 @@ function waypoints() {
       if (direction == "down") {
         // 2 summer 2016
         removeAll((color = "periods"));
+
+        d3.select("#section-text-college")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
+        d3.select("#section-rect-college")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
         summer2016();
       } else {
         fullChartRefresh();
@@ -773,7 +855,7 @@ function waypoints() {
         .duration(500)
         .style("fill", collegeColor);
     },
-    offset: "60%",
+    offset: "30%",
   });
 
   // move to all of college and color summers
@@ -783,6 +865,17 @@ function waypoints() {
       if (direction == "down") {
         //  3 college years
         removeAll((color = "periods"));
+
+        d3.select("#section-text-college")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
+        d3.select("#section-rect-college")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
         collegeChart();
       } else {
         //
@@ -800,6 +893,17 @@ function waypoints() {
       if (direction == "down") {
         // 4 Post College / COVID
         removeAll((color = "periods"));
+
+        d3.select("#section-text-covid-19")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
+        d3.select("#section-rect-covid-19")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
         startDate = new Date("2019-04-15");
         endDate = new Date("2021-08-14");
         panChart(startDate, endDate, barHeight4);
@@ -845,6 +949,17 @@ function waypoints() {
       if (direction == "down") {
         // 5 Move to NYC
         removeAll((color = "periods"));
+
+        d3.select("#section-text-moving")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
+        d3.select("#section-rect-moving")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
         startDate = new Date("2021-08-14");
         endDate = new Date("2022-04-01");
         panChart(startDate, endDate, barHeight5);
@@ -866,6 +981,17 @@ function waypoints() {
       if (direction == "down") {
         // 6 NYC
         removeAll((color = "periods"));
+
+        d3.select("#section-text-nyc")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
+        d3.select("#section-rect-nyc")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
         startDate = new Date("2022-04-01");
         endDate = new Date("2023-09-01");
         panChart(startDate, endDate, barHeight6, (nyc = true));
@@ -888,6 +1014,18 @@ function waypoints() {
       if (direction == "down") {
         // 7 start grad school
         removeAll((color = "periods"));
+
+        d3.select("#section-text-grad-school")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
+        d3.select("#section-rect-grad-school")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1");
+
+
         startDate = new Date("2023-09-01");
         endDate = new Date("2024-01-26");
         panChart(startDate, endDate, barHeight7);

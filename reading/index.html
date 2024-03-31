@@ -86,9 +86,8 @@
         Scroll along below as I explore my reading over the last eight years.
       </p>
     </div>
-    <div class="entry">
+    <div class="entry" id = "entry">
       <div class="chartContainer" id="intro-chart">
-        <div class="chart"></div>
       </div>
       <div class="scroller" id="step1">
         <p>
@@ -124,7 +123,7 @@
         </div>
       </div>
 
-      <div class="scroller" id="step1b">
+      <div class="scroller" id="step1b" style="pointer-events:none;">
         <p>
           Feel free to pause for a moment and hover over each bar to see which
           book it represents.
@@ -132,7 +131,7 @@
       </div>
 
       <div class="scroller" id="step1c">
-        <p>
+        <p id = "step1c-text">
           Let's zoom into five different time periods to further explore my
           reading over the years.
         </p>
@@ -292,8 +291,11 @@
       </div>
       <div class="scroller" id="stepLast"></div>
     </div>
-    <hr />
-    <p>Special thanks to Oliver Gladfelter for support with this project.</p>
+    
+    <div class = "outro">
+      <hr />
+      <p>Special thanks to Oliver Gladfelter for support with this project.</p>
+    </div>
 
     <script src="js/main.js"></script>
   </body>
