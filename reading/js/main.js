@@ -521,7 +521,7 @@ function panChart(startDate, endDate, barHeight, nyc = null) {
     const maxBook = d3.max(fil, (d) => d.rn);
 
     // Update X axis
-    x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    x = d3.scaleTime().range([0, chartWidth - margin.left - margin.right]).domain([minDate, maxDate]);
 
     chart
       .select("#x-axis")
@@ -594,7 +594,7 @@ function summer2016() {
     const minDate = d3.min(fil, (d) => d.date_start);
 
     // Update X axis
-    var x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    var x = d3.scaleTime().range([0, chartWidth - margin.left - margin.right]).domain([minDate, maxDate]);
 
     chart
       .select("#x-axis")
@@ -671,7 +671,7 @@ function collegeChart() {
     const minDate = d3.min(fil, (d) => d.date_start);
 
     // Update X axis
-    x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    x = d3.scaleTime().range([0, chartWidth - margin.left - margin.right]).domain([minDate, maxDate]);
 
     chart
       .select("#x-axis")
@@ -1058,6 +1058,19 @@ function waypoints() {
     },
     offset: offset,
   });
+
+  new Waypoint({
+    element: document.getElementById("step8a"),
+    handler: function (direction) {
+      if (direction == "down") {
+        d3.selectAll("path").style("pointer-events", "none");
+      } else {
+        d3.selectAll("path").style("pointer-events", "all");
+      }},
+    offset: offset,
+  });
+
+
 }
 
 // MAIN------------------------------------------------------------------------

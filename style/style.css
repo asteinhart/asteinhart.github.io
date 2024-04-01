@@ -25,6 +25,10 @@ body {
   display: flex;
 }
 
+.body-link {
+  text-decoration: underline;
+}
+
 .col,
 .col-1,
 .col-10,
