@@ -13,7 +13,7 @@ body {
   color: #fcfbfb;
 }
 .light-theme {
-  background-color: #f7fbfc ;
+  background-color: #f7fbfc;
   color: black;
 }
 
@@ -163,7 +163,7 @@ sub-font
 }
 
 hr {
-  margin-bottom: 1.5rem
+  margin-bottom: 1.5rem;
 }
 
 .explanation {
