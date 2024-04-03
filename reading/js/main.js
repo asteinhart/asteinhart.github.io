@@ -57,6 +57,7 @@ const summers = [
 ];
 
 const defaultColor = "steelblue",
+highlightColor = 'cyan',
 collegeColor = "#8B80F9",
 covidColor = "#D1495B",
 movingColor = "#2A7F62",
@@ -208,9 +209,38 @@ function fullChartStart() {
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
-    Tooltip.style("opacity", 1);
-    id = "#bar-" + String(d.book_id);
-    d3.select(id).style("stroke", "black").style("opacity", 1);
+    if (d) { // avoids console error when cursor goes off chart
+
+      // show tooltip and update html
+      Tooltip.style("opacity", 1) // show opacity only if there is a found data element
+            .html(
+              "<b> Book Title:</b> " +
+                d.title +
+                "</br>" +
+                "<b> Author:</b> " +
+                d.author_last +
+                " " +
+                d.author_first +
+                "</br>" +
+                "<b>Date Started:</b> " +
+                d.start_tooltip +
+                "</br>" +
+                "<b> Date Finished: </b>" +
+                d.end_tooltip +
+                "</br>" +
+                "<b> Reading Duration:</b> " +
+                d.duration_days +
+                " days" +
+                "</br>" +
+                "<b> Rating:</b> " +
+                d.my_rating +
+                "/5"
+            )
+
+      // highlight bar corresponding to the voronoi path
+      const id = "#bar-" + String(d.book_id);
+      d3.select(id).style("stroke", "black").style('fill', highlightColor);
+    }
   };
   let tooltipEdit;
   function tooltipSide(mouse_x) {
@@ -223,36 +253,16 @@ function fullChartStart() {
   }
 
   var mousemove = function (d) {
-    Tooltip.html(
-      "<b> Book Title:</b> " +
-        d.title +
-        "</br>" +
-        "<b> Author:</b> " +
-        d.author_last +
-        " " +
-        d.author_first +
-        "</br>" +
-        "<b>Date Started:</b> " +
-        d.start_tooltip +
-        "</br>" +
-        "<b> Date Finished: </b>" +
-        d.end_tooltip +
-        "</br>" +
-        "<b> Reading Duration:</b> " +
-        d.duration_days +
-        " days" +
-        "</br>" +
-        "<b> Rating:</b> " +
-        d.my_rating +
-        "/5"
-    )
+    Tooltip
       .style("left", tooltipSide(d3.mouse(this)[0]) + "px")
       .style("top", d3.mouse(this)[1] - 500 + "px");
   };
   var mouseleave = function (d) {
     Tooltip.style("opacity", 0);
-    id = "#bar-" + String(d.book_id);
-    d3.select(id).style("stroke", "none");
+    if (d) { // prevent console error caused by voronoi side effects
+      id = "#bar-" + String(d.book_id);
+      d3.select(id).style("stroke", "none").style('fill', defaultColor);
+    }
   };
 
   d3.csv("data/gr_js_count.csv", function (error, data) {
@@ -302,13 +312,13 @@ function fullChartStart() {
       .style("pointer-events", "none")
       .attr("d", (d, i) => voronoi.renderCell(i));
 
-    let xAxis = chart
+    // add axes
+    chart
       .append("g")
       .attr("id", "x-axis")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%Y")));
-
-    let yAxis = chart.append("g").attr("id", "y-axis").call(d3.axisLeft(y));
+    chart.append("g").attr("id", "y-axis").call(d3.axisLeft(y));
 
     chart
       .append("text")
@@ -329,7 +339,8 @@ function fullChartStart() {
       .attr("class", (d) => assignBarClass(d.date_start, divisions))
       .attr("id", (d) => "bar-" + d.book_id)
       .attr("transform", (d) => "translate(" + x(d.date_start) + ",0)")
-      .style("fill", "steelblue")
+      .style("fill", defaultColor)
+      .style('stroke-width', '2px')
       .append("rect")
       .transition()
       .duration(1500)
