@@ -63,10 +63,8 @@ movingColor = "#2A7F62",
 nycColor = "#EE964B",
 gradColor = "#F95738",
 colors = [collegeColor, covidColor, movingColor, nycColor, gradColor],
-nonfictionStrokeColor = 'black';
-//nonfictionColor = "#58A4B0",
-//fictionColor = "#F7C4A5";
-
+nonfictionStrokeColor = 'black',
+nonfictionColor = "#ff4059";
 
 const labelClasses = [
   ".bar.college",
@@ -107,9 +105,9 @@ function assignBarClass(date, divisions) {
     : "bar grad";
 }
 
-// function typeColor(type) {
-//   return type == "nonfiction" ? nonfictionColor : fictionColor;
-// }
+function typeColor(type) {
+  return type == "nonfiction" ? nonfictionColor : covidColor;
+}
 function strokeColor(type) {
   return type == "nonfiction" ? nonfictionStrokeColor : 'none';
 }
@@ -936,6 +934,7 @@ function waypoints() {
     handler: function () {
       d3.selectAll(".bar")
         .transition().duration(500)
+        .style('fill', (d) => typeColor(d.type))
         .style('stroke', (d) => strokeColor(d.type));
     },
     offset: offset,
