@@ -130,7 +130,7 @@ h5 {
 }
 
 #stepLast {
-  opacity: 0;
+  visibility: hidden;
   margin-bottom: 10vh;
 }
 

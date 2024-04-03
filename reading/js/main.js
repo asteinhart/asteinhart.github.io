@@ -30,10 +30,9 @@ for (i = 0; i < coll.length; i++) {
 
 // CONSTANTS-------------------------------------------------------------------
 
-let margin = { top: 30, right: 30, bottom: 30, left: 50 };
-
-let chartWidth;
 const is_mobile = window.innerWidth < 600;
+const margin = { top: 30, right: 30, bottom: 30, left: 50 };
+let entry, chartWidth, height;
 
 if (is_mobile) {
   entry = document.getElementById("entry");
@@ -57,17 +56,18 @@ const summers = [
   },
 ];
 
-const defaultColor = "steelblue";
-collegeColor = "#8B80F9";
-covidColor = "#D1495B";
-movingColor = "#2A7F62";
-nycColor = "#EE964B";
-gradColor = "#F95738";
-colors = [collegeColor, covidColor, movingColor, nycColor, gradColor];
-nonfictionColor = "#58A4B0";
+const defaultColor = "steelblue",
+collegeColor = "#8B80F9",
+covidColor = "#D1495B",
+movingColor = "#2A7F62",
+nycColor = "#EE964B",
+gradColor = "#F95738",
+colors = [collegeColor, covidColor, movingColor, nycColor, gradColor],
+nonfictionColor = "#58A4B0",
 fictionColor = "#F7C4A5";
 
-labelClasses = [
+
+const labelClasses = [
   ".bar.college",
   ".bar.covid",
   ".bar.moving",
@@ -75,16 +75,16 @@ labelClasses = [
   ".bar.grad",
 ];
 
-const division1 = new Date("2019-04-16");
-division2 = new Date("2021-08-14");
-division3 = new Date("2022-04-01");
-division4 = new Date("2023-09-01");
+const division1 = new Date("2019-04-16"),
+division2 = new Date("2021-08-14"),
+division3 = new Date("2022-04-01"),
+division4 = new Date("2023-09-01"),
 divisions = [division1, division2, division3, division4];
 
-const barHeight = 10;
-barHeight4 = 10;
-barHeight5 = 34;
-barHeight6 = 15;
+const barHeight = 10,
+barHeight4 = 10,
+barHeight5 = 34,
+barHeight6 = 15,
 barHeight7 = 40;
 
 // HELPER FUNCTIONS------------------------------------------------------------
@@ -108,6 +108,12 @@ function assignBarClass(date, divisions) {
 
 function typeColor(type) {
   return type == "nonfiction" ? nonfictionColor : fictionColor;
+}
+function strokeWidth(type) {
+  return type == "nonfiction" ? '2px' : '1px';
+}
+function strokeColor(type) {
+  return type == "nonfiction" ? 'black' : 'none';
 }
 
 function colorPeriods() {
@@ -212,14 +218,11 @@ function fullChartStart() {
   };
   let tooltipEdit;
   function tooltipSide(mouse_x) {
-    console.log("mouse_x" + mouse_x);
-    console.log("window" + window.innerWidth);
     if (mouse_x > document.getElementById("entry").offsetWidth / 2) {
       tooltipEdit = -300;
     } else {
       tooltipEdit = 100;
     }
-    console.log(mouse_x + tooltipEdit);
     return mouse_x + tooltipEdit;
   }
 
@@ -936,7 +939,9 @@ function waypoints() {
       d3.selectAll(".bar")
         .transition()
         .duration(500)
-        .style("fill", (d) => typeColor(d.type));
+        //.style("fill", (d) => typeColor(d.type))
+        .style('stroke-width', (d) => strokeWidth(d.type))
+        .style('stroke', (d) => strokeColor(d.type))
     },
     offset: offset,
   });
