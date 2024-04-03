@@ -207,7 +207,7 @@ function fullChartStart() {
     .style("left", "0")
     .style("top", "0");
 
-  // Three function that change the tooltip when user hover / move / leave a cell
+  // Three function that change the tooltip when user hover / move / leave a voronoi cell
   var mouseover = function (d) {
     if (d) { // avoids console error when cursor goes off chart
 
@@ -242,20 +242,17 @@ function fullChartStart() {
       d3.select(id).style("stroke", "black").style('fill', highlightColor);
     }
   };
-  let tooltipEdit;
-  function tooltipSide(mouse_x) {
-    if (mouse_x > document.getElementById("entry").offsetWidth / 2) {
-      tooltipEdit = -300;
+  var mousemove = function () {
+    // console.log(d3.event);
+    // console.log(d3.event.pageX);
+    const mouseOnLeftSide = d3.event.pageX / window.innerWidth <= 0.5;
+    if (mouseOnLeftSide) {
+        Tooltip.style("left", d3.mouse(this)[0] + 100 + "px")
     } else {
-      tooltipEdit = 100;
+      const tooltipWidth = document.querySelector(".tooltip").getBoundingClientRect().width;
+      Tooltip.style("left", d3.mouse(this)[0] - tooltipWidth + 25 + "px")
     }
-    return mouse_x + tooltipEdit;
-  }
-
-  var mousemove = function (d) {
-    Tooltip
-      .style("left", tooltipSide(d3.mouse(this)[0]) + "px")
-      .style("top", d3.mouse(this)[1] - 500 + "px");
+    Tooltip.style("top", d3.mouse(this)[1] - 500 + "px");
   };
   var mouseleave = function (d) {
     Tooltip.style("opacity", 0);
