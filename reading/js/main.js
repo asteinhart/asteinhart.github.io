@@ -63,8 +63,9 @@ movingColor = "#2A7F62",
 nycColor = "#EE964B",
 gradColor = "#F95738",
 colors = [collegeColor, covidColor, movingColor, nycColor, gradColor],
-nonfictionColor = "#58A4B0",
-fictionColor = "#F7C4A5";
+nonfictionStrokeColor = 'black';
+//nonfictionColor = "#58A4B0",
+//fictionColor = "#F7C4A5";
 
 
 const labelClasses = [
@@ -106,14 +107,11 @@ function assignBarClass(date, divisions) {
     : "bar grad";
 }
 
-function typeColor(type) {
-  return type == "nonfiction" ? nonfictionColor : fictionColor;
-}
-function strokeWidth(type) {
-  return type == "nonfiction" ? '2px' : '1px';
-}
+// function typeColor(type) {
+//   return type == "nonfiction" ? nonfictionColor : fictionColor;
+// }
 function strokeColor(type) {
-  return type == "nonfiction" ? 'black' : 'none';
+  return type == "nonfiction" ? nonfictionStrokeColor : 'none';
 }
 
 function colorPeriods() {
@@ -131,7 +129,7 @@ function removeAll(color = "blue") {
   d3.selectAll(".shading").transition().duration(500).style("opacity", "0");
   d3.selectAll(".periods").transition().duration(500).style("opacity", "0");
   d3.selectAll(".section").transition().duration(500).style("opacity", "0");
-  d3.selectAll(".bar").attr("opacity", "1");
+  d3.selectAll(".bar").attr("opacity", "1").style('stroke', 'none');
   // why two lines?
   if (color == "blue") {
     bars = d3.selectAll(".bar");
@@ -937,21 +935,8 @@ function waypoints() {
     element: document.getElementById("step4a"),
     handler: function () {
       d3.selectAll(".bar")
-        .transition()
-        .duration(500)
-        //.style("fill", (d) => typeColor(d.type))
-        .style('stroke-width', (d) => strokeWidth(d.type))
-        .style('stroke', (d) => strokeColor(d.type))
-    },
-    offset: offset,
-  });
-
-  // type coloring
-  new Waypoint({
-    element: document.getElementById("step4a"),
-    handler: function () {
-      // do nothing with these for now
-      //d3.selectAll("#bar-41949311, #bar-55145261, #bar-55421550")
+        .transition().duration(500)
+        .style('stroke', (d) => strokeColor(d.type));
     },
     offset: offset,
   });
@@ -961,6 +946,10 @@ function waypoints() {
     element: document.getElementById("step5"),
     handler: function (direction) {
       if (direction == "down") {
+
+        // // turn off stroke borders
+        // d3.selectAll(".bar").style('stroke', 'none');
+
         // 5 Move to NYC
         removeAll((color = "periods"));
 
