@@ -32,15 +32,13 @@ for (i = 0; i < coll.length; i++) {
 
 const is_mobile = window.innerWidth < 600;
 const margin = { top: 30, right: 30, bottom: 30, left: 50 };
-let entry, chartWidth, height;
+const entry = document.getElementById("entry");
+const chartWidth = entry.getBoundingClientRect().width;
+let height;
 
 if (is_mobile) {
-  entry = document.getElementById("entry");
-  chartWidth = entry.getBoundingClientRect().width;
   height = window.innerHeight * 0.5;
 } else {
-  entry = document.getElementById("entry");
-  chartWidth = entry.getBoundingClientRect().width;
   height = window.innerHeight * 0.66 - margin.top - margin.bottom;
 }
 
@@ -57,15 +55,12 @@ const summers = [
 ];
 
 const defaultColor = "steelblue",
-highlightColor = 'cyan',
-collegeColor = "#8B80F9",
-covidColor = "#D1495B",
-movingColor = "#2A7F62",
-nycColor = "#EE964B",
-gradColor = "#F95738",
-colors = [collegeColor, covidColor, movingColor, nycColor, gradColor],
-nonfictionStrokeColor = 'black',
-nonfictionColor = "#ff4059";
+  collegeColor = "#8B80F9",
+  covidColor = "#D1495B",
+  movingColor = defaultColor,
+  nycColor = "#2A7F62",
+  gradColor = "#EE964B",
+  colors = [collegeColor, covidColor, movingColor, nycColor, gradColor];
 
 const labelClasses = [
   ".bar.college",
@@ -76,16 +71,16 @@ const labelClasses = [
 ];
 
 const division1 = new Date("2019-04-16"),
-division2 = new Date("2021-08-14"),
-division3 = new Date("2022-04-01"),
-division4 = new Date("2023-09-01"),
-divisions = [division1, division2, division3, division4];
+  division2 = new Date("2021-08-14"),
+  division3 = new Date("2022-04-01"),
+  division4 = new Date("2023-09-01"),
+  divisions = [division1, division2, division3, division4];
 
 const barHeight = 10,
-barHeight4 = 10,
-barHeight5 = 34,
-barHeight6 = 15,
-barHeight7 = 40;
+  barHeight4 = 10,
+  barHeight5 = 34,
+  barHeight6 = 15,
+  barHeight7 = 40;
 
 // HELPER FUNCTIONS------------------------------------------------------------
 
@@ -107,10 +102,14 @@ function assignBarClass(date, divisions) {
 }
 
 function typeColor(type) {
-  return type == "nonfiction" ? nonfictionColor : covidColor;
+  return type == "nonfiction" ? "white" : covidColor;
 }
 function strokeColor(type) {
-  return type == "nonfiction" ? nonfictionStrokeColor : 'none';
+  return type == "nonfiction" ? covidColor : "none";
+}
+
+function strokeWidth(type) {
+  return type == "nonfiction" ? "1" : "none";
 }
 
 function colorPeriods() {
@@ -128,16 +127,15 @@ function removeAll(color = "blue") {
   d3.selectAll(".shading").transition().duration(500).style("opacity", "0");
   d3.selectAll(".periods").transition().duration(500).style("opacity", "0");
   d3.selectAll(".section").transition().duration(500).style("opacity", "0");
-  d3.selectAll(".bar").attr("opacity", "1").style('stroke', 'none');
-  // why two lines?
+  d3.selectAll(".bar").attr("opacity", "1").style("stroke", "none");
+  d3.selectAll("path").style("pointer-events", "none");
+
   if (color == "blue") {
     bars = d3.selectAll(".bar");
     bars.transition().duration(500).style("fill", "steelblue");
-    //bars.style("fill", "steelblue")
   } else if (color == "periods") {
     colorPeriods();
   }
-  d3.selectAll("path").style("pointer-events", "none");
 }
 
 function periodLabelsSections(text, color) {
@@ -209,37 +207,38 @@ function fullChartStart() {
 
   // Three function that change the tooltip when user hover / move / leave a voronoi cell
   var mouseover = function (d) {
-    if (d) { // avoids console error when cursor goes off chart
+    if (d) {
+      // avoids console error when cursor goes off chart
 
       // show tooltip and update html
       Tooltip.style("opacity", 1) // show opacity only if there is a found data element
-            .html(
-              "<b> Book Title:</b> " +
-                d.title +
-                "</br>" +
-                "<b> Author:</b> " +
-                d.author_last +
-                " " +
-                d.author_first +
-                "</br>" +
-                "<b>Date Started:</b> " +
-                d.start_tooltip +
-                "</br>" +
-                "<b> Date Finished: </b>" +
-                d.end_tooltip +
-                "</br>" +
-                "<b> Reading Duration:</b> " +
-                d.duration_days +
-                " days" +
-                "</br>" +
-                "<b> Rating:</b> " +
-                d.my_rating +
-                "/5"
-            )
+        .html(
+          "<b> Book Title:</b> " +
+            d.title +
+            "</br>" +
+            "<b> Author:</b> " +
+            d.author_last +
+            " " +
+            d.author_first +
+            "</br>" +
+            "<b>Date Started:</b> " +
+            d.start_tooltip +
+            "</br>" +
+            "<b> Date Finished: </b>" +
+            d.end_tooltip +
+            "</br>" +
+            "<b> Reading Duration:</b> " +
+            d.duration_days +
+            " days" +
+            "</br>" +
+            "<b> Rating:</b> " +
+            d.my_rating +
+            "/5"
+        );
 
       // highlight bar corresponding to the voronoi path
       const id = "#bar-" + String(d.book_id);
-      d3.select(id).style("stroke", "black").style('fill', highlightColor);
+      d3.select(id).style("stroke", "black");
     }
   };
   var mousemove = function () {
@@ -247,18 +246,21 @@ function fullChartStart() {
     // console.log(d3.event.pageX);
     const mouseOnLeftSide = d3.event.pageX / window.innerWidth <= 0.5;
     if (mouseOnLeftSide) {
-        Tooltip.style("left", d3.mouse(this)[0] + 100 + "px")
+      Tooltip.style("left", d3.mouse(this)[0] + 100 + "px");
     } else {
-      const tooltipWidth = document.querySelector(".tooltip").getBoundingClientRect().width;
-      Tooltip.style("left", d3.mouse(this)[0] - tooltipWidth + 25 + "px")
+      const tooltipWidth = document
+        .querySelector(".tooltip")
+        .getBoundingClientRect().width;
+      Tooltip.style("left", d3.mouse(this)[0] - tooltipWidth + 25 + "px");
     }
     Tooltip.style("top", d3.mouse(this)[1] - 500 + "px");
   };
   var mouseleave = function (d) {
     Tooltip.style("opacity", 0);
-    if (d) { // prevent console error caused by voronoi side effects
+    if (d) {
+      // prevent console error caused by voronoi side effects
       id = "#bar-" + String(d.book_id);
-      d3.select(id).style("stroke", "none").style('fill', defaultColor);
+      d3.select(id).style("stroke", "none");
     }
   };
 
@@ -337,7 +339,7 @@ function fullChartStart() {
       .attr("id", (d) => "bar-" + d.book_id)
       .attr("transform", (d) => "translate(" + x(d.date_start) + ",0)")
       .style("fill", defaultColor)
-      .style('stroke-width', '2px')
+      .style("stroke-width", "2px")
       .append("rect")
       .transition()
       .duration(1500)
@@ -565,18 +567,35 @@ function panChart(startDate, endDate, barHeight, nyc = null) {
       .attr("width", (d) => x(d.date_read) - x(d.date_start));
 
     if (nyc === true) {
+      // chart
+      //   .append("rect")
+      //   .attr("class", "shading summer-16")
+      //   .attr("x", x(new Date("2016-06-23")))
+      //   .attr("y", y(142))
+      //   .attr("width", x(new Date("2016-08-26")) - x(new Date("2016-06-23")))
+      //   .attr("y", y(142))
+      //   .attr("opacity", "0")
+      //   .attr("fill", "none")
+      //   .attr("stroke", "black")
+      //   .attr("stroke-width", "3")
+      //   .attr("stroke-dasharray","5 10")
+      //   .lower();
+
       d3.select("#g-chart")
         .append("rect")
         .attr("class", "shading nyc")
         .attr("x", x(new Date("2022-08-07")))
-        .attr("y", 0)
+        .attr("y", y(142))
         .attr("width", x(new Date("2022-12-29")) - x(new Date("2022-08-07")))
-        .attr("height", height)
-        .attr("opacity", "0")
-        .attr("fill", "#cfd1d3")
+        .attr("height", y(138) - y(142))
+        .attr("opacity", "1")
+        .attr("fill", "none")
+        .attr("stroke", "black")
+        .attr("stroke-width", "3")
+        .attr("stroke-dasharray", "5 10")
         .lower();
 
-      d3.select(".shading.nyc").transition().delay(500).attr("opacity", 0.2);
+      d3.select(".shading.nyc").transition().delay(500).attr("opacity", 0.4);
     }
   });
 }
@@ -629,17 +648,20 @@ function summer2016() {
       .append("rect")
       .attr("class", "shading summer-16")
       .attr("x", x(new Date("2016-06-23")))
-      .attr("y", 0)
+      .attr("y", y(17))
       .attr("width", x(new Date("2016-08-26")) - x(new Date("2016-06-23")))
-      .attr("height", height)
+      .attr("height", height - y(16))
       .attr("opacity", "0")
-      .attr("fill", collegeColor)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("stroke-width", "3")
+      .attr("stroke-dasharray", "5 10")
       .lower();
 
     d3.select(".shading.summer-16")
       .transition()
       .duration(1000)
-      .attr("opacity", 0.2);
+      .attr("opacity", 0.4);
 
     // Update chart
     var bars = chart.selectAll(".bar").data(data);
@@ -703,38 +725,23 @@ function collegeChart() {
     //shading
     var parseDate = d3.timeParse("%Y-%m-%d");
 
-    summers.forEach(function (d) {
-      d.start = parseDate(d.start);
-      d.end = parseDate(d.end);
-    });
-
     chart
-      .append("rect")
-      .attr("class", "shading college")
-      .attr("x", x(minDate))
-      .attr("y", 0)
-      .attr("width", x(new Date("2017-09-18")) - x(minDate))
-      .attr("height", height)
-      .attr("opacity", 0)
-      .attr("fill", "#DBD8FD")
-      .lower();
+      .append("line")
+      .attr("class", "divisions")
+      .attr("id", "college-division")
+      .attr("x1", x(new Date("2017-09-18")))
+      .attr("y1", 0)
+      .attr("x2", x(new Date("2017-09-18")))
+      .attr("y2", height)
+      .style("stroke-width", 2)
+      .style("stroke", "black")
+      .style("stroke-dasharray", "4, 3")
+      .style("opacity", "0");
 
-    chart
-      .append("rect")
-      .attr("class", "shading college")
-      .attr("x", x(new Date("2017-09-18")))
-      .attr("y", 0)
-      .attr("width", x(new Date("2019-06-01")) - x(new Date("2017-09-18")))
-      .attr("height", height)
-      .attr("opacity", 0)
-      .attr("fill", "#e1e2e3")
-      .lower();
-
-    d3.selectAll(".shading.college")
+    d3.select("#college-division")
       .transition()
-      .delay(500)
       .duration(1000)
-      .attr("opacity", 0.5);
+      .style("opacity", "0.4");
 
     // Update chart
     var bars = chart.selectAll(".bar").data(data);
@@ -941,9 +948,12 @@ function waypoints() {
     element: document.getElementById("step4a"),
     handler: function () {
       d3.selectAll(".bar")
-        .transition().duration(500)
-        .style('fill', (d) => typeColor(d.type))
-        .style('stroke', (d) => strokeColor(d.type));
+        .transition()
+        .duration(500)
+        .style("fill", (d) => typeColor(d.type))
+        .style("stroke", (d) => strokeColor(d.type))
+        .style("stroke-width", (d) => strokeColor(d.type));
+      //.style("stroke-dasharray", (d) => strokeType(d.type));
     },
     offset: offset,
   });
@@ -953,7 +963,6 @@ function waypoints() {
     element: document.getElementById("step5"),
     handler: function (direction) {
       if (direction == "down") {
-
         // // turn off stroke borders
         // d3.selectAll(".bar").style('stroke', 'none');
 
