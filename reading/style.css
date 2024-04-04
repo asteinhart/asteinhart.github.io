@@ -4,11 +4,9 @@
 :root {
   --collegeColor: #8b80f9;
   --covidColor: #d1495b;
-  --movingColor: #2a7f62;
-  --nycColor: #ee964b;
-  --gradColor: #f95738;
-  --nonfictionColor: #58a4b0;
-  --fictionColor: #f7c4a5;
+  --movingColor: steelblue;
+  --nycColor: #2a7f62;
+  --gradColor: #ee964b;
   --textWidth: 50vw;
   --mobileWidth: 90vw;
 }
@@ -130,7 +128,7 @@ h5 {
 }
 
 #stepLast {
-  opacity: 0;
+  visibility: hidden;
   margin-bottom: 10vh;
 }
 
@@ -151,13 +149,13 @@ h5 {
 }
 
 .nonfiction {
-  box-shadow: var(--nonfictionColor) 0px 5px 15px;
-  border: 1px var(--nonfictionColor) solid;
+  box-shadow: var(--covidColor) 0px 5px 15px;
+  border: 2px var(--covidColor) solid;
 }
 
 .fiction {
-  box-shadow: var(--fictionColor) 0px 5px 15px;
-  border: 1px var(--fictionColor) solid;
+  box-shadow: black 0px 5px 15px;
+  border: 1px black solid;
 }
 
 .book-info {
@@ -224,6 +222,12 @@ a:hover {
   color: white;
 }
 
+.college-summer-text {
+  font-weight: 600;
+  border-radius: 5px;
+  border: 2px black dashed;
+}
+
 .covid-text {
   background-color: var(--covidColor);
   font-weight: 600;
@@ -259,15 +263,9 @@ a:hover {
 }
 
 .nonfiction-text {
-  background-color: var(--nonfictionColor);
   font-weight: 600;
   border-radius: 5px;
-  color: white;
-}
-.fiction-text {
-  background-color: var(--fictionColor);
-  font-weight: 600;
-  border-radius: 5px;
+  border: 2.5px var(--covidColor) solid;
 }
 
 .periods.text {
@@ -326,6 +324,7 @@ span {
     width: 95vw;
     top: 30%;
     margin: auto;
+    z-index: -1;
   }
   .scroller {
     width: 65vw;
