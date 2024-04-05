@@ -179,6 +179,19 @@ if (is_mobile) {
     <span class="covid-text">COVID-19</span>, <span class="moving-text">Moving</span>, <span class="nyc-text">NYC</span>, and \
     <span class="grad-text">Grad School</span>.';
   document.getElementById("step1c-text").innerHTML = text;
+
+  text =
+    "That brings us to the end of our journey. Thank you for following \
+    along as I explored my reading over the last few years.";
+  document.getElementById("step8-text").innerHTML = text;
+
+  text =
+    "Scroll along below as I explore my reading over the last eight years. \
+    (<em>For the best experience, view on Desktop.</em>)";
+  document.getElementById("scroll-start-text").innerHTML = text;
+
+  // remove scoller that gives tooltip
+  document.getElementById("step1b").style.display = "none";
 }
 
 // CHART FUNCTIONS-------------------------------------------------------------
