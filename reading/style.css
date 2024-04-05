@@ -63,6 +63,7 @@ button {
   border-width: 2px;
   border-radius: 5px;
   padding: 5px;
+  pointer-events: none;
 }
 
 .entry {
