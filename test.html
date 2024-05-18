@@ -16,22 +16,26 @@
     <title>Austin Steinhart</title>
   </head>
 
-  <body>
-
-    <div class="header">
-          <h1 class="headline">Austin Steinhart</h1>
+  <body class="light-theme">
+    <div class="container">
+      <!-- start of the main container-->
+      <div class="header-name">
+        <!-- headline and intro -->
+          <h1 class="headline super-font">Austin Steinhart</h1>
           <a
-            class="handle"
+            class="handle super-font body-link"
             target="_blank"
             href="https://github.com/Asteinhart"
             ><i class="fa fa-github"></i> asteinhart</a
           >
         </div>
-      <div class="about-me">
+      </div>
+      <div class="row justify-content-center">
         <!-- this is the subhead for the stories -->
-          <div class="section-header">About me</div>
+        <div class="col-md-10">
+          <p class="section super-font">About me</p>
           <hr />
-          <p class="body-text">
+          <p class="body-text sub-font">
             I am currently earning a
             <a
               target="_blank"
@@ -49,7 +53,7 @@
               >Local Data Journalism Initiative</a
             >.
           </p>
-          <p class="body-text">
+          <p class="body-text sub-font">
             You can find my programming portfolio at
             <a
               class="body-text sub-font body-link"
@@ -58,39 +62,56 @@
               ><i class="fa fa-github"></i> asteinhart</a
             >.
           </p>
+        </div>
+      </div>
     </div>
     <!-- container-->
 
-    <div class="section-container">
+    <div class="container">
+      <div class="row justify-content-center">
         <!-- this is the subhead for the stories -->
-          <p class="section-header">Stories</p>
+        <div class="col-md-10">
+          <p class="section super-font">Stories</p>
           <hr />
+        </div>
+      </div>
 
       <!-- start of story with an image -->
-      <a href="reading/index.html" class="content">
-          <div class="content-img">
+      <a class="link" href="reading/index.html" class="teaser-anchor">
+        <div class="row justify-content-center">
+          <div class="col-md-4">
             <!-- image -->
             <img
               class="image"
               src="style/images/reading.png"
               alt="image description"
-            >
+            />
           </div>
-          <div class="content-description">
+          <div class="col-md-6">
             <!-- headline/description -->
-            <p class="content-header">My Reading Over the Years</p>
-            <p class="content-body">
-              A personal exploration of my reading over the last 8 years. 
+            <p class="subhead super-font">My Reading Over the Years</p>
+            <p class="sub-font explanation">
+              A personal exploration of my reading over the last 8 years.
             </p>
-            <p class="content-body"> Visuals built with D3.js and data work with R.</p>
+            <div class="sub-font tag-container">
+              <div class="tag d3">D3.js</div>
+              <div class="tag r">R</div>
+              <div class="tag js">Javascipt</div>
+              <div class="tag html">HTML/CSS</div>
+            </div>
           </div>
+        </div>
       </a>
       <!-- end of story with an image -->
 
       <!-- start of story with an image -->
-      <a href="https://chicagomaroon.com/41302/grey-city/university-faculty-arent-neutral-when-it-comes-to-political-donations/"
-        class="content">
-        <div class="content-img">
+      <a
+        class="link"
+        href="https://chicagomaroon.com/41302/grey-city/university-faculty-arent-neutral-when-it-comes-to-political-donations/"
+        class="teaser-anchor"
+      >
+        <div class="row justify-content-center">
+          <div class="col-md-4">
             <!-- image -->
             <img
               class="image"
@@ -98,26 +119,35 @@
               alt="image description"
             />
           </div>
-          <div class="content-description">
+          <div class="col-md-6">
             <!-- headline/description -->
-            <p class="content-header">
+            <p class="subhead super-font">
               University Faculty Aren’t Neutral When It Comes to Political
               Donations
             </p>
-            <p class="content-body">
-              A data journalism piece for <i>The Chicago Maroon</i>. 
+            <p class="sub-font explanation">
+              A data journalism piece for <i>The Chicago Maroon</i>.
             </p>
-            <p class = "content-body">Visuals built with D3.js and Highcharts and data work with python.</p>
+            <div class="sub-font tag-container">
+              <div class="tag d3">D3.js</div>
+              <div class="tag hc">Highcharts</div>
+              <div class="tag py">Python</div>
+              <div class="tag js">Javascipt</div>
+              <div class="tag html">HTML/CSS</div>
+            </div>
           </div>
+        </div>
       </a>
       <!-- end of story with an image -->
 
       <!-- start of story with an image -->
       <a
-        class="content"
+        class="link"
         href="https://austinsteinhart.medium.com/my-daily-obsession-the-nyt-daily-mini-crossword-b58450478e6?source=friends_link&sk=6850c508ef37cf60230016405b92c53e"
+        class="teaser-anchor"
       >
-        <div class="content-img">
+        <div class="row justify-content-center">
+          <div class="col-md-4">
             <!-- image -->
             <img
               class="image"
@@ -125,34 +155,38 @@
               alt="image description"
             />
           </div>
-          <div class="content-description">
+          <div class="col-md-6">
             <!-- headline/description -->
-            <p class="content-header">
+            <p class="subhead super-font">
               My Daily Devotion: The NYT Daily Mini Crossword
             </p>
-            <p class="content-body">
-              A person exploration of my NYT Daily Mini Crossword times. 
+            <p class="sub-font explanation">
+              A person exploration of my NYT Daily Mini Crossword times.
             </p>
-            <p class="content-body">
-              Visuals built with ggplot2 in R.
-            </p>
+            <div class="sub-font tag-container">
+              <div class="tag r">R (ggplot2)</div>
+            </div>
           </div>
+        </div>
       </a>
       <!-- end of story with an image -->
-  </div>
+    </div>
     <!-- end of container with stories-->
 
-
     <!-- this is the subhead for the Web Apps -->
-    <div class="section-container">
-      <p class="section-header">Web Apps</p>
+    <div class="col-md-10">
+      <p class="section super-font">Web Apps</p>
       <hr />
+    </div>
+  </div>
    <!-- start of app with an image -->
    <a
-   class="content"
+   class="link"
    href="https://content-we-love-54fa79867044.herokuapp.com"
+   class="teaser-anchor"
  >
-   <div class="content-img">
+   <div class="row justify-content-center">
+     <div class="col-md-4">
        <!-- image -->
        <img
          class="image"
@@ -160,26 +194,27 @@
          alt="image description"
        />
      </div>
-     <div class="content-description">
+     <div class="col-md-6">
        <!-- headline/description -->
-       <p class="content-header">
+       <p class="subhead super-font">
          Content We Love
        </p>
-       <p class="content-body">
-        Great reads, thoughtfully curated by your friends. 
+       <p class="sub-font explanation">
+        Great reads, thoughtfully curated by your friends.
        </p>
-       <p class="content-body">
-        Built with Flask.
-      </p>
-      </div>
+     </div>
+   </div>
  </a>
  <!-- end of story with an image -->
 <!-- end of Web Apps -->
-</div>
+  
 
     <!-- footer -->
-    <div class="footer">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
           <p class="body-text sub-font">
+            <br /><br />
             Previously ran youth programming at
             <a
               target="_blank"
@@ -196,6 +231,8 @@
             >
             or reach out via email at asteinhart3 at gmail.com
           </p>
+        </div>
+      </div>
     </div>
     <!-- container-->
 
