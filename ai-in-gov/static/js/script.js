@@ -381,7 +381,7 @@ function createTable(tableData) {
         field: col,
         pinned: "left",
         lockPinned: true,
-        width: is_mobile ? 250 : 300,
+        width: is_mobile ? 150 : 300,
         suppressMovable: true,
         wrapText: true,
         autoHeight: true,
@@ -392,7 +392,7 @@ function createTable(tableData) {
         suppressMovable: true,
         wrapText: true,
         autoHeight: true,
-        width: 600,
+        width: is_mobile ? 200 : 600,
       };
     } else {
       dict = {
@@ -400,6 +400,7 @@ function createTable(tableData) {
         suppressMovable: true,
         wrapText: true,
         autoHeight: true,
+        width: is_mobile ? 100 : 200,
       };
     }
     cols_list.push(dict);

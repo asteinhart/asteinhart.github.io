@@ -351,4 +351,9 @@ svg {
   .tooltip-content {
     font-size: 0.8em;
   }
+
+  .ag-theme-quartz {
+    --ag-font-size: 0.7em;
+    --ag-line-height: 20px;
+  }
 }
