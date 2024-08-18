@@ -544,12 +544,12 @@ function makeWaypoints() {
     handler: function (direction) {
       if (direction == "down") {
         // switch to tech chart
-        transitionChart("start_dep", "start_t");
 
         // TODO change to actually chained https://stackoverflow.com/questions/59513673/how-to-chain-d3-transitions
 
         const cheating = async () => {
-          await sleep(1001);
+          transitionChart("start_dep", "start_t");
+          await sleep(1100);
           d3.selectAll(
             "#DOC-0005-2023 rect, #DHS-0032-2023 rect, #HHS-0089-2023 rect, #HHS-0014-2023 rect"
           )
