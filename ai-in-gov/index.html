@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="static/js/noframework.waypoints.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <title>Exploring AI Use In Government</title>
+  </head>
+  <body>
+    <div class="header">
+      <div id="return">
+        <a href="https://asteinhart.github.io/">Return to Home</a>
+      </div>
+      <div id="next-story">
+        <a href="https://asteinhart.github.io/reading/ai-in-gov/index.html"
+          >Next Story</a
+        >
+      </div>
+    </div>
+    <div class="title-container">
+      <div class="title-info">
+        <div class="title-img">
+          <img
+            src="static/img/ai-share-v2.jpg"
+            alt="ai.gov logo"
+            id="ai-gov-logo"
+          />
+        </div>
+        <h1 class="title">Exploring AI Use In Government</h1>
+        <h4 class="subtitle">
+          In 2023, the Biden Administration released the first ever Federal AI
+          Use Case Inventory. See how the federal government is using AI.
+        </h4>
+        <div class="byline">
+          <p>By <a href="https://asteinhart.github.io/">Austin Steinhart</a></p>
+          <p>Fall 2024</p>
+        </div>
+      </div>
+      <hr />
+    </div>
+
+    <div class="body-text">
+      <p>
+        In October 2023, the Biden Administration issued an
+        <a
+          target="_blank"
+          href="https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/"
+          >executive order on AI</a
+        >
+        to address the extraordinary potential for both promise and peril that
+        Artificial intelligence (AI) possesses." The executive order
+        <a
+          target="_blank"
+          href="https://www.whitehouse.gov/briefing-room/statements-releases/2023/10/30/fact-sheet-president-biden-issues-executive-order-on-safe-secure-and-trustworthy-artificial-intelligence/"
+          >establishes</a
+        >
+        new standards for AI safety and security, protects Americans’ privacy,
+        advances equity and civil rights, stands up for consumers and workers,
+        promotes innovation and competition, advances American leadership around
+        the world, and more."
+      </p>
+      <p>
+        In addition to creating new standards for AI safety and security, the
+        executive order requires that the "the Director of [the Office of
+        Management and Budget] shall, on an annual basis, issue instructions to
+        agencies for the collection, reporting, and publication of agency AI use
+        cases."
+      </p>
+      <p>
+        To comply with this order, the federal government created the first ever
+        <a target="_blank" href="https://ai.gov/ai-use-cases/"
+          >Federal AI Use Case Inventory</a
+        >. As technology continues to develop at a rapid pace, this inventory
+        marks an important moment in addressing the ways that that technology
+        can be utilized for the public good in ways that are safe, secure, and
+        transparent.
+      </p>
+      <p>
+        However, the inventory is not without its flaws. For anyone that has
+        worked with government data knows, providing data in a accessible format
+        is never a given. Attempting to view the inventory simply begins a
+        download of a csv file.
+      </p>
+      <p>
+        <img
+          src="static/img/use-case-button.png"
+          alt="use case download option"
+          id="use-case-button"
+        />
+      </p>
+
+      <p>
+        I will give them one point for providing a
+        <a
+          target="_blank"
+          href="https://resources.data.gov/glossary/machine-readable-file/"
+          >machine-readable</a
+        >
+        format and then promptly take a point away for just providing a 710 row
+        CSV file. This format is essentially useless for most people. They
+        neglect to provide any summary statistics or way to view the inventory
+        such as in a table. As the federal government's
+        <a target="_blank" href="https://resources.data.gov/PoD/principles/"
+          >own principles</a
+        >
+        outline, this data is not accessible and is not "available to the widest
+        range of users for the widest range of purposes."
+      </p>
+      <p id="top">
+        In an effort to make the inventory more digestible (wc), scroll along
+        below to explore how the Federal Government has reported its use of AI.
+        If you would like to skip to the inventory in full,
+        <a href="javascript:scrollToTable()" id="tableLink">
+          <i class="fa fa-hand-o-up" aria-hidden="true"></i> click here view to
+          a sortable table of the entire inventory.</a
+        >
+      </p>
+    </div>
+    <div class="container" id="container">
+      <div class="scroller-container">
+        <div class="scroller" id="sIntro">
+          The Federal AI Use Case Inventory contains 710
+          <b>Use Cases of AI</b> as of September 1st, 2023. Each box represents
+          one use case.
+        </div>
+        <div class="scroller" id="sExample">
+          For the inventory, each department and agency submitted their own list
+          of use cases. For example, the Department of Treasury included a
+          <span class="highlight ex">Collection Voice Bot</span>, an model to
+          help direct a taxpayer down to a certain call path given their speech.
+          <span id="hover-text">
+            <b
+              >Hover over a box to learn more about the specific model at any
+              time</b
+            >
+          </span>
+        </div>
+        <div class="scroller" id="sDep">
+          The use cases are spread across 21 departments and agencies including
+          all 15 executive departments indicating that AI use has already become
+          widespread in the federal government. Just two departments, the
+          <span class="highlight doe">Department of Energy</span> and the
+          <span class="highlight hhs"
+            >Department of Health and Human Services</span
+          >, make up almost half of all reported use cases in the inventory. The
+          <span class="highlight doc">Department of Commerce</span>,
+          <span class="highlight hs">Department of Homeland Security</span>, and
+          <span class="highlight va">Department of Veterans Affairs</span> round
+          of the top 5 departments or agencies. Use the drop down below to
+          highlight a specific department in the
+          <span class="highlight od">Other Departments</span> category.
+          <select name="dep" id="dep-select" onchange="highlightDep()">
+            <option value="" disabled selected>
+              Choose a Department to highlight
+            </option>
+            <option value="Department of Agriculture">
+              Department of Agriculture (39)
+            </option>
+            <option value="Department of Interior">
+              Department of Interior (38)
+            </option>
+            <option value="National Aeronautics and Space Administration">
+              National Aeronautics and Space Administration (33)
+            </option>
+            <option value="Department of State">
+              Department of State (31)
+            </option>
+            <option value="Department of Labor">
+              Department of Labor (18)
+            </option>
+            <option value="Department of Transportation">
+              Department of Transportation (14)
+            </option>
+            <option value="Department of Treasury">
+              Department of Treasury (14)
+            </option>
+            <option value="Social Security Administration">
+              Social Security Administration (14)
+            </option>
+            <option value="U.S. Agency for International Development">
+              U.S. Agency for International Development (14)
+            </option>
+            <option value="U.S. General Services Administration">
+              U.S. General Services Administration (12)
+            </option>
+            <option value="National Archives and Records Administration">
+              National Archives and Records Administration (5)
+            </option>
+            <option value="Department of Justice">
+              Department of Justice (4)
+            </option>
+            <option value="U.S. Office of Personnel Management">
+              U.S. Office of Personnel Management (4)
+            </option>
+            <option value="U.S. Environmental Protection Agency">
+              U.S. Environmental Protection Agency (3)
+            </option>
+            <option value="Department of Housing and Urban Development">
+              Department of Housing and Urban Development (1)
+            </option>
+            <option value="Department of Education">
+              Department of Education (1)
+            </option>
+          </select>
+        </div>
+        <div class="scroller" id="sTechEx">
+          What exactly is considered an "use case of AI"? The collected
+          inventory shows that the federal government struggles to provide a
+          clear understanding of this term, a
+          <a
+            target="_blank"
+            href="https://www.newyorker.com/science/annals-of-artificial-intelligence/there-is-no-ai"
+            >common challenge</a
+          >
+          for most people in non technical backgrounds. In the inventory, the
+          term AI is incredibly expansive. It includes use cases that fit the
+          traditional definition such as machine learning models that use
+          <a target="_blank" href="link">large language models</a> for
+          <span class="highlight ex">chatbots</span> or
+          <a target="_blank" href="link">neural networks</a> for
+          <span class="highlight ex">facial recognition</span> but also includes
+          <span class="highlight ex">analytics tools</span>, and
+          <span class="highlight ex">data infrastructure</span>, technical tools
+          that most experts would not consider AI.
+        </div>
+        <div class="scroller" id="sTechMiss">
+          While the inventory includes a field for departments to list a
+          technique for each use case, there are not standardized categories
+          across departments. In addition, despite it being labeled as mandatory
+          in the
+          <a
+            target="_blank"
+            target="_blank"
+            href="https://www.whitehouse.gov/wp-content/uploads/2024/03/DRAFT-Guidance-for-Agency-Artificial-Intelligence-Reporting-per-EO14110.pdf"
+            >provided instructions to agencies</a
+          >, over 50% of use cases have
+          <span class="highlight non">no listed technique</span>. 10 of the 21
+          departments / agencies did not provide a technique for a single
+          reported use cases including the Department of Commerce, the
+          Department of Health and Human Services, and the Department of Veteran
+          Affairs.
+        </div>
+        <div class="scroller" id="sTechSplit">
+          Using the use case titles and summary, I attempted to standardize and
+          fill in any missing techniques. While this is not a perfect
+          categorization, it does give insight into how the federal government
+          is using AI. TODO Blank % of the models were this and that. See all
+          the categories I created using the drop down. TODO Click here to view
+          expanded definitions of each technique.
+        </div>
+        <div class="scroller" id="sTechSource">
+          In addition to technique, just 2% of the use cases have
+          <span class="highlight ex">publicly available source code</span>. This
+          raises concerns about the transparency of AI tools being used by the
+          federal government.
+        </div>
+        <div class="scroller" id="sStageMiss">
+          Also included in the inventory is information indicating a use case's
+          stage in development. Once again, despite being a mandatory field in
+          the provided instruction, roughly 50% have no provided development
+          stage.
+        </div>
+        <div class="scroller" id="sStageSplit">
+          Of the use cases that did includes a development stage, roughly 50%
+          are currently in use, 25% are in development and 25% are in planning.
+          As expected, it appears the use of AI in the federal government will
+          continue to increase considering the amount of uses in development or
+          planning.
+        </div>
+        <div class="scroller" id="sClosing">
+          There is much more to explore in the Federal AI Use Case Inventory.
+          With the first release in September 2023, we may expect an updated
+          inventory to be released on September 2024. In the meantime, you can
+          explore the current inventory by hovering over the boxes below.
+        </div>
+        <div class="scroller" id="sFake"></div>
+      </div>
+      <div class="graphic-container" id="graphic-container"></div>
+    </div>
+    <div class="body-text" id="closing">
+      <p></p>
+
+      <p>
+        While reviewing the <a target="_blank" href="link">guidelines</a> for
+        the inventory, there appears to be lots of value information that was
+        collected that was not shared in this instal release. This includes
+        questions such as TODO. It appears this initial release was a collection
+        of each of each department
+        <a target="_blank" href="https://ai.gov/ai-use-cases/">posted page</a>.
+        One may be able to get some of this information by viewing the inventory
+        from each individual department&#39;s link
+        <a target="_blank" href="https://ai.gov/ai-use-cases/">here</a> or this
+        may be a possible good
+        <a target="_blank" href="https://www.muckrock.com/">FIOA request</a>.
+      </p>
+
+      <p>
+        As a quick aside, its worth mentioning the impact that the format of
+        data can have the accessability and usability. One of the principles of
+        posted by
+        <a target="_blank" href="https://resources.data.gov/"
+          >resources.data.gov</a
+        >, an online repository of policies, tools, case studies, and other
+        resources to support data governance, management, exchange, and use
+        throughout the federal government, is that the data is
+        <a target="_blank" href="https://resources.data.gov/PoD/principles/"
+          >accessible</a
+        >
+        meaning that open data from the government should be"made available in
+        convenient, modifiable, and open formats..." and "...should be made
+        available to the widest range of users for the widest range of purposes,
+        often by providing the data in multiple formats for consumption."
+      </p>
+      <p>
+        Unfortunately, this is rarely upheld as anyone that works with
+        government data knows that you never know what format the data will be
+        in. One of the most common formats are PDFs which are often easy to view
+        on a computer but much more difficult to access the data to analyze and
+        are not
+        <a
+          target="_blank"
+          href="https://resources.data.gov/glossary/machine-readable-file/"
+          >machine-readable</a
+        >. On the flip side, tabular data formats like CSVs or Excel files are
+        machine-readable but impossible or at the least difficult to analyze.
+      </p>
+      <p>
+        There are governments addressing these concerns by providing "multiple
+        formats for consumption" including machine readable formats as well as
+        dashboards, charts, and maps to allow users with a variety of technical
+        skills to still access and use the data. The City of Chicago&#39;s
+        <a target="_blank" href="https://data.cityofchicago.org/"
+          >Open Data Portal</a
+        >
+        is one example.
+      </p>
+      <p id="scroll-to-top" style="text-align: center; margin-block: 10%">
+        <a href="javascript:scrollToTop()" id="topLink">
+          <i class="fa fa-hand-o-up" aria-hidden="true"></i> click here view to
+          a sortable table of the entire inventory.</a
+        >
+      </p>
+    </div>
+
+    <div id="table" class="ag-theme-quartz">
+      <input
+        type="text"
+        id="filter-text-box"
+        placeholder="Search..."
+        oninput="onFilterTextBoxChanged()"
+      />
+    </div>
+
+    <div class="outro">
+      <hr />
+      <p>
+        <a
+          target="_blank"
+          target="_blank"
+          href="https://github.com/asteinhart/asteinhart.github.io/tree/main/reading"
+          >See code for this project here.</a
+        >
+      </p>
+    </div>
+
+    <script src="static/js/script.js"></script>
+  </body>
+</html>
