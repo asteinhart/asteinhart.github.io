@@ -321,7 +321,7 @@ svg {
   }
   .scroller {
     width: 65vw;
-    font-size: 0.9em;
+    font-size: 0.95em;
     background-color: white;
     border-radius: 5px;
     margin-inline: auto;

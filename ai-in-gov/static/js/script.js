@@ -8,7 +8,7 @@ const is_mobile = window.innerWidth < 800;
 const margin = { top: 10, right: 30, bottom: 30, left: 50 };
 const container = document.getElementById("graphic-container");
 const chartWidth = is_mobile
-  ? container.getBoundingClientRect().width * 0.9
+  ? container.getBoundingClientRect().width * 0.95
   : container.getBoundingClientRect().width * 0.8;
 let height;
 
