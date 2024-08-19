@@ -1,7 +1,11 @@
-// data todo
-// make tooltip nicer maybe
-// colors
-// decide on technique label
+//// todo
+// full read over and edits
+// finish manually labeling technique
+// figure out what to do for the end text
+
+//// nice todo
+// interaction to text
+// make tooltip nicer
 
 // ----- CONSTANTS -----
 const is_mobile = window.innerWidth < 800;
@@ -12,10 +16,12 @@ const chartWidth = is_mobile
   : container.getBoundingClientRect().width * 0.8;
 let height;
 
-highlightColor = "#515151";
+//colorsDep = ["#fed98e", "#fe9929", "#d95f0e", "#993404", "#800000"];
+//colorsDep = ["#dd2c2f", "#d02224", "#bd1f21", "#ac1c1e", "#9c191b"];
+colorsDep = ["#da7e37", "#c06722", "#a85311", "#8f3e00", "#713200"];
 
-colorsDep = ["#fed98e", "#fe9929", "#d95f0e", "#993404", "#800000"];
 colorTech = ["#bae4bc", "#7bccc4", "#43a2ca", "#2c7bb6", "#0868ac"];
+colorTech = ["#25a244", "#208b3a", "#1a7431", "#155d27", "#10451d"];
 const colors5 = {
   "Department of Energy": colorsDep[4],
   "Department of Health and Human Services": colorsDep[3],
@@ -25,24 +31,25 @@ const colors5 = {
   "All Other Departments": "grey",
 
   "Unspecified Machine Learning": colorTech[4],
-  "Neural Network": colorTech[3],
+  "Neural Network": colorTech[2],
   Automation: colorTech[2],
   Other: colorTech[1],
   "All Other Techniques": "grey",
-  "Natural Language Processing": colorTech[1],
+  "Natural Language Processing": colorTech[3],
   "Machine Vision": colorTech[0],
 };
 
-colorsDev = ["#8c96c6", "#8856a7", "#810f7c"];
+colorsDev = ["#b9375e", "#8a2846", "#602437"];
 
 const colors3 = {
-  "In Use": colorsDev[0],
+  "In Use": colorsDev[2],
   "In Development": colorsDev[1],
-  "In Planning": colorsDev[2],
+  "In Planning": colorsDev[0],
   "No Development Stage Indicated": "grey",
 };
 
 const defaultColor = "#01397D";
+const highlightColor = defaultColor;
 
 // -------- MOBILE ---------
 // ----- mobile ------
@@ -59,6 +66,9 @@ if (is_mobile) {
   // rm mention of tooltip (for now)
   d3.select(".tooltip").remove();
   document.querySelector("#hover-text").remove();
+  document.querySelector(
+    "#exit-hover-text"
+  ).innerHTML = `In the meantime, you can explore the current inventory in the table below.`;
 } else {
   height = window.innerHeight - margin.top - margin.bottom;
 }
@@ -83,7 +93,8 @@ function resetChart() {
     .duration(1000)
     .attr("fill", defaultColor)
     .attr("stroke", "none")
-    .attr("stroke-width", 1);
+    .attr("stroke-width", 1)
+    .style("opacity", 1);
 
   d3.selectAll(".label-text, .label-rect").remove();
 }
@@ -97,6 +108,16 @@ function highlightDep() {
     .selectAll(".use-case")
     .attr("stroke", (d) => (d.Department == dep ? "black" : "none"))
     .attr("stroke-width", (d) => (d.Department == dep ? 2 : 0));
+}
+function highlightTech() {
+  tech = document.querySelector("#tech-select").value;
+
+  var chart = d3.select("#g-chart");
+
+  chart
+    .selectAll(".use-case")
+    .attr("stroke", (d) => (d.tech_clean == tech ? "black" : "none"))
+    .attr("stroke-width", (d) => (d.tech_clean == tech ? 2 : 0));
 }
 
 // -------- CHART ---------
@@ -243,7 +264,8 @@ function startingChart() {
     .attr("y", (d) => y(+d.start_dep_y))
     .attr("width", boxSize())
     .attr("height", boxSize())
-    .attr("fill", defaultColor);
+    .attr("fill", defaultColor)
+    .style("opacity", 0);
 
   // add tooltip
   chart
@@ -271,7 +293,8 @@ function switchStarting(col, transition = false) {
     .attr("y", (d) => y(d[yName]))
     .attr("width", boxSize())
     .attr("height", boxSize())
-    .attr("fill", defaultColor);
+    .attr("fill", defaultColor)
+    .style("opacity", 1);
 }
 
 function switchSplit(col, colName, colors, transition = true) {
@@ -291,7 +314,8 @@ function switchSplit(col, colName, colors, transition = true) {
     .attr("y", (d) => y(d[yName]))
     .attr("width", boxSize())
     .attr("height", boxSize())
-    .attr("fill", (d) => colors[d[colName]] || "grey");
+    .attr("fill", (d) => colors[d[colName]] || "grey")
+    .style("opacity", 1);
 
   // add labels
   // make object wtih label name and y
@@ -364,7 +388,7 @@ function switchSplit(col, colName, colors, transition = true) {
 function transitionChart(startName, endName) {
   const transition = async () => {
     switchStarting(startName, true);
-    await sleep(1001);
+    await sleep(1100);
     switchStarting(endName, false); // maybe true?
   };
   transition();
@@ -381,7 +405,7 @@ function createTable(tableData) {
         field: col,
         pinned: "left",
         lockPinned: true,
-        width: is_mobile ? 150 : 300,
+        width: is_mobile ? 125 : 300,
         suppressMovable: true,
         wrapText: true,
         autoHeight: true,
@@ -424,6 +448,32 @@ function onFilterTextBoxChanged() {
   );
 }
 
+// DROPDOWN BUTTON-------------------------------------------------------------
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", async function () {
+    if (this.innerHTML.indexOf("▾") !== -1) {
+      this.innerHTML = "&#9656; Learn more about the techniques listed.";
+    } else {
+      this.innerHTML = "&#9662 Learn more about the techniques listed.";
+    }
+    var content = document.getElementById("content");
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+    console.log("clicked");
+
+    // need to trigger reset after css animation lol
+    await sleep(300);
+    Waypoint.refreshAll();
+    å;
+  });
+}
+
 // -------- functions ---------
 
 // scroll to table
@@ -443,6 +493,8 @@ const sleep = (milliseconds) => {
 };
 
 // ------ waypoints ------
+
+let techSourceWaypoint;
 function makeWaypoints() {
   let offset = "60%";
   // fade in chart
@@ -451,7 +503,7 @@ function makeWaypoints() {
     handler: function (direction) {
       if (direction == "down") {
         async function fadeIn() {
-          d3.select(".graphic-container")
+          d3.selectAll(".graphic-container, .use-case")
             .transition()
             .duration(1000)
             .style("opacity", "1");
@@ -479,13 +531,12 @@ function makeWaypoints() {
       if (direction == "down") {
         // highlight one model
         // change color
-        d3.select("g#TREAS-0004-2023 rect")
+        d3.selectAll(".use-case")
           .transition()
           .duration(800)
-          .attr("fill", highlightColor)
-          .attr("x", x(-2))
-          .attr("width", boxSize() * 2)
-          .attr("height", boxSize() * 2)
+          .style("opacity", (d) =>
+            d.Use_Case_ID == "TREAS-0004-2023" ? 1 : 0.2
+          )
           .on("end", () => {
             if (!is_mobile) {
               d3.select("g#TREAS-0004-2023 rect").dispatch("mouseover");
@@ -520,18 +571,22 @@ function makeWaypoints() {
           switchStarting("start_dep", true);
           await sleep(1001);
 
-          d3.select("g#TREAS-0004-2023 rect")
+          d3.selectAll(".use-case")
             .transition()
-            .duration(1000)
-            .attr("fill", highlightColor)
-            .attr("x", x(-2))
-            .attr("width", boxSize() * 2)
-            .attr("height", boxSize() * 2);
-          // enable tooltip
-          if (!is_mobile) {
-            d3.select("g#TREAS-0004-2023 rect").dispatch("mouseover");
-            d3.select(".tooltip").style("left", "2%").style("top", "2%");
-          }
+            .duration(800)
+            .style("opacity", (d) =>
+              d.Use_Case_ID == "TREAS-0004-2023" ? 1 : 0.2
+            )
+            .on("end", () => {
+              if (!is_mobile) {
+                d3.select("g#TREAS-0004-2023 rect").dispatch("mouseover");
+                d3.select(".tooltip")
+                  .transition()
+                  .duration(500)
+                  .style("right", "2%")
+                  .style("top", "2%");
+              }
+            });
         };
         cheating();
       }
@@ -543,22 +598,25 @@ function makeWaypoints() {
     element: document.getElementById("sTechEx"),
     handler: function (direction) {
       if (direction == "down") {
-        // switch to tech chart
+        const techHighlight = [
+          "DOC-0005-2023",
+          "DHS-0032-2023",
+          "HHS-0089-2023",
+          "HHS-0014-2023",
+        ];
 
         // TODO change to actually chained https://stackoverflow.com/questions/59513673/how-to-chain-d3-transitions
 
         const cheating = async () => {
           transitionChart("start_dep", "start_t");
           await sleep(1100);
-          d3.selectAll(
-            "#DOC-0005-2023 rect, #DHS-0032-2023 rect, #HHS-0089-2023 rect, #HHS-0014-2023 rect"
-          )
+          d3.selectAll(".use-case")
             .transition()
-            .delay((d, i) => i * 100)
+            .duration(1000)
             .attr("fill", highlightColor)
-            .attr("x", x(-2))
-            .attr("width", boxSize() * 2)
-            .attr("height", boxSize() * 2);
+            .style("opacity", (d) =>
+              techHighlight.includes(d.Use_Case_ID) ? 1 : 0.2
+            );
         };
         cheating();
       } else {
@@ -578,36 +636,35 @@ function makeWaypoints() {
           d3.selectAll(".use-case")
             .transition()
             .duration(500)
-            .attr("fill", defaultColor)
-            .attr("x", (d) => x(+d.start_t_x))
-            .attr("y", (d) => y(+d.start_t_y))
-            .attr("width", boxSize())
-            .attr("height", boxSize());
+            .style("opacity", 1);
           await sleep(550);
           switchStarting("start_t", false);
           d3.selectAll(".use-case")
             .transition()
             .duration(1000)
-            .attr("fill", (d) =>
-              !d.Techniques ? highlightColor : defaultColor
-            );
+            .attr("fill", (d) => (!d.Techniques ? "white" : defaultColor))
+            .attr("stroke", (d) => (!d.Techniques ? defaultColor : "none"));
         };
         cheating();
 
         // show all the missing tech
       } else {
+        const techHighlight = [
+          "DOC-0005-2023",
+          "DHS-0032-2023",
+          "HHS-0089-2023",
+          "HHS-0014-2023",
+        ];
         const cheating = async () => {
           resetChart();
           await sleep(1001);
-          d3.selectAll(
-            "#DOC-0005-2023 rect, #DHS-0032-2023 rect, #HHS-0089-2023 rect, #HHS-0014-2023 rect"
-          )
+          d3.selectAll(".use-case")
             .transition()
-            .delay((d, i) => i * 100)
+            .duration(1000)
             .attr("fill", highlightColor)
-            .attr("x", x(-2))
-            .attr("width", boxSize() * 2)
-            .attr("height", boxSize() * 2);
+            .style("opacity", (d) =>
+              techHighlight.includes(d.Use_Case_ID) ? 1 : 0.2
+            );
         };
         cheating();
       }
@@ -644,16 +701,15 @@ function makeWaypoints() {
     },
     offset: offset,
   });
-  new Waypoint({
+
+  techSourceWaypoint = new Waypoint({
     element: document.getElementById("sTechSource"),
     handler: function (direction) {
       if (direction == "down") {
         d3.selectAll(".use-case")
           .transition()
           .duration(1000)
-          .attr("fill", (d) =>
-            d.Source_Code ? highlightColor : colors5[d.tech_edit] || "grey"
-          );
+          .style("opacity", (d) => (d.Source_Code ? 1 : 0.2));
       } else {
         switchSplit("split_t", "tech_edit", colors5);
       }
@@ -665,17 +721,23 @@ function makeWaypoints() {
     element: document.getElementById("sStageMiss"),
     handler: function (direction) {
       if (direction == "down") {
-        transitionChart("start_t", "start_dev");
-
         const cheating = async () => {
-          await sleep(1001);
+          switchStarting("start_t", true);
+          await sleep(1020);
+          switchStarting("start_dev", false);
+          await sleep(1020);
           d3.selectAll(".use-case")
             .transition()
-            .duration(500)
+            .duration(1000)
             .attr("fill", (d) =>
               d.dev_edit == "No Development Stage Indicated"
-                ? "grey"
+                ? "white"
                 : defaultColor
+            )
+            .attr("stroke", (d) =>
+              d.dev_edit == "No Development Stage Indicated"
+                ? defaultColor
+                : "none"
             );
         };
         cheating();
@@ -686,9 +748,7 @@ function makeWaypoints() {
           d3.selectAll(".use-case")
             .transition()
             .duration(1000)
-            .attr("fill", (d) =>
-              d.Source_Code ? highlightColor : colors5[d.tech_edit] || "grey"
-            );
+            .style("opacity", (d) => (d.Source_Code ? 1 : 0.2));
         };
         cheating();
       }
@@ -707,11 +767,16 @@ function makeWaypoints() {
           await sleep(1001);
           d3.selectAll(".use-case")
             .transition()
-            .duration(500)
+            .duration(1000)
             .attr("fill", (d) =>
               d.dev_edit == "No Development Stage Indicated"
-                ? "grey"
+                ? "white"
                 : defaultColor
+            )
+            .attr("stroke", (d) =>
+              d.dev_edit == "No Development Stage Indicated"
+                ? defaultColor
+                : "none"
             );
         };
         cheating();
@@ -736,7 +801,7 @@ function makeWaypoints() {
   });
 
   new Waypoint({
-    element: document.getElementById("closing"),
+    element: document.getElementById("topLink"),
     handler: function (direction) {
       if (direction == "down") {
         //

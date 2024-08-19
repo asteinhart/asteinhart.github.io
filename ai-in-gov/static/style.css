@@ -4,7 +4,7 @@
   --textWidth: 50vw;
   --mobileWidth: 90vw;
   --maxWidth: 900px;
-  --hightlightColor: #800000;
+  --highlightColor: #01397d;
   --backgroundColor: #dfe3ea;
 }
 
@@ -27,13 +27,13 @@ body {
 }
 
 a {
-  color: black;
+  color: var(--highlightColor);
   font-weight: 600;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:visited {
-  color: black;
+  color: var(--highlightColor);
 }
 
 a:hover {
@@ -104,21 +104,13 @@ a:hover {
   background-color: var(--hightlightColor);
   color: white;
   border-radius: 5px;
-  padding: 1.5px;
+  padding-block: 1.5px;
+  padding-inline: 5px;
   font-weight: 600;
 }
 
-#tableLink {
-  text-decoration: none;
-  color: black;
-  font-weight: 600;
-}
-
-#tableLink:hover {
-  text-decoration: underline;
-}
-
-#dep-select {
+#dep-select,
+#tech-select {
   font-family: "Public Sans", Helvetica, sans-serif;
   background-color: var(--offwhiteColor);
   border: "black" 1px solid;
@@ -237,39 +229,83 @@ a:hover {
 }
 
 .ex {
-  background-color: #515151;
+  background-color: var(--highlightColor);
 }
 
 .doe {
-  background-color: #800000;
+  background-color: #713200;
 }
 
 .hhs {
-  background-color: #993404;
+  background-color: #8f3e00;
 }
 
 .doc {
-  background-color: #d95f0e;
+  background-color: #a85311;
 }
 
 .hs {
-  background-color: #fe9929;
+  background-color: #c06722;
 }
 
 .va {
-  background-color: #fed98e;
-  color: black;
+  background-color: #da7e37;
 }
 .od {
   background-color: grey;
 }
 
+.use {
+  background-color: #602437;
+}
+
+.dev {
+  background-color: #8a2846;
+}
+
+.plan {
+  background-color: #b9375e;
+}
+
+.ml {
+  background-color: #10451d;
+}
+
 .non {
-  background-color: grey;
+  background-color: var(--backgroundColor);
+  border: 3px solid var(--highlightColor);
+  border-radius: 5px;
+  color: black;
 }
 
 svg {
   margin-left: 10%;
+}
+
+.content {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  font-size: 0.9em;
+}
+
+.collapsible {
+  color: black;
+  cursor: pointer;
+  display: inline;
+}
+
+.collapsible:hover {
+  text-decoration: underline;
+}
+
+#scroll-to-top {
+  font-size: 1.5em;
+  text-align: center;
+  margin-inline: auto;
+  margin-block: 10%;
+  width: var(--textWidth);
 }
 
 /* mobile CSS */
@@ -356,8 +392,20 @@ svg {
     font-size: 0.8em;
   }
 
+  #table {
+    margin-bottom: 10%;
+  }
+
   .ag-theme-quartz {
     --ag-font-size: 0.7em;
     --ag-line-height: 20px;
+  }
+
+  #filter-text-box {
+    width: 95%;
+  }
+
+  .non {
+    background-color: white;
   }
 }
