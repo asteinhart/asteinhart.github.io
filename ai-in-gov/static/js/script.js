@@ -1,13 +1,18 @@
 //// todo
 // full read over and edits
-// finish manually labeling technique
-// figure out what to do for the end text
+// fix hover over
 
 //// nice todo
 // interaction to text
 // make tooltip nicer
 
 // ----- CONSTANTS -----
+let highlightCol = "1";
+let highlightValue = "2";
+
+let strokeBefore = "none";
+let strokeWidthBefore = 0;
+
 const is_mobile = window.innerWidth < 800;
 const margin = { top: 10, right: 30, bottom: 30, left: 50 };
 const container = document.getElementById("graphic-container");
@@ -106,8 +111,8 @@ function highlightDep() {
 
   chart
     .selectAll(".use-case")
-    .attr("stroke", (d) => (d.Department == dep ? "black" : "none"))
-    .attr("stroke-width", (d) => (d.Department == dep ? 2 : 0));
+    .attr("stroke", (d) => (d.Department == dep ? "white" : "none"))
+    .attr("stroke-width", (d) => (d.Department == dep ? 3 : 0));
 }
 function highlightTech() {
   tech = document.querySelector("#tech-select").value;
@@ -116,8 +121,8 @@ function highlightTech() {
 
   chart
     .selectAll(".use-case")
-    .attr("stroke", (d) => (d.tech_clean == tech ? "black" : "none"))
-    .attr("stroke-width", (d) => (d.tech_clean == tech ? 2 : 0));
+    .attr("stroke", (d) => (d.tech_clean == tech ? "white" : "none"))
+    .attr("stroke-width", (d) => (d.tech_clean == tech ? 3 : 0));
 }
 
 // -------- CHART ---------
@@ -158,10 +163,7 @@ function startingChart() {
 
   // Three function that change the tooltip when user hover / move / leave a voronoi cell
   var mouseover = function (d) {
-    if (d) {
-      if (is_mobile) {
-        return;
-      }
+    if (!is_mobile) {
       // show tooltip and update html
       Tooltip.style("opacity", 1) // show opacity only if there is a found data element
         .html(
@@ -200,7 +202,9 @@ function startingChart() {
 
       // highlight bar corresponding to the voronoi path
       const id = "#" + String(d.Use_Case_ID) + " rect";
-      d3.select(id).attr("stroke", "black").attr("strokeWidth", 1);
+      strokeBefore = d3.select(id).attr("stroke");
+      strokeWidthBefore = d3.select(id).attr("stroke-width");
+      d3.select(id).attr("stroke", "white").attr("stroke-width", 3);
     }
   };
   var mousemove = function () {
@@ -225,7 +229,6 @@ function startingChart() {
     // TODO for mobile
     // left edge
     if (absMouseX - tooltipWidth < 0) {
-      console.log("left edge");
       tooltipX = mouseX - tooltipWidth + 10;
     }
 
@@ -241,12 +244,10 @@ function startingChart() {
     Tooltip.style("left", `${tooltipX}px`).style("top", `${tooltipY}px`);
   };
   var mouseleave = function (d) {
+    const id = "#" + String(d.Use_Case_ID) + " rect";
     Tooltip.style("opacity", 0);
-    if (d) {
-      // prevent console error caused by voronoi side effects
-      const id = "#" + String(d.Use_Case_ID) + " rect";
-      d3.select(id).attr("stroke", "none");
-    }
+    d3.select(id).attr("stroke-width", strokeWidthBefore);
+    d3.select(id).attr("stroke", strokeBefore);
   };
 
   // remove ticks and line
@@ -295,6 +296,10 @@ function switchStarting(col, transition = false) {
     .attr("height", boxSize())
     .attr("fill", defaultColor)
     .style("opacity", 1);
+
+  // reset
+  highlightCol = "1";
+  highlightValue = "2";
 }
 
 function switchSplit(col, colName, colors, transition = true) {
@@ -383,6 +388,9 @@ function switchSplit(col, colName, colors, transition = true) {
       .transition()
       .duration(1000)
       .attr("opacity", 1);
+    // reset
+    highlightCol = "1";
+    highlightValue = "2";
   }
 }
 function transitionChart(startName, endName) {
@@ -390,6 +398,10 @@ function transitionChart(startName, endName) {
     switchStarting(startName, true);
     await sleep(1100);
     switchStarting(endName, false); // maybe true?
+
+    // reset
+    highlightCol = "1";
+    highlightValue = "2";
   };
   transition();
 }
@@ -465,7 +477,6 @@ for (i = 0; i < coll.length; i++) {
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
     }
-    console.log("clicked");
 
     // need to trigger reset after css animation lol
     await sleep(300);
@@ -634,6 +645,7 @@ function makeWaypoints() {
             .duration(500)
             .style("opacity", 1);
           await sleep(550);
+          resetChart();
           switchStarting("start_t", false);
           d3.selectAll(".use-case")
             .transition()
@@ -675,22 +687,22 @@ function makeWaypoints() {
         switchSplit("split_t", "tech_edit", colors5);
       } else {
         const cheating = async () => {
+          switchStarting("start_t", true);
+          await sleep(1001);
           d3.selectAll(".use-case")
             .transition()
             .duration(500)
-            .attr("fill", defaultColor)
-            .attr("x", (d) => x(+d.start_t_x))
-            .attr("y", (d) => y(+d.start_t_y))
-            .attr("width", boxSize())
-            .attr("height", boxSize());
+            .style("opacity", 1);
           await sleep(550);
+          resetChart();
+          await sleep(100);
           switchStarting("start_t", false);
           d3.selectAll(".use-case")
             .transition()
             .duration(1000)
-            .attr("fill", (d) =>
-              !d.Techniques ? highlightColor : defaultColor
-            );
+            .attr("fill", (d) => (!d.Techniques ? "white" : defaultColor))
+            .attr("stroke", (d) => (!d.Techniques ? defaultColor : "none"))
+            .attr("stroke-width", (d) => (!d.Techniques ? 1 : "none"));
         };
         cheating();
       }
@@ -784,10 +796,7 @@ function makeWaypoints() {
     element: document.getElementById("sClosing"),
     handler: function (direction) {
       if (direction == "down") {
-        //
-        console.log("closing");
         switchStarting("start_dev", true);
-        //resetChart();
       } else {
         switchSplit("split_dev", "dev_edit", colors3);
       }
