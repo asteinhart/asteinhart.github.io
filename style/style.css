@@ -4,7 +4,7 @@
 body {
   padding-top: 60px;
   margin: auto;
-  width: 800px;
+  width: 50%;
   font-family: "Public Sans", Helvetica, sans-serif;
 }
 
@@ -38,7 +38,6 @@ body {
 }
 
 .content-description {
-  flex: 0 0 66.67%;
   max-width: 66.67%;
   padding-right: 15px;
   padding-left: 15px;
@@ -164,11 +163,53 @@ a:hover .content-header {
   background-color: steelblue;
 }
 
-.tag.py{
+.tag.py {
   background-color: burlywood;
 }
 
-.tag.hc{
+.tag.hc {
   background-color: grey;
 }
 
+.divider {
+  opacity: 0;
+}
+
+@media (min-width: 320px) and (max-width: 999px) {
+  body {
+    padding-top: 60px;
+    margin: auto;
+    width: 90%;
+    font-family: "Public Sans", Helvetica, sans-serif;
+  }
+
+  .content {
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 2%;
+  }
+  .content-description {
+    max-width: 100%;
+    padding-inline: 2%;
+  }
+
+  .content-img {
+    flex: 0 0 100%;
+    max-width: 90%;
+    padding-inline: 2%;
+    margin: auto;
+  }
+
+  .content-header {
+    font-size: 1.8em;
+  }
+
+  .content:hover {
+    text-decoration: none;
+  }
+
+  .divider {
+    width: 50%;
+    opacity: 1;
+  }
+}

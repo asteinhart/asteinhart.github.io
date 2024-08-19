@@ -307,7 +307,7 @@ svg {
   text-align: center;
   margin-inline: auto;
   margin-block: 10%;
-  width: var(--textWidth);
+  width: 40vw;
 }
 
 /* mobile CSS */
@@ -409,5 +409,10 @@ svg {
 
   .non {
     background-color: white;
+  }
+
+  #scroll-to-top {
+    width: 80vw;
+    font-size: 1.1em;
   }
 }
