@@ -294,6 +294,8 @@ svg {
   color: black;
   cursor: pointer;
   display: inline;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .collapsible:hover {

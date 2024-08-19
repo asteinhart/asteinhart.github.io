@@ -540,11 +540,7 @@ function makeWaypoints() {
           .on("end", () => {
             if (!is_mobile) {
               d3.select("g#TREAS-0004-2023 rect").dispatch("mouseover");
-              d3.select(".tooltip")
-                .transition()
-                .duration(500)
-                .style("right", "2%")
-                .style("top", "2%");
+              d3.select(".tooltip").style("right", "2%").style("top", "2%");
             }
           });
         // enable tooltip
@@ -725,7 +721,6 @@ function makeWaypoints() {
           switchStarting("start_t", true);
           await sleep(1020);
           switchStarting("start_dev", false);
-          await sleep(1020);
           d3.selectAll(".use-case")
             .transition()
             .duration(1000)
