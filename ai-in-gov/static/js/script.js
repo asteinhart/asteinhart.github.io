@@ -295,7 +295,9 @@ function switchStarting(col, transition = false) {
     .attr("width", boxSize())
     .attr("height", boxSize())
     .attr("fill", defaultColor)
-    .style("opacity", 1);
+    .style("opacity", 1)
+    .attr("stroke", "none")
+    .attr("stroke-width", 1);
 
   // reset
   highlightCol = "1";
@@ -717,6 +719,7 @@ function makeWaypoints() {
         d3.selectAll(".use-case")
           .transition()
           .duration(1000)
+          .attr("stroke", "none")
           .style("opacity", (d) => (d.Source_Code ? 1 : 0.2));
       } else {
         switchSplit("split_t", "tech_edit", colors5);
