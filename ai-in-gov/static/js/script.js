@@ -804,6 +804,29 @@ function makeWaypoints() {
     offset: "60%",
   });
 
+  if (is_mobile) {
+    new Waypoint({
+      element: document.getElementById("sFake"),
+      handler: function (direction) {
+        if (direction == "down") {
+          //
+          //d3.select(".graphic-container").style("position", "fixed");
+
+          d3.selectAll(".graphic-container, #sClosing")
+            .transition()
+            .duration(500)
+            .style("opacity", "0");
+        } else {
+          d3.selectAll(".graphic-container, #sClosing")
+            .transition()
+            .duration(500)
+            .style("opacity", "1");
+        }
+      },
+      offset: "100%",
+    });
+  }
+
   new Waypoint({
     element: document.getElementById("topLink"),
     handler: function (direction) {

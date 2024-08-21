@@ -107,6 +107,8 @@ a:hover {
   padding-block: 1.5px;
   padding-inline: 5px;
   font-weight: 600;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 #dep-select,
@@ -207,7 +209,7 @@ a:hover {
 }
 
 #sFake {
-  background-color: var(--backgroundColor);
+  background-color: transparent;
 }
 
 .graphic-container {
@@ -352,8 +354,9 @@ svg {
   }
 
   .graphic-container {
+    position: fixed;
     top: 10%;
-    z-index: 1;
+    z-index: -1;
   }
 
   .scroller-container {
@@ -373,6 +376,10 @@ svg {
 
   .highlight {
     padding-block: 0;
+  }
+
+  .non {
+    border: 2px solid var(--highlightColor);
   }
 
   svg {
