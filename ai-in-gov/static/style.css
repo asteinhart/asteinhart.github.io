@@ -364,14 +364,14 @@ svg {
     z-index: 10;
   }
   .scroller {
-    width: 65vw;
+    width: 75vw;
     font-size: 0.95em;
     background-color: white;
     border-radius: 5px;
     margin-inline: auto;
     text-align: left;
     word-spacing: normal;
-    line-height: 1.2;
+    line-height: 1.3;
     z-index: 10;
   }
 
@@ -380,13 +380,12 @@ svg {
   }
 
   .non {
-    border: 2px solid var(--highlightColor);
+    border: 1.5px solid var(--highlightColor);
   }
 
   svg {
     position: relative;
     width: 100%;
-    margin-left: 0;
     z-index: 1;
   }
 

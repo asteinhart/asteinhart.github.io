@@ -1,8 +1,4 @@
-//// todo
-// full read over and edits
-// fix hover over
-
-//// nice todo
+//// nice to add
 // interaction to text
 // make tooltip nicer
 
@@ -141,7 +137,6 @@ function startingChart() {
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("id", "g-chart")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
     .attr("width", chartWidth - margin.left - margin.right);
 
   // scales
