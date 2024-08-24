@@ -275,10 +275,10 @@ a:hover {
 }
 
 .non {
-  background-color: var(--backgroundColor);
-  border: 3px solid var(--highlightColor);
+  border: 2px solid var(--highlightColor);
   border-radius: 5px;
   color: black;
+  background-color: white;
 }
 
 svg {
@@ -412,10 +412,6 @@ svg {
 
   #filter-text-box {
     width: 95%;
-  }
-
-  .non {
-    background-color: white;
   }
 
   #scroll-to-top {

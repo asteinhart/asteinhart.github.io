@@ -83,7 +83,15 @@
         However, the inventory is not without its flaws. As anyone that has
         worked with government data knows, providing data in an accessible
         format is never a given. Attempting to view the inventory unfortunately
-        begins a download of a CSV file.
+        begins a download of a CSV file, a format that is not easily accessible
+        for most people. The site neglects to provide any summary statistics or
+        a way to view the inventory such as in a table. As the federal
+        government's
+        <a target="_blank" href="https://resources.data.gov/PoD/principles/"
+          >own principles</a
+        >
+        outline, this data is not accessible and is not "available to the widest
+        range of users for the widest range of purposes."
       </p>
       <p>
         <img
@@ -92,28 +100,61 @@
           id="use-case-button"
         />
       </p>
-
       <p>
-        One point is given for providing a
+        What exactly is a "use case of AI"? The term Artificial Intelligence
+        (AI) has been used since at least the 1950s and generally refers to
+        technologies that
+        <a
+          href="https://www.technologyreview.com/2024/07/10/1094475/what-is-artificial-intelligence-ai-definitive-guide/?truid=&utm_source=the_algorithm&utm_medium=email&utm_campaign=the_algorithm.unpaid.engagement&utm_content=07-15-2024"
+          >"make computers do things that are thought to require intelligence
+          when done by people."</a
+        >
+        A preferred term by many in the field is
         <a
           target="_blank"
-          href="https://resources.data.gov/glossary/machine-readable-file/"
-          >machine-readable</a
+          href="https://mitsloan.mit.edu/ideas-made-to-matter/machine-learning-explained"
+          >machine learning</a
         >
-        format and then promptly taken away for only providing a 710 row CSV
-        file. This format is essentially useless for most users. They neglect to
-        provide any summary statistics or a way to view the inventory such as in
-        a table. As the federal government's
-        <a target="_blank" href="https://resources.data.gov/PoD/principles/"
-          >own principles</a
-        >
-        outline, this data is not accessible and is not "available to the widest
-        range of users for the widest range of purposes."
+        , which better captures the underlying mechanism in which computers use
+        math and vast amounts of data to find patterns and apply it to new data.
       </p>
+      <p>
+        In recent years, the meteoric rise of
+        <a
+          target="_blank"
+          href="https://en.wikipedia.org/wiki/Large_language_model"
+          >large language models</a
+        >, such as ChatGPT, have dominated the popular understanding of AI.
+        Underlying these models is not magic, but rather mathematical concepts
+        from the mid-century that have been applied to vast amounts of data,
+        recently made possible by advancements in computing power. Companies in
+        all industries have
+        <a href="https://www.youtube.com/watch?v=20TAkcy3aBY"
+          >jumped on the hype and mystery</a
+        >
+        around AI to begin labeling as many new technologies and services as AI
+        as possible in order to capture a sense of super intelligence that
+        models like ChatGPT invoked.
+      </p>
+      <p>
+        The Federal AI Use Case Inventory contains some of this over
+        generalization. Technologies that have likely been used for decades in
+        the federal government that do not use new advancements in machine
+        learning or AI are included in this list alongside use cases that do
+        genuinely use new technologies and AI. These misclassifications can harm
+        our ability to establish
+        <a target="_blank" href="https://ai.gov/ai-use-cases/"
+          >"strong guardrails to ensure AI keeps people safe and doesn't violate
+          their rights"</a
+        >
+        as the Biden Administration has set out to achieve.
+      </p>
+
       <p id="top">
-        In an effort to make the inventory more digestible, scroll along below
-        to explore how the Federal Government has reported its use of AI. If you
-        would like to view the inventory in full,
+        In an effort to make the inventory more digestible and explore more of
+        these issues, scroll along below to investigate how the Federal
+        Government has reported its use of AI. If you would like to view the
+        inventory in full,
         <a href="javascript:scrollToTable()" id="tableLink">
           skip to a sortable table of the entire inventory.</a
         >
@@ -206,9 +247,10 @@
           </select>
         </div>
         <div class="scroller" id="sTechEx">
-          What exactly is considered a <b><em>use case of AI</em></b
-          >? The collected inventory shows that the federal government struggles
-          to provide a clear understanding of this term, a
+          As discussed above, what exactly is considered a
+          <b><em>use case of AI</em></b> is murky. The collected inventory shows
+          that the federal government struggles to provide a clear understanding
+          of this term, a
           <a
             target="_blank"
             href="https://www.newyorker.com/science/annals-of-artificial-intelligence/there-is-no-ai"
@@ -315,7 +357,7 @@
                 data into predefined classes or labels based on input data.
               </li>
               <li>
-                <b>Analytics</b> - Using data tp extract actionable insights for
+                <b>Analytics</b> - Using data to extract actionable insights for
                 decision-making. May or may not involve machine learning/AI
                 techniques.
               </li>
@@ -349,7 +391,7 @@
           Also included in the inventory is information indicating a use case's
           stage in development. Once again, despite being a mandatory field in
           the provided instructions, roughly 50% have
-          <span class="highlight non">no provided development stage.</span>
+          <span class="highlight non">no provided development stage</span>.
         </div>
         <div class="scroller" id="sStageSplit">
           Of the use cases that did include a development stage, roughly 50% are
