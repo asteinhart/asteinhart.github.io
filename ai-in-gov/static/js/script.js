@@ -873,6 +873,7 @@ async function init() {
       Summary: d.Summary,
       "Original Technique": d.Techniques,
       "Inferred Technique": d.tech_clean,
+      "Development Stage": d.dev_edit,
       "Source Code": d.Source_Code,
     };
   });
