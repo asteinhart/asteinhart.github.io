@@ -126,7 +126,7 @@ function highlightTech() {
 function boxSize(numWidth = 27) {
   return is_mobile
     ? 8
-    : (chartWidth - margin.left - margin.right) / numWidth - 3.8;
+    : (chartWidth - margin.left - margin.right) / numWidth - 5;
 }
 
 function startingChart() {
