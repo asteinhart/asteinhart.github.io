@@ -5,6 +5,10 @@ body {
   font-family: "Public Sans", Helvetica, sans-serif;
 }
 
+.headline a:hover {
+  text-decoration: underline;
+}
+
 #photo-gallery {
   column-count: 3;
   column-gap: 10px;

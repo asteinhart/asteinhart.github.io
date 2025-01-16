@@ -6,6 +6,7 @@ body {
   margin: auto;
   width: 50%;
   font-family: "Public Sans", Helvetica, sans-serif;
+  margin-bottom: 50px;
 }
 
 .light-theme {
@@ -46,6 +47,8 @@ body {
 .image {
   margin-bottom: 1rem;
   width: 100%;
+  max-height: 200px;
+  object-fit: cover;
 }
 
 .super-font {
@@ -77,7 +80,7 @@ hr {
 
 .content-header {
   font-size: 1.4rem;
-  line-height: 0.9;
+  line-height: 1;
   margin-block: 0.3rem;
   font-weight: 700;
 }
@@ -175,12 +178,21 @@ a:hover .content-header {
   opacity: 0;
 }
 
+.photos-link:hover {
+  text-decoration: underline;
+}
+
+.photos-link {
+  display: inline;
+}
+
 @media (min-width: 320px) and (max-width: 999px) {
   body {
     padding-top: 60px;
     margin: auto;
     width: 90%;
     font-family: "Public Sans", Helvetica, sans-serif;
+    margin-bottom: 50px;
   }
 
   .content {
