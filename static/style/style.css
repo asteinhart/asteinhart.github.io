@@ -1,12 +1,32 @@
 @import url(https://fonts.googleapis.com/css?family=Public+Sans:400,400i,700,700i);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i);
 
+:root {
+  --primaryColor: #800000;
+  --offwhiteColor: #ebe9e4;
+}
+
 body {
   padding-top: 60px;
-  margin: auto;
-  width: 50%;
   font-family: "Public Sans", Helvetica, sans-serif;
   margin-bottom: 50px;
+}
+
+.body-link {
+  text-decoration: underline;
+}
+
+.header-container {
+  width: 50%;
+  margin: auto;
+}
+
+.body-text {
+  font-family: "Merriweather", Helvetica, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .light-theme {
@@ -15,40 +35,17 @@ body {
 }
 
 .section-header {
+  width: 70%;
+  margin: auto;
+}
+
+.section-header-text {
   font-size: 1.25rem;
   line-height: 0.9;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
-}
-
-.content {
-  display: flex;
-}
-
-.content-img {
-  flex: 0 0 33.333333%;
-  max-width: 33.333333%;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.content-description {
-  max-width: 66.67%;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.body-link {
-  text-decoration: underline;
-}
-
-.image {
-  margin-bottom: 1rem;
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
 }
 
 .super-font {
@@ -58,27 +55,110 @@ body {
   font-family: "Merriweather", Helvetica, sans-serif;
 }
 
-.headline {
-  font-size: 3.5rem;
-  line-height: 0.9;
-  margin-bottom: 0.25rem;
-  margin-top: 1rem;
-  font-weight: 700;
+.articles-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 70%;
+  justify-content: space-around;
 }
 
-.body-text {
-  font-family: "Merriweather", Helvetica, sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+.article.grid {
+  text-align: left;
+  width: clamp(45%, 45%, 50%);
+  min-width: 200px;
+  margin: 10px;
+  padding: 8px;
+  border: 2px solid var(--primaryColor);
+  border-radius: 10px;
+  color: black;
+  text-decoration: none;
+  font-size: 0.6em;
+}
+
+.article.grid img {
+  width: 100%;
+}
+
+.article:hover {
+  color: white;
+  background-color: var(--primaryColor);
+}
+
+.article-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.article-container.grid {
+  width: 100%;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info-container.grid {
+  margin-top: 5px;
+  flex: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#article-title {
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 550;
+}
+
+#article-pub {
+  font-size: 12px;
+}
+
+#article-descrip {
+  font-size: clamp(12px, 1.2vw, 16px);
+}
+
+.meta-container.grid {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  text-align: right;
+  gap: 20px;
+}
+
+#tag-container-grid {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 5px;
+  text-align: left;
+}
+
+#article-type {
+  font-size: clamp(10px, 1vw, 15px);
+}
+
+.tag {
+  padding: 2px 5px 2px 5px; /* Making space around letters */
+  border-radius: 5px;
+  margin-left: -2px; /* offset padding */
+  color: white;
+  font-size: clamp(10px, 0.9vw, 15px);
+  min-width: 25px;
+}
+
+.tag.Science {
+  background-color: darkgoldenrod;
 }
 
 hr {
   margin-bottom: 1.5rem;
 }
 
-.content-header {
+/* .content-header {
   font-size: 1.4rem;
   line-height: 1;
   margin-block: 0.3rem;
@@ -87,7 +167,7 @@ hr {
 .content-body {
   font-family: "Merriweather", Helvetica, sans-serif;
   font-size: 0.8rem;
-}
+} */
 
 .handle {
   font-size: 1.25rem;
@@ -126,28 +206,6 @@ a:hover .content-header {
   margin-top: 5rem;
   margin-bottom: 3rem;
   font-weight: 400;
-}
-
-/* not currently used */
-
-.tag-container {
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.tag-container:hover {
-  text-decoration: none;
-}
-
-.tag {
-  padding: 2px 5px 2px 5px; /* Making space around letters */
-  border-radius: 5px;
-  margin-left: -2px; /* offset padding */
-  color: white;
-  font-family: "Merriweather", Helvetica, sans-serif;
-  font-size: 1rem;
 }
 
 .tag.d3 {
