@@ -16,6 +16,14 @@ body {
   text-decoration: underline;
 }
 
+.headline {
+  font-size: 3.5rem;
+  line-height: 0.9;
+  margin-bottom: 0.25rem;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
 .header-container {
   width: 50%;
   margin: auto;
@@ -59,30 +67,114 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  width: 70%;
+  width: 90%;
   justify-content: space-around;
 }
 
 .article.grid {
   text-align: left;
-  width: clamp(45%, 45%, 50%);
+  width: clamp(30%, 30%, 40%);
   min-width: 200px;
   margin: 10px;
   padding: 8px;
-  border: 2px solid var(--primaryColor);
+  border: 2px solid;
   border-radius: 10px;
   color: black;
   text-decoration: none;
   font-size: 0.6em;
 }
 
+.article.grid.property {
+  border: 2px solid var(--primaryColor);
+}
+.property:hover {
+  background-color: var(--primaryColor);
+}
+
+.article.grid.bus {
+  border: 2px solid #0a3e7e;
+}
+.bus:hover {
+  background-color: #0a3e7e;
+}
+
+.article.grid.bus {
+  border: 2px solid #0a3e7e;
+}
+.bus:hover {
+  background-color: #0a3e7e;
+}
+
+.article.grid.ai {
+  border: 2px solid #013174;
+}
+.ai:hover {
+  background-color: #013174;
+}
+.article.grid.voting {
+  border: 2px solid #782123;
+}
+.voting:hover {
+  background-color: #782123;
+}
+
+.article.grid.voting {
+  border: 2px solid #782123;
+}
+.voting:hover {
+  background-color: #782123;
+}
+
+.article.grid.donations {
+  border: 2px solid #2c5e80;
+}
+.donations:hover {
+  background-color: #2c5e80;
+}
+
+.article.grid.cds {
+  border: 2px solid #c26724;
+}
+.cds:hover {
+  background-color: #c26724;
+}
+
+.article.grid.reading {
+  border: 2px solid #2a8062;
+}
+.reading:hover {
+  background-color: #2a8062;
+}
+
+.article.grid.xword {
+  border: 2px solid #062b5c;
+}
+.xword:hover {
+  background-color: #062b5c;
+}
+
+.article.grid.stopwatch {
+  border: 2px solid #800001;
+}
+.stopwatch:hover {
+  background-color: #800001;
+}
+
+.article.grid.content {
+  border: 2px solid #4682b4;
+}
+.content:hover {
+  background-color: #4682b4;
+}
+
 .article.grid img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .article:hover {
   color: white;
-  background-color: var(--primaryColor);
 }
 
 .article-container {
@@ -107,7 +199,7 @@ body {
 }
 
 #article-title {
-  font-size: clamp(16px, 2.5vw, 22px);
+  font-size: clamp(14px, 2vw, 20px);
   font-weight: 550;
 }
 
@@ -116,7 +208,7 @@ body {
 }
 
 #article-descrip {
-  font-size: clamp(12px, 1.2vw, 16px);
+  font-size: clamp(12px, 1.2vw, 14px);
 }
 
 .meta-container.grid {
@@ -148,10 +240,6 @@ body {
   color: white;
   font-size: clamp(10px, 0.9vw, 15px);
   min-width: 25px;
-}
-
-.tag.Science {
-  background-color: darkgoldenrod;
 }
 
 hr {
@@ -208,24 +296,36 @@ a:hover .content-header {
   font-weight: 400;
 }
 
-.tag.d3 {
+.tag.interactive {
   background-color: forestgreen;
 }
 
-.tag.js {
+.tag.data-j {
+  background-color: darkgoldenrod;
+}
+
+.tag.data {
   background-color: maroon;
 }
 
-.tag.html {
+.tag.python {
   background-color: peru;
 }
 
-.tag.r {
+.tag.mapping {
   background-color: steelblue;
 }
 
-.tag.py {
-  background-color: burlywood;
+.tag.interactive {
+  background-color: rgb(91, 41, 104);
+}
+
+.tag.web-app {
+  background-color: darkolivegreen;
+}
+
+.tag.d3 {
+  background-color: darkslategray;
 }
 
 .tag.hc {
