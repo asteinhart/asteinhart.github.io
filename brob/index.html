@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Special Question</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f9f3f3;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-image: linear-gradient(to bottom right, #f9f3f3, #e8f4f8);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+      }
+
+      h1 {
+        color: #e78bb0;
+        font-size: 36px;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s ease;
+      }
+
+      h1:hover {
+        transform: scale(1.1);
+        color: #d16a93;
+      }
+
+      .flower {
+        position: absolute;
+        font-size: 40px;
+        cursor: pointer;
+        animation: pulse 2s infinite;
+        z-index: 2;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      }
+
+      .flower1 {
+        top: 50px;
+        left: 100px;
+        color: #ff85a2;
+      }
+
+      .flower2 {
+        bottom: 70px;
+        right: 100px;
+        color: #85b7ff;
+      }
+
+      .flower3 {
+        top: 120px;
+        right: 150px;
+        color: #85ffa9;
+      }
+
+      .step {
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s, transform 0.5s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .button {
+        background-color: #e78bb0;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        margin: 10px;
+        transition: all 0.3s;
+      }
+
+      .button:hover {
+        background-color: #d16a93;
+        transform: scale(1.05);
+      }
+
+      .funky-button {
+        animation: rainbow 3s infinite;
+      }
+
+      .no-button {
+        background-color: #a1cdf1;
+        position: relative;
+        transition: all 0.2s ease;
+      }
+
+      #finalQuestion {
+        font-size: 28px;
+        color: #d16a93;
+        font-weight: bold;
+      }
+
+      .heart {
+        color: #e78bb0;
+        font-size: 24px;
+        margin: 0 5px;
+        animation: pulse 1s infinite;
+        display: inline-block;
+      }
+
+      .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background-color: #e78bb0;
+        opacity: 0;
+        z-index: 1000;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes rainbow {
+        0% {
+          background-color: #e78bb0;
+        }
+        25% {
+          background-color: #a1cdf1;
+        }
+        50% {
+          background-color: #b8e0d2;
+        }
+        75% {
+          background-color: #f6d198;
+        }
+        100% {
+          background-color: #e78bb0;
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .floating-hearts {
+        position: absolute;
+        font-size: 24px;
+        color: #e78bb0;
+        pointer-events: none;
+        z-index: 100;
+        animation: float-up 4s forwards;
+      }
+
+      @keyframes float-up {
+        0% {
+          transform: translateY(0) translateX(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px)
+            translateX(calc(20px - 40px * Math.random()));
+          opacity: 0;
+        }
+      }
+
+      #riddle {
+        font-style: italic;
+        color: #6c757d;
+        margin: 15px 0;
+      }
+
+      #riddleInput {
+        padding: 10px;
+        border: 2px solid #a1cdf1;
+        border-radius: 5px;
+        margin: 10px 0;
+        font-size: 16px;
+      }
+
+      #secretImage {
+        max-width: 0%;
+        transition: max-width 1s ease;
+        border-radius: 10px;
+        margin: 15px auto;
+        display: block;
+      }
+
+      #secretImage.revealed {
+        max-width: 90%;
+      }
+
+      #magicWord {
+        font-weight: bold;
+        color: #d16a93;
+      }
+
+      .butterfly {
+        position: absolute;
+        font-size: 24px;
+        animation: fly 10s infinite alternate;
+        z-index: 2;
+      }
+
+      @keyframes fly {
+        0% {
+          transform: translate(0, 0) rotate(5deg);
+        }
+        25% {
+          transform: translate(50px, -30px) rotate(-10deg);
+        }
+        50% {
+          transform: translate(100px, -10px) rotate(15deg);
+        }
+        75% {
+          transform: translate(50px, 20px) rotate(-5deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+      }
+
+      .sparkles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .sparkle {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: gold;
+        opacity: 0;
+        animation: sparkle 2s ease-in-out;
+      }
+
+      @keyframes sparkle {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0);
+          opacity: 0;
+        }
+      }
+
+      /* Added to make flowers more visible */
+      .flower-indicator {
+        position: absolute;
+        border: 2px dashed #ff85a2;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: glow 2s infinite alternate;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      @keyframes glow {
+        0% {
+          box-shadow: 0 0 5px rgba(255, 133, 162, 0.5);
+        }
+        100% {
+          box-shadow: 0 0 20px rgba(255, 133, 162, 0.8);
+        }
+      }
+
+      /* Make flowers position fixed so they're always visible */
+      .flower-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .flower-wrapper {
+        position: absolute;
+        pointer-events: auto;
+      }
+
+      .flower-text {
+        font-size: 12px;
+        color: #555;
+        margin-top: 5px;
+        background: rgba(255, 255, 255, 0.7);
+        padding: 2px 5px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flower-container">
+      <div class="flower-wrapper" style="top: 15%; left: 15%">
+        <span class="flower flower1" onclick="flowerClick(this)">🌸</span>
+        <div class="flower-indicator"></div>
+        <div class="flower-text">Click me!</div>
+      </div>
+
+      <div class="flower-wrapper" style="top: 30%; right: 15%">
+        <span class="flower flower2" onclick="flowerClick(this)">🌺</span>
+        <div class="flower-indicator"></div>
+        <div class="flower-text">Click me!</div>
+      </div>
+
+      <div class="flower-wrapper" style="bottom: 20%; left: 45%">
+        <span class="flower flower3" onclick="flowerClick(this)">🌷</span>
+        <div class="flower-indicator"></div>
+        <div class="flower-text">Click me!</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <span class="butterfly" style="top: 20px; left: 10%">🦋</span>
+      <span class="butterfly" style="top: 80px; right: 15%">🦋</span>
+
+      <h1 id="mainTitle">Hey Natalie!</h1>
+
+      <div class="step" id="step1">
+        <p>Austin has something special to ask you...</p>
+        <p>
+          <b
+            >First, collect all 3 flowers around the page by clicking on
+            them!</b
+          >
+          🌸
+        </p>
+        <p id="flowerCounter">Flowers collected: 0/3</p>
+        <button class="button" id="step1Button" onclick="nextStep(1)" disabled>
+          What is it?
+        </button>
+      </div>
+
+      <div class="step hidden" id="step2">
+        <p>Spring is in the air, flowers are blooming...</p>
+        <p>And so is a certain question!</p>
+        <p id="riddle">
+          Solve this riddle to continue: <br />I bring you warmth after winter's
+          cold night, I make flowers bloom with all my might. What am I?
+        </p>
+        <input type="text" id="riddleInput" placeholder="Your answer here..." />
+        <button class="button" id="checkRiddle">Check Answer</button>
+      </div>
+
+      <div class="step hidden" id="step3">
+        <p>You know what they say about spring time...</p>
+        <p>It's the perfect season for dancing under the stars!</p>
+        <p>
+          Hover over the magic word to reveal a special image:
+          <span id="magicWord" onmouseover="revealSecret()">Dance</span>
+        </p>
+        <img
+          id="secretImage"
+          src="pic.JPEG"
+          alt="A couple dancing under stars"
+        />
+        <button class="button hidden" id="step3Button" onclick="nextStep(3)">
+          Tell me more...
+        </button>
+      </div>
+
+      <div class="step hidden" id="step4">
+        <p>There's this amazing Spring Soiree coming up...</p>
+        <p>And I was wondering...</p>
+        <p>
+          Click the hearts to build up courage!
+          <span class="heart" onclick="clickHeart(this)">❤️</span>
+          <span class="heart" onclick="clickHeart(this)">❤️</span>
+          <span class="heart" onclick="clickHeart(this)">❤️</span>
+        </p>
+        <p id="heartCounter">Hearts clicked: 0/3</p>
+        <button class="button hidden" id="step4Button" onclick="nextStep(4)">
+          Yes...?
+        </button>
+      </div>
+
+      <div class="step hidden" id="finalStep">
+        <div class="sparkles" id="sparklesContainer"></div>
+        <p id="finalQuestion">
+          Natalie, will you go to the Spring Soiree with me?
+        </p>
+        <p>❤️ Austin ❤️</p>
+        <div>
+          <button class="button funky-button" id="yesButton" onclick="sayYes()">
+            YES!
+          </button>
+          <button class="button no-button" id="noButton">No</button>
+        </div>
+      </div>
+
+      <div class="step hidden" id="responseStep">
+        <p id="responseText" style="font-size: 24px; font-weight: bold"></p>
+        <p id="responseEmoji" style="font-size: 40px"></p>
+      </div>
+    </div>
+
+    <script>
+      let flowersCollected = 0;
+      let heartsClicked = 0;
+
+      // Show the first step when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("step1").classList.add("active");
+
+        // Add pulse animation to the flower indicators
+        const indicators = document.querySelectorAll(".flower-indicator");
+        indicators.forEach((indicator) => {
+          indicator.style.animation = "glow 2s infinite alternate";
+        });
+
+        // Set up the moving "No" button
+        const noButton = document.getElementById("noButton");
+
+        // Make main title react when clicked
+        document
+          .getElementById("mainTitle")
+          .addEventListener("click", function () {
+            this.style.animation = "bounce 0.5s";
+            setTimeout(() => {
+              this.style.animation = "";
+            }, 500);
+          });
+
+        // Custom function to move the button randomly but still keep it visible on screen
+        function moveNoButton() {
+          // Get container boundaries to keep button within view
+          const container = document.querySelector(".container");
+          const containerRect = container.getBoundingClientRect();
+
+          // Calculate random position within container boundaries
+          const maxX = containerRect.width - 100;
+          const maxY = 200;
+
+          // Generate random offsets
+          const xOffset = Math.random() * maxX - maxX / 2;
+          const yOffset = Math.random() * maxY - maxY / 4;
+
+          // Apply the new position
+          noButton.style.transform = `translate(${xOffset}px, ${yOffset}px) scale(1.05)`;
+        }
+
+        // Move button when mouse gets close
+        noButton.addEventListener("mouseover", moveNoButton);
+        noButton.addEventListener("mousedown", moveNoButton);
+        noButton.addEventListener("click", sayYes);
+
+        // Set up riddle checking
+        document
+          .getElementById("checkRiddle")
+          .addEventListener("click", checkRiddleAnswer);
+        document
+          .getElementById("riddleInput")
+          .addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              checkRiddleAnswer();
+            }
+          });
+
+        // Set up butterfly animation
+        const butterflies = document.querySelectorAll(".butterfly");
+        butterflies.forEach((butterfly) => {
+          butterfly.style.left = Math.random() * 80 + 10 + "%";
+          butterfly.addEventListener("click", function () {
+            this.style.animation = "none";
+            setTimeout(() => {
+              this.style.animation =
+                "fly " + (5 + Math.random() * 10) + "s infinite alternate";
+            }, 10);
+          });
+        });
+
+        // Create sparkle effect for final question
+        createSparkles();
+      });
+
+      function flowerClick(flower) {
+        // Get the parent wrapper
+        const wrapper = flower.closest(".flower-wrapper");
+
+        // Make the flower grow and spin when clicked
+        flower.style.transform = "scale(1.5) rotate(45deg)";
+        flower.style.opacity = "0.7";
+
+        // Hide the indicator and text
+        const indicator = wrapper.querySelector(".flower-indicator");
+        const text = wrapper.querySelector(".flower-text");
+        indicator.style.opacity = "0";
+        text.style.opacity = "0";
+
+        // Disable further clicks
+        flower.onclick = null;
+
+        // Count flowers
+        flowersCollected++;
+        document.getElementById(
+          "flowerCounter"
+        ).innerText = `Flowers collected: ${flowersCollected}/3`;
+
+        // Create floating heart effect
+        const rect = flower.getBoundingClientRect();
+        const heart = document.createElement("span");
+        heart.innerText = "❤️";
+        heart.className = "floating-hearts";
+        heart.style.left = rect.left + "px";
+        heart.style.top = rect.top + "px";
+        document.body.appendChild(heart);
+
+        // Remove heart after animation
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+
+        // Enable button if all flowers collected
+        if (flowersCollected === 3) {
+          document.getElementById("step1Button").disabled = false;
+          document.getElementById("step1Button").classList.add("funky-button");
+        }
+      }
+
+      function checkRiddleAnswer() {
+        const answer = document
+          .getElementById("riddleInput")
+          .value.toLowerCase()
+          .trim();
+        const correctAnswers = ["sun", "sunshine", "spring", "sunlight"];
+
+        if (correctAnswers.includes(answer)) {
+          document.getElementById("riddleInput").style.borderColor = "#b8e0d2";
+          document.getElementById("riddleInput").style.backgroundColor =
+            "#f0fff4";
+          document.getElementById("checkRiddle").innerText = "That's right!";
+          document.getElementById("checkRiddle").disabled = true;
+
+          // Add small delay before moving to next step
+          setTimeout(() => {
+            nextStep(2);
+          }, 1000);
+        } else {
+          document.getElementById("riddleInput").style.animation = "shake 0.5s";
+          setTimeout(() => {
+            document.getElementById("riddleInput").style.animation = "";
+          }, 500);
+        }
+      }
+
+      function revealSecret() {
+        document.getElementById("secretImage").classList.add("revealed");
+        document.getElementById("magicWord").style.fontSize = "24px";
+        document.getElementById("magicWord").style.color = "#e78bb0";
+
+        // Show the button after image is revealed
+        setTimeout(() => {
+          document.getElementById("step3Button").classList.remove("hidden");
+        }, 1000);
+      }
+
+      function clickHeart(heart) {
+        // Make heart bounce
+        heart.style.animation = "bounce 0.8s";
+
+        // Disable further clicks
+        heart.onclick = null;
+        heart.style.cursor = "default";
+
+        // Count hearts
+        heartsClicked++;
+        document.getElementById(
+          "heartCounter"
+        ).innerText = `Hearts clicked: ${heartsClicked}/3`;
+
+        // Enable button if all hearts clicked
+        if (heartsClicked === 3) {
+          document.getElementById("step4Button").classList.remove("hidden");
+          document.getElementById("step4Button").classList.add("funky-button");
+        }
+      }
+
+      function createSparkles() {
+        const sparklesContainer = document.getElementById("sparklesContainer");
+        for (let i = 0; i < 30; i++) {
+          setTimeout(() => {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.style.left = Math.random() * 100 + "%";
+            sparkle.style.top = Math.random() * 100 + "%";
+            sparklesContainer.appendChild(sparkle);
+
+            // Remove sparkle after animation
+            setTimeout(() => {
+              sparkle.remove();
+            }, 2000);
+          }, i * 200);
+        }
+      }
+
+      function nextStep(currentStep) {
+        // Hide current step
+        document
+          .getElementById(`step${currentStep}`)
+          .classList.remove("active");
+
+        // Show next step
+        const nextStepId =
+          currentStep === 4 ? "finalStep" : `step${currentStep + 1}`;
+        const nextStepElement = document.getElementById(nextStepId);
+        nextStepElement.classList.remove("hidden");
+
+        // Add small delay before applying the active class for animation effect
+        setTimeout(() => {
+          nextStepElement.classList.add("active");
+
+          // If it's the final step, create more sparkles
+          if (nextStepId === "finalStep") {
+            createSparkles();
+          }
+        }, 50);
+      }
+
+      function sayYes() {
+        // Hide final step
+        document.getElementById("finalStep").classList.remove("active");
+
+        // Show response
+        const responseStep = document.getElementById("responseStep");
+        responseStep.classList.remove("hidden");
+
+        // Add small delay before applying the active class for animation
+        setTimeout(() => {
+          responseStep.classList.add("active");
+          document.getElementById("responseText").innerText =
+            "YAY! It's a date! 💃🕺";
+          document.getElementById("responseEmoji").innerText = "🌸💖✨";
+
+          // Create confetti effect
+          createConfetti();
+        }, 50);
+      }
+
+      function createConfetti() {
+        const colors = ["#e78bb0", "#a1cdf1", "#b8e0d2", "#f6d198", "#d16a93"];
+
+        for (let i = 0; i < 100; i++) {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+          confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.left = Math.random() * 100 + "vw";
+          confetti.style.top = -20 + "px";
+          confetti.style.width = Math.random() * 10 + 5 + "px";
+          confetti.style.height = Math.random() * 10 + 5 + "px";
+          confetti.style.opacity = Math.random();
+          confetti.style.transform = "rotate(" + Math.random() * 360 + "deg)";
+
+          document.body.appendChild(confetti);
+
+          // Animate falling confetti
+          const animationDuration = Math.random() * 3 + 2;
+          confetti.style.animation = `fall ${animationDuration}s linear forwards`;
+
+          // Create the keyframe animation dynamically
+          const keyframes = `
+                    @keyframes fall {
+                        to {
+                            transform: translateY(${
+                              window.innerHeight + 20
+                            }px) rotate(${Math.random() * 360}deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+
+          const styleSheet = document.createElement("style");
+          styleSheet.type = "text/css";
+          styleSheet.innerText = keyframes;
+          document.head.appendChild(styleSheet);
+
+          // Remove confetti after animation
+          setTimeout(() => {
+            confetti.remove();
+            styleSheet.remove();
+          }, animationDuration * 1000);
+        }
+      }
+    </script>
+  </body>
+</html>
