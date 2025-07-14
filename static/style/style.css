@@ -4,14 +4,15 @@
 body {
   padding-top: 60px;
   margin: auto;
-  width: 50%;
   font-family: "Public Sans", Helvetica, sans-serif;
   margin-bottom: 50px;
+  color: black !important;
+  font-weight: 400;
 }
 
-.light-theme {
-  background-color: #f7fbfc;
-  color: black;
+.intro {
+  width: 50%;
+  margin: auto;
 }
 
 .section-header {
@@ -23,70 +24,12 @@ body {
   text-transform: uppercase;
 }
 
-.content {
-  display: flex;
-}
-
-.content-img {
-  flex: 0 0 33.333333%;
-  max-width: 33.333333%;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.content-description {
-  max-width: 66.67%;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.body-link {
-  text-decoration: underline;
-}
-
-.image {
-  margin-bottom: 1rem;
-  width: 100%;
-  max-height: 175px;
-  object-fit: cover;
-}
-
-.super-font {
-  font-family: "Public Sans", Helvetica, sans-serif;
-}
-.sub-font {
-  font-family: "Merriweather", Helvetica, sans-serif;
-}
-
 .headline {
   font-size: 3.5rem;
   line-height: 0.9;
   margin-bottom: 0.25rem;
   margin-top: 1rem;
   font-weight: 700;
-}
-
-.body-text {
-  font-family: "Merriweather", Helvetica, sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-hr {
-  margin-bottom: 1.5rem;
-}
-
-.content-header {
-  font-size: 1.4rem;
-  line-height: 1;
-  margin-block: 0.3rem;
-  font-weight: 700;
-}
-.content-body {
-  font-family: "Merriweather", Helvetica, sans-serif;
-  font-size: 0.8rem;
 }
 
 .handle {
@@ -102,126 +45,186 @@ hr {
   text-decoration: underline;
 }
 
-.section {
-  font-size: 1.25rem;
-  line-height: 0.9;
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}
-
-a:hover .content-header {
-  text-decoration: underline;
-}
-
-.footer {
-  font-size: 1rem;
-  line-height: 0.75;
-  margin-top: 5rem;
-  margin-bottom: 3rem;
-  font-weight: 400;
-}
-
-/* not currently used */
-
-.tag-container {
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.tag-container:hover {
-  text-decoration: none;
-}
-
-.tag {
-  padding: 2px 5px 2px 5px; /* Making space around letters */
-  border-radius: 5px;
-  margin-left: -2px; /* offset padding */
-  color: white;
+.body-text {
   font-family: "Merriweather", Helvetica, sans-serif;
   font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.tag.d3 {
-  background-color: forestgreen;
-}
-
-.tag.js {
-  background-color: maroon;
-}
-
-.tag.html {
-  background-color: peru;
-}
-
-.tag.r {
-  background-color: steelblue;
-}
-
-.tag.py {
-  background-color: burlywood;
-}
-
-.tag.hc {
-  background-color: grey;
-}
-
-.divider {
-  opacity: 0;
-}
-
-.photos-link:hover {
+.body-link {
   text-decoration: underline;
+  color: black;
 }
 
-.photos-link {
-  display: inline;
+.subtitle {
+  font-family: "Merriweather", Georgia, serif !important;
+}
+
+.filters {
+  width: 70%;
+  margin: auto;
+}
+
+.story-card {
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+.story-card:hover {
+  transform: translateY(-5px);
+}
+.card-image figure {
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-image img,
+.card-image video {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+}
+.card-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 200px);
+}
+.story-tags {
+  margin-bottom: 1rem;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.story-title {
+  margin-bottom: 1rem !important;
+  min-height: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+.story-description {
+  flex-grow: 1;
+}
+.tag-writing {
+  background-color: white;
+  border: 2px solid #3273dc;
+  color: #3273dc;
+}
+.tag-interactive {
+  background-color: white;
+  border: 2px solid #48c774;
+  color: #48c774;
+}
+.tag-mapping {
+  background-color: white;
+  border: 2px solid #ff3860;
+  color: #ff3860;
+}
+.tag-data-analysis {
+  background-color: white;
+  border: 2px solid #ffdd57;
+  color: #b8860b;
+}
+.tag-graphics {
+  background-color: white;
+  border: 2px solid #ff3860;
+  color: #ff3860;
+}
+.tag-web-development {
+  background-color: white;
+  border: 2px solid #00d1b2;
+  color: #00d1b2;
+}
+.tag-d3 {
+  background-color: white;
+  border: 2px solid #ff7f50;
+  color: #ff7f50;
+}
+.tag-data-engineering {
+  background-color: white;
+  border: 2px solid #9b59b6;
+  color: #9b59b6;
+}
+.tag-python {
+  background-color: white;
+  border: 2px solid #3776ab;
+  color: #3776ab;
+}
+.tag-backend {
+  background-color: white;
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
+}
+.tag-frontend {
+  background-color: white;
+  border: 2px solid #2ecc71;
+  color: #2ecc71;
+}
+.tag-r {
+  background-color: white;
+  border: 2px solid #276dc3;
+  color: #276dc3;
+}
+.tag-svelte {
+  background-color: white;
+  border: 2px solid #ff3e00;
+  color: #ff3e00;
+}
+
+/* Filter button styling to match tags */
+.filter-btn {
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn.active {
+  background-color: #3273dc !important;
+  color: white !important;
+  border-color: #3273dc !important;
+}
+
+.story-card-container {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.story-card-container.hidden {
+  display: none;
 }
 
 @media (min-width: 320px) and (max-width: 999px) {
   body {
-    padding-top: 60px;
-    margin: auto;
-    width: 90%;
+    margin-top: 30px;
     font-family: "Public Sans", Helvetica, sans-serif;
     margin-bottom: 50px;
   }
 
-  .content {
-    flex-wrap: wrap;
-    max-width: 100%;
-    margin-top: 2%;
-  }
-  .content-description {
-    max-width: 100%;
-    padding-inline: 2%;
-  }
-
-  .content-img {
-    flex: 0 0 100%;
-    max-width: 90%;
-    padding-inline: 2%;
+  .intro {
     margin: auto;
+    width: 90%;
+    font-family: "Public Sans", Helvetica, sans-serif;
   }
 
-  .content-header {
-    font-size: 1.8em;
+  .section-header {
+    margin-block: 1rem;
   }
 
-  .content:hover {
-    text-decoration: none;
+  .filters {
+    width: 100%;
   }
 
-  .divider {
-    width: 50%;
-    opacity: 1;
+  .control {
+    font-size: medium !important;
   }
 }
