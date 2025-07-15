@@ -1,12 +1,4 @@
 [
-
-    {
-        "title": "Last Night's Sunset",
-        "link": "thesunset.austinsteinhart.com",
-        "description":"Never miss the sunset again. An automated system that captures, scores, and displays the best sunset photo from the previous night using computer vision and a Raspberry Pi.",
-        "image": "static/style/images/thesunset.webp",
-        "tags": ["Backend","Frontend","Svelte"]
-    },
     {
       "title": "Mapping the University of Chicago's 135-Year Expansion into Hyde Park and Beyond",
       "link": "https://chicagomaroon.github.io/data-visualizations/2025/uchicago-property/",
@@ -20,6 +12,20 @@
       "description": "Worked on a team to produce the analysis and visualizations used in this story in the Chicago Tribune.",
       "image": "static/style/images/cta.webp",
       "tags": ["Data Engineering"]
+    },
+       {
+      "title": "Chainlink",
+      "link": "https://github.com/mansueto-institute/mi-chainlink",
+      "description": "A powerful, flexible python package for entity resolution and record linkage. Enables user to load data from various sources, clean and standardize entity names and addresses, and create links between entities based on exact and fuzzy matching techniques.",
+      "image": "static/style/images/chainlink.png",
+      "tags": ["Data Engineering", "Python"] 
+    },
+     {
+        "title": "Last Night's Sunset",
+        "link": "https://thesunset.austinsteinhart.com",
+        "description":"Never miss the sunset again. An automated system that captures, scores, and displays the best sunset photo from the previous night using computer vision and a Raspberry Pi.",
+        "image": "static/style/images/thesunset.webp",
+        "tags": ["Backend","Frontend","Svelte"]
     },
     {
       "title": "University Faculty Aren't Neutral When It Comes to Political Donations",
@@ -49,13 +55,7 @@
       "image": "static/style/images/voting.png",
       "tags": ["Writing", "Interactive", "Mapping"]
     },
-    {
-      "title": "Chainlink",
-      "link": "https://github.com/mansueto-institute/mi-chainlink",
-      "description": "A powerful, flexible python package for entity resolution and record linkage. Enables user to load data from various sources, clean and standardize entity names and addresses, and create links between entities based on exact and fuzzy matching techniques.",
-      "image": "static/style/images/chainlink.png",
-      "tags": ["Data Engineering", "Python"] 
-    },
+ 
     {
       "title": "Chicago Property Tax Explainer",
       "link": "https://ptaxexplainer.miurban-dashboards.org/",
@@ -67,7 +67,6 @@
       "title": "Common Thread",
       "link": "https://github.com/uchicago-capp-30320/CommonThread",
       "description": "Currently in development, Common Thread is an open-source collaborative tool that enables users to turn stories into insights. Community-based organizations, journalists, researchers, and community members alike can use the tool to efficiently gather stories, aggregate them, and understand common threads to draw insights for action.",
-      "tools": "Svelte, Django, PostgreSQL",
       "image": "static/style/images/ct.png",
       "tags": ["Backend", "Frontend", "Svelte"]
 
@@ -76,17 +75,50 @@
       "title": "StopWatch: Exploring Bus Service in Chicago",
       "link": "https://ctastopwatch.miurban-dashboards.org/",
       "description": "Built a web app as part of a research project that analyzed a unique dataset of over 100 million real time bus location in partnership with the Chicago Tribune.",
-      "tools": "FastAPI, JS, HTML + CSS",
       "image": "static/style/images/sw.png",
       "tags": ["Backend", "Frontend"]
 
     },
     {
       "title": "Content We Love",
-      "link": "https://content-we-love-54fa79867044.herokuapp.com",
+      "link": "https://contentwelove.austinsteinhart.com",
       "description": "Great reads, thoughtfully curated by your friends.",
-      "tools": "Flask",
       "image": "static/style/images/content.png",
       "tags": ["Backend", "Frontend"]
+    },
+     {
+      "title": "Current UChicago Trustees’ Donations to Republicans Skyrocketed in Last Two Years",
+      "link": "https://chicagomaroon.com/47691/grey-city/current-uchicago-trustees-donations-to-republicans-skyrocketed-in-last-two-years/",
+      "description": "UChicago trustees’ donations to Republican candidates increased considerably in the 2024 election cycle, according to Federal Election Commission records reviewed by the Maroon.",
+      "image": "static/style/images/trustees.png",
+      "tags": ["Graphics"]
+    },
+     {
+      "title": "Three Years Later, What Have We Learned from the UChicago Common Data Set?",
+      "link": "https://chicagomaroon.com/43910/data/three-years-later-what-have-we-learned-from-the-uchicago-common-data-set/",
+      "description": "The admission rate continues to drop as campus demographics have shifted.",
+      "image": "static/style/images/cds.png",
+      "tags": ["Writing","Graphics"]
+    },
+    {
+      "title": "My.UChicago Vulnerability Could Have Exposed Students’ Class Schedules",
+      "link": "https://chicagomaroon.com/46707/news/my-uchicago-vulnerability-could-have-exposed-students-class-schedules/",
+      "description": "The vulnerability, fixed last November, allowed access to current and previous class schedules for any student.",
+      "image": "static/style/images/breach.jpg",
+      "tags": ["Writing"]
+    },
+    {
+      "title": "Three Years Later, What Have We Learned from the UChicago Common Data Set?",
+      "link": "https://chicagomaroon.com/43910/data/three-years-later-what-have-we-learned-from-the-uchicago-common-data-set/",
+      "description": "The admission rate continues to drop as campus demographics have shifted.",
+      "image": "static/style/images/cds.png",
+      "tags": ["Writing","Graphics"]
+    },
+    {
+      "title": "My Reading Over the Years",
+      "link": "https://austinsteinhart.com/reading",
+      "description": "Follow my reading journey from February 2016 to January 2024.",
+      "image": "static/style/images/reading.png",
+      "tags": ["Writing", "D3"]
     }
 ]

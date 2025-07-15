@@ -17,6 +17,7 @@
       href="static/style/style.css
     "
     />
+    <link rel="stylesheet" href="photos/photo.css" />
   </head>
   <body>
     <!-- Template for story cards -->
@@ -57,12 +58,18 @@
         <div class="section-header">About me</div>
         <hr />
         <p class="body-text">
-          I am currently earning a
+          I'm passionate about using data, design, and engineering to solve
+          problems and tell stories that matter. I am currently the data visual
+          editor at
+          <a class="body-link" href="https://www.cfr.org/" target="_blank"
+            >Council on Foreign Relations</a
+          >, where I work with reporters and editors to create compelling
+          data-driven stories. I have an
           <a target="_blank" href="https://capp.uchicago.edu/" class="body-link"
             >M.S. in Computational Analysis & Public Policy</a
           >, a joint program by the Harris School of Public Policy and the
-          Department of Computer Science at The University of Chicago. I am a
-          Research Engineer with the
+          Department of Computer Science at the University of Chicago.
+          Previously, I was a research engineer with the
           <a
             target="_blank"
             href="https://miurban.uchicago.edu/"
@@ -70,26 +77,18 @@
             >Mansueto Institute for Urban Innovation</a
           >
           working on topics related to public transpiration, property ownership
-          networks, public finance, and property taxes. I am also a writer and
-          developer at the
+          networks, public finance, and property taxes and the data editor at
+          the
           <a
             target="_blank"
             href="https://chicagomaroon.com/staff_name/austin-steinhart/"
             class="body-link"
             >Chicago Maroon</a
-          >. Last summer, I served as a Data Science Journalism Fellow with the
-          Mansueto Institute's
-          <a
-            target="_blank"
-            href="https://miurban.uchicago.edu/opportunities/local-data-journalism-initiative/"
-            class="body-link"
-            >Local Data Journalism Initiative</a
-          >
-          researching bus service across the city of Chicago.
+          >.
         </p>
 
         <p class="body-text">
-          I previously ran youth programming at
+          Before that I ran youth programming at
           <a target="_blank" href="https://www.changeist.org/" class="body-link"
             >Changeist</a
           >
@@ -124,11 +123,14 @@
       <h1 class="section-header">Selected Work</h1>
       <hr />
       <!-- Filter buttons -->
+    </div>
+
+    <section class="section pt-1">
       <div
         class="field is-grouped is-grouped-multiline is-justify-content-center mb-5 filters"
       >
         <div class="control">
-          <button class="button is-primary filter-btn active" data-filter="all">
+          <button class="button tag-all filter-btn active" data-filter="all">
             All
           </button>
         </div>
@@ -172,9 +174,6 @@
           </button>
         </div>
       </div>
-    </div>
-
-    <section class="section pt-1">
       <div class="container">
         <!-- Three column layout -->
         <div class="columns is-multiline" id="stories-container">
@@ -182,6 +181,46 @@
         </div>
       </div>
     </section>
+    <div class="section pt-1">
+      <p class="section-header" style="display: inline-block">Photography</p>
+      <a class="content-body photos-link" href="photos">(view all)</a>
+
+      <hr />
+
+      <div id="photo-gallery">
+        <img
+          src="https://lh3.googleusercontent.com/d/19cTz5mPnSe75WttrIPWymIuxQxyVMv10"
+          alt="photo"
+          style="display: block"
+        />
+        <img
+          src="https://lh3.googleusercontent.com/d/1R2miTn3DupEY2KbPzl_JYv8yFzU30DUY"
+          alt="photo"
+          style="display: block"
+        />
+
+        <img
+          src="https://lh3.googleusercontent.com/d/130GJdTre_XK4qZD463NGGAqhylslX3_X"
+          alt="photo"
+          style="display: block"
+        />
+        <img
+          src="https://lh3.googleusercontent.com/d/1sVU9BYyfuQMO1_0K-eKVNgK8ID6b2o8u"
+          alt="photo"
+          style="display: block"
+        />
+        <img
+          src="https://lh3.googleusercontent.com/d/1keTWcK9Moc8Vzr15S-QddW8KjB7VqOP0"
+          alt="photo"
+          style="display: block"
+        />
+        <img
+          src="https://lh3.googleusercontent.com/d/1afprQHqMC2PxFYFpnN86Ew-95rq9FKep"
+          alt="photo"
+          style="display: block"
+        />
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

@@ -70,6 +70,8 @@ function filterStories() {
     .map((btn) => btn.getAttribute("data-filter"))
     .filter((filter) => filter !== "all");
 
+  let visibleCount = 0;
+
   storyCards.forEach((card) => {
     const cardTags = JSON.parse(card.getAttribute("data-tags"));
 
@@ -81,6 +83,7 @@ function filterStories() {
         .classList.contains("active")
     ) {
       card.classList.remove("hidden");
+      visibleCount++;
     } else {
       // Show card if it has ALL of the selected tags (AND logic)
       const hasAllTags = activeFilters.every((filter) =>
@@ -88,11 +91,46 @@ function filterStories() {
       );
       if (hasAllTags) {
         card.classList.remove("hidden");
+        visibleCount++;
       } else {
         card.classList.add("hidden");
       }
     }
   });
+
+  // Show/hide no results message
+  showNoResultsMessage(visibleCount === 0);
+}
+
+// Function to show/hide no results message
+function showNoResultsMessage(show) {
+  let noResultsCard = document.getElementById("no-results-card");
+
+  if (show) {
+    if (!noResultsCard) {
+      // Create the no results card
+      const container = document.getElementById("stories-container");
+      noResultsCard = document.createElement("div");
+      noResultsCard.id = "no-results-card";
+      noResultsCard.className = "column is-12";
+      noResultsCard.innerHTML = `
+        <div class="card has-text-centered" style="padding: 3rem; width: 50%; margin: auto;">
+          <div class="card-content">
+            <div class="content" >
+              <h3 class="title is-4" style="color: #666;">No stories match your filters</h3>
+              <p class="subtitle is-6 mt-3" style="color: #888;">Try selecting different filters</p>
+            </div>
+          </div>
+        </div>
+      `;
+      container.appendChild(noResultsCard);
+    }
+    noResultsCard.style.display = "block";
+  } else {
+    if (noResultsCard) {
+      noResultsCard.style.display = "none";
+    }
+  }
 }
 
 // Function to handle filter button clicks
