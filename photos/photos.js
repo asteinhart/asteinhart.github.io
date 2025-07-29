@@ -89,7 +89,6 @@ const photos = {
 
 const photoGallery = document.getElementById("photo-gallery");
 const photoContainer = document.createDocumentFragment();
-const loadingScreen = document.getElementById("loading-screen");
 let loadedImages = 0;
 const totalImages = Object.values(photos).reduce(
   (acc, arr) => acc + arr.length,
@@ -101,18 +100,7 @@ for (let key in photos) {
     let img = document.createElement("img");
     img.src = `https://lh3.googleusercontent.com/d/${photo_id}`;
     img.alt = "photo";
-    img.style.display = "none"; // Hide images until all are loaded
-
-    img.onload = () => {
-      loadedImages++;
-      if (loadedImages === totalImages) {
-        // All images are loaded, show the gallery and hide the loading screen
-        document.querySelectorAll("#photo-gallery img").forEach((img) => {
-          img.style.display = "block";
-        });
-        loadingScreen.style.display = "none";
-      }
-    };
+    img.loading = "lazy";
 
     photoContainer.appendChild(img);
   });
