@@ -38,7 +38,7 @@
       "title": "Chicago Property Tax Explainer",
       "link": "https://ptaxexplainer.miurban-dashboards.org/",
       "description": "A web app that allows a homeowner in Chicago to explore their property tax bill, including how it is calculated, what the different components are, and how it has changed over time.",
-      "image": "static/style/images/tax_explain.png",
+      "image": "static/style/images/tax_explain.webp",
       "tags": ["Backend", "Frontend", "R"]
     },
     {
