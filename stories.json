@@ -22,24 +22,24 @@
     },
      {
         "title": "Last Night's Sunset",
-        "link": "https://thesunset.austinsteinhart.com",
+        "link": "https://whoownschi.miurban-dashboards.org/",
         "description":"Never miss the sunset again. An automated system that captures, scores, and displays the best sunset photo from the previous night using computer vision and a Raspberry Pi.",
         "image": "static/style/images/thesunset.webp",
         "tags": ["Backend","Frontend","Svelte"]
     },
     {
-      "title": "University Faculty Aren't Neutral When It Comes to Political Donations",
-      "link": "https://chicagomaroon.com/41302/grey-city/university-faculty-arent-neutral-when-it-comes-to-political-donations/",
-      "description": "While the University has an official stance of institutional neutrality, faculty members lean decidedly Democratic. Won 1st place for Graphic Illustrations from the Illinois Collegiate Press Association.",
-      "image": "static/style/images/donations.png",
-       "tags": ["Writing", "Graphics"]
+        "title": "Who Owns Chicago?",
+        "link": "https://thesunset.austinsteinhart.com",
+        "description":"A web app that allows users to identify the owners of every parcel of land in Chicago and Cook County including an interactive map with 1.4M building parcels using MapLibre to allow research and journalists to explore corporate property ownership in Chicago.",
+        "image": "static/style/images/chicago.webp",
+        "tags": ["Backend","Frontend","Interactive","Mapping"]
     },
     {
-      "title": "Annotating the Kalven Report",
-      "link": "https://chicagomaroon.github.io/data-visualizations/2025/kalven-report-annotated/",
-      "description": "Inspired by an interview with journalist Jamie Kalven, son of Harry Kalven, Jr. of the Kalven Report, the Maroon annotates this oft-cited but little read document.",
-      "image": "static/style/images/annotating_4.webm",
-       "tags": ["Interactive", "Frontend"]
+      "title": "Chicago Property Tax Explainer",
+      "link": "https://ptaxexplainer.miurban-dashboards.org/",
+      "description": "A web app that allows a homeowner in Chicago to explore their property tax bill, including how it is calculated, what the different components are, and how it have changed over time.",
+      "image": "static/style/images/tax_explain.png",
+      "tags": ["Backend", "Frontend", "R"]
     },
     {
       "title": "Exploring AI Use In Government",
@@ -55,13 +55,13 @@
       "image": "static/style/images/voting.png",
       "tags": ["Writing", "Interactive", "Mapping"]
     },
- 
     {
-      "title": "Chicago Property Tax Explainer",
-      "link": "https://ptaxexplainer.miurban-dashboards.org/",
-      "description": "A web app that allows a homeowner in Chicago to explore their property tax bill, including how it is calculated, what the different components are, and how it have changed over time.",
-      "image": "static/style/images/tax_explain.png",
-      "tags": ["Backend", "Frontend", "R"]
+      "title": "StopWatch: Exploring Bus Service in Chicago",
+      "link": "https://ctastopwatch.miurban-dashboards.org/",
+      "description": "Built a web app as part of a research project that analyzed a unique dataset of over 100 million real time bus location in partnership with the Chicago Tribune.",
+      "image": "static/style/images/sw.png",
+      "tags": ["Backend", "Frontend"]
+
     },
     {
       "title": "Common Thread",
@@ -72,13 +72,20 @@
 
     },
     {
-      "title": "StopWatch: Exploring Bus Service in Chicago",
-      "link": "https://ctastopwatch.miurban-dashboards.org/",
-      "description": "Built a web app as part of a research project that analyzed a unique dataset of over 100 million real time bus location in partnership with the Chicago Tribune.",
-      "image": "static/style/images/sw.png",
-      "tags": ["Backend", "Frontend"]
-
+      "title": "University Faculty Aren't Neutral When It Comes to Political Donations",
+      "link": "https://chicagomaroon.com/41302/grey-city/university-faculty-arent-neutral-when-it-comes-to-political-donations/",
+      "description": "While the University has an official stance of institutional neutrality, faculty members lean decidedly Democratic. Won 1st place for Graphic Illustrations from the Illinois Collegiate Press Association.",
+      "image": "static/style/images/donations.png",
+       "tags": ["Writing", "Graphics"]
     },
+    {
+      "title": "Annotating the Kalven Report",
+      "link": "https://chicagomaroon.github.io/data-visualizations/2025/kalven-report-annotated/",
+      "description": "Inspired by an interview with journalist Jamie Kalven, son of Harry Kalven, Jr. of the Kalven Report, the Maroon annotates this oft-cited but little read document.",
+      "image": "static/style/images/annotating_4.webm",
+       "tags": ["Interactive", "Frontend"]
+    },
+    
     {
       "title": "Content We Love",
       "link": "https://contentwelove.austinsteinhart.com",
