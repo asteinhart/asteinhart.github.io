@@ -16,7 +16,7 @@
        {
       "title": "Chainlink",
       "link": "https://github.com/mansueto-institute/mi-chainlink",
-      "description": "A powerful, flexible python package for entity resolution and record linkage. Enables user to load data from various sources, clean and standardize entity names and addresses, and create links between entities based on exact and fuzzy matching techniques.",
+      "description": "A powerful, flexible Python package for entity resolution and record linkage. Enables users to load data from various sources, clean and standardize entity names and addresses, and create links between entities based on exact and fuzzy matching techniques.",
       "image": "static/style/images/chainlink.png",
       "tags": ["Data Engineering", "Python"] 
     },
@@ -37,7 +37,7 @@
     {
       "title": "Chicago Property Tax Explainer",
       "link": "https://ptaxexplainer.miurban-dashboards.org/",
-      "description": "A web app that allows a homeowner in Chicago to explore their property tax bill, including how it is calculated, what the different components are, and how it have changed over time.",
+      "description": "A web app that allows a homeowner in Chicago to explore their property tax bill, including how it is calculated, what the different components are, and how it has changed over time.",
       "image": "static/style/images/tax_explain.png",
       "tags": ["Backend", "Frontend", "R"]
     },
@@ -58,7 +58,7 @@
     {
       "title": "StopWatch: Exploring Bus Service in Chicago",
       "link": "https://ctastopwatch.miurban-dashboards.org/",
-      "description": "Built a web app as part of a research project that analyzed a unique dataset of over 100 million real time bus location in partnership with the Chicago Tribune.",
+      "description": "Built a web app as part of a research project that analyzed a unique dataset of over 100 million real-time bus locations in partnership with the Chicago Tribune.",
       "image": "static/style/images/sw.png",
       "tags": ["Backend", "Frontend"]
 
@@ -113,13 +113,6 @@
       "description": "The vulnerability, fixed last November, allowed access to current and previous class schedules for any student.",
       "image": "static/style/images/breach.jpg",
       "tags": ["Writing"]
-    },
-    {
-      "title": "Three Years Later, What Have We Learned from the UChicago Common Data Set?",
-      "link": "https://chicagomaroon.com/43910/data/three-years-later-what-have-we-learned-from-the-uchicago-common-data-set/",
-      "description": "The admission rate continues to drop as campus demographics have shifted.",
-      "image": "static/style/images/cds.png",
-      "tags": ["Writing","Graphics"]
     },
     {
       "title": "My Reading Over the Years",
