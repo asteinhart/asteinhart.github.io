@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}{{ page.title }} - Austin Steinhart{%
+endblock title %} {% block content %}
+<div class="intro">
+  <article>
+    <h1 class="section-header">{{ page.title }}</h1>
+    <hr />
+
+    <div class="body-text">{{ page.content | safe }}</div>
+  </article>
+</div>
+{% endblock content %}

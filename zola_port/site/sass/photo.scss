@@ -1,0 +1,18 @@
+#photo-gallery {
+  column-count: 3;
+  column-gap: 10px;
+  width: 90%;
+  margin: auto;
+
+  img {
+    display: inline-block;
+    margin: 0 0 10px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  #photo-gallery {
+    column-count: 1;
+  }
+}

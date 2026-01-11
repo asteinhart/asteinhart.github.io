@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}{{ term.name }} - {{ config.title
+}}{% endblock title %} {% block content %}
+<div class="intro">
+  <div class="header">
+    <h1 class="headline">
+      <a href="/">Austin Steinhart</a>
+    </h1>
+  </div>
+
+  <h1 class="section-header">{{ term.name }}</h1>
+  <p class="body-text">
+    {{ term.pages | length }} post{% if term.pages | length != 1 %}s{% endif %}
+  </p>
+  <hr />
+</div>
+
+<section class="section pt-1">
+  <div class="container">
+    <div class="columns is-multiline">
+      {% for page in term.pages %}
+      <div class="column is-12">
+        <a href="{{ page.permalink }}" class="body-link">
+          <h3 class="title is-5">{{ page.title }}</h3>
+        </a>
+        {% if page.description %}
+        <p class="body-text">{{ page.description }}</p>
+        {% endif %} {% if page.date %}
+        <p class="subtitle is-7">{{ page.date }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="intro">
+  <p class="body-text">
+    <a href="/tags" class="body-link">← View all tags</a>
+  </p>
+</div>
+{% endblock content %}

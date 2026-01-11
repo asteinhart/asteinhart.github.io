@@ -1,0 +1,131 @@
+{% extends "base.html" %} {% block title %}Austin Steinhart - Stories{% endblock
+title %} {% block content %}
+<!-- Story card template for JavaScript -->
+<template id="story-card-template">
+  <div class="column is-4 story-card-container">
+    <a href="#" target="_blank" class="story-link">
+      <div class="card story-card">
+        <div class="card-content">
+          <div class="story-tags"></div>
+          <div class="card-image mb-3">
+            <figure class="image"></figure>
+          </div>
+          <div class="content">
+            <h4 class="title is-5 story-title"></h4>
+            <p
+              class="subtitle is-7 story-description"
+              style="margin-bottom: 0.5rem"
+            ></p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</template>
+
+<!-- Header and About Section -->
+<div class="intro">
+  Hello, I'm Austin Steinhart, a software engineer and data enthusiast. I
+  specialize in building data-driven applications and creating compelling
+
+  <h1 class="section-header">Selected Work</h1>
+  <hr />
+</div>
+
+<!-- Work Filter and Grid Section -->
+<section class="section pt-1">
+  <div
+    class="field is-grouped is-grouped-multiline is-justify-content-center mb-5 filters"
+  >
+    <div class="control">
+      <button class="button tag-all filter-btn active" data-filter="all">
+        All
+      </button>
+    </div>
+    <div class="control">
+      <button class="button filter-btn tag-writing" data-filter="Writing">
+        Writing
+      </button>
+    </div>
+    <div class="control">
+      <button
+        class="button filter-btn tag-interactive"
+        data-filter="Interactive"
+      >
+        Interactive
+      </button>
+    </div>
+    <div class="control">
+      <button class="button filter-btn tag-graphics" data-filter="Graphics">
+        Graphics
+      </button>
+    </div>
+    <div class="control">
+      <button
+        class="button filter-btn tag-data-engineering"
+        data-filter="Data Engineering"
+      >
+        Data Engineering
+      </button>
+    </div>
+    <div class="control">
+      <button class="button filter-btn tag-backend" data-filter="Backend">
+        Backend
+      </button>
+    </div>
+    <div class="control">
+      <button class="button filter-btn tag-frontend" data-filter="Frontend">
+        Frontend
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="columns is-multiline" id="stories-container">
+      <!-- Story cards will be dynamically inserted here -->
+    </div>
+  </div>
+</section>
+
+<!-- Photography Section -->
+<div class="section pt-1">
+  <p class="section-header" style="display: inline-block">Photography</p>
+  <a class="content-body photos-link" href="/photos">(view all)</a>
+  <hr />
+
+  <div id="photo-gallery">
+    <img
+      src="https://lh3.googleusercontent.com/d/19cTz5mPnSe75WttrIPWymIuxQxyVMv10"
+      alt="photo"
+      style="display: block"
+    />
+    <img
+      src="https://lh3.googleusercontent.com/d/1R2miTn3DupEY2KbPzl_JYv8yFzU30DUY"
+      alt="photo"
+      style="display: block"
+    />
+    <img
+      src="https://lh3.googleusercontent.com/d/130GJdTre_XK4qZD463NGGAqhylslX3_X"
+      alt="photo"
+      style="display: block"
+    />
+    <img
+      src="https://lh3.googleusercontent.com/d/1sVU9BYyfuQMO1_0K-eKVNgK8ID6b2o8u"
+      alt="photo"
+      style="display: block"
+    />
+    <img
+      src="https://lh3.googleusercontent.com/d/1keTWcK9Moc8Vzr15S-QddW8KjB7VqOP0"
+      alt="photo"
+      style="display: block"
+    />
+    <img
+      src="https://lh3.googleusercontent.com/d/1afprQHqMC2PxFYFpnN86Ew-95rq9FKep"
+      alt="photo"
+      style="display: block"
+    />
+  </div>
+</div>
+{% endblock content %} {% block extra_js %}
+<script src="{{ get_url(path='script.js') }}"></script>
+{% endblock extra_js %}

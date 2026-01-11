@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="{% block description %}{{ config.description }}{% endblock description %}"
+    />
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="{{ config.title }}"
+      href="{{ get_url(path='atom.xml', trailing_slash=false) }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ get_url(path='main.css', trailing_slash=false) }}"
+    />
+    {% block extra_css %}{% endblock extra_css %}
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-content">
+          <h1 class="site-name">
+            <a href="/">Austin Steinhart</a>
+          </h1>
+          <nav class="site-nav">
+            <a href="/projects">/projects</a>
+            <a href="/blog">/blog</a>
+            <a href="/links">/links</a>
+            <a href="/photos">/photos</a>
+            <a href="/about">/about</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    {% block content %} {% endblock content %} {% block extra_js %}{% endblock
+    extra_js %}
+  </body>
+</html>

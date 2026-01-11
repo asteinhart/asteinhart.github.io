@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Photos - Austin Steinhart{% endblock
+title %} {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ get_url(path='photo.css', trailing_slash=false) }}"
+/>
+{% endblock extra_css %} {% block content %}
+
+<div id="loading-screen">
+  <div class="spinner"></div>
+</div>
+<div id="photo-gallery"></div>
+{% endblock content %} {% block extra_js %}
+<script src="{{ get_url(path='photos.js') }}"></script>
+{% endblock extra_js %}

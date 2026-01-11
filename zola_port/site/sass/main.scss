@@ -1,0 +1,533 @@
+@import url(https://fonts.googleapis.com/css?family=Public+Sans:400,400i,700,700i);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,400i,500,700,700i);
+
+// ===== Variables =====
+$primary-color: #0b2027ff;
+$font-primary: "Public Sans", Helvetica, sans-serif;
+$font-secondary: "Merriweather", Helvetica, sans-serif;
+$font-serif: "Merriweather", Georgia, serif;
+
+// Tag colors
+$tag-colors: (
+  "all": #0b2027ff,
+  "writing": #2d5a27,
+  "interactive": #40798c,
+  "mapping": #70a9a1,
+  "data-analysis": #cfd7c7,
+  "graphics": #8b4a6b,
+  "web-development": #d4743b,
+  "d3": #f6f1d1,
+  "data-engineering": #70a9a1,
+  "python": #0b2027,
+  "backend": #6b4e71,
+  "frontend": #a8b89a,
+  "r": #f6f1d1,
+  "svelte": #70a9a1
+);
+
+// ===== Base Styles =====
+body {
+  padding-top: 0;
+  margin: auto;
+  font-family: $font-primary;
+  margin-bottom: 50px;
+  color: black !important;
+  font-weight: 400;
+}
+
+hr {
+  margin: 1rem auto;
+  border: none;
+  border-top: 1px solid black;
+}
+
+// ===== Header & Navigation =====
+.site-header {
+  background-color: white;
+  
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  
+  .container {
+    width: 60%;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0 auto;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.site-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  
+  a {
+    color: black;
+    text-decoration: none;
+    
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.site-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  
+  a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: opacity 0.2s;
+    
+    &:hover {
+      opacity: 0.7;
+    }
+    
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}
+
+// ===== Layout =====
+.intro {
+  width: 60%;
+  margin: auto;
+}
+
+.photo-section {
+  margin: auto;
+  width: 50%;
+}
+
+// ===== Typography =====
+.section-header {
+  font-size: 1.25rem;
+  line-height: 0.9;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.headline,
+.headline a {
+  font-size: 3.5rem;
+  line-height: 0.9;
+  margin-bottom: 0.25rem;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+}
+
+.handle {
+  font-size: 1.25rem;
+  line-height: 0.75;
+  margin-top: 1.75rem;
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.body-text {
+  font-family: $font-secondary;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  // Markdown content styles
+  p {
+    margin-bottom: 1.5rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h2 {
+    font-family: $font-primary;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: $font-primary;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-family: $font-primary;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  code {
+    font-family: "Courier New", monospace;
+    background-color: #f4f4f4;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+
+  pre {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+
+    code {
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: #666;
+  }
+}
+
+.body-link {
+  text-decoration: underline;
+  color: black;
+}
+
+.subtitle {
+  font-family: $font-serif !important;
+}
+
+// ===== Story Cards =====
+.story-card {
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.card-image {
+  figure {
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img,
+  video {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 200px);
+}
+
+.story-tags {
+  margin-bottom: 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.story-title {
+  margin-bottom: 1rem !important;
+  min-height: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.story-description {
+  flex-grow: 1;
+}
+
+.story-card-container {
+  transition: opacity 0.3s ease-in-out;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+// ===== Tags & Filters =====
+@each $name, $color in $tag-colors {
+  .tag-#{$name} {
+    background-color: $color;
+    border: 2px solid $color;
+    color: if($name == "data-analysis" or $name == "d3" or $name == "r", black, white);
+  }
+}
+
+.filters {
+  margin: auto;
+}
+
+.filter-btn {
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &.active {
+    background-color: white !important;
+    color: $primary-color !important;
+    border-color: $primary-color !important;
+  }
+}
+
+// ===== Photo Gallery =====
+#photo-gallery {
+  column-count: 3;
+  column-gap: 10px;
+
+  img {
+    display: inline-block;
+    margin: 0 0 10px;
+    width: 100%;
+  }
+}
+
+.photos-link {
+  display: inline;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ===== Blog Post Styles =====
+.blog-post {
+  max-width: 60%;
+  margin: 2rem auto;
+  font-family: $font-serif;
+  color: $primary-color;
+}
+
+.blog-header {
+  margin-bottom: 2rem;
+}
+
+.blog-title {
+  font-family: $font-primary;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.blog-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.blog-tags {
+  margin-top: 1rem;
+  
+  .tag {
+    margin-right: 0.5rem;
+  }
+}
+
+// Style markdown content directly
+.blog-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+
+  // All direct children get bottom margin
+  > * {
+    margin-bottom: 1.5rem;
+  }
+
+  // Headings
+  h2 {
+    font-family: $font-primary;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-family: $font-primary;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  // Lists
+  ul, ol {
+    padding-left: 2rem;
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  // Links
+  a {
+    color: $primary-color;
+    text-decoration: underline;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  // Code
+  code {
+    background-color: #f5f5f5;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: 'Monaco', 'Courier New', monospace;
+  }
+
+  pre {
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    
+    code {
+      background: none;
+      padding: 0;
+    }
+  }
+
+  // Blockquotes
+  blockquote {
+    border-left: 4px solid $primary-color;
+    padding-left: 1.5rem;
+    margin-left: 0;
+    font-style: italic;
+    color: #666;
+  }
+
+  // Images
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  // Emphasis
+  strong {
+    font-weight: 700;
+  }
+
+  em {
+    font-style: italic;
+  }
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+  .blog-post {
+    max-width: 90%;
+  }
+
+  .blog-title {
+    font-size: 2rem;
+  }
+
+  .blog-content {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  #photo-gallery {
+    column-count: 1;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 999px) {
+  body {
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  .intro {
+    margin: auto;
+    width: 90%;
+  }
+
+  .section-header {
+    margin-block: 1rem;
+  }
+
+  .filters {
+    width: 100%;
+  }
+
+  .control {
+    font-size: medium !important;
+  }
+}

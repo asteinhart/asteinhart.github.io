@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}{{ section.title }} - Austin
+Steinhart{% endblock title %} {% block content %}
+<div class="intro">
+  <h1 class="section-header">{{ section.title }}</h1>
+  <hr />
+
+  <div class="body-text">{{ section.content | safe }}</div>
+
+  {% if section.pages %}
+  <ul>
+    {% for page in section.pages %}
+    <li class="body-text">
+      <a href="{{ page.permalink | safe }}" class="body-link"
+        >{{ page.title }}</a
+      >
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endblock content %}

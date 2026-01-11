@@ -1,0 +1,49 @@
+# The URL the site will be built for
+base_url = "https://austinsteinhart.com"
+
+# The site title
+title = "Austin Steinhart"
+
+# Site description for SEO
+description = "Data journalist and developer passionate about using data, design, and engineering to tell stories that matter."
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Minify HTML
+minify_html = false
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+# The default language
+default_language = "en"
+
+# Whether to generate a feed
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+
+taxonomies = [
+    { name = "tags" },
+]
+
+[markdown]
+# Render emoji shortcodes like :smile:
+render_emoji = false
+# Open external links in new tabs
+external_links_target_blank = true
+# Add rel="nofollow" to external links
+external_links_no_follow = false
+
+[markdown.highlighting]
+error_on_missing_language = false
+theme = "catppuccin-mocha"
+
+
+
+[extra]
+# Put all your custom variables here
+author = "Austin Steinhart"
+github = "https://github.com/Asteinhart"
+linkedin = "https://www.linkedin.com/in/austin-steinhart/"
+email = "asteinhart3@gmail.com"

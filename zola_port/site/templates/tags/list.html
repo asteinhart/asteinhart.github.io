@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}All Tags - {{ config.title }}{% endblock title %}
+
+{% block content %}
+<div class="intro">
+  <div class="header">
+    <h1 class="headline">
+      <a href="/">Austin Steinhart</a>
+    </h1>
+  </div>
+  
+  <h1 class="section-header">All Tags</h1>
+  <hr />
+  
+  <div class="story-tags">
+    {% for term in terms %}
+      <a href="{{ term.permalink }}" class="tag tag-{{ term.name | slugify }}">
+        {{ term.name }} ({{ term.pages | length }})
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

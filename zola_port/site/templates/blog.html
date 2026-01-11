@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}{{ section.title }} - Austin
+Steinhart{% endblock title %} {% block content %}
+<h1 class="section-header">{{ section.title }}</h1>
+<hr />
+
+<div class="container">
+  {% if section.pages %}
+  <ul>
+    {% for page in section.pages %}
+    <li class="body-text">
+      <a href="{{ page.permalink | safe }}" class="body-link"
+        >{{ page.title }}</a
+      >
+      {% if page.date %}
+      <span class="subtitle is-7"> - {{ page.date }}</span>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="body-text">No blog posts yet.</p>
+  {% endif %}
+</div>
+{% endblock content %}
