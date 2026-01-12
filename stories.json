@@ -22,14 +22,14 @@
     },
      {
         "title": "Last Night's Sunset",
-        "link": "https://whoownschi.miurban-dashboards.org/",
+        "link": "https://thesunset.austinsteinhart.com",
         "description":"Never miss the sunset again. An automated system that captures, scores, and displays the best sunset photo from the previous night using computer vision and a Raspberry Pi.",
         "image": "static/style/images/thesunset.webp",
         "tags": ["Backend","Frontend","Svelte"]
     },
     {
         "title": "Who Owns Chicago?",
-        "link": "https://thesunset.austinsteinhart.com",
+        "link": "https://whoownschi.miurban-dashboards.org/",
         "description":"A web app that allows users to identify the owners of every parcel of land in Chicago and Cook County including an interactive map with 1.4M building parcels using MapLibre to allow research and journalists to explore corporate property ownership in Chicago.",
         "image": "static/style/images/chicago.webp",
         "tags": ["Backend","Frontend","Interactive","Mapping"]
