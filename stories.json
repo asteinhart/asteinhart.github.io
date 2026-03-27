@@ -1,11 +1,5 @@
 [
-  {
-    "title": "The Great Aid Recession: 2025’s Humanitarian Crash in Nine Charts",
-    "link": "https://www.cfr.org/expert-brief/great-aid-recession-2025s-humanitarian-crash-nine-charts",
-    "description": "The world faces unresolved conflicts, growing climate crises, attacks on aid workers, two famines, and diminishing political will—along with significant aid cuts. Altogether, 2025 has earned a grim new superlative: the worst humanitarian year on record. Read the full article by Sam Vigersky with nine charts I helped create to illustrate the crisis.",
-    "image": "static/style/images/hum_aid.webp",
-    "tags": ["Graphics"]
-  },
+ 
    {
     "title": "Visualizing 2026: Five Foreign Policy Trends to Watch",
     "link": "https://www.cfr.org/article/visualizing-2026-five-foreign-policy-trends-watch",
@@ -19,6 +13,20 @@
     "description": "Drawing from University archives, campus maps, academic literature, and news clippings, the Maroon charted the University's contentious property acquisitions from its charter in 1890 to the present. Featured on the front page of Hacker News and r/Chicago.",
     "image": "static/style/images/property.gif",
     "tags": ["Writing", "Interactive", "Mapping"]
+  },
+   {
+    "title": "Open Datle",
+    "link": "https://www.open-datle.com",
+    "description": "A daily game to learn more about your city using open data. Each day you get shown a new data set and either have to draw the trend or rank the boroughs.",
+    "image": "static/style/images/open-datle.webp",
+    "tags": ["Backend", "Frontend", "Svelte", "Interactive"]
+  },
+   {
+    "title": "The Great Aid Recession: 2025’s Humanitarian Crash in Nine Charts",
+    "link": "https://www.cfr.org/expert-brief/great-aid-recession-2025s-humanitarian-crash-nine-charts",
+    "description": "The world faces unresolved conflicts, growing climate crises, attacks on aid workers, two famines, and diminishing political will—along with significant aid cuts. Altogether, 2025 has earned a grim new superlative: the worst humanitarian year on record. Read the full article by Sam Vigersky with nine charts I helped create to illustrate the crisis.",
+    "image": "static/style/images/hum_aid.webp",
+    "tags": ["Graphics"]
   },
   {
     "title": "CTA says bus service is back to prepandemic levels. A new analysis shows which neighborhoods were slowest to get service back.",
