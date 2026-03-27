@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block title %}Photos - Austin Steinhart{% endblock
+title %} {% block content %}
+<!-- Work Filter and Grid Section -->
+<section class="section pt-1">
+  <div
+    class="field is-grouped is-grouped-multiline is-justify-content-center mb-5 filters"
+  >
+    <div class="control">
+      <button class="button tag-all filter-btn active" data-filter="all">
+        All
+      </button>
+    </div>
+    <div class="control">
+      <button class="button filter-btn tag-writing" data-filter="Writing">
+        Writing
+      </button>
+    </div>
+    <div class="control">
+      <button
+        class="button filter-btn tag-interactive"
+        data-filter="Interactive"
+      >
+        Interactive
+      </button>
+    </div>
+    <div class="control">
+      <button class="button filter-btn tag-graphics" data-filter="Graphics">
+        Graphics
+      </button>
+    </div>
+    <div class="control">
+      <button
+        class="button filter-btn tag-data-engineering"
+        data-filter="Data Engineering"
+      >
+        Data Engineering
+      </button>
+    </div>
+    <div class="control">
+      <button class="button filter-btn tag-backend" data-filter="Backend">
+        Backend
+      </button>
+    </div>
+    <div class="control">
+      <button class="button filter-btn tag-frontend" data-filter="Frontend">
+        Frontend
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="columns is-multiline" id="stories-container">
+      <!-- Story cards will be dynamically inserted here -->
+    </div>
+  </div>
+</section>
+
+{% endblock content %} {% block extra_js %} {% endblock content %}

@@ -3,7 +3,7 @@ title = "About Me"
 template = "page.html"
 +++
 
-I'm passionate about using data, design, and engineering to solve problems and tell stories that matter. I am currently a data visuals editor at the [Council on Foreign Relations](https://www.cfr.org/), where I work with researchers and editors to create compelling data-driven stories. 
+I use data, design, and engineering to solve problems and tell stories that matter. I am currently a data visuals editor at the [Council on Foreign Relations](https://www.cfr.org/), where I work with researchers and editors to create compelling data-driven stories. 
 
 
 I have an [M.S. in Computational Analysis & Public Policy](https://capp.uchicago.edu/), a joint program by the Harris School of Public Policy and the Department of Computer Science at the University of Chicago. Previously, I worked as a research engineer with the [Mansueto Institute for Urban Innovation](https://miurban.uchicago.edu/) on topics related to public transportation, property ownership networks, public finance, and property taxes. I was also a data editor at the [Chicago Maroon](https://chicagomaroon.com/staff_name/austin-steinhart/). 
