@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../static/style/style.css" />
     <link rel="stylesheet" href="style.css" />
-    <title>2. How to create a scrollytelling story</title>
+    <title>2. Creating a scrollytelly</title>
   </head>
   <body>
       <header>
@@ -21,32 +21,25 @@
       </div>
       <hr />
     </header>
-    <p>
-      <!-- <aside class="sphinxsidebarwrapper" aria-label="Table of contents">
-        <h2>Table of Contents</h2>
-        <ul>
-          <li><a href="what.html">What</a></li>
-          <li><a href="why.html">Why</a></li>
-          <li><a href="how.html">How</a></li>
-        </ul>
-      </aside> -->
-      
+  
+    
 
       <article class="main-content">
         <div class="first-next">
-                <a href="index.html">&larr; 1. What is scrollytelling</a>
+                <a href="what-why.html">&larr; 1. What is scrollytelling</a>
+                <a href="demo.html">3. A simple demo &rarr;</a>
                 
             </div>
         <h1>2. How to create a scrollytelling story</h1>
         <p>
           This guide will discuss the "scroll-based steps" style of scrollytelling, where cards of text are overlaid on a background and certain cards trigger animations or changes as the user scrolls. This is the most common type of scrollytelling and is often what people think of when they hear the term "scrollytelling." </p>
-          <p>
+      
             <p>
          We will first cover a conceptual understanding of how scrollytelling works and then walk through the process of creating a simple example using HTML, CSS, and JavaScript.</p>
         </p>
         <h2>2.1. The concept</h2>
 
-       <p>Lets imagine you have a simple html page just with one div that takes up the entire viewport. Lets call this the <span class="background-text">background</span>. This will be where you will put your main visual element such as a map or graphic.</p> 
+      <p>Let's imagine you have a simple html page just with one div that takes up the entire viewport. Let's call this the <span class="background-text">background</span>. This will be where you will put your main visual element such as a map or graphic.</p> 
         
         <div class="figure viewport">
           <div class="background">
@@ -64,7 +57,7 @@
           </div>
         </div>
 
-        <p>Lets now put a new box directly on top of the background. This will be our <span class="foreground-text">foreground</span>. This will hold our text cards that we will scroll through.</p>
+        <p>Let's now put a new box directly on top of the background. This will be our <span class="foreground-text">foreground</span>. This will hold our text cards that we will scroll through.</p>
 
         <div class="non-stick-demo">
           <div class="foreground">
@@ -97,11 +90,11 @@
 
         <h2>2.2. The setup</h2>
 
-        <p>Now that we have the idea, we can start setting up our scrollytelling story. We will intorduce a few HTML / CSS concepts as we come across them</p>
+        <p>Now that we have the idea, we can start setting up our scrollytelling story. We will introduce a few HTML / CSS concepts as we come across them</p>
 
         <h3>Setting up the background</h3>
 
-        <p>Let's first make the background. The background will be a simple div with a background color that takes up the entire viewport. As mentioedn, in reality this could be a map or graphic. The key element here as we discussed is that we will make this element <code>position: sticky</code> so it stays in the viewport.  This feature is well supported in modern browsers. Read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank">here</a>.</p>
+        <p>Let's first make the background. The background will be a simple div with a background color that takes up the entire viewport. As mentioned, in reality this could be a map or graphic. The key element here as we discussed is that we will make this element <code>position: sticky</code> so it stays in the viewport. This feature is well supported in modern browsers. Read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank">here</a>.</p>
 
         <pre><code class="language-html">&lt;div class="scroller"&gt;
   &lt;div class="background"&gt;
@@ -118,7 +111,7 @@
 
           <h3>Setting up the foreground</h3>
 
-          <p>Now we can set up the foreground. The foreground will be a div that is positioned on top of the background. We will use absolute positioning to place the foreground on top of the background. We will also give the foreground a higher z-index so it appears above the background. We then can add some cards to hold out text content.</p>
+          <p>Now we can set up the foreground. The foreground will be a div that is positioned on top of the background. We will use absolute positioning to place the foreground on top of the background. We will also give the foreground a higher z-index so it appears above the background. We then can add some cards to hold our text content.</p>
 
           <pre><code class="language-html">&lt;div class="scroller"&gt;
   &lt;div class="background"&gt;
@@ -176,7 +169,7 @@ scroller
   <p>Let's explain this. We set the class for our steps ("<code>.card</code>") and specify a threshold of 0.5, which means the callback will be triggered when 50% of the step is visible.</p>
   
   <p>What can go in the call back? Anything you can imagine! You can change the background color, trigger an animation, update text, etc. The callback function will receive a response object that contains information about the step that was entered, exited, or progressed through, such as the element itself, its index, the direction of scrolling, and the progress through the step.</p>
-  <p>For example, let change the color of the background as we scroll through the cards.</p>
+  <p>For example, let's change the color of the background as we scroll through the cards.</p>
 
 <pre><code class="language-js">const scroller = scrollama();
 scroller
@@ -208,7 +201,7 @@ scroller
 
         <h2>2.4. Some tips and tricks</h2>
 
-        <p>I am by no means an expert but here are some tips and tricks I have learned in my experience with scrollytelling.</p>
+        <p>I am by no means an expert, but here are some tips and tricks I have learned in my experience with scrollytelling.</p>
 
         <h3>Keep Scrollama callbacks simple</h3>
 
@@ -216,17 +209,16 @@ scroller
 
         <h3>Use a config object for text</h3>
 
-        <p>Rather than hardcoding text into your HTML, consider using a config object in your JavaScript file to store the text for each step. This can make it easier to manage and update the text content for your scrollytelling story. Many newsrooms use <a href="https://archieml.org/">archieML</a>, a tool created by the NYT, to pull text into your scrollytelly from a Google Doc or other source. This helps immensely with the writing/editing process and allows others working on the story to work in a more familiar environment and for you to not have to copy and paste text.</p>
+        <p>Rather than hardcoding text into your HTML, consider using a config object in your JavaScript file to store the text for each step. This can make it easier to manage and update the text content for your scrollytelling story. Many newsrooms use <a href="https://archieml.org/">archieML</a>, a tool created by the NYT, to pull text into your scrollytelling from a Google Doc or other source. This helps immensely with the writing/editing process and allows others working on the story to work in a more familiar environment and for you to not have to copy and paste text.</p>
 
         <h3>Design with mobile in mind</h3>
 
         <p>Scrollytelling stories can be particularly challenging to design for mobile devices, as the smaller screen size can make it difficult to create a visually engaging experience. When designing for mobile, consider using larger text and simpler graphics to ensure that the story is still accessible and engaging on smaller screens. You may also want to consider using a different scrollytelling technique, such as click-based progression, for mobile users.</p>
-      
 
-        
-  
-       
-
+        <div class="next">
+              <a href="what-why.html">&larr; 1. What is scrollytelling </a>
+                <a href="demo.html">3. A simple demo &rarr;</a>
+            </div>
            
       </article>
     </main>

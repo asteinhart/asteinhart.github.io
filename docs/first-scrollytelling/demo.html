@@ -5,61 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../static/style/style.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="sample.css" />
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="scrollama.min.js"></script>
-
-    <title>First Scrollytelling</title>
+    <link rel="stylesheet" href="demo.css" />
+    <script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
+    <link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet' />
+    <title>3. A simple demo</title>
   </head>
   <body>
-    <header>
+      <header>
       <div class="header-container">
         <div class="header-left">
-          <strong>Austin Steinhart</strong>
+          <a class ="nound" href="https://austinsteinhart.com"><strong>Austin Steinhart</strong></a>
         </div>
         <nav class="header-nav">
-          <a href="/">Home</a>
+            <a href="https://austinsteinhart.com">Home</a>
           <a href="/docs">Docs</a>
-          <a href="/about">About</a>
+         
         </nav>
       </div>
       <hr />
     </header>
-    <main>
-      <h1>First Scrollytelling</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-        voluptate.
-      </p>
-      <h2>Here is a section</h2>
-      <section id="intro">
-        <h1 class="intro__hed">Sticky Overlay Example</h1>
-        <p class="intro__dek">Start scrolling to see how it works.</p>
-      </section>
+    <p>
 
-      <section id="scrolly">
-        <figure>
-          <p>0</p>
-        </figure>
+      <article class="main-content">
+        <div class="first-next">
+         
 
-        <article>
-          <div class="step" data-step="1">
-            <p>STEP 1</p>
-          </div>
-          <div class="step" data-step="2">
-            <p>STEP 2</p>
-          </div>
-          <div class="step" data-step="3">
-            <p>STEP 3</p>
-          </div>
-          <div class="step" data-step="4">
-            <p>STEP 4</p>
-          </div>
-        </article>
-      </section>
+                <a href="index.html">&larr; 2. Creating a scrollytelling story</a>
+                 <a href=""></a>
+                
+            </div>
+        <h1>3. A simple demo</h1>
+        <p>
+            This section will walk through a simple scrollytelling demo using Maplibre GL JS, a popular open-source mapping library. The demo will include a sticky overlay and scroll-triggered animations to demonstrate the basics of scrollytelling.
+        </p>
+      
 
-      <section id="outro"></section>
+        <div id="scrolly-demo">
+          <div class="example-background" id="scrolly-background">
+            <div id="map"></div>
+          </div>
+          <div class="example-foreground">
+            <div class="step">
+            <div class="example-card" data-step-index="0">Step 1</div>
+            </div>
+            <div class="step">
+            <div class="example-card" data-step-index="1">Step 2</div></div>
+            <div class="step">
+            <div class="example-card" data-step-index="2">Step 3</div></div>
+            <div class="step">
+            <div class="example-card" data-step-index="3">Step 4</div></div>
+          </div>
+        </div>
+        <br><br>
+
+        <p>A recap of what is happening:</p>
+        <ul>
+            <li>The <strong>background</strong> is the map with full viewport height and <code>position: sticky</code>.</li>
+            <li>The <b>foreground</b> are the text cards.</li>
+            <li><b>Scrollama</b> is used to trigger events based on scroll position. The offset is 0.5 meaning when the card is halfway through the viewport, it will trigger an event. You can view this change and response in "Scrollama response" </li>
+         
+            <li>The map is being updated based on the card index that is in view</li>
+        </ul>
+
+        <p>There are lots of different ways to implement scrollytelling and this demo is just one example. Good scrollytelling takes first and foremost a good story and compelling visuals and second, careful attention to the user experience.</p>
+
+        <div class="next">
+              <a href="how.html">&larr; 2. How to create a scrollytelling story </a>
+                <div></div>
+            </div>
+
+
+        <aside class="sphinxsidebarwrapper" aria-label="Scrollama response">
+          <h2>Scrollama response</h2>
+          <pre id="demo-scrolly-response" aria-live="polite">Waiting for events...</pre>
+        </aside>
+
+      </article>
     </main>
-    <script defer src="script.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+
+    <script defer src="demo.js"></script>
   </body>
 </html>

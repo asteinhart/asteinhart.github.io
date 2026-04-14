@@ -329,7 +329,6 @@ p, ul {
     margin-top: 0;
     margin-bottom: 1rem;
     line-height: 1.5em;
-    font-weight: 300;
     font-size: 1.2rem;
 }
 
@@ -377,12 +376,98 @@ a:hover {
 }
 
 @media (max-width: 950px) {
+
+    body {
+       margin-top: 0;
+    }
     .sphinxsidebarwrapper {
         display: none;
     }
 
+    header,
+    main {
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     .main-content {
         margin: 0 auto;
-        max-width: 755px;
+        max-width: 100%;
+    }
+
+    .header-container {
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+    }
+
+    .header-nav {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .header-left {
+        font-size: 1.1rem;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+        line-height: 1.05;
+    }
+
+    h3 {
+        font-size: 1.15rem;
+        line-height: 1.2;
+    }
+
+    p,
+    ul {
+        font-size: 1.08rem;
+        line-height: 1.45;
+    }
+
+    .figure.viewport,
+    .figure.long,
+    .non-stick-demo,
+    .long-figure-demo,
+    .mini-scrolly-demo {
+        width: 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    header,
+    main {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .header-nav {
+        width: 100%;
+        gap: 0.6rem;
+    }
+
+    .header-nav a {
+        padding: 0.1rem 0;
+    }
+
+    h1 {
+        font-size: 1.65rem;
+    }
+
+    h3 {
+        font-size: 1.05rem;
+    }
+
+    p,
+    ul {
+        font-size: 1rem;
     }
 }
