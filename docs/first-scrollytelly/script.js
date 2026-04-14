@@ -23,21 +23,55 @@ function initMiniScrollyDemo() {
   var demo = document.getElementById("mini-scrolly-demo");
   var background = document.getElementById("mini-scrolly-background");
   var responseEl = document.getElementById("mini-scrolly-response");
+  var responseContainerEl = responseEl
+    ? responseEl.closest(".sphinxsidebarwrapper")
+    : null;
+  var isBackgroundFullyVisible = false;
 
   if (!demo || !background) {
     return;
   }
 
-  var cards = demo.querySelectorAll(".example-card");
-  var colors = ["#4682B4", "#5f9ea0", "#7fa67a", "#b47846"];
+  var steps = demo.querySelectorAll(".example-step");
+  var colors = ["#b45c46", "#5f9ea0", "#7fa67a", "#b47846"];
+
+  function initBackgroundVisibilityObserver() {
+    if (!responseContainerEl || !responseEl) {
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        var entry = entries[0];
+        isBackgroundFullyVisible =
+          entry.isIntersecting && entry.intersectionRatio >= 0.999;
+
+        responseContainerEl.classList.toggle(
+          "is-hidden",
+          !isBackgroundFullyVisible
+        );
+
+        if (!isBackgroundFullyVisible) {
+          responseEl.textContent = "Waiting for step enter...";
+        }
+      },
+      {
+        threshold: [0, 1],
+      }
+    );
+
+    observer.observe(background);
+  }
 
   function renderResponse(data) {
-    if (!responseEl) {
+    if (!responseEl || !isBackgroundFullyVisible) {
       return;
     }
 
     responseEl.textContent = JSON.stringify(data, null, 2);
   }
+
+  initBackgroundVisibilityObserver();
 
   if (window.scrollama) {
     var miniScroller = scrollama();
@@ -46,8 +80,9 @@ function initMiniScrollyDemo() {
 
     miniScroller
       .setup({
-        step: "#mini-scrolly-demo .example-card",
-        offset: 0.6,
+        step: "#mini-scrolly-demo .example-step",
+        offset: 0.5,
+        progress: true,
         debug: false,
       })
       .onStepEnter(function (response) {
@@ -101,8 +136,8 @@ function initMiniScrollyDemo() {
     }
   );
 
-  cards.forEach(function (card) {
-    observer.observe(card);
+  steps.forEach(function (step) {
+    observer.observe(step);
   });
 }
 

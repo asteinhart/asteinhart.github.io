@@ -36,6 +36,8 @@
       
             <p>
          We will first cover a conceptual understanding of how scrollytelling works and then walk through the process of creating a simple example using HTML, CSS, and JavaScript.</p>
+
+         <p>That being said, there are many ways to implement scrollytelling, and the specific approach will depend on the story you want to tell and the tools you have available.</p>
         </p>
         <h2>2.1. The concept</h2>
 
@@ -57,16 +59,17 @@
           </div>
         </div>
 
-        <p>Let's now put a new box directly on top of the background. This will be our <span class="foreground-text">foreground</span>. This will hold our text cards that we will scroll through.</p>
+        <p>Let's now put a new div below the background. This will be our <span class="foreground-text">foreground</span>. This will hold our text cards that we will scroll through.</p>
 
         <div class="non-stick-demo">
+          <div class="background">
+          </div>
           <div class="foreground">
             <div class="card"></div>
             <div class="card"></div>
             <div class="card"></div>
           </div>
-          <div class="background">
-          </div>
+          
         </div>
 
         <p>Ok this is almost right but now we want to make the background stay in place as we scroll. We can achieve this by making the <span class="background-text">background</span> a <code>sticky</code> element.</p>
@@ -77,13 +80,14 @@
 
         
         <div id="sticky-figure-demo" class="non-stick-demo mode-overflow">
+          <div class="background sticky">
+          </div>
           <div class="foreground">
             <div class="card"></div>
             <div class="card"></div>
             <div class="card"></div>
           </div>
-          <div class="background sticky">
-          </div>
+          
         </div>
 
 
@@ -106,26 +110,31 @@
     top: 0;
     width: 100%;
     height: 100vh;
+    z-index: 0;
   }</code></pre>
           <p>With this setup, the background will stay in place as we scroll down the page. We can add more content below the background to create a longer page that we can scroll through.</p>
 
           <h3>Setting up the foreground</h3>
 
-          <p>Now we can set up the foreground. The foreground will be a div that is positioned on top of the background. We will use absolute positioning to place the foreground on top of the background. We will also give the foreground a higher z-index so it appears above the background. We then can add some cards to hold our text content.</p>
+          <p>Now we can set up the foreground. The foreground will be a div that is positioned on top of the background. We will use relative positioning and the z-index to place the foreground on top of the background. We will also give the foreground a higher z-index so it appears above the background. We then can add some cards to hold our text content.</p>
 
           <pre><code class="language-html">&lt;div class="scroller"&gt;
   &lt;div class="background"&gt;
   &lt;/div&gt;
   &lt;div class="foreground"&gt;
-    &lt;div class="card"&gt;&lt;/div&gt;
-    &lt;div class="card"&gt;&lt;/div&gt;
-    &lt;div class="card"&gt;&lt;/div&gt;
+    &lt;div class="step"&gt;
+      &lt;div class="card"&gt;Step 0&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="step"&gt;
+      &lt;div class="card"&gt;Step 1&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="step"&gt;
+      &lt;div class="card"&gt;Step 2&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre> 
           <pre><code class="language-css">.foreground {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     height: 100vh;
     z-index: 1;
@@ -153,7 +162,7 @@
 // setup the instance, pass callback functions
 scroller
   .setup({
-    step: ".card",
+    step: ".step",
     threshold: 0.5, // trigger when 50% of the step is visible
   })
   .onStepEnter((response) => {
@@ -166,38 +175,44 @@ scroller
     // { element, index, progress, direction }
   });</code></pre>
 
-  <p>Let's explain this. We set the class for our steps ("<code>.card</code>") and specify a threshold of 0.5, which means the callback will be triggered when 50% of the step is visible.</p>
+  <p>Let's explain this. We set the class for our steps ("<code>.step</code>") and specify a threshold of 0.5, which means the callback will be triggered when 50% of the step is visible.</p>
   
   <p>What can go in the call back? Anything you can imagine! You can change the background color, trigger an animation, update text, etc. The callback function will receive a response object that contains information about the step that was entered, exited, or progressed through, such as the element itself, its index, the direction of scrolling, and the progress through the step.</p>
   <p>For example, let's change the color of the background as we scroll through the cards.</p>
 
-<pre><code class="language-js">const scroller = scrollama();
+<pre><code class="language-js">
+const colors = ["#b45c46", "#5f9ea0", "#7fa67a", "#b47846"];
+
+const scroller = scrollama();
+ 
 scroller
   .setup({
-    step: ".card",
+    step: ".step",
     threshold: 0.5, // trigger when 50% of the step is visible
   })
   .onStepEnter((response) => {
     const { index } = response;
     const background = document.querySelector(".background");
-    background.style.backgroundColor = `hsl(${index * 60}, 70%, 70%)`;
+    background.style.backgroundColor = colors[index];
   });</code></pre>
 
         
 
         <div id="mini-scrolly-demo" class="mini-scrolly-demo">
-          <div class="example-background" id="mini-scrolly-background"></div>
+           <div class="example-background" id="mini-scrolly-background"></div>
           <div class="example-foreground">
-            <div class="example-card" data-step-index="0">Step 1</div>
-            <div class="example-card" data-step-index="1">Step 2</div>
-            <div class="example-card" data-step-index="2">Step 3</div>
-            <div class="example-card" data-step-index="3">Step 4</div>
+            <div class="example-step" data-step-index="0">
+              <div class="example-card">Step 0</div>
+            </div>
+            <div class="example-step" data-step-index="1">
+              <div class="example-card">Step 1</div>
+            </div>
+            <div class="example-step" data-step-index="2">
+              <div class="example-card">Step 2</div>
+            </div>
           </div>
+         
         </div>
-
-        <p>Live Scrollama response:</p>
-        <pre id="mini-scrolly-response" aria-live="polite">Waiting for step enter...</pre>
-
 
         <h2>2.4. Some tips and tricks</h2>
 
@@ -219,6 +234,11 @@ scroller
               <a href="what-why.html">&larr; 1. What is scrollytelling </a>
                 <a href="demo.html">3. A simple demo &rarr;</a>
             </div>
+
+        <aside class="sphinxsidebarwrapper" aria-label="Live Scrollama response">
+          <h2>Live Scrollama response</h2>
+          <pre id="mini-scrolly-response" aria-live="polite">Waiting for step enter...</pre>
+        </aside>
            
       </article>
     </main>

@@ -197,7 +197,7 @@ h3 {
 }
 
 .non-stick-demo .foreground {
-    position: absolute;
+    position: relative;
     inset: 0;
     width: 100%;
     height: calc(30vh + 150px);
@@ -271,48 +271,62 @@ h3 {
     flex: 0 0 auto;
 }
 
+
+
 .mini-scrolly-demo {
-    width: 70%;
-    height: 34vh;
-    margin: 1rem auto 2rem;
-    border: 2px dashed black;
     position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .mini-scrolly-demo .example-background {
     position: sticky;
     top: 0;
+    left: 0;
     width: 100%;
-    height: 34vh;
+    height: 100vh;
+    z-index: -1;
     background: steelblue;
     transition: background-color 250ms ease;
 }
 
 .mini-scrolly-demo .example-foreground {
-    position: absolute;
-    inset: 0;
+    position: relative;
     z-index: 1;
-    min-height: calc(34vh + 360px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 70px;
-    padding: 70px 0 240px;
+    padding: 0;
     box-sizing: border-box;
+    margin-top: -50vh;
+}
+
+.mini-scrolly-demo .example-step {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mini-scrolly-demo .example-card {
     width: 50%;
-    height: 50px;
     border: 2px solid black;
     background: rgba(255, 255, 255, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    flex: 0 0 auto;
+    padding: 1rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+#mini-scrolly-response {
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+    max-height: 60vh;
+    overflow: auto;
+    margin: 0;
+    padding: 0.5rem;
+    border: 1px solid #d6d6d6;
+    background: #fff;
+    color: #111;
+}
+
+.is-hidden {
+    display: none;
 }
 
 .background-text {
@@ -385,15 +399,9 @@ a:hover {
     }
 
     header,
-    main {
-        max-width: 100%;
+    .main-content {
         padding-left: 1rem;
         padding-right: 1rem;
-    }
-
-    .main-content {
-        margin: 0 auto;
-        max-width: 100%;
     }
 
     .header-container {
