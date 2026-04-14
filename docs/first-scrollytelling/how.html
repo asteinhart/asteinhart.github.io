@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/style/style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>2. How to create a scrollytelling story</title>
+  </head>
+  <body>
+      <header>
+      <div class="header-container">
+        <div class="header-left">
+          <a class ="nound" href="https://austinsteinhart.com"><strong>Austin Steinhart</strong></a>
+        </div>
+        <nav class="header-nav">
+            <a href="https://austinsteinhart.com">Home</a>
+          <a href="/docs">Docs</a>
+         
+        </nav>
+      </div>
+      <hr />
+    </header>
+    <p>
+      <!-- <aside class="sphinxsidebarwrapper" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ul>
+          <li><a href="what.html">What</a></li>
+          <li><a href="why.html">Why</a></li>
+          <li><a href="how.html">How</a></li>
+        </ul>
+      </aside> -->
+      
+
+      <article class="main-content">
+        <div class="first-next">
+                <a href="index.html">&larr; 1. What is scrollytelling</a>
+                
+            </div>
+        <h1>2. How to create a scrollytelling story</h1>
+        <p>
+          This guide will discuss the "scroll-based steps" style of scrollytelling, where cards of text are overlaid on a background and certain cards trigger animations or changes as the user scrolls. This is the most common type of scrollytelling and is often what people think of when they hear the term "scrollytelling." </p>
+          <p>
+            <p>
+         We will first cover a conceptual understanding of how scrollytelling works and then walk through the process of creating a simple example using HTML, CSS, and JavaScript.</p>
+        </p>
+        <h2>2.1. The concept</h2>
+
+       <p>Lets imagine you have a simple html page just with one div that takes up the entire viewport. Lets call this the <span class="background-text">background</span>. This will be where you will put your main visual element such as a map or graphic.</p> 
+        
+        <div class="figure viewport">
+          <div class="background">
+          </div>
+        </div>
+
+        <p>However, the page has more content that is out of the viewport that you have to scroll to. You can only see the <span class="background-text">background</span> but if you scroll down it would reveal more content. </p>
+
+        <button type="button" class="figure-toggle" data-figure-toggle="long-figure-demo">
+          Only viewport visible
+        </button>
+
+        <div id="long-figure-demo" class="figure long mode-overflow">
+          <div class="background">
+          </div>
+        </div>
+
+        <p>Lets now put a new box directly on top of the background. This will be our <span class="foreground-text">foreground</span>. This will hold our text cards that we will scroll through.</p>
+
+        <div class="non-stick-demo">
+          <div class="foreground">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+          </div>
+          <div class="background">
+          </div>
+        </div>
+
+        <p>Ok this is almost right but now we want to make the background stay in place as we scroll. We can achieve this by making the <span class="background-text">background</span> a <code>sticky</code> element.</p>
+
+        <button type="button" class="figure-toggle" data-figure-toggle="sticky-figure-demo">
+          Only viewport visible
+        </button>
+
+        
+        <div id="sticky-figure-demo" class="non-stick-demo mode-overflow">
+          <div class="foreground">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+          </div>
+          <div class="background sticky">
+          </div>
+        </div>
+
+
+
+        <h2>2.2. The setup</h2>
+
+        <p>Now that we have the idea, we can start setting up our scrollytelling story. We will intorduce a few HTML / CSS concepts as we come across them</p>
+
+        <h3>Setting up the background</h3>
+
+        <p>Let's first make the background. The background will be a simple div with a background color that takes up the entire viewport. As mentioedn, in reality this could be a map or graphic. The key element here as we discussed is that we will make this element <code>position: sticky</code> so it stays in the viewport.  This feature is well supported in modern browsers. Read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank">here</a>.</p>
+
+        <pre><code class="language-html">&lt;div class="scroller"&gt;
+  &lt;div class="background"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+         <pre><code class="language-css">.background {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+  }</code></pre>
+          <p>With this setup, the background will stay in place as we scroll down the page. We can add more content below the background to create a longer page that we can scroll through.</p>
+
+          <h3>Setting up the foreground</h3>
+
+          <p>Now we can set up the foreground. The foreground will be a div that is positioned on top of the background. We will use absolute positioning to place the foreground on top of the background. We will also give the foreground a higher z-index so it appears above the background. We then can add some cards to hold out text content.</p>
+
+          <pre><code class="language-html">&lt;div class="scroller"&gt;
+  &lt;div class="background"&gt;
+  &lt;/div&gt;
+  &lt;div class="foreground"&gt;
+    &lt;div class="card"&gt;&lt;/div&gt;
+    &lt;div class="card"&gt;&lt;/div&gt;
+    &lt;div class="card"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre> 
+          <pre><code class="language-css">.foreground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+  }</code></pre>
+
+          <p>With this setup, we now have a foreground that is positioned on top of the background. As we scroll down the page, the background will stay in place while the foreground cards scroll up and out of view.</p>
+
+        <h2>2.3. Responding to scroll events</h2>
+
+       <p> Now the most important part. We want to be able to trigger animations or changes to the background as we scroll through the foreground cards. To do this, we can use JavaScript to listen for scroll events and determine which card is currently in view. We can then use this information to trigger animations or changes to the background.</p>
+
+        <p>There are many ways to listen for scroll events and determine which card is in view. However, best practice today is to use the <code>Intersection Observer API</code>, which allows us to efficiently observe when elements enter or leave the viewport and is compatible with modern browsers. Read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API" target="_blank">here</a>.</p>
+
+        <p>Rather than use that API directly, we are going to use a tool called <a href="https://github.com/russellsamora/scrollama" target="_blank">Scrollama</a> which was built by <a href="https://pudding.cool/" target="_blank">the Pudding</a> and is designed to simplify the process of creating scrollytelling experiences using the Intersection Observer API.</p>
+
+        <h3>Setting up Scrollama</h3>
+
+        <p>To set up Scrollama, we first need to include the Scrollama library in our HTML file. We can do this by adding a script tag that points to the Scrollama library.</p>
+
+        <pre><code class="language-html">&lt;script src="https://unpkg.com/scrollama"&gt;&lt;/script&gt;</code></pre>
+
+        <p>Next, we need to initialize Scrollama in our JavaScript file. We can do this by creating a new instance of the Scrollama class and calling the init method. Here we will pass callback functions to define what happens when each step is entered, exited, or progressed through.</p>
+
+        <pre><code class="language-js">const scroller = scrollama();
+// setup the instance, pass callback functions
+scroller
+  .setup({
+    step: ".card",
+    threshold: 0.5, // trigger when 50% of the step is visible
+  })
+  .onStepEnter((response) => {
+    // { element, index, direction }
+  })
+  .onStepExit((response) => {
+    // { element, index, direction }
+  })
+  .onStepProgress((response) => {
+    // { element, index, progress, direction }
+  });</code></pre>
+
+  <p>Let's explain this. We set the class for our steps ("<code>.card</code>") and specify a threshold of 0.5, which means the callback will be triggered when 50% of the step is visible.</p>
+  
+  <p>What can go in the call back? Anything you can imagine! You can change the background color, trigger an animation, update text, etc. The callback function will receive a response object that contains information about the step that was entered, exited, or progressed through, such as the element itself, its index, the direction of scrolling, and the progress through the step.</p>
+  <p>For example, let change the color of the background as we scroll through the cards.</p>
+
+<pre><code class="language-js">const scroller = scrollama();
+scroller
+  .setup({
+    step: ".card",
+    threshold: 0.5, // trigger when 50% of the step is visible
+  })
+  .onStepEnter((response) => {
+    const { index } = response;
+    const background = document.querySelector(".background");
+    background.style.backgroundColor = `hsl(${index * 60}, 70%, 70%)`;
+  });</code></pre>
+
+        
+
+        <div id="mini-scrolly-demo" class="mini-scrolly-demo">
+          <div class="example-background" id="mini-scrolly-background"></div>
+          <div class="example-foreground">
+            <div class="example-card" data-step-index="0">Step 1</div>
+            <div class="example-card" data-step-index="1">Step 2</div>
+            <div class="example-card" data-step-index="2">Step 3</div>
+            <div class="example-card" data-step-index="3">Step 4</div>
+          </div>
+        </div>
+
+        <p>Live Scrollama response:</p>
+        <pre id="mini-scrolly-response" aria-live="polite">Waiting for step enter...</pre>
+
+
+        <h2>2.4. Some tips and tricks</h2>
+
+        <p>I am by no means an expert but here are some tips and tricks I have learned in my experience with scrollytelling.</p>
+
+        <h3>Keep Scrollama callbacks simple</h3>
+
+        <p>Rather than have complex logic in your Scrollama callbacks, just have it update a state variable such as <code>currentStep</code>. You can then use this state variable to control the behavior of other elements on the page as it changes. I find this helps keep the code maintainable and performant.</p>
+
+        <h3>Use a config object for text</h3>
+
+        <p>Rather than hardcoding text into your HTML, consider using a config object in your JavaScript file to store the text for each step. This can make it easier to manage and update the text content for your scrollytelling story. Many newsrooms use <a href="https://archieml.org/">archieML</a>, a tool created by the NYT, to pull text into your scrollytelly from a Google Doc or other source. This helps immensely with the writing/editing process and allows others working on the story to work in a more familiar environment and for you to not have to copy and paste text.</p>
+
+        <h3>Design with mobile in mind</h3>
+
+        <p>Scrollytelling stories can be particularly challenging to design for mobile devices, as the smaller screen size can make it difficult to create a visually engaging experience. When designing for mobile, consider using larger text and simpler graphics to ensure that the story is still accessible and engaging on smaller screens. You may also want to consider using a different scrollytelling technique, such as click-based progression, for mobile users.</p>
+      
+
+        
+  
+       
+
+           
+      </article>
+    </main>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script defer src="script.js"></script>
+  </body>
+</html>

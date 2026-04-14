@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/style/style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="sample.css" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="scrollama.min.js"></script>
+
+    <title>First Scrollytelling</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-left">
+          <strong>Austin Steinhart</strong>
+        </div>
+        <nav class="header-nav">
+          <a href="/">Home</a>
+          <a href="/docs">Docs</a>
+          <a href="/about">About</a>
+        </nav>
+      </div>
+      <hr />
+    </header>
+    <main>
+      <h1>First Scrollytelling</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
+        voluptate.
+      </p>
+      <h2>Here is a section</h2>
+      <section id="intro">
+        <h1 class="intro__hed">Sticky Overlay Example</h1>
+        <p class="intro__dek">Start scrolling to see how it works.</p>
+      </section>
+
+      <section id="scrolly">
+        <figure>
+          <p>0</p>
+        </figure>
+
+        <article>
+          <div class="step" data-step="1">
+            <p>STEP 1</p>
+          </div>
+          <div class="step" data-step="2">
+            <p>STEP 2</p>
+          </div>
+          <div class="step" data-step="3">
+            <p>STEP 3</p>
+          </div>
+          <div class="step" data-step="4">
+            <p>STEP 4</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="outro"></section>
+    </main>
+    <script defer src="script.js"></script>
+  </body>
+</html>
