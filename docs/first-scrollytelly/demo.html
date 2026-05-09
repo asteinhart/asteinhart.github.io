@@ -9,6 +9,92 @@
     <script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
     <link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet' />
     <title>3. A simple demo</title>
+    <style>
+
+.example-background {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.example-foreground {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+}
+
+.step {
+    height: 100%;
+    min-height: 100vh;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.example-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 1px solid #ababab;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+#demo-scrolly-response {
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+    max-height: 60vh;
+    overflow: auto;
+    margin: 0;
+    padding: 0.5rem;
+    border: 1px solid #d6d6d6;
+}
+
+.is-hidden {
+    display: none;
+}
+
+#demo-toggle-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#demo-toggle {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid #aaa;
+    background: white;
+    cursor: pointer;
+}
+
+#code-view {
+    margin: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    font-size: 0.72rem;
+}
+
+#code-view code {
+    display: block;
+    white-space: pre;
+}
+
+@media (max-width: 600px) {
+    #code-view {
+        font-size: 0.6rem;
+    }
+}
+    </style>
   </head>
   <body>
       <header>
@@ -19,7 +105,6 @@
         <nav class="header-nav">
             <a href="https://austinsteinhart.com">Home</a>
           <a href="/docs">Docs</a>
-         
         </nav>
       </div>
       <hr />
@@ -28,17 +113,19 @@
 
       <article class="main-content">
         <div class="first-next">
-         
-
                 <a href="how.html">&larr; 2. Creating a scrollytelling story</a>
                  <a href=""></a>
-                
             </div>
         <h1>3. A simple demo</h1>
-        <p>
+        <p id ="para">
             This section will walk through a simple scrollytelling demo using Maplibre GL JS, a popular open-source mapping library. The demo will include a sticky overlay and scroll-triggered animations to demonstrate the basics of scrollytelling.
         </p>
-      
+
+        <div id="demo-toggle-bar">
+          <button id="demo-toggle" data-view="demo">&#60;/&#62; View code</button>
+        </div>
+
+        <pre id="code-view" class="is-hidden"><code id="code-view-content">Loading...</code></pre>
 
         <div id="scrolly-demo">
           <div class="example-background" id="scrolly-background">
@@ -55,16 +142,16 @@
             <div class="step">
             <div class="example-card" data-step-index="3">Step 4</div></div>
           </div>
-          
         </div>
         <br><br>
+
+        <p>Download the <a href="scrolly-map-demo.html" download>code above</a> to try it out yourself.</p>
 
         <p>A recap of what is happening:</p>
         <ul>
             <li>The <strong>background</strong> is the map with full viewport height and <code>position: sticky</code>.</li>
             <li>The <b>foreground</b> are the text cards.</li>
             <li><b>Scrollama</b> is used to trigger events based on scroll position. The offset is 0.5 meaning when the card is halfway through the viewport, it will trigger an event. You can view this change and response in "Scrollama response" </li>
-         
             <li>The map is being updated based on the card index that is in view</li>
         </ul>
 
@@ -75,7 +162,6 @@
                 <div></div>
             </div>
 
-
         <aside class="sphinxsidebarwrapper" aria-label="Scrollama response">
           <h2>Scrollama response</h2>
           <pre id="demo-scrolly-response" aria-live="polite">Waiting for events...</pre>
@@ -84,7 +170,29 @@
       </article>
     </main>
     <script src="https://unpkg.com/scrollama"></script>
-
     <script defer src="demo.js"></script>
+    <script>
+      const codeContent = document.getElementById("code-view-content");
+      const codeView = document.getElementById("code-view");
+      const scrollyDemo = document.getElementById("scrolly-demo");
+      const btn = document.getElementById("demo-toggle");
+
+      fetch("scrolly-map-demo.html")
+        .then(r => r.text())
+        .then(text => {
+          codeContent.textContent = text.split("<!-- Code injected by live-server")[0].trimEnd();
+        });
+
+      btn.addEventListener("click", () => {
+        const showingCode = !codeView.classList.contains("is-hidden");
+        codeView.classList.toggle("is-hidden", showingCode);
+        scrollyDemo.classList.toggle("is-hidden", !showingCode);
+        btn.textContent = showingCode ? "</> View code" : "⌖ View demo";
+        if (!showingCode) {
+          const para = document.getElementById("para");
+          window.scrollTo({ top: para.offsetTop + para.offsetHeight, behavior: "instant" });
+        }
+      });
+    </script>
   </body>
 </html>

@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <p>Let's now put a new div below the background. This will be our <span class="foreground-text">foreground</span>. This will hold our text cards that we will scroll through.</p>
+        <p>Let's now put a new div below the background shown below in the light grey. This will be our <span class="foreground-text">foreground</span>. This will hold our text cards, the black rectangles, that we will scroll through.</p>
 
         <div class="non-stick-demo">
           <div class="background">
@@ -72,7 +72,7 @@
           
         </div>
 
-        <p>Ok this is almost right but now we want to make the background stay in place as we scroll. We can achieve this by making the <span class="background-text">background</span> a <code>sticky</code> element.</p>
+        <p>Ok this is almost right but now we want to make the background stay in place as we scroll. We can achieve this by making the <span class="background-text">background</span> a <code>sticky</code> element. You now can see where the <span class="foreground-text">foreground</span> comes into view with the text cards inside. Toggle the viewport to see the <span class="foreground-text">foreground</span> start below and scroll over the the <span class="background-text">background</span>.</p>
 
         <button type="button" class="figure-toggle" data-figure-toggle="sticky-figure-demo">
           Only viewport visible
@@ -150,6 +150,18 @@
 
         <p>Rather than use that API directly, we are going to use a tool called <a href="https://github.com/russellsamora/scrollama" target="_blank">Scrollama</a> which was built by <a href="https://pudding.cool/" target="_blank">the Pudding</a> and is designed to simplify the process of creating scrollytelling experiences using the Intersection Observer API.</p>
 
+        <details>
+            <summary>Other options to consider</summary>
+            <p>
+            Scrollama is by no means the only option for creating scroll-based storytelling experiences. Other tools to consider include:</p>
+            <ul>
+                <li>Just use the Intersection Observer API directly, which gives you more control but requires more setup and code.</li>
+                <li><a href="http://imakewebthings.com/waypoints/" target="_blank">Waypoints</a> is a very simple long used library for scroll-based interactions but it is no longer maintained and does not use the Intersection Observer API.</li>
+                <li><a href="http://gsap.com/scroll/">GSAP</a> is a powerful animation library that can be used for scroll-based animations. Often overkill to just use for scrollytelling</li>
+                <li>If you are using Svelte, check out <a href="https://github.com/sveltejs/svelte-scroller" target="_blank">svelte-scroller</a> written by Rich Harris, the creator of Svelte. This uses Intersection Observer's under the hood.</li>
+            </ul>
+        </details>
+
         <h3>Setting up Scrollama</h3>
 
         <p>To set up Scrollama, we first need to include the Scrollama library in our HTML file. We can do this by adding a script tag that points to the Scrollama library.</p>
@@ -177,7 +189,7 @@ scroller
 
   <p>Let's explain this. We set the class for our steps ("<code>.step</code>") and specify a threshold of 0.5, which means the callback will be triggered when 50% of the step is visible.</p>
   
-  <p>What can go in the call back? Anything you can imagine! You can change the background color, trigger an animation, update text, etc. The callback function will receive a response object that contains information about the step that was entered, exited, or progressed through, such as the element itself, its index, the direction of scrolling, and the progress through the step.</p>
+  <p>What can go in the callback? Anything you can imagine! You can change the background color, trigger an animation, update text, etc. The callback function will receive a response object that contains information about the step that was entered, exited, or progressed through, such as the element itself, its index, the direction of scrolling, and the progress through the step.</p>
   <p>For example, let's change the color of the background as we scroll through the cards.</p>
 
 <pre><code class="language-js">
@@ -213,10 +225,17 @@ scroller
           </div>
          
         </div>
+        <details>
+          <summary>Full html file for the above example — <a href="mini-scrolly-demo.html" download>download it here</a>.</summary>
+
+          <pre><code class="language-html" data-src="mini-scrolly-demo.html">Loading...</code></pre>
+        </details>
+
+        <p>
 
         <h2>2.4. Some tips and tricks</h2>
 
-        <p>I am by no means an expert, but here are some tips and tricks I have learned in my experience with scrollytelling.</p>
+        <p>Here are some tips and tricks I have learned in my experience with scrollytelling.</p>
 
         <h3>Keep Scrollama callbacks simple</h3>
 
@@ -244,5 +263,14 @@ scroller
     </main>
     <script src="https://unpkg.com/scrollama"></script>
     <script defer src="script.js"></script>
+    <script>
+      document.querySelectorAll("code[data-src]").forEach(function (el) {
+        fetch(el.dataset.src)
+          .then(function (r) { return r.text(); })
+          .then(function (text) {
+            el.textContent = text.split("\x3c!-- Code injected by live-server")[0].trimEnd();
+          });
+      });
+    </script>
   </body>
 </html>
