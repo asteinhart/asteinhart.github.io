@@ -75,7 +75,7 @@ h3 {
 .next {
     display: flex;
     justify-content: space-between;
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size: 1.25rem;
 }
 
@@ -394,7 +394,22 @@ a:hover {
     text-decoration: underline;
 }
 
+.disclaimer, .disclaimer a {
+    font-size: 1rem;
+    color: #555;
+}
+
 @media (max-width: 950px) {
+
+    body {
+        padding-top: 20px
+    }
+
+    header,
+    main {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
 
     body {
         margin-top: 0;
@@ -404,11 +419,6 @@ a:hover {
         display: none;
     }
 
-    header,
-    .main-content {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
 
     .header-container {
         flex-wrap: wrap;
@@ -449,6 +459,12 @@ a:hover {
     .mini-scrolly-demo {
         width: 100%;
     }
+
+    .first-next,
+    .next {
+        font-size: 1rem;
+        margin-top: 2rem;
+    }
 }
 
 @media (max-width: 560px) {
@@ -486,6 +502,18 @@ a:hover {
     ul,
     summary {
         font-size: 1rem;
+    }
+
+    .first-next,
+    .next {
+        flex-direction: column;
+        gap: 0.1rem;
+        font-size: 0.95rem;
+    }
+
+    .first-next a:last-child,
+    .next a:last-child {
+        text-align: right;
     }
 }
 
