@@ -23,6 +23,7 @@ function createColoredTags(tags) {
     Frontend: "tag-frontend",
     R: "tag-r",
     Svelte: "tag-svelte",
+    Guide: "tag-guide",
   };
 
   return tags
@@ -65,7 +66,7 @@ function createStoryCard(story) {
 function filterStories() {
   const storyCards = document.querySelectorAll(".story-card-container");
   const activeFilters = Array.from(
-    document.querySelectorAll(".filter-btn.active")
+    document.querySelectorAll(".filter-btn.active"),
   )
     .map((btn) => btn.getAttribute("data-filter"))
     .filter((filter) => filter !== "all");
@@ -87,7 +88,7 @@ function filterStories() {
     } else {
       // Show card if it has ALL of the selected tags (AND logic)
       const hasAllTags = activeFilters.every((filter) =>
-        cardTags.includes(filter)
+        cardTags.includes(filter),
       );
       if (hasAllTags) {
         card.classList.remove("hidden");
@@ -156,7 +157,7 @@ function setupFilterButtons() {
           const hasActiveFilters = Array.from(filterButtons).some(
             (btn) =>
               btn.classList.contains("active") &&
-              btn.getAttribute("data-filter") !== "all"
+              btn.getAttribute("data-filter") !== "all",
           );
           if (!hasActiveFilters) {
             allButton.classList.add("active");
