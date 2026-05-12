@@ -49,15 +49,7 @@
         height: 100%;
       }
 
-      #demo-scrolly-response {
-        white-space: pre-wrap;
-        font-size: 0.85rem;
-        max-height: 60vh;
-        overflow: auto;
-        margin: 0;
-        padding: 0.5rem;
-        border: 1px solid #d6d6d6;
-      }
+    
 
       .is-hidden {
         display: none;
@@ -126,7 +118,7 @@
           This section will walk through a simple scrollytelling demo using
           Maplibre GL JS, a popular open-source mapping library. The demo will
           include a sticky overlay and scroll-triggered animations to
-          demonstrate the basics of scrollytelling.
+          demonstrate the basics of scrollytelling. Click "View code" to see the full code for the demo.
         </p>
 
         <div id="demo-toggle-bar">
@@ -173,15 +165,14 @@
             The <strong>background</strong> is the map with full viewport height
             and <code>position: sticky</code>.
           </li>
-          <li>The <b>foreground</b> are the text cards.</li>
+          <li>The <b>foreground</b> contains the text cards.</li>
           <li>
-            <b>Scrollama</b> is used to trigger events based on scroll position.
+            <b>Scrollama</b> is being used to trigger events (i.e. run additional code) based on scroll position.
             The offset is 0.5 meaning when the card is halfway through the
-            viewport, it will trigger an event. You can view this change and
-            response in "Scrollama response"
+            viewport, it will trigger an event. You can see what is returned by Scrollama in the sidebar.
           </li>
           <li>
-            The map is being updated based on the card index that is in view
+            The event being triggered when the a new card comes into view is to use the flyTo() feature of Maplibre GL JS to fly to a new city. 
           </li>
         </ul>
 
@@ -189,7 +180,7 @@
           There are lots of different ways to implement scrollytelling and this
           demo is just one example. Good scrollytelling takes first and foremost
           a good story and compelling visuals and second, careful attention to
-          the user experience.
+          the user experience. Now go off and make cool, impactful things for the web!
         </p>
 
         <div class="next">

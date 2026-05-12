@@ -18,7 +18,7 @@
       height: 100vh;
       background-color: #b45c46;
       transition: background-color 0.3s ease;
-      z-index: 0;
+      z-index: -1; /* -1 needed for safari sticky issue*/
     }
 
     .foreground {
@@ -49,19 +49,28 @@
 </head>
 <body>
   <div class="scroller">
-    <div class="background"></div>
-    <div class="foreground">
+    <div class="background">
+      <!-- Background content (e.g., map, image, etc.) goes here -->
+      <!-- Empty in this example as we are just adding background color -->
+    </div>
+   
+    <div class="foreground"> 
+       <!-- Foreground content, usually text or other elements -->
       <div class="step"><div class="card">Step 0</div></div>
       <div class="step"><div class="card">Step 1</div></div>
       <div class="step"><div class="card">Step 2</div></div>
       <div class="step"><div class="card">Step 3</div></div>
     </div>
   </div>
+  <!-- Add scrollama script, could also be included via local file -->
   <script src="https://unpkg.com/scrollama"></script>
   <script>
+
+
     const colors = ["#b45c46", "#5f9ea0", "#7fa67a", "#b47846"];
     const background = document.querySelector(".background");
 
+    // setup scrollama instance using the steps class above
     const scroller = scrollama();
     scroller
       .setup({
@@ -69,6 +78,7 @@
         threshold: 0.5,
       })
       .onStepEnter((response) => {
+        // change background color on step enter using the array above
         background.style.backgroundColor = colors[response.index];
       });
   </script>

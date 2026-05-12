@@ -19,7 +19,7 @@ main {
 }
 
 h1 {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     line-height: 0.9;
     margin-bottom: 1rem;
     margin-top: 1rem;
@@ -27,7 +27,7 @@ h1 {
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     line-height: 0.9;
     margin-bottom: 0.5rem;
     margin-top: 1.5rem;
@@ -35,9 +35,9 @@ h3 {
 }
 
 .sphinxsidebarwrapper {
-    width: 220px;
+    width: 200px;
     position: fixed;
-    left: calc(50% - 377px - 260px);
+    left: 10px;
     top: 1rem;
 }
 
@@ -64,6 +64,18 @@ h3 {
 .sphinxsidebarwrapper a:hover {
     text-decoration: underline;
 }
+
+#demo-scrolly-response {
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+    max-height: 60vh;
+    overflow: auto;
+    margin: 0;
+    padding: 0.5rem;
+    border: 1px solid #d6d6d6;
+}
+
+
 
 .first-next {
     display: flex;
@@ -192,7 +204,7 @@ h3 {
 .background.sticky {
     position: sticky;
     top: 0;
-    z-index: 0;
+    z-index: -1;
 
 }
 
@@ -208,7 +220,6 @@ h3 {
     gap: 100px;
     overflow: visible;
     padding: 70px 0 220px;
-    box-sizing: border-box;
     z-index: 1;
     background-color: #1f293339;
 }
@@ -344,7 +355,7 @@ p, ul, summary {
     margin-top: 0;
     margin-bottom: 1rem;
     line-height: 1.5em;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 summary {
@@ -397,6 +408,24 @@ a:hover {
 .disclaimer, .disclaimer a {
     font-size: 1rem;
     color: #555;
+}
+
+
+@media (max-width: 1175px) {
+    .sphinxsidebarwrapper {
+        width: 150px;
+    }
+
+    #demo-scrolly-response {
+        font-size: 0.6rem;
+
+    }
+}
+
+@media (max-width: 1075px) {
+    .sphinxsidebarwrapper {
+        display: none;
+    }
 }
 
 @media (max-width: 950px) {
