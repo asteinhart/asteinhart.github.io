@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <title>3. A simple demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
     <style>
       .example-background {
         position: sticky;
@@ -130,7 +131,7 @@
         <pre
           id="code-view"
           class="is-hidden"
-        ><code id="code-view-content">Loading...</code></pre>
+        ><code id="code-view-content" class="language-html">Loading...</code></pre>
 
         <div id="scrolly-demo">
           <div class="example-background" id="scrolly-background">
@@ -198,11 +199,14 @@ Waiting for events...</pre
     </main>
     <script src="https://unpkg.com/scrollama"></script>
     <script defer src="scripts/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <script>
       const codeContent = document.getElementById("code-view-content");
       const codeView = document.getElementById("code-view");
       const scrollyDemo = document.getElementById("scrolly-demo");
       const btn = document.getElementById("demo-toggle");
+
+      hljs.highlightAll();
 
       fetch("examples/scrolly-map-demo.html")
         .then((r) => r.text())
@@ -210,6 +214,8 @@ Waiting for events...</pre
           codeContent.textContent = text
             .split("<!-- Code injected by live-server")[0]
             .trimEnd();
+            if (codeContent.dataset) delete codeContent.dataset.highlighted;
+            if (window.hljs) hljs.highlightElement(codeContent);
         });
 
       btn.addEventListener("click", () => {
