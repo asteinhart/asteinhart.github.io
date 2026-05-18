@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../../static/style/style.css" />
     <link rel="stylesheet" href="style/style.css" />
     <title>2. Creating a scrollytelly</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
   </head>
   <body>
       <header>
@@ -261,6 +262,8 @@ scroller
            
       </article>
     </main>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
     <script src="https://unpkg.com/scrollama"></script>
     <script defer src="scripts/script.js"></script>
     <script>
@@ -268,7 +271,11 @@ scroller
         fetch(el.dataset.src)
           .then(function (r) { return r.text(); })
           .then(function (text) {
-            el.textContent = text.split("\x3c!-- Code injected by live-server")[0].trimEnd();
+            console.log(text);
+            el.textContent = text.split("<!-- Code injected by live-server")[0].trimEnd();
+            // Unset dataset.highlighted to force re-highlighting if needed
+            if (el.dataset) delete el.dataset.highlighted;
+            if (window.hljs) hljs.highlightElement(el);
           });
       });
     </script>
