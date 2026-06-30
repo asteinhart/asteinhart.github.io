@@ -1,5 +1,16 @@
 [
   {
+    "title": "Stories of New York City, Mapped",
+    "link": "/metro-diary-map",
+    "description": "An interactive map of the New York Times' Metropolitan Diary — reader stories of everyday life in New York City, placed where they happened, 1976–2026.",
+    "image": "static/style/images/diaries.webm",
+    "tags": [
+      "Interactive",
+      "Frontend",
+      "Mapping"
+    ]
+  },
+  {
     "title": "First scrollytelly",
     "link": "/docs/first-scrollytelly",
     "description": "A guide to creating scrollytelling stories, including when to use scrollytelling and different types of scrollytelling techniques.",
