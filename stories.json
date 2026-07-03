@@ -1,7 +1,7 @@
 [
   {
     "title": "Stories of New York City, Mapped",
-    "link": "/metro-diary-map",
+    "link": "/metro-diary-map?ref=psite",
     "description": "An interactive map of the New York Times' Metropolitan Diary — reader stories of everyday life in New York City, placed where they happened, 1976–2026.",
     "image": "static/style/images/diaries.webm",
     "tags": [
