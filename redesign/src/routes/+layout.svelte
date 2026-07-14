@@ -1,8 +1,9 @@
 <script>
 	import favicon from '$lib/assets/favicon.svg';
 	import '../global.css';
-
 	import Nav from '$lib/components/Nav.svelte';
+
+
  
 
 	let { children } = $props();

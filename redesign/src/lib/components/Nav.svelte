@@ -1,7 +1,9 @@
 <div class="header">
 	<div class="name">
-		<div>Austin</div>
-		<div>Steinhart</div>
+		<a href="/">
+			<div>Austin</div>
+			<div>Steinhart</div>
+		</a>
 	</div>
 	<div class="nav">
 		<a href="/projects">/projects</a>
@@ -31,12 +33,12 @@
 		gap: 2vw;
 	}
 
-	.nav a {
+	a  {
 		text-decoration: none;
 		color: var(--color-text);
 	}
 
-	.nav a:hover {
+	a:hover {
 		text-decoration: underline;
 	}
 </style>
