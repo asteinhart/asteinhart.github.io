@@ -1,6 +1,8 @@
 <script>
 	import Nav from '$lib/components/Nav.svelte';
 	import Spacer from '$lib/components/Spacer.svelte';
+	import Project from '$lib/components/Project.svelte';
+	import { PROJECTS } from '$lib/projects.js';
 </script>
 
 <div class="container">
@@ -43,6 +45,15 @@
 <Spacer />
 
 <hr class="full-line" />
+<Spacer />
+
+<div class="container">
+	<div class="projects">
+		{#each Object.values(PROJECTS) as project}
+			<Project tags={project.tags} title={project.title} img={project.img} url={project.url} />
+		{/each}
+	</div>
+</div>
 
 <style>
 	.nav-small {
@@ -51,6 +62,20 @@
 	}
 
 	.full-line {
+		position: absolute;
 		width: 100%;
+		margin: 0;
+	}
+
+	.projects {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: calc(var(--cell) * 2);
+	}
+
+	@media (max-width: 600px) {
+		.projects {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

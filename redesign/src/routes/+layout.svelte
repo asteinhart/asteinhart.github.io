@@ -1,7 +1,7 @@
 <script>
 	import favicon from '$lib/assets/favicon.svg';
 	import '../global.css';
-	import Nav from '$lib/components/Nav.svelte';
+	//import Footer from '$lib/components/Footer.svelte';
 
 	let { children } = $props();
 </script>
@@ -15,6 +15,8 @@
 <hr class="side-right" />
 
 {@render children()}
+
+<!-- <Footer /> -->
 
 <style>
 	.side-left {
@@ -37,6 +39,8 @@
 	}
 
 	.top {
+		position: absolute;
+		top: 0;
 		width: 100%;
 		margin-top: calc(var(--cell) * 2);
 	}

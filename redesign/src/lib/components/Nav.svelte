@@ -22,7 +22,7 @@
 	.header {
 		display: flex;
 		justify-content: space-between;
-		margin-top: calc(var(--cell) *); /* pull up by one grid row */
+		margin-top: calc(var(--cell) * 2);
 	}
 
 	a {
