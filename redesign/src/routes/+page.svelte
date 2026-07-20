@@ -6,7 +6,6 @@
 <div class="container">
 	<Nav all={true} />
 	<Spacer />
-	<Spacer />
 
 	<div class="intro">
 		<p>
@@ -28,7 +27,11 @@
 			at the dnc, <b>youth programming</b> at <a href="https://changeist.org/">changeist</a>.
 		</p>
 		<Spacer />
-		<p>Find me on linkedin, github, or reach out via email at asteinhart3 at gmail dot com</p>
+		<p>
+			Find me on <a href="https://www.linkedin.com/in/austin-steinhart/">linkedin</a>,
+			<a href="https://github.com/asteinhart">github</a>, or reach out via email at asteinhart3 at
+			gmail dot com.
+		</p>
 		<Spacer />
 		<div class="nav-small">
 			<b><a href="/projects">explore all projects &#8599; </a></b>
@@ -42,15 +45,9 @@
 <hr class="full-line" />
 
 <style>
-	.intro p,
-	.intro a {
-		font-size: 1.1rem;
-		line-height: 1.3rem;
-	}
-
 	.nav-small {
 		display: flex;
-		gap: 5vw;
+		gap: calc(var(--cell) * 2);
 	}
 
 	.full-line {

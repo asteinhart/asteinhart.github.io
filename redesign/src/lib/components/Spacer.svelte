@@ -2,6 +2,6 @@
 
 <style>
     .spacer {
-        height: 2vh;
+        height: var(--cell); /* one grid row */
     }
 </style>

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700');
 
+:root {
+	--cell: 2vw;
+	/* grid unit — drives both the background grid and text rhythm */
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -10,7 +15,10 @@ body {
 	font-family: 'Arimo', sans-serif;
 	letter-spacing: -0.02em;
 	font-weight: 400;
-	font-size: 1.2rem;
+	font-size: calc(var(--cell) * .7);
+	/* ~1.6 line-height ratio, constant across viewports */
+	line-height: var(--cell);
+	/* each line advances exactly one grid row */
 	min-height: 100vh;
 	box-sizing: border-box;
 	background-color: #fff;
@@ -18,7 +26,30 @@ body {
 	background-image:
 		linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
 		linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-	background-size: 2vw 2vw;
+	background-size: var(--cell) var(--cell);
+}
+
+/* Keep every vertical space a whole multiple of --cell so text stays on the grid */
+p {
+	margin-block: 0 0;
+}
+
+h1 {
+	font-size: calc(var(--cell) * 1.5);
+	line-height: calc(var(--cell) * 2);
+	margin-block: calc(var(--cell) * 2) var(--cell);
+}
+
+h2 {
+	font-size: var(--cell);
+	line-height: calc(var(--cell) * 2);
+	margin-block: calc(var(--cell) * 2) var(--cell);
+}
+
+h3 {
+	font-size: calc(var(--cell) * 0.8);
+	line-height: calc(var(--cell) * 2);
+	margin-block: var(--cell) 0;
 }
 
 a {
@@ -32,9 +63,26 @@ a:hover {
 
 hr {
 	color: rgb(0, 0, 0, 0.7);
+	margin: 0;
 }
 
 .container {
-	margin-left: 6.5vw;
-	margin-right: 6.5vw;
+	margin-left: calc(var(--cell) * 3.1);
+	margin-right: calc(var(--cell) * 3);
+}
+
+@media (max-width: 600px) {
+	:root {
+		--cell: 5vw;
+	}
+
+	body {
+		font-size: calc(var(--cell) * 0.7);
+	}
+
+	.container {
+		margin-left: calc(var(--cell) * 2.1);
+		margin-right: calc(var(--cell) * 2);
+	}
+
 }
