@@ -1,15 +1,20 @@
+<script>
+	let { all = false, project = false, blog = false, docs = false, links = false } = $props();
+</script>
+
 <div class="header">
 	<div class="name">
-		<a href="/">
-			<div>Austin</div>
-			<div>Steinhart</div>
-		</a>
+		<b
+			><a href="/">
+				<div>Austin</div>
+				<div>Steinhart</div>
+			</a></b
+		>
 	</div>
 	<div class="nav">
-		<a href="/projects">/projects</a>
-		<a href="/blog">/blog</a>
-		<a href="/docs">/docs</a>
-		<a href="/links">/links</a>
+		<a class:bold={project | all} href="/projects" data-text={"/projects"}>/projects</a>
+		<a class:bold={blog | all} href="/blog" data-text={"/blog"}>/blog</a>
+		<a class:bold={links | all} href="/links" data-text={"/links"}>/links</a>
 	</div>
 </div>
 
@@ -17,11 +22,13 @@
 	.header {
 		display: flex;
 		justify-content: space-between;
-		margin-left: 6.5vw;
 		margin-top: -3vh;
 		margin-right: 6.5vw;
-		color: rgba(0, 0, 0, 0.7);
 		font-size: 1.1rem;
+	}
+
+	.bold {
+		font-weight: bold;
 	}
 
 	.nav {
@@ -32,8 +39,17 @@
 		display: flex;
 		gap: 2vw;
 	}
+    /* Create a hidden, bold duplicate of the text */
+    a::before {
+    	content: attr(data-text);
+        font-weight: bold;
+        visibility: hidden;
+        height: 0;
+        display: block;
+        overflow: hidden;
+  }
 
-	a  {
+	a {
 		text-decoration: none;
 		color: var(--color-text);
 	}

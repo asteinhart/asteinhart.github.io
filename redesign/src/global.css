@@ -2,20 +2,39 @@
 
 * {
 	margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
 	font-family: 'Arimo', sans-serif;
-    font-weight: 400;
+	letter-spacing: -0.02em;
+	font-weight: 400;
+	font-size: 1.2rem;
 	min-height: 100vh;
 	box-sizing: border-box;
 	background-color: #fff;
-	color: #000;
+	color: rgba(0, 0, 0, 0.7);
 	background-image:
 		linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px); 
+		linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 	background-size: 2vw 2vw;
 }
 
+a {
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.7);
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+hr {
+	color: rgb(0, 0, 0, 0.7);
+}
+
+.container {
+	margin-left: 6.5vw;
+	margin-right: 6.5vw;
+}
