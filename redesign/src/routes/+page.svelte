@@ -28,7 +28,7 @@
 		</p>
 		<Spacer />
 		<p>
-			Find me on <a href="https://www.linkedin.com/in/austin-steinhart/">linkedin</a>,
+			find me on <a href="https://www.linkedin.com/in/austin-steinhart/">linkedin</a>,
 			<a href="https://github.com/asteinhart">github</a>, or reach out via email at asteinhart3 at
 			gmail dot com.
 		</p>
