@@ -101,6 +101,10 @@
 		display: flex;
 		gap: 3vw;
 	}
+
+	.intro {
+		width: 80%;
+	}
 	.vert-line {
 		position: absolute;
 		height: 100%;
@@ -136,6 +140,10 @@
 
 		.vert-line {
 			display: none;
+		}
+
+		.intro {
+			width: 100%;
 		}
 	}
 </style>
