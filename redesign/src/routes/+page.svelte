@@ -13,6 +13,22 @@
 		url: siteConfig.url,
 		sameAs: ['https://www.linkedin.com/in/austin-steinhart/', 'https://github.com/asteinhart']
 	};
+	const favs = [
+		'stories_nyc_mapped',
+		'food-weap',
+		'scrollytelling',
+		'mapping-uchi',
+		'thesunset',
+		'great_aid_recession'
+	];
+
+	let projects = $state(PROJECTS);
+
+	let proj_favs = $derived.by(() => {
+		return favs.map((key) => PROJECTS[key]).filter(Boolean);
+	});
+
+	$inspect(proj_favs, 'proj_favs');
 </script>
 
 <Seo
@@ -68,7 +84,7 @@
 <div class="container-projects">
 	<hr class="vert-line" />
 	<div class="projects">
-		{#each Object.values(PROJECTS) as project}
+		{#each proj_favs as project}
 			<Project
 				tags={project.tags}
 				title={project.title}
