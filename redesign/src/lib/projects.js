@@ -101,7 +101,7 @@ export const PROJECTS = {
 		description:
 			'In 2023, the Biden Administration released the first ever Federal AI Use Case Inventory. See how the federal government is using AI.',
 		img: 'static/style/images/ai.webm',
-		tags: ['Writing', 'Interactive', 'Design']
+		tags: ['Writing', 'Frontend', 'Design']
 	},
 	find_early_voting: {
 		title: 'Find a Chicago Early Voting Location',
@@ -140,7 +140,7 @@ export const PROJECTS = {
 		description:
 			'Inspired by an interview with journalist Jamie Kalven, son of Harry Kalven, Jr. of the Kalven Report, the Maroon annotates this oft-cited but little read document.',
 		img: 'static/style/images/annotating_4.webm',
-		tags: ['Interactive', 'Frontend', 'Design']
+		tags: ['Frontend', 'Design']
 	},
 	content_we_love: {
 		title: 'Content We Love',
