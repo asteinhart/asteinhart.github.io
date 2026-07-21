@@ -15,7 +15,7 @@ body {
 	font-family: 'Arimo', sans-serif;
 	letter-spacing: -0.02em;
 	font-weight: 400;
-	font-size: calc(var(--cell) * 0.7);
+	font-size: calc(var(--cell) * 0.72);
 	/* ~1.6 line-height ratio, constant across viewports */
 	line-height: var(--cell);
 	/* each line advances exactly one grid row */

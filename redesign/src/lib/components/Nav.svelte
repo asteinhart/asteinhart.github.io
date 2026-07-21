@@ -1,7 +1,17 @@
 <script>
-	let { all = false, project = false, blog = false, docs = false, links = false } = $props();
+	import Spacer from './Spacer.svelte';
+
+	let {
+		all = false,
+		projects = false,
+		blog = false,
+		docs = false,
+		links = false,
+		photos = false
+	} = $props();
 </script>
 
+<Spacer />
 <div class="header">
 	<div class="name">
 		<b
@@ -12,9 +22,10 @@
 		>
 	</div>
 	<div class="nav">
-		<a class:bold={project | all} href="/projects" data-text={'/projects'}>/projects</a>
+		<a class:bold={projects | all} href="/projects" data-text={'/projects'}>/projects</a>
 		<a class:bold={blog | all} href="/blog" data-text={'/blog'}>/blog</a>
 		<a class:bold={links | all} href="/links" data-text={'/links'}>/links</a>
+		<a class:bold={photos | all} href="/photos" data-text={'/photos'}>/photos</a>
 	</div>
 </div>
 
@@ -26,7 +37,7 @@
 	}
 
 	a {
-		font-size: calc(var(--cell) * 0.8);
+		font-size: calc(var(--cell) * 0.7);
 	}
 
 	.bold {
@@ -34,13 +45,9 @@
 	}
 
 	.nav {
-		display: block;
-		/* align-self: flex-end; */
-	}
-
-	.nav {
 		display: flex;
 		gap: 2vw;
+		/* align-self: flex-end; */
 	}
 	/* Create a hidden, bold duplicate of the text */
 	a::before {
