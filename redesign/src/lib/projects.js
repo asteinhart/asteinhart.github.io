@@ -56,8 +56,7 @@ export const PROJECTS = {
 		tags: ['Graphics', 'Design']
 	},
 	cta_bus_service: {
-		title:
-			'CTA says bus service is back to prepandemic levels. A new analysis shows which neighborhoods were slowest to get service back.',
+		title: 'CTA says bus service is back to prepandemic levels. A new analysis says otherwise.',
 		url: 'https://www.chicagotribune.com/2024/12/30/cta-bus-service-analysis/?share=yarmeie3ytbainrsuh1l',
 		description:
 			'Worked on a team to produce the analysis and visualizations used in this story in the Chicago Tribune.',

@@ -117,6 +117,8 @@
 		</table>
 	</div>
 {/if}
+<Spacer />
+<Spacer />
 
 <style>
 	.filter-container {
@@ -187,10 +189,16 @@
 		margin-top: calc(var(--cell));
 	}
 
+	table {
+		border-collapse: collapse;
+	}
+
 	th,
 	td {
 		text-align: left;
-		padding-right: calc(var(--cell) * 3);
+		vertical-align: top;
+		padding-right: calc(var(--cell));
 		font-size: calc(var(--cell) * 0.72);
+		height: calc(var(--cell));
 	}
 </style>

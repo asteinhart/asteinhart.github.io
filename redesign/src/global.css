@@ -71,6 +71,10 @@ hr {
 	margin-right: calc(var(--cell) * 3);
 }
 
+table {
+	border-collapse: collapse;
+}
+
 @media (max-width: 600px) {
 	:root {
 		--cell: 5vw;

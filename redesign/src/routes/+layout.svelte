@@ -1,7 +1,8 @@
 <script>
 	import favicon from '$lib/assets/favicon.svg';
+	import Footer from '$lib/components/Footer.svelte';
+
 	import '../global.css';
-	//import Footer from '$lib/components/Footer.svelte';
 
 	let { children } = $props();
 </script>
@@ -10,15 +11,31 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<hr class="top" />
-<hr class="side-left" />
-<hr class="side-right" />
+<div class="app">
+	<hr class="top" />
+	<hr class="side-left" />
+	<hr class="side-right" />
 
-{@render children()}
-
-<!-- <Footer /> -->
+	<main class="content">
+		{@render children()}
+	</main>
+	<!-- <Footer /> -->
+</div>
 
 <style>
+	.app {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh; /* fallback if round() unsupported */
+		/* snap to the grid so the footer's bottom edge lands on a --cell line */
+		min-height: round(down, 100vh, var(--cell));
+	}
+
+	/* grows to fill leftover space so the footer lands at the bottom of max(content, viewport) */
+	.content {
+		flex: 1 0 auto;
+	}
+
 	.side-left {
 		position: fixed;
 		top: 0;
