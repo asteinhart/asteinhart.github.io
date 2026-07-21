@@ -22,6 +22,7 @@
 		padding-inline: calc(var(--cell) * 0.15);
 		border: none;
 		background: none;
+		cursor: cell;
 	}
 	.tag-text {
 		display: flex;
