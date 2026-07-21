@@ -2,8 +2,22 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Spacer from '$lib/components/Spacer.svelte';
 	import Project from '$lib/components/Project.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { PROJECTS } from '$lib/projects.js';
+	import { siteConfig } from '$lib/config/site.js';
+
+	const personJsonLd = {
+		'@context': 'https://schema.org',
+		'@type': 'Person',
+		name: siteConfig.name,
+		url: siteConfig.url,
+		sameAs: ['https://www.linkedin.com/in/austin-steinhart/', 'https://github.com/asteinhart']
+	};
 </script>
+
+<Seo
+	description="Austin Steinhart uses data, design, and engineering to solve problems and tell stories that matter."
+/>
 
 <div class="container">
 	<Nav all={true} />
@@ -80,6 +94,8 @@
 	}
 
 	.container-projects {
+		position: relative;
+
 		margin-left: calc(var(--cell) * 2);
 		margin-right: calc(var(--cell) * 2);
 		margin-top: calc(var(--cell) * -1);

@@ -1,21 +1,12 @@
 import { siteConfig } from "$lib/config/site";
+import { BLOGS } from "$lib/blogs.js";
 
 export const prerender = true;
 
-
-
-async function getPosts() {
-    const paths = import.meta.glob("/src/posts/*.md", { eager: true });
-
-    const posts = Object.entries(paths).map(([path, file]: [string, any]) => {
-        const slug = path.split("/").at(-1)?.replace(".md", "");
-        const metadata = file.metadata;
-        return { slug, ...metadata };
-    });
-
-    return posts.sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
+function getPosts() {
+    return Object.entries(BLOGS)
+        .map(([slug, post]: [string, any]) => ({ slug, ...post }))
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 // Escape XML special characters
@@ -29,7 +20,7 @@ function escapeXml(unsafe: string): string {
 }
 
 export const GET = async () => {
-    const posts = await getPosts();
+    const posts = getPosts();
     const baseUrl = siteConfig.url;
 
     const rss = `<?xml version="1.0" encoding="UTF-8"?>
@@ -44,10 +35,14 @@ export const GET = async () => {
         ${posts
             .map(
                 (post) => `        <item>
-            <title>${escapeXml(post.title)}</title>
-            <description>${escapeXml(post.description)}</description>
-            <link>${baseUrl}/blog/${post.slug}</link>
-            <guid isPermaLink="true">${baseUrl}/blog/${post.slug}</guid>
+            <title>${escapeXml(post.title)}</title>${
+                    post.description
+                        ? `
+            <description>${escapeXml(post.description)}</description>`
+                        : ""
+                }
+            <link>${escapeXml(post.url)}</link>
+            <guid isPermaLink="true">${escapeXml(post.url)}</guid>
             <pubDate>${new Date(post.date).toUTCString()}</pubDate>
             ${post.tags ? post.tags.map((tag: string) => `<category>${escapeXml(tag)}</category>`).join("\n            ") : ""}
         </item>`

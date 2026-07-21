@@ -2,6 +2,7 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Spacer from '$lib/components/Spacer.svelte';
 	import Subscribe from '$lib/components/Subscribe.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { BLOGS } from '$lib/blogs.js';
 
 	function filterBlog(event) {
@@ -10,6 +11,11 @@
 		// Implement filtering logic here
 	}
 </script>
+
+<Seo
+	title="Blog"
+	description="Writing on data visualization, design, and engineering by Austin Steinhart."
+/>
 
 <div class="container">
 	<Nav blog={true} />

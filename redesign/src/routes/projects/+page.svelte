@@ -3,11 +3,12 @@
 	import Spacer from '$lib/components/Spacer.svelte';
 	import Project from '$lib/components/Project.svelte';
 	import Tag from '$lib/components/Tag.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { PROJECTS } from '$lib/projects.js';
 
 	let projects = $state(PROJECTS);
 	let filter = $state('all');
-	let view = $state('list');
+	let view = $state('visual');
 	let allTags = $derived.by(() => {
 		const tagsSet = new Set();
 		Object.values(projects).forEach((project) => {
@@ -38,6 +39,11 @@
 	$inspect(filter, 'filter');
 </script>
 
+<Seo
+	title="Projects"
+	description="Data visualization, design, and engineering projects by Austin Steinhart, spanning journalism, urban research, and civic data."
+/>
+
 <div class="container">
 	<Nav projects={true} />
 	<Spacer />
@@ -57,6 +63,7 @@
 			{/each}
 		</div>
 		<div class="views">
+			show as:
 			<Tag name="visual" active={view === 'visual'} onclick={() => (view = 'visual')} />
 			<Tag name="list" active={view === 'list'} onclick={() => (view = 'list')} />
 		</div>
@@ -114,8 +121,8 @@
 <style>
 	.filter-container {
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
-		align-items: center;
 	}
 
 	.filters {
@@ -132,6 +139,7 @@
 	}
 
 	.container-projects {
+		position: relative;
 		margin-left: calc(var(--cell) * 2);
 		margin-right: calc(var(--cell) * 2);
 		margin-top: calc(var(--cell) * -1);
@@ -145,7 +153,6 @@
 	button.view {
 		background: none;
 		border: none;
-		font-size: 1rem;
 		cursor: pointer;
 	}
 
@@ -184,5 +191,6 @@
 	td {
 		text-align: left;
 		padding-right: calc(var(--cell) * 3);
+		font-size: calc(var(--cell) * 0.72);
 	}
 </style>

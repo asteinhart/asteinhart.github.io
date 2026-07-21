@@ -1,8 +1,14 @@
 <script>
 	import Nav from '$lib/components/Nav.svelte';
 	import Spacer from '$lib/components/Spacer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { LINKS } from '$lib/links.js';
 </script>
+
+<Seo
+	title="Links"
+	description="Books and articles Austin Steinhart recommends."
+/>
 
 <div class="container">
 	<Nav links={true} />
