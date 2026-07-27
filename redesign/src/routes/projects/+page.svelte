@@ -19,19 +19,16 @@
 	});
 
 	let filteredProjects = $derived.by(() => {
+		const matches = (project) =>
+			project.tags.map((t) => t.toLowerCase()).includes(filter.toLowerCase());
+
 		if (filter === 'all') {
-			return Object.values(projects);
-		} else {
-			return Object.values(projects).sort((a, b) =>
-				a.tags.map((t) => t.toLowerCase()).includes(filter.toLowerCase()) &&
-				!b.tags.map((t) => t.toLowerCase()).includes(filter.toLowerCase())
-					? -1
-					: a.tags.map((t) => t.toLowerCase()).includes(filter.toLowerCase()) &&
-						  b.tags.map((t) => t.toLowerCase()).includes(filter.toLowerCase())
-						? 0
-						: 1
-			);
+			return Object.values(projects).map((p) => ({ ...p, muted: false }));
 		}
+
+		return Object.values(projects)
+			.map((p) => ({ ...p, muted: !matches(p) }))
+			.sort((a, b) => (matches(a) === matches(b) ? 0 : matches(a) ? -1 : 1));
 	});
 
 	$inspect(allTags, 'allTags');
@@ -52,20 +49,24 @@
 <div class="container">
 	<div class="filter-container">
 		<div class="filters">
-			filter by:
-			<Tag name="all" active={filter === 'all'} onclick={() => (filter = 'all')} />
-			{#each allTags as tag}
-				<Tag
-					name={tag.toLowerCase()}
-					active={filter.toLowerCase() === tag.toLowerCase()}
-					onclick={() => (filter = tag.toLowerCase())}
-				/>
-			{/each}
+			<span class="label">filter by:</span>
+			<div class="tag-list">
+				<Tag name="all" active={filter === 'all'} onclick={() => (filter = 'all')} />
+				{#each allTags as tag}
+					<Tag
+						name={tag.toLowerCase()}
+						active={filter.toLowerCase() === tag.toLowerCase()}
+						onclick={() => (filter = tag.toLowerCase())}
+					/>
+				{/each}
+			</div>
 		</div>
 		<div class="views">
-			show as:
-			<Tag name="visual" active={view === 'visual'} onclick={() => (view = 'visual')} />
-			<Tag name="list" active={view === 'list'} onclick={() => (view = 'list')} />
+			<span class="label">show as:</span>
+			<div class="tag-list">
+				<Tag name="visual" active={view === 'visual'} onclick={() => (view = 'visual')} />
+				<Tag name="list" active={view === 'list'} onclick={() => (view = 'list')} />
+			</div>
 		</div>
 	</div>
 </div>
@@ -85,7 +86,9 @@
 					img={project.img}
 					url={project.url}
 					description={project.description}
+					muted={project.muted}
 				/>
+				<hr class="divider" />
 			{/each}
 		</div>
 	</div>
@@ -129,6 +132,12 @@
 
 	.filters {
 		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.tag-list {
+		display: flex;
 		gap: 1rem;
 	}
 
@@ -145,6 +154,10 @@
 		margin-left: calc(var(--cell) * 2);
 		margin-right: calc(var(--cell) * 2);
 		margin-top: calc(var(--cell) * -1);
+	}
+
+	.divider {
+		/* display: none; */
 	}
 
 	.projects {
@@ -170,6 +183,7 @@
 
 	.views {
 		display: flex;
+		align-items: center;
 		gap: 1rem;
 		margin-right: 0.5rem;
 	}
@@ -200,5 +214,44 @@
 		padding-right: calc(var(--cell));
 		font-size: calc(var(--cell) * 0.72);
 		height: calc(var(--cell));
+	}
+
+	@media screen and (max-width: 768px) {
+		.filter-container {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			column-gap: 1rem;
+			/* row-gap kept a whole multiple of --cell so rows stay on the baseline grid */
+			row-gap: 0;
+			align-items: start;
+		}
+
+		.filters,
+		.views {
+			/* drop the wrappers so label + tag-list become direct grid items,
+			   letting both rows share the same two columns */
+			display: contents;
+		}
+
+		.tag-list {
+			flex-wrap: wrap;
+			/* row-gap 0: each tag row is exactly --cell tall, so wrapped rows
+			   land on the baseline grid. column-gap doesn't affect the baseline. */
+			gap: 0 0.5rem;
+		}
+
+		.projects {
+			grid-template-columns: 1fr;
+		}
+
+		.vert-line {
+			display: none;
+		}
+
+		.divider {
+			display: block;
+			margin-left: calc(var(--cell) * -1);
+			margin-right: calc(var(--cell) * -1);
+		}
 	}
 </style>

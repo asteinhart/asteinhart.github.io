@@ -92,6 +92,7 @@
 				url={project.url}
 				description={project.description}
 			/>
+			<hr class="divider" />
 		{/each}
 	</div>
 </div>
@@ -111,6 +112,10 @@
 		left: calc(100% / 2); /*middle of the page*/
 		margin: 0;
 		transform: rotate(180deg);
+	}
+
+	.divider {
+		display: none;
 	}
 
 	.container-projects {
@@ -133,7 +138,7 @@
 		grid-template-columns: 1fr 1fr;
 	}
 
-	@media (max-width: 600px) {
+	@media screen and (max-width: 768px) {
 		.projects {
 			grid-template-columns: 1fr;
 		}
@@ -144,6 +149,12 @@
 
 		.intro {
 			width: 100%;
+		}
+
+		.divider {
+			display: block;
+			margin-left: calc(var(--cell) * -1);
+			margin-right: calc(var(--cell) * -1);
 		}
 	}
 </style>

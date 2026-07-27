@@ -62,7 +62,7 @@
 		margin-top: calc(var(--cell) * 2);
 	}
 
-	@media (max-width: 600px) {
+	@media screen and (max-width: 768px) {
 		.top {
 			margin-top: calc(var(--cell) * 1);
 		}

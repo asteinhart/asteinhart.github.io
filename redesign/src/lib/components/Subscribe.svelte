@@ -6,7 +6,7 @@
 >
 	<label for="bd-email">enter your email</label>
 	<input type="email" name="email" id="bd-email" />
-	<input type="submit" value="Subscribe" />
+	<input type="submit" value="subscribe" />
 </form>
 
 <style>

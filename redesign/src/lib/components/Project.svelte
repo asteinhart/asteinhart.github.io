@@ -2,7 +2,7 @@
 	import Tag from '$lib/components/Tag.svelte';
 	import Spacer from './Spacer.svelte';
 
-	let { tags, title, img, description = null, url } = $props();
+	let { tags, title, img, description = null, url, muted = false } = $props();
 	function createMediaElement(imageSrc, title) {
 		if (imageSrc.endsWith('.webm')) {
 			return `<video autoplay loop muted><source src="${imageSrc}" type="video/webm"></video>`;
@@ -14,23 +14,25 @@
 
 <div class="project">
 	<a href={url} target="_blank" rel="noopener noreferrer" class="card-link"></a>
-	<div class="tags">
+	<div class="tags" class:muted>
 		{#each tags as tag, index}
 			{#if index >= 0}
 				<Tag name={tag} />
 			{/if}
 		{/each}
 	</div>
-	<div class="title">{title} <span style="font-weight: normal;">&#8599;</span></div>
+	<div class="title" class:muted>
+		{title} <span style="font-weight: normal;">&#8599;</span>
+	</div>
 	<Spacer />
 	{#if img.endsWith('.webm')}
-		<video autoplay loop muted><source src={img} type="video/webm" /></video>
+		<video class:muted autoplay loop muted><source src={img} type="video/webm" /></video>
 	{:else}
-		<img src={img} alt={title} />
+		<img class:muted src={img} alt={title} />
 	{/if}
 	{#if description}
 		<Spacer />
-		<div class="description">
+		<div class="description" class:muted>
 			<p>{description}</p>
 		</div>
 	{/if}
@@ -55,6 +57,10 @@
 		z-index: 1;
 	}
 
+	.muted {
+		opacity: 0.4;
+	}
+
 	.tags {
 		display: flex;
 		gap: calc(var(--cell) * 0.5);
@@ -66,6 +72,7 @@
 		font-size: calc(var(--cell) * 0.8);
 		/* color: rgb(0, 0, 0, 0.9); */
 		padding-left: calc(var(--cell) * 0.1);
+		min-height: calc(var(--cell) * 2);
 	}
 
 	img,
@@ -81,5 +88,17 @@
 		color: rgb(0, 0, 0, 0.7);
 		letter-spacing: -0.03em;
 		padding-left: calc(var(--cell) * 0.1);
+	}
+
+	@media screen and (max-width: 768px) {
+		.project {
+			padding: 0;
+			padding-block: calc(var(--cell));
+			box-shadow: none;
+		}
+
+		.title {
+			min-height: calc(var(--cell));
+		}
 	}
 </style>

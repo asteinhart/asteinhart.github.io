@@ -30,19 +30,19 @@
 		<thead>
 			<tr>
 				<th scope="col">mm/dd/yyyy</th>
-				<th scope="col">title</th>
-				<th scope="col">tags</th>
+				<th scope="col" class="title">title</th>
+				<th scope="col" class="tags">tags</th>
 			</tr>
 		</thead>
 		<tbody>
 			{#each Object.values(BLOGS) as blog}
 				<tr>
 					<td scope="row">{blog.date}</td>
-					<td
+					<td class="title"
 						><a href={blog.url} target="_blank" rel="noopener noreferrer">{blog.title} &#8599;</a
 						></td
 					>
-					<td>{blog.tags.join(', ').toLowerCase()}</td>
+					<td class="tags">{blog.tags.join(', ').toLowerCase()}</td>
 				</tr>
 			{/each}
 
@@ -81,7 +81,25 @@
 
 	th,
 	td {
+		vertical-align: top;
 		text-align: left;
 		padding-right: 20px;
+	}
+
+	@media screen and (max-width: 768px) {
+		tr,
+		td,
+		th {
+			font-size: calc(var(--cell) * 0.6);
+		}
+
+		.title {
+			/* give the title column the available slack so long titles have more room */
+			width: calc(var(--cell) * 7);
+		}
+		.tags {
+			padding-right: 0;
+			padding-left: calc(var(--cell) * -1);
+		}
 	}
 </style>

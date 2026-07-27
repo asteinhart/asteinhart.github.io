@@ -5,7 +5,7 @@ export const PROJECTS = {
 		description:
 			"An interactive map of the New York Times' Metropolitan Diary — reader stories of everyday life in New York City, placed where they happened, 1976–2026.",
 		img: 'src/lib/assets/project-imgs/diaries.webm',
-		tags: ['Frontend', 'Mapping', 'design']
+		tags: ['Frontend', 'Mapping', 'Design']
 	},
 	scrollytelling: {
 		title: 'First scrollytelling',
