@@ -11,5 +11,5 @@
 	<Spacer />
 	<div class="spacer"></div>
 
-	photos
+	coming soon...
 </div>

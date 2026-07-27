@@ -157,7 +157,7 @@
 	}
 
 	.divider {
-		/* display: none; */
+		display: none;
 	}
 
 	.projects {
