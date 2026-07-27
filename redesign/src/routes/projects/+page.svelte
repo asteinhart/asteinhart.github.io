@@ -49,7 +49,7 @@
 <div class="container">
 	<div class="filter-container">
 		<div class="filters">
-			<span class="label">filter by:</span>
+			<span class="label"><b>filter by:</b></span>
 			<div class="tag-list">
 				<Tag name="all" active={filter === 'all'} onclick={() => (filter = 'all')} />
 				{#each allTags as tag}
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 		<div class="views">
-			<span class="label">show as:</span>
+			<span class="label"><b>show as:</b></span>
 			<div class="tag-list">
 				<Tag name="visual" active={view === 'visual'} onclick={() => (view = 'visual')} />
 				<Tag name="list" active={view === 'list'} onclick={() => (view = 'list')} />
