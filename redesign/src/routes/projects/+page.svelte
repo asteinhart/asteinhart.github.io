@@ -212,7 +212,7 @@
 		text-align: left;
 		vertical-align: top;
 		padding-right: calc(var(--cell));
-		font-size: calc(var(--cell) * 0.72);
+		font-size: calc(var(--cell) * 0.7);
 		height: calc(var(--cell));
 	}
 

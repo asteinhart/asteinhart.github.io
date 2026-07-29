@@ -1,12 +1,11 @@
 import { siteConfig } from "$lib/config/site";
-import { BLOGS } from "$lib/blogs.js";
+import { POSTS } from "$lib/posts.js";
 
 export const prerender = true;
 
+// POSTS is already merged (native + external) and sorted newest-first.
 function getPosts() {
-    return Object.entries(BLOGS)
-        .map(([slug, post]: [string, any]) => ({ slug, ...post }))
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return POSTS;
 }
 
 // Escape XML special characters
@@ -22,6 +21,8 @@ function escapeXml(unsafe: string): string {
 export const GET = async () => {
     const posts = getPosts();
     const baseUrl = siteConfig.url;
+    // Native posts have site-relative URLs ("/blog/foo"); external ones are absolute.
+    const absoluteUrl = (url: string) => (url.startsWith("http") ? url : `${baseUrl}${url}`);
 
     const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -41,8 +42,8 @@ export const GET = async () => {
             <description>${escapeXml(post.description)}</description>`
                         : ""
                 }
-            <link>${escapeXml(post.url)}</link>
-            <guid isPermaLink="true">${escapeXml(post.url)}</guid>
+            <link>${escapeXml(absoluteUrl(post.url))}</link>
+            <guid isPermaLink="true">${escapeXml(absoluteUrl(post.url))}</guid>
             <pubDate>${new Date(post.date).toUTCString()}</pubDate>
             ${post.tags ? post.tags.map((tag: string) => `<category>${escapeXml(tag)}</category>`).join("\n            ") : ""}
         </item>`

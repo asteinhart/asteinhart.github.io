@@ -1,0 +1,26 @@
+---
+title: "Rebuild a New Website for Full Customization"
+description: "I wanted to redesign and rebuild my personal website to be set up like a blog but with complete control of the code. Here's how I decided to build it."
+date: "2026-08-02"
+tags: [guide, frontend, tooling]
+---
+
+<script>
+	import firstSite from "$lib/assets/firstSite.webp"
+
+</script>
+
+
+I have been wanting to redesign and rebuild my website for some time now. I built the first version of my site back in the spring of 2024. It's pretty insane to me that this was only ~2.5 years as I feel like i know mountains more now then I did then. Shout out to [graduate school](https://capp.uchicago.edu/) and a lot of tinkering and side projects. 
+
+<img src={firstSite} alt = "my first site"/>
+
+I orginally built the site in vanilla HTML, CSS, and Javascript and hosted it on [Github Pages](https://docs.github.com/en/pages) as that's what I knew at the time. It served its purpose and was a great learning tool in dipping my toes into web develpment. 
+
+However, as I continue in my career I found myself having differnet needs and wants for my personal site. In addition to displaying and hosting my
+
+* consolatate where i host different projects, what ~really~ needs a backend
+
+
+other options
+

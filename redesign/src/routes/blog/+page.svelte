@@ -3,7 +3,7 @@
 	import Spacer from '$lib/components/Spacer.svelte';
 	import Subscribe from '$lib/components/Subscribe.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import { BLOGS } from '$lib/blogs.js';
+	import { POSTS } from '$lib/posts.js';
 
 	function filterBlog(event) {
 		const filter = event.target.textContent;
@@ -35,13 +35,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each Object.values(BLOGS) as blog}
+			{#each POSTS as blog}
 				<tr>
-					<td scope="row">{blog.date}</td>
-					<td class="title"
-						><a href={blog.url} target="_blank" rel="noopener noreferrer">{blog.title} &#8599;</a
-						></td
-					>
+					<td scope="row">{blog.displayDate}</td>
+					<td class="title">
+						{#if blog.external}
+							<a href={blog.url} target="_blank" rel="noopener noreferrer"
+								>{blog.title} &#8599;</a
+							>
+						{:else}
+							<a href={blog.url}>{blog.title}</a>
+						{/if}
+					</td>
 					<td class="tags">{blog.tags.join(', ').toLowerCase()}</td>
 				</tr>
 			{/each}

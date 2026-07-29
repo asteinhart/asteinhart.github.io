@@ -1,15 +1,22 @@
 import { siteConfig } from "$lib/config/site";
+import { POSTS } from "$lib/posts.js";
 
 export const prerender = true;
 
-// Site pages to include in the sitemap. Blog entries link out to external
-// sites (see $lib/blogs.js), so they are surfaced via rss.xml rather than here.
+// Static site pages. External blog entries live on other sites and are surfaced
+// via rss.xml; native Markdown posts are added below.
 const pages = [
     { path: "", changefreq: "weekly", priority: "1.0" },
     { path: "/projects", changefreq: "monthly", priority: "0.9" },
     { path: "/blog", changefreq: "weekly", priority: "0.9" },
     { path: "/links", changefreq: "monthly", priority: "0.7" },
     { path: "/photos", changefreq: "monthly", priority: "0" },
+    // Native posts authored on this site (external write-ups are excluded).
+    ...POSTS.filter((p) => !p.external).map((p) => ({
+        path: p.url,
+        changefreq: "monthly",
+        priority: "0.8",
+    })),
 ];
 
 export const GET = async () => {
