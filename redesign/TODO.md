@@ -7,6 +7,7 @@ TODO
         * content we love (maybe easy? airtable secret in github?)
 * add in more links
 * finish blog post
+* add more recent photos
 
 
 
@@ -17,7 +18,6 @@ DONE
 * set up md with optional svelte > blog with 
 * add in photots
 * mobile
-
 * mobile
 * migrate over
     * scrollytelling
