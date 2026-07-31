@@ -1,7 +1,7 @@
 export const PROJECTS = {
 	stories_nyc_mapped: {
 		title: 'Stories of New York City, Mapped',
-		url: '/metro-diary-map?ref=psite',
+		url: 'https://austinsteinhart.com/metro-diary-map?ref=psite',
 		description:
 			"An interactive map of the New York Times' Metropolitan Diary — reader stories of everyday life in New York City, placed where they happened, 1976–2026.",
 		img: 'src/lib/assets/project-imgs/diaries.webm',
@@ -9,7 +9,7 @@ export const PROJECTS = {
 	},
 	scrollytelling: {
 		title: 'First scrollytelling',
-		url: '/docs/first-scrollytelling?ref=psite',
+		url: 'https://austinsteinhart.com/docs/first-scrollytelly?ref=psite',
 		description:
 			'A guide to creating scrollytelling stories, including when to use scrollytelling and different types of scrollytelling techniques.',
 		img: 'src/lib/assets/project-imgs/scrolly.webp',
