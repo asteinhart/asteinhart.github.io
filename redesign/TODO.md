@@ -1,18 +1,24 @@
 TODO
-* replace all images for projects
-* mobile
 * migrate over projects
     * easy
         * sunset
-        * scrollytelling
-
+        * 
     * hard
-        * content we love
-* add in photots
+        * content we love (maybe easy? airtable secret in github?)
 * add in more links
-* make blog template 
-* set up md with optional svelte > blog with 
+* finish blog post
+
 
 
 DONE
 * mute project
+* replace all images for projects
+* make blog template 
+* set up md with optional svelte > blog with 
+* add in photots
+* mobile
+
+* mobile
+* migrate over
+    * scrollytelling
+
