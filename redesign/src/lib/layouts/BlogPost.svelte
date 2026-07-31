@@ -78,10 +78,9 @@
 		}
 	}
 
-	h1 .blog-title {
-		font-size: calc(var(--cell) * 0.9);
+	h1.blog-title {
+		font-size: calc(var(--cell) * 1.2);
 		font-weight: bold;
-		margin: 0;
 	}
 	.blog-desc {
 		font-size: calc(var(--cell) * 0.7);

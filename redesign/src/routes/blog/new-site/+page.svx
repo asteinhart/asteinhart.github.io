@@ -6,21 +6,27 @@ tags: [guide, frontend, tooling]
 ---
 
 <script>
-	import firstSite from "$lib/assets/firstSite.webp"
+	import oldSite from "$lib/assets/oldSite.webp"
 
 </script>
 
 
 I have been wanting to redesign and rebuild my website for some time now. I built the first version of my site back in the spring of 2024. It's pretty insane to me that this was only ~2.5 years as I feel like i know mountains more now then I did then. Shout out to [graduate school](https://capp.uchicago.edu/) and a lot of tinkering and side projects. 
 
-<img src={firstSite} alt = "my first site"/>
+<img src={oldSite} alt = "my first site"/>
 
 I orginally built the site in vanilla HTML, CSS, and Javascript and hosted it on [Github Pages](https://docs.github.com/en/pages) as that's what I knew at the time. It served its purpose and was a great learning tool in dipping my toes into web develpment. 
 
 However, as I continue in my career I found myself having differnet needs and wants for my personal site. In addition to displaying and hosting my
 
-* consolatate where i host different projects, what ~really~ needs a backend
+* consolatate where i host different projects, what ~really~ needs a backend??
+* want to start a blog! 
+	* want to take use pattern of markdown rendering to a layout but also include custom code in the middle (graphics, interactives, etc)
+	* 
+* redesign the page with full custom, human created design
+* move to a modern framework and tooling
 
 
-other options
+
+other options to consider
 

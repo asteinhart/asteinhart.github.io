@@ -28,7 +28,7 @@
 		return favs.map((key) => PROJECTS[key]).filter(Boolean);
 	});
 
-	$inspect(proj_favs, 'proj_favs');
+	//$inspect(proj_favs, 'proj_favs');
 </script>
 
 <Seo

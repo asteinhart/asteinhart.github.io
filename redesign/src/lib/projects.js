@@ -37,7 +37,8 @@ export const PROJECTS = {
 		description:
 			"What trends are Council on Foreign Relations foreign policy experts watching in 2026? Read about the race for critical minerals, the possible end of arms control, and the rise of the ‘Electrostate' (plus some visuals I contributed).",
 		img: 'src/lib/assets/project-imgs/viz2026.webp',
-		tags: ['Graphics', 'Design']
+		tags: ['Graphics', 'Design'],
+		imgScale: 'contain'
 	},
 	opendatle: {
 		title: 'Open Datle',
@@ -53,7 +54,8 @@ export const PROJECTS = {
 		description:
 			'The world faces unresolved conflicts, growing climate crises, attacks on aid workers, two famines, and diminishing political will—along with significant aid cuts. Altogether, 2025 has earned a grim new superlative: the worst humanitarian year on record. Read the full article by Sam Vigersky with nine charts I helped create to illustrate the crisis.',
 		img: 'src/lib/assets/project-imgs/hum_aid.webp',
-		tags: ['Graphics', 'Design']
+		tags: ['Graphics', 'Design'],
+		imgScale: 'contain'
 	},
 	cta_bus_service: {
 		title: 'CTA says bus service is back to prepandemic levels. A new analysis says otherwise.',
@@ -68,7 +70,7 @@ export const PROJECTS = {
 		url: 'https://github.com/mansueto-institute/mi-chainlink',
 		description:
 			'A powerful, flexible Python package for entity resolution and record linkage. Enables users to load data from various sources, clean and standardize entity names and addresses, and create links between entities based on exact and fuzzy matching techniques.',
-		img: 'src/lib/assets/project-imgs/chainlink.png',
+		img: 'src/lib/assets/project-imgs/chainlink.webp',
 		tags: ['Data-Eng']
 	},
 	thesunset: {
@@ -101,13 +103,14 @@ export const PROJECTS = {
 		description:
 			'In 2023, the Biden Administration released the first ever Federal AI Use Case Inventory. See how the federal government is using AI.',
 		img: 'src/lib/assets/project-imgs/ai.webm',
-		tags: ['Writing', 'Frontend', 'Design']
+		tags: ['Writing', 'Frontend', 'Design'],
+		imgScale: 'contain'
 	},
 	find_early_voting: {
 		title: 'Find a Chicago Early Voting Location',
 		url: 'https://chicagomaroon.com/l95h',
 		description: 'A map of all 56 Early Voting locations in Chicago.',
-		img: 'src/lib/assets/project-imgs/voting.png',
+		img: 'src/lib/assets/project-imgs/voting.webp',
 		tags: ['Writing', 'Mapping']
 	},
 	ctastopwatch: {
@@ -115,24 +118,27 @@ export const PROJECTS = {
 		url: 'https://ctastopwatch.miurban-dashboards.org/',
 		description:
 			'Built a web app as part of a research project that analyzed a unique dataset of over 100 million real-time bus locations in partnership with the Chicago Tribune.',
-		img: 'src/lib/assets/project-imgs/sw.png',
-		tags: ['Backend', 'Frontend']
+		img: 'src/lib/assets/project-imgs/sw.webp',
+		tags: ['Backend', 'Frontend'],
+		imgScale: 'contain'
 	},
 	common_thread: {
 		title: 'Common Thread',
 		url: 'https://github.com/uchicago-capp-30320/CommonThread',
 		description:
 			'Currently in development, Common Thread is an open-source collaborative tool that enables users to turn stories into insights. Community-based organizations, journalists, researchers, and community members alike can use the tool to efficiently gather stories, aggregate them, and understand common threads to draw insights for action.',
-		img: 'src/lib/assets/project-imgs/ct.png',
-		tags: ['Backend', 'Frontend', 'Design']
+		img: 'src/lib/assets/project-imgs/ct.webp',
+		tags: ['Backend', 'Frontend', 'Design'],
+		imgScale: 'contain'
 	},
 	university_faculty_donations: {
 		title: "University Faculty Aren't Neutral When It Comes to Political Donations",
 		url: 'https://chicagomaroon.com/41302/grey-city/university-faculty-arent-neutral-when-it-comes-to-political-donations/',
 		description:
 			'While the University has an official stance of institutional neutrality, faculty members lean decidedly Democratic. Won 1st place for Graphic Illustrations from the Illinois Collegiate Press Association.',
-		img: 'src/lib/assets/project-imgs/donations.png',
-		tags: ['Writing', 'Graphics']
+		img: 'src/lib/assets/project-imgs/donations.webp',
+		tags: ['Writing', 'Graphics'],
+		imgScale: 'contain'
 	},
 	kalven_report: {
 		title: 'Annotating the Kalven Report',
@@ -140,13 +146,14 @@ export const PROJECTS = {
 		description:
 			'Inspired by an interview with journalist Jamie Kalven, son of Harry Kalven, Jr. of the Kalven Report, the Maroon annotates this oft-cited but little read document.',
 		img: 'src/lib/assets/project-imgs/annotating_4.webm',
-		tags: ['Frontend', 'Design']
+		tags: ['Frontend', 'Design'],
+		imgScale: 'contain'
 	},
 	content_we_love: {
 		title: 'Content We Love',
 		url: 'https://contentwelove.austinsteinhart.com',
 		description: 'Great reads, thoughtfully curated by your friends.',
-		img: 'src/lib/assets/project-imgs/content.png',
+		img: 'src/lib/assets/project-imgs/content.webp',
 		tags: ['Backend', 'Frontend', 'Design']
 	},
 	current_uchicago_trustees_donations: {
@@ -154,29 +161,42 @@ export const PROJECTS = {
 		url: 'https://chicagomaroon.com/47691/grey-city/current-uchicago-trustees-donations-to-republicans-skyrocketed-in-last-two-years/',
 		description:
 			'UChicago trustees’ donations to Republican candidates increased considerably in the 2024 election cycle, according to Federal Election Commission records reviewed by the Maroon.',
-		img: 'src/lib/assets/project-imgs/trustees.png',
-		tags: ['Graphics']
+		img: 'src/lib/assets/project-imgs/trustees.webp',
+		tags: ['Graphics'],
+		imgScale: 'contain'
 	},
 	uchicago_common_data_set: {
 		title: 'Three Years Later, What Have We Learned from the UChicago Common Data Set?',
 		url: 'https://chicagomaroon.com/43910/data/three-years-later-what-have-we-learned-from-the-uchicago-common-data-set/',
 		description: 'The admission rate continues to drop as campus demographics have shifted.',
-		img: 'src/lib/assets/project-imgs/cds.png',
-		tags: ['Writing', 'Graphics']
+		img: 'src/lib/assets/project-imgs/cds.webp',
+		tags: ['Writing', 'Graphics'],
+		imgScale: 'contain'
 	},
 	my_uchicago_vulnerability: {
 		title: 'My.UChicago Vulnerability Could Have Exposed Students’ Class Schedules',
 		url: 'https://chicagomaroon.com/46707/news/my-uchicago-vulnerability-could-have-exposed-students-class-schedules/',
 		description:
 			'The vulnerability, fixed last November, allowed access to current and previous class schedules for any student.',
-		img: 'src/lib/assets/project-imgs/breach.jpg',
-		tags: ['Writing']
+		img: 'src/lib/assets/project-imgs/breach.webp',
+		tags: ['Writing'],
+		imgScale: 'contain'
 	},
 	my_reading_over_the_years: {
 		title: 'My Reading Over the Years',
 		url: 'https://austinsteinhart.com/reading',
 		description: 'Follow my reading journey from February 2016 to January 2024.',
-		img: 'src/lib/assets/project-imgs/reading.png',
-		tags: ['Writing', 'Frontend']
+		img: 'src/lib/assets/project-imgs/reading.webp',
+		tags: ['Writing', 'Frontend'],
+		imgScale: 'contain'
+	},
+	daily_devotion: {
+		title: 'My Daily Devotion: The NYT Daily Mini Crossword',
+		url: 'https://austinsteinhart.medium.com/my-daily-obsession-the-nyt-daily-mini-crossword-b58450478e6',
+		description:
+			'The New York Times Daily Mini Crossword is a daily puzzle that I have been solving since 2016. I have solved over 2,500 puzzles and have kept track of my streaks, stats, and progress over the years.',
+		img: 'src/lib/assets/project-imgs/xword.webp',
+		tags: ['Writing', 'Graphics'],
+		imgScale: 'contain'
 	}
 };

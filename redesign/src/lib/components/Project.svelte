@@ -2,7 +2,7 @@
 	import Tag from '$lib/components/Tag.svelte';
 	import Spacer from './Spacer.svelte';
 
-	let { tags, title, img, description = null, url, muted = false } = $props();
+	let { tags, title, img, description = null, url, muted = false, imgScale = 'cover' } = $props();
 	function createMediaElement(imageSrc, title) {
 		if (imageSrc.endsWith('.webm')) {
 			return `<video autoplay loop muted><source src="${imageSrc}" type="video/webm"></video>`;
@@ -25,11 +25,13 @@
 		{title} <span style="font-weight: normal;">&#8599;</span>
 	</div>
 	<Spacer />
-	{#if img.endsWith('.webm')}
-		<video class:muted autoplay loop muted><source src={img} type="video/webm" /></video>
-	{:else}
-		<img class:muted src={img} alt={title} />
-	{/if}
+	<div class="media" class:muted style="--img-fit: {imgScale}">
+		{#if img.endsWith('.webm')}
+			<video autoplay loop muted><source src={img} type="video/webm" /></video>
+		{:else}
+			<img src={img} alt={title} />
+		{/if}
+	</div>
 	{#if description}
 		<Spacer />
 		<div class="description" class:muted>
@@ -75,11 +77,17 @@
 		min-height: calc(var(--cell) * 2);
 	}
 
-	img,
-	video {
-		width: 100%;
+	.media {
+		/* fixed cell-multiple height keeps the card on the baseline grid;
+		   at ~21 cells wide this box reads as 16:9 */
 		height: calc(var(--cell) * 12);
-		object-fit: cover;
+	}
+
+	.media img,
+	.media video {
+		width: 100%;
+		height: 100%;
+		object-fit: var(--img-fit, cover);
 		outline: 1px solid rgb(0, 0, 0, 0.2);
 	}
 
@@ -99,6 +107,12 @@
 
 		.title {
 			min-height: calc(var(--cell));
+		}
+
+		/* single full-width column is ~16 cells wide, so a 9-cell box is
+		   exactly 16:9 and stays on the baseline grid */
+		.media {
+			height: calc(var(--cell) * 9);
 		}
 	}
 </style>

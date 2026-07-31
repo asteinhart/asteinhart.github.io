@@ -31,9 +31,9 @@
 			.sort((a, b) => (matches(a) === matches(b) ? 0 : matches(a) ? -1 : 1));
 	});
 
-	$inspect(allTags, 'allTags');
-	$inspect(filteredProjects, 'filteredProjects');
-	$inspect(filter, 'filter');
+	// $inspect(allTags, 'allTags');
+	// $inspect(filteredProjects, 'filteredProjects');
+	// $inspect(filter, 'filter');
 </script>
 
 <Seo
@@ -84,6 +84,7 @@
 					tags={project.tags}
 					title={project.title}
 					img={project.img}
+					imgScale={project.imgScale}
 					url={project.url}
 					description={project.description}
 					muted={project.muted}
