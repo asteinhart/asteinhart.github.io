@@ -72,12 +72,6 @@
 		margin-inline: auto;
 	}
 
-	@media screen and (max-width: 768px) {
-		.blog-container {
-			--text-width: calc(var(--cell) * 18); /* 18 of 20 cells → 1-cell margins */
-		}
-	}
-
 	h1.blog-title {
 		font-size: calc(var(--cell) * 1.2);
 		font-weight: bold;
@@ -111,6 +105,10 @@
 		text-decoration: underline;
 	}
 
+	.blog :global(li p) {
+		margin-bottom: 0;
+	}
+
 	.blog-body :global(hr) {
 		margin: var(--cell) 0;
 	}
@@ -139,5 +137,11 @@
 	.blog-body :global(pre code) {
 		background: none;
 		padding: 0;
+	}
+
+	@media screen and (max-width: 768px) {
+		.blog-container {
+			--text-width: calc(var(--cell) * 18); /* 18 of 20 cells → 1-cell margins */
+		}
 	}
 </style>

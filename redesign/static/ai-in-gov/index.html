@@ -1,433 +1,369 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta property="og:title" content="Exploring AI Use In Government" />
-    <meta property="og:image" content="https://austinsteinhart.com/ai-in-gov/static/img/ai-share-v2.webp" />
-    <meta
-      property="og:description"
-      content="In 2023, the Biden Administration released the first ever Federal AI
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta property="og:title" content="Exploring AI Use In Government" />
+		<meta
+			property="og:image"
+			content="https://austinsteinhart.com/ai-in-gov/static/img/ai-share-v2.webp"
+		/>
+		<meta
+			property="og:description"
+			content="In 2023, the Biden Administration released the first ever Federal AI
     Use Case Inventory. See how the federal government is using AI."
-    />
+		/>
 
-    <meta property="og:url" content="https://austinsteinhart.com/ai-in-gov" />
-    <meta property="og:article:author" content="Austin Steinhart" />
-    <meta name="description" content="In 2023, the Biden Administration released the first ever Federal AI Use Case Inventory. See how the federal government is using AI." />
-    <meta name="author" content="Austin Steinhart" />
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <script src="static/js/noframework.waypoints.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="static/style.css" />
-    <title>Exploring AI Use In Government</title>
-  </head>
-  <body>
-    <div class="header">
-      <div id="return">
-        <a href="https://austinsteinhart.com/">Return to Home</a>
-      </div>
-      <div id="next-story">
-        <a
-          href="https://chicagomaroon.github.io/data-visualizations/2025/uchicago-property/"
-          >Next Story</a
-        >
-      </div>
-    </div>
-    <div class="title-container">
-      <div class="title-info">
-        <div class="title-img">
-          <img
-            src="static/img/ai-share-v2.webp"
-            alt="ai.gov logo"
-            id="ai-gov-logo"
-          />
-        </div>
-        <h1 class="title">Exploring AI Use In Government</h1>
-        <h4 class="subtitle">
-          In 2023, the Biden Administration released the first ever Federal AI
-          Use Case Inventory. See how the federal government is using AI.
-        </h4>
-        <div class="byline">
-          <p>By <a href="https://austinsteinhart.com/">Austin Steinhart</a></p>
-          <p>Fall 2024</p>
-        </div>
-      </div>
-      <hr />
-    </div>
+		<meta property="og:url" content="https://austinsteinhart.com/ai-in-gov" />
+		<meta property="og:article:author" content="Austin Steinhart" />
+		<meta
+			name="description"
+			content="In 2023, the Biden Administration released the first ever Federal AI Use Case Inventory. See how the federal government is using AI."
+		/>
+		<meta name="author" content="Austin Steinhart" />
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<script src="static/js/noframework.waypoints.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="static/style.css" />
+		<title>Exploring AI Use In Government</title>
+	</head>
+	<body>
+		<div class="header">
+			<div id="return">
+				<a href="https://austinsteinhart.com/">Return to Home</a>
+			</div>
+			<div id="next-story">
+				<a href="https://chicagomaroon.github.io/data-visualizations/2025/uchicago-property/"
+					>Next Story</a
+				>
+			</div>
+		</div>
+		<div class="title-container">
+			<div class="title-info">
+				<div class="title-img">
+					<img src="static/img/ai-share-v2.webp" alt="ai.gov logo" id="ai-gov-logo" />
+				</div>
+				<h1 class="title">Exploring AI Use In Government</h1>
+				<h4 class="subtitle">
+					In 2023, the Biden Administration released the first ever Federal AI Use Case Inventory.
+					See how the federal government is using AI.
+				</h4>
+				<div class="byline">
+					<p>By <a href="https://austinsteinhart.com/">Austin Steinhart</a></p>
+					<p>Fall 2024</p>
+				</div>
+			</div>
+			<hr />
+		</div>
 
-    <div class="body-text">
-      <p>
-        In October 2023, the Biden Administration issued an
-        <a
-          target="_blank"
-          href="https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/"
-          >executive order on AI</a
-        >
-        to address the "extraordinary potential for both promise and peril that
-        Artificial Intelligence (AI) possesses." The executive order
-        <a
-          target="_blank"
-          href="https://www.whitehouse.gov/briefing-room/statements-releases/2023/10/30/fact-sheet-president-biden-issues-executive-order-on-safe-secure-and-trustworthy-artificial-intelligence/"
-          >establishes</a
-        >
-        new standards for "AI safety and security, protecting Americans’
-        privacy, advancing equity and civil rights, and promoting innovation and
-        competition, and more."
-      </p>
-      <p>
-        In addition to these new standards, the executive order requires that
-        "the Director of [the Office of Management and Budget] shall, on an
-        annual basis, issue instructions to agencies for the collection,
-        reporting, and publication of agency AI use cases."
-      </p>
-      <p>
-        To comply with this order, the federal government released the first
-        ever
-        <a target="_blank" href="https://ai.gov/ai-use-cases/"
-          >Federal AI Use Case Inventory</a
-        >
-        in 2023. As technology continues to develop at a rapid pace, this
-        inventory marks an important moment in prioritizing how advancements can
-        be utilized for the public good in ways that are safe, secure, and
-        transparent.
-      </p>
-      <p>
-        However, the inventory is not without its flaws. The site only provides
-        a CSV file, neglecting to provide any summary statistics or a way to
-        view the inventory such as in a table. As the federal government's
-        <a target="_blank" href="https://resources.data.gov/PoD/principles/"
-          >own principles</a
-        >
-        outline, this data is not accessible and is not "available to the widest
-        range of users for the widest range of purposes."
-      </p>
-      <p>
-        <img
-          src="static/img/use-case-button.webp"
-          alt="use case download option"
-          id="use-case-button"
-        />
-      </p>
-      <p>
-        What exactly is a "use case of AI"? The term Artificial Intelligence
-        (AI) has been used since at least the 1950s and generally refers to
-        technologies that
-        <a
-          href="https://www.technologyreview.com/2024/07/10/1094475/what-is-artificial-intelligence-ai-definitive-guide/?truid=&utm_source=the_algorithm&utm_medium=email&utm_campaign=the_algorithm.unpaid.engagement&utm_content=07-15-2024"
-          >"make computers do things that are thought to require intelligence
-          when done by people."</a
-        >
-        A preferred term by many in the field is
-        <a
-          target="_blank"
-          href="https://mitsloan.mit.edu/ideas-made-to-matter/machine-learning-explained"
-          >machine learning</a
-        >
-        , which better captures the underlying mechanism in which computers use
-        math and vast amounts of data to find patterns and apply it to new data.
-      </p>
-      <p>
-        In recent years, the meteoric rise of
-        <a
-          target="_blank"
-          href="https://en.wikipedia.org/wiki/Large_language_model"
-          >large language models</a
-        >, such as ChatGPT, have dominated the popular understanding of AI.
-        Underlying these models is not magic, but rather mathematical concepts
-        from the mid-century that have been applied to vast amounts of data,
-        recently made possible by advancements in computing power. Companies in
-        all industries have
-        <a href="https://www.youtube.com/watch?v=20TAkcy3aBY"
-          >jumped on the hype and mystery</a
-        >
-        around AI to begin labeling as many new technologies and services as AI
-        as possible in order to capture a sense of super intelligence that
-        models like ChatGPT invoked.
-      </p>
-      <p>
-        The Federal AI Use Case Inventory contains some of this over
-        generalization. Technologies that have likely been used for decades in
-        the federal government that do not use new advancements in machine
-        learning or AI are included in this list alongside use cases that do
-        genuinely use new technologies and AI. These misclassifications can harm
-        our ability to establish
-        <a target="_blank" href="https://ai.gov/ai-use-cases/"
-          >"strong guardrails to ensure AI keeps people safe and doesn't violate
-          their rights"</a
-        >
-        as the Biden Administration has set out to achieve.
-      </p>
+		<div class="body-text">
+			<p>
+				In October 2023, the Biden Administration issued an
+				<a
+					target="_blank"
+					href="https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/"
+					>executive order on AI</a
+				>
+				to address the "extraordinary potential for both promise and peril that Artificial
+				Intelligence (AI) possesses." The executive order
+				<a
+					target="_blank"
+					href="https://www.whitehouse.gov/briefing-room/statements-releases/2023/10/30/fact-sheet-president-biden-issues-executive-order-on-safe-secure-and-trustworthy-artificial-intelligence/"
+					>establishes</a
+				>
+				new standards for "AI safety and security, protecting Americans’ privacy, advancing equity
+				and civil rights, and promoting innovation and competition, and more."
+			</p>
+			<p>
+				In addition to these new standards, the executive order requires that "the Director of [the
+				Office of Management and Budget] shall, on an annual basis, issue instructions to agencies
+				for the collection, reporting, and publication of agency AI use cases."
+			</p>
+			<p>
+				To comply with this order, the federal government released the first ever
+				<a target="_blank" href="https://ai.gov/ai-use-cases/">Federal AI Use Case Inventory</a>
+				in 2023. As technology continues to develop at a rapid pace, this inventory marks an
+				important moment in prioritizing how advancements can be utilized for the public good in
+				ways that are safe, secure, and transparent.
+			</p>
+			<p>
+				However, the inventory is not without its flaws. The site only provides a CSV file,
+				neglecting to provide any summary statistics or a way to view the inventory such as in a
+				table. As the federal government's
+				<a target="_blank" href="https://resources.data.gov/PoD/principles/">own principles</a>
+				outline, this data is not accessible and is not "available to the widest range of users for
+				the widest range of purposes."
+			</p>
+			<p>
+				<img
+					src="static/img/use-case-button.webp"
+					alt="use case download option"
+					id="use-case-button"
+				/>
+			</p>
+			<p>
+				What exactly is a "use case of AI"? The term Artificial Intelligence (AI) has been used
+				since at least the 1950s and generally refers to technologies that
+				<a
+					href="https://www.technologyreview.com/2024/07/10/1094475/what-is-artificial-intelligence-ai-definitive-guide/?truid=&utm_source=the_algorithm&utm_medium=email&utm_campaign=the_algorithm.unpaid.engagement&utm_content=07-15-2024"
+					>"make computers do things that are thought to require intelligence when done by
+					people."</a
+				>
+				A preferred term by many in the field is
+				<a
+					target="_blank"
+					href="https://mitsloan.mit.edu/ideas-made-to-matter/machine-learning-explained"
+					>machine learning</a
+				>
+				, which better captures the underlying mechanism in which computers use math and vast
+				amounts of data to find patterns and apply it to new data.
+			</p>
+			<p>
+				In recent years, the meteoric rise of
+				<a target="_blank" href="https://en.wikipedia.org/wiki/Large_language_model"
+					>large language models</a
+				>, such as ChatGPT, have dominated the popular understanding of AI. Underlying these models
+				is not magic, but rather mathematical concepts from the mid-century that have been applied
+				to vast amounts of data, recently made possible by advancements in computing power.
+				Companies in all industries have
+				<a href="https://www.youtube.com/watch?v=20TAkcy3aBY">jumped on the hype and mystery</a>
+				around AI to begin labeling as many new technologies and services as AI as possible in order
+				to capture a sense of super intelligence that models like ChatGPT invoked.
+			</p>
+			<p>
+				The Federal AI Use Case Inventory contains some of this over generalization. Technologies
+				that have likely been used for decades in the federal government that do not use new
+				advancements in machine learning or AI are included in this list alongside use cases that do
+				genuinely use new technologies and AI. These misclassifications can harm our ability to
+				establish
+				<a target="_blank" href="https://ai.gov/ai-use-cases/"
+					>"strong guardrails to ensure AI keeps people safe and doesn't violate their rights"</a
+				>
+				as the Biden Administration has set out to achieve.
+			</p>
 
-      <p id="top">
-        In an effort to make the inventory more digestible and explore more of
-        these issues, scroll along below to investigate how the federal
-        government has reported its use of AI. If you would like to view the
-        inventory in full,
-        <a href="javascript:scrollToTable()" id="tableLink">
-          skip to a sortable table of the entire inventory.</a
-        >
-        Let's begin.
-      </p>
-    </div>
-    <div class="container" id="container">
-      <div class="scroller-container">
-        <div class="scroller" id="sIntro">
-          The <b>Federal AI Use Case Inventory</b> contains 710 use cases of AI
-          as of September 1st, 2023. Each box represents one use case.
-        </div>
-        <div class="scroller" id="sExample">
-          For the inventory, each department and agency submitted their own list
-          of use cases. For example, the Department of Treasury included a
-          <span class="highlight ex">Collection Voice Bot</span>, a model to
-          help direct a taxpayer down a certain call path given their verbal
-          responses over the phone.
-          <span id="hover-text">
-            <b
-              >Hover over a box to learn more about the specific model at any
-              time.</b
-            >
-          </span>
-        </div>
-        <div class="scroller" id="sDep">
-          The use cases are spread across 21 departments and agencies, including
-          all 15 executive departments, illuminating that AI use has become
-          widespread in the federal government. Just two departments, the
-          <span class="highlight doe">Department of Energy</span> and the
-          <span class="highlight hhs"
-            >Department of Health and Human Services</span
-          >, makeup almost half of all reported use cases in the inventory. The
-          <span class="highlight doc">Department of Commerce</span>,
-          <span class="highlight hs">Department of Homeland Security</span>, and
-          <span class="highlight va">Department of Veterans Affairs</span> round
-          out the top 5 departments. Use the drop-down below to highlight a
-          specific department in the
-          <span class="highlight od">Other Departments</span> category.
-          <select name="dep" id="dep-select" onchange="highlightDep()">
-            <option value="" disabled selected>View Other Departments</option>
-            <option value="Department of Agriculture">
-              Department of Agriculture (39)
-            </option>
-            <option value="Department of Interior">
-              Department of Interior (38)
-            </option>
-            <option value="National Aeronautics and Space Administration">
-              National Aeronautics and Space Administration (33)
-            </option>
-            <option value="Department of State">
-              Department of State (31)
-            </option>
-            <option value="Department of Labor">
-              Department of Labor (18)
-            </option>
-            <option value="Department of Transportation">
-              Department of Transportation (14)
-            </option>
-            <option value="Department of Treasury">
-              Department of Treasury (14)
-            </option>
-            <option value="Social Security Administration">
-              Social Security Administration (14)
-            </option>
-            <option value="U.S. Agency for International Development">
-              U.S. Agency for International Development (14)
-            </option>
-            <option value="U.S. General Services Administration">
-              U.S. General Services Administration (12)
-            </option>
-            <option value="National Archives and Records Administration">
-              National Archives and Records Administration (5)
-            </option>
-            <option value="Department of Justice">
-              Department of Justice (4)
-            </option>
-            <option value="U.S. Office of Personnel Management">
-              U.S. Office of Personnel Management (4)
-            </option>
-            <option value="U.S. Environmental Protection Agency">
-              U.S. Environmental Protection Agency (3)
-            </option>
-            <option value="Department of Housing and Urban Development">
-              Department of Housing and Urban Development (1)
-            </option>
-            <option value="Department of Education">
-              Department of Education (1)
-            </option>
-          </select>
-        </div>
-        <div class="scroller" id="sTechEx">
-          As discussed above, what exactly is considered a
-          <b><em>use case of AI</em></b> is murky. The collected inventory shows
-          that the federal government struggles to provide a clear understanding
-          of this term, a
-          <a
-            target="_blank"
-            href="https://www.newyorker.com/science/annals-of-artificial-intelligence/there-is-no-ai"
-            >common challenge</a
-          >
-          for many people outside of the field. In the inventory, the term AI is
-          incredibly expansive. It includes use cases that fit the traditional
-          definitions of AI such as machine learning models that use
-          <a
-            target="_blank"
-            href="https://en.wikipedia.org/wiki/Large_language_model"
-            >large language models</a
-          >
-          for <span class="highlight ex">chatbots</span> or
-          <a
-            target="_blank"
-            href="https://en.wikipedia.org/wiki/Neural_network_(machine_learning)"
-            >neural networks</a
-          >
-          for <span class="highlight ex">facial recognition</span> but also
-          includes <span class="highlight ex">analytics tools</span>, and
-          <span class="highlight ex">data infrastructure</span>, technical tools
-          that most experts would not consider AI.
-        </div>
-        <div class="scroller" id="sTechMiss">
-          The inventory requires departments to list a technique to categorize
-          each use case, meaning what technical tools were used. However,
-          categories are not standardized across departments making them
-          difficult to group. In addition, despite it being labeled as mandatory
-          in the
-          <a
-            target="_blank"
-            target="_blank"
-            href="https://www.whitehouse.gov/wp-content/uploads/2024/03/DRAFT-Guidance-for-Agency-Artificial-Intelligence-Reporting-per-EO14110.pdf"
-            >provided inventory instructions</a
-          >, over 50% of use cases have
-          <span class="highlight non">no listed technique</span>. 10 of the 21
-          departments did not provide a technique for a single reported use
-          case, including the Department of Commerce, the Department of Health
-          and Human Services, and the Department of Veteran Affairs.
-        </div>
-        <div class="scroller" id="sTechSplit">
-          Using the use case titles and summaries, I attempted to standardize
-          and fill in missing techniques. While this is not a perfect
-          categorization, it does give insight into how the federal government
-          is using AI. Many use cases listed multiple or ambiguous techniques
-          and were categorized as
-          <span class="highlight ml">unspecified machine learning</span>. See
-          all the created categories using the drop-down.
-          <select name="tech" id="tech-select" onchange="highlightTech()">
-            <option value="" disabled selected>View Other Techniques</option>
-            <option value="Automation">Automation (35)</option>
-            <option value="Classification">Classification (32)</option>
-            <option value="Analytics">Analytics (16)</option>
-            <option value="Regression">Regression (16)</option>
-            <option value="Time Series Forecast">
-              Time Series Forecast (8)
-            </option>
-            <option value="Large Language Model">
-              Large Language Model (7)
-            </option>
-          </select>
-          <div class="collapsible">
-            &#9656; Learn more about the techniques listed:
-          </div>
-          <div class="content" id="content">
-            <p>
-              With the help of ChatGPT, see short definitions of each technique:
-            </p>
+			<p id="top">
+				In an effort to make the inventory more digestible and explore more of these issues, scroll
+				along below to investigate how the federal government has reported its use of AI. If you
+				would like to view the inventory in full,
+				<a href="javascript:scrollToTable()" id="tableLink">
+					skip to a sortable table of the entire inventory.</a
+				>
+				Let's begin.
+			</p>
+		</div>
+		<div class="container" id="container">
+			<div class="scroller-container">
+				<div class="scroller" id="sIntro">
+					The <b>Federal AI Use Case Inventory</b> contains 710 use cases of AI as of September 1st,
+					2023. Each box represents one use case.
+				</div>
+				<div class="scroller" id="sExample">
+					For the inventory, each department and agency submitted their own list of use cases. For
+					example, the Department of Treasury included a
+					<span class="highlight ex">Collection Voice Bot</span>, a model to help direct a taxpayer
+					down a certain call path given their verbal responses over the phone.
+					<span id="hover-text">
+						<b>Hover over a box to learn more about the specific model at any time.</b>
+					</span>
+				</div>
+				<div class="scroller" id="sDep">
+					The use cases are spread across 21 departments and agencies, including all 15 executive
+					departments, illuminating that AI use has become widespread in the federal government.
+					Just two departments, the
+					<span class="highlight doe">Department of Energy</span> and the
+					<span class="highlight hhs">Department of Health and Human Services</span>, makeup almost
+					half of all reported use cases in the inventory. The
+					<span class="highlight doc">Department of Commerce</span>,
+					<span class="highlight hs">Department of Homeland Security</span>, and
+					<span class="highlight va">Department of Veterans Affairs</span> round out the top 5
+					departments. Use the drop-down below to highlight a specific department in the
+					<span class="highlight od">Other Departments</span> category.
+					<select name="dep" id="dep-select" onchange="highlightDep()">
+						<option value="" disabled selected>View Other Departments</option>
+						<option value="Department of Agriculture">Department of Agriculture (39)</option>
+						<option value="Department of Interior">Department of Interior (38)</option>
+						<option value="National Aeronautics and Space Administration">
+							National Aeronautics and Space Administration (33)
+						</option>
+						<option value="Department of State">Department of State (31)</option>
+						<option value="Department of Labor">Department of Labor (18)</option>
+						<option value="Department of Transportation">Department of Transportation (14)</option>
+						<option value="Department of Treasury">Department of Treasury (14)</option>
+						<option value="Social Security Administration">
+							Social Security Administration (14)
+						</option>
+						<option value="U.S. Agency for International Development">
+							U.S. Agency for International Development (14)
+						</option>
+						<option value="U.S. General Services Administration">
+							U.S. General Services Administration (12)
+						</option>
+						<option value="National Archives and Records Administration">
+							National Archives and Records Administration (5)
+						</option>
+						<option value="Department of Justice">Department of Justice (4)</option>
+						<option value="U.S. Office of Personnel Management">
+							U.S. Office of Personnel Management (4)
+						</option>
+						<option value="U.S. Environmental Protection Agency">
+							U.S. Environmental Protection Agency (3)
+						</option>
+						<option value="Department of Housing and Urban Development">
+							Department of Housing and Urban Development (1)
+						</option>
+						<option value="Department of Education">Department of Education (1)</option>
+					</select>
+				</div>
+				<div class="scroller" id="sTechEx">
+					As discussed above, what exactly is considered a
+					<b><em>use case of AI</em></b> is murky. The collected inventory shows that the federal
+					government struggles to provide a clear understanding of this term, a
+					<a
+						target="_blank"
+						href="https://www.newyorker.com/science/annals-of-artificial-intelligence/there-is-no-ai"
+						>common challenge</a
+					>
+					for many people outside of the field. In the inventory, the term AI is incredibly
+					expansive. It includes use cases that fit the traditional definitions of AI such as
+					machine learning models that use
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Large_language_model"
+						>large language models</a
+					>
+					for <span class="highlight ex">chatbots</span> or
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Neural_network_(machine_learning)"
+						>neural networks</a
+					>
+					for <span class="highlight ex">facial recognition</span> but also includes
+					<span class="highlight ex">analytics tools</span>, and
+					<span class="highlight ex">data infrastructure</span>, technical tools that most experts
+					would not consider AI.
+				</div>
+				<div class="scroller" id="sTechMiss">
+					The inventory requires departments to list a technique to categorize each use case,
+					meaning what technical tools were used. However, categories are not standardized across
+					departments making them difficult to group. In addition, despite it being labeled as
+					mandatory in the
+					<a
+						target="_blank"
+						target="_blank"
+						href="https://www.whitehouse.gov/wp-content/uploads/2024/03/DRAFT-Guidance-for-Agency-Artificial-Intelligence-Reporting-per-EO14110.pdf"
+						>provided inventory instructions</a
+					>, over 50% of use cases have <span class="highlight non">no listed technique</span>. 10
+					of the 21 departments did not provide a technique for a single reported use case,
+					including the Department of Commerce, the Department of Health and Human Services, and the
+					Department of Veteran Affairs.
+				</div>
+				<div class="scroller" id="sTechSplit">
+					Using the use case titles and summaries, I attempted to standardize and fill in missing
+					techniques. While this is not a perfect categorization, it does give insight into how the
+					federal government is using AI. Many use cases listed multiple or ambiguous techniques and
+					were categorized as
+					<span class="highlight ml">unspecified machine learning</span>. See all the created
+					categories using the drop-down.
+					<select name="tech" id="tech-select" onchange="highlightTech()">
+						<option value="" disabled selected>View Other Techniques</option>
+						<option value="Automation">Automation (35)</option>
+						<option value="Classification">Classification (32)</option>
+						<option value="Analytics">Analytics (16)</option>
+						<option value="Regression">Regression (16)</option>
+						<option value="Time Series Forecast">Time Series Forecast (8)</option>
+						<option value="Large Language Model">Large Language Model (7)</option>
+					</select>
+					<div class="collapsible">&#9656; Learn more about the techniques listed:</div>
+					<div class="content" id="content">
+						<p>With the help of ChatGPT, see short definitions of each technique:</p>
 
-            <ul>
-              <li>
-                <b>Machine Vision</b> - A model focused on processing and
-                interpreting visual information, often used in tasks like image
-                recognition and object detection. Modern techniques often use
-                <a
-                  target="_blank"
-                  href="https://www.ibm.com/topics/convolutional-neural-networks"
-                  >convolutional neural networks</a
-                >.
-              </li>
-              <li>
-                <b>Neural Network</b> - A computational model inspired by the
-                human brain, consisting of interconnected layers of nodes
-                (neurons) that learn to recognize patterns in data.
-              </li>
-              <li>
-                <b>Natural Language Processing (NLP)</b> - A field of machine
-                learning focused on enabling machines to understand, interpret,
-                and generate human language.
-              </li>
-              <li>
-                <b>Unspecified Machine Learning</b> - A general categorization
-                used when a specific technique was not clear.
-              </li>
-              <li>
-                <b>Automation</b> - Tools to perform repetitive tasks
-                automatically without human intervention, often to improve
-                efficiency and consistency. May or may not involve machine
-                learning/AI techniques.
-              </li>
-              <li>
-                <b>Classification</b> - Machine learning model that categorizes
-                data into predefined classes or labels based on input data.
-              </li>
-              <li>
-                <b>Analytics</b> - Using data to extract actionable insights for
-                decision-making. May or may not involve machine learning/AI
-                techniques.
-              </li>
-              <li>
-                <b>Regression</b> - A type of model (often statistical) that
-                predicts continuous numerical values based on input data, often
-                used for forecasting or trend analysis. May or may not involve
-                machine learning/AI techniques.
-              </li>
-              <li>
-                <b>Time Series Forecast</b> - A model that predicts future
-                values in a sequence of time-ordered data points, often used in
-                financial markets, weather forecasting, and demand planning. May
-                or may not involve machine learning/AI techniques.
-              </li>
-              <li>
-                <b>Large Language Model (LLM)</b> - A type of deep learning
-                model, often a neural network, trained on vast amounts of text
-                data to perform tasks like text generation, summarization, and
-                translation.
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="scroller" id="sTechSource">
-          In addition to technique, just 2% of the use cases have
-          <b>publicly available source code</b>. This raises concerns about the
-          transparency of AI tools being used by the federal government.
-        </div>
-        <div class="scroller" id="sStageMiss">
-          Also included in the inventory is information indicating a use case's
-          stage in development. Once again, despite being a mandatory field in
-          the provided instructions, roughly 50% have
-          <span class="highlight non">no provided development stage</span>.
-        </div>
-        <div class="scroller" id="sStageSplit">
-          Of the use cases that did include a development stage, roughly 50% are
-          currently <span class="highlight use">in use</span>, 25% are
-          <span class="highlight dev">in development</span>, and 25% are
-          <span class="highlight plan">in planning</span>. As expected, AI use
-          in the federal government will only continue to increase in the years
-          ahead.
-        </div>
-        <div class="scroller" id="sClosing">
-          There is much more to explore in the Federal AI Use Case Inventory. As
-          with the first release in September 2023, we may expect an updated
-          inventory to be released in September 2024.
-          <span id="exit-hover-text">
-            In the meantime, you can explore the inventory by hovering over the
-            boxes or view the full inventory as a table below.</span
-          >
-        </div>
-        <div class="scroller" id="sFake"></div>
-      </div>
-      <div class="graphic-container" id="graphic-container"></div>
-    </div>
-    <!-- <div class="body-text" id="closing">
+						<ul>
+							<li>
+								<b>Machine Vision</b> - A model focused on processing and interpreting visual
+								information, often used in tasks like image recognition and object detection. Modern
+								techniques often use
+								<a target="_blank" href="https://www.ibm.com/topics/convolutional-neural-networks"
+									>convolutional neural networks</a
+								>.
+							</li>
+							<li>
+								<b>Neural Network</b> - A computational model inspired by the human brain,
+								consisting of interconnected layers of nodes (neurons) that learn to recognize
+								patterns in data.
+							</li>
+							<li>
+								<b>Natural Language Processing (NLP)</b> - A field of machine learning focused on
+								enabling machines to understand, interpret, and generate human language.
+							</li>
+							<li>
+								<b>Unspecified Machine Learning</b> - A general categorization used when a specific
+								technique was not clear.
+							</li>
+							<li>
+								<b>Automation</b> - Tools to perform repetitive tasks automatically without human
+								intervention, often to improve efficiency and consistency. May or may not involve
+								machine learning/AI techniques.
+							</li>
+							<li>
+								<b>Classification</b> - Machine learning model that categorizes data into predefined
+								classes or labels based on input data.
+							</li>
+							<li>
+								<b>Analytics</b> - Using data to extract actionable insights for decision-making.
+								May or may not involve machine learning/AI techniques.
+							</li>
+							<li>
+								<b>Regression</b> - A type of model (often statistical) that predicts continuous
+								numerical values based on input data, often used for forecasting or trend analysis.
+								May or may not involve machine learning/AI techniques.
+							</li>
+							<li>
+								<b>Time Series Forecast</b> - A model that predicts future values in a sequence of
+								time-ordered data points, often used in financial markets, weather forecasting, and
+								demand planning. May or may not involve machine learning/AI techniques.
+							</li>
+							<li>
+								<b>Large Language Model (LLM)</b> - A type of deep learning model, often a neural
+								network, trained on vast amounts of text data to perform tasks like text generation,
+								summarization, and translation.
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="scroller" id="sTechSource">
+					In addition to technique, just 2% of the use cases have
+					<b>publicly available source code</b>. This raises concerns about the transparency of AI
+					tools being used by the federal government.
+				</div>
+				<div class="scroller" id="sStageMiss">
+					Also included in the inventory is information indicating a use case's stage in
+					development. Once again, despite being a mandatory field in the provided instructions,
+					roughly 50% have
+					<span class="highlight non">no provided development stage</span>.
+				</div>
+				<div class="scroller" id="sStageSplit">
+					Of the use cases that did include a development stage, roughly 50% are currently
+					<span class="highlight use">in use</span>, 25% are
+					<span class="highlight dev">in development</span>, and 25% are
+					<span class="highlight plan">in planning</span>. As expected, AI use in the federal
+					government will only continue to increase in the years ahead.
+				</div>
+				<div class="scroller" id="sClosing">
+					There is much more to explore in the Federal AI Use Case Inventory. As with the first
+					release in September 2023, we may expect an updated inventory to be released in September
+					2024.
+					<span id="exit-hover-text">
+						In the meantime, you can explore the inventory by hovering over the boxes or view the
+						full inventory as a table below.</span
+					>
+				</div>
+				<div class="scroller" id="sFake"></div>
+			</div>
+			<div class="graphic-container" id="graphic-container"></div>
+		</div>
+		<!-- <div class="body-text" id="closing">
       <p>
         While reviewing the <a target="_blank" href="link">guidelines</a> for
         the inventory, there appears to be lots of value information that was
@@ -482,35 +418,49 @@
         >
         is one example.
       </p> -->
-    <hr />
-    <p id="scroll-to-top">
-      <a href="javascript:scrollToTop()" id="topLink"
-        >Return to the beginning of the story</a
-      >
-      <br />
-      or explore the inventory in table form below.
-    </p>
+		<hr />
 
-    <div id="table" class="ag-theme-quartz">
-      <input
-        type="text"
-        id="filter-text-box"
-        placeholder="Search..."
-        oninput="onFilterTextBoxChanged()"
-      />
-    </div>
+		
 
-    <div class="outro">
-      <hr />
-      <p>
-        <a
-          target="_blank"
-          href="https://github.com/asteinhart/asteinhart.github.io/tree/main/ai-in-gov"
-          >See code for this project here.</a
-        >
-      </p>
-    </div>
+		<p id="scroll-to-top">
+			<a href="javascript:scrollToTop()" id="topLink">Return to the beginning of the story</a>
+			<br />
+			or explore the inventory in table form below.
+		</p>
 
-    <script src="static/js/script.js"></script>
-  </body>
+		<div id="table" class="ag-theme-quartz">
+			<input
+				type="text"
+				id="filter-text-box"
+				placeholder="Search..."
+				oninput="onFilterTextBoxChanged()"
+			/>
+		</div>
+
+		<div class="outro">
+			<hr />
+			<p>
+				<a
+					target="_blank"
+					href="https://github.com/asteinhart/asteinhart.github.io/tree/main/ai-in-gov"
+					>See code for this project here.</a
+				>
+			</p>
+
+     
+			<p>want to stay up to date on my latest projects and blog posts?</p>
+			<form
+				action="https://buttondown.com/api/emails/embed-subscribe/asteinhart"
+				method="post"
+				class="embeddable-buttondown-form"
+			>
+				<label for="bd-email">enter your email</label>
+				<input type="email" name="email" id="bd-email" />
+				<input type="submit" value="subscribe" />
+			</form>
+		
+		</div>
+
+		<script src="static/js/script.js"></script>
+	</body>
 </html>

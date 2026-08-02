@@ -14,6 +14,10 @@ const mdsvexOptions = {
 };
 
 export default defineConfig({
+	server: {
+		open: true // Automatically opens the browser
+	},
+
 	plugins: [
 		sveltekit({
 			// Treat `.svx` files as routes/components in addition to `.svelte`.
@@ -41,6 +45,14 @@ export default defineConfig({
 				precompress: false,
 				strict: true
 			})
-		})
+		}),
+		{
+			name: 'watch-static',
+			handleHotUpdate({ file, server }) {
+				if (file.includes('/static/')) {
+					server.ws.send({ type: 'full-reload' });
+				}
+			}
+		}
 	]
 });

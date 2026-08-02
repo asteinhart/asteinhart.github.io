@@ -8,6 +8,10 @@ TODO
 * add in more links
 * finish blog post
 * add more recent photos
+* add sign up tp
+  * metro diary
+  * scrolly
+  * blog posts?
 
 
 

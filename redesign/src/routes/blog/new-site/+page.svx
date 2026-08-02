@@ -11,22 +11,56 @@ tags: [guide, frontend, tooling]
 </script>
 
 
-I have been wanting to redesign and rebuild my website for some time now. I built the first version of my site back in the spring of 2024. It's pretty insane to me that this was only ~2.5 years as I feel like i know mountains more now then I did then. Shout out to [graduate school](https://capp.uchicago.edu/) and a lot of tinkering and side projects. 
+I have wanted to redesign and rebuild my website for some time now. I built the first version of my site back in the spring of 2024. It's pretty insane to me that this was only ~2.5 years as I feel like I know mountains more now then I did then. Shout out to [graduate school](https://capp.uchicago.edu/) and a lot of tinkering and side projects. 
 
-<img src={oldSite} alt = "my first site"/>
+<img src={oldSite} alt = "my first site" class="siteImg"/>z
 
-I orginally built the site in vanilla HTML, CSS, and Javascript and hosted it on [Github Pages](https://docs.github.com/en/pages) as that's what I knew at the time. It served its purpose and was a great learning tool in dipping my toes into web develpment. 
+I originally built the site in vanilla HTML, CSS, and Javascript and hosted it on [Github Pages](https://docs.github.com/en/pages) as that's what I knew at the time. It served its purpose and was a great learning tool in dipping my toes into web development. 
 
-However, as I continue in my career I found myself having differnet needs and wants for my personal site. In addition to displaying and hosting my
-
-* consolatate where i host different projects, what ~really~ needs a backend??
-* want to start a blog! 
-	* want to take use pattern of markdown rendering to a layout but also include custom code in the middle (graphics, interactives, etc)
-	* 
+However as I continue in my career, I found myself having different needs and wants for my personal site. In addition to displaying and hosting my professional work and side projects, I now want to:
+* consolidate where I host different projects. I dont think I fully understood (and might not still) what ~really~ needs a backend. I have two projects that I am hosting on Heroku that could host on Github Pages so want to move those over.
+* I want to start a blog! I am interested in writing about projects I work on, creating guides and learning materials and the occasional musings about the way culture forms and how humans connect and build relationships.
+	* I also want to make use of the rendering markdown using a template. However, I also want to be able to add custom code in the middle (graphics, interactives, etc)
+	* also want to let people to subscribe to get new blog posts via email
 * redesign the page with full custom, human created design
-* move to a modern framework and tooling
+* move to a modern framework and tooling, specifically [Svelte](https://svelte.dev/) 
+
+
+## Making the Website
+
+### Design
+As I have gotten deeper into the design world...
+* start with inspo, vision boarding, vibes pictures, colors, other sites
+* insto this spread sheet idea
+* Start making lots of different versions
+* design 50% before I dive into code, things will change
+
+### Building the website
+
+
+Making and hosting a website can be a daunting task but given my requirements, I was able to pretty quickly rule out static site generators like [Hugo](https://gohugo.io/) or more full featured tools like [Ghost](https://ghost.org/). I found a a [template](https://github.com/YusufCeng1z/sveltekit-shadcn-blog-starter) online from [Yusuf Cengiz](https://github.com/YusufCeng1z) that was pretty close to everythign I wanted. It was in Svelte, a blog tempalte aimed at developers, had a script to create an `rss.xml` and `sitemap.xml`, and used MDsveX to render markdown with components. I decided to start from scratch instead of fork this repo as I wanted some not all of the pieces. I find it easier to not get overwhemled lenring someone else's set up and rather just pull pieces in a I need them.  
 
 
 
-other options to consider
+### All coming together
 
+Adding new projects is now as easy as adding to a JS object with all the info that will be included. Adding a new blog post is as easy as making a new markdown file (specifically .svx from MDsveX) and adding in text or any custom Svelte components. This then gets styled and added to my /blog site.
+
+
+
+
+<style>
+	img {
+		border: .5px solid rgb(0, 0, 0, .2);
+		/* center??? */
+
+	}
+
+	.siteImg {
+		width: 100%;
+		display: flex;
+  		justify-content: center; /* Horizontally centers the image */
+  		align-items: center;    
+		max-width: 600px;
+	}
+</style>
