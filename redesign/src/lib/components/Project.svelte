@@ -3,17 +3,16 @@
 	import Spacer from './Spacer.svelte';
 
 	let { tags, title, img, description = null, url, muted = false, imgScale = 'cover' } = $props();
-	function createMediaElement(imageSrc, title) {
-		if (imageSrc.endsWith('.webm')) {
-			return `<video autoplay loop muted><source src="${imageSrc}" type="video/webm"></video>`;
-		} else {
-			return `<img src="${imageSrc}" alt="${title}">`;
-		}
-	}
 </script>
 
 <div class="project">
-	<a href={url} target="_blank" rel="noopener noreferrer" class="card-link"></a>
+	<a
+		href={url}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="card-link"
+		aria-label={`Link to ${title}`}
+	></a>
 	<div class="tags" class:muted>
 		{#each tags as tag, index}
 			{#if index >= 0}
@@ -22,12 +21,14 @@
 		{/each}
 	</div>
 	<div class="title" class:muted>
-		{title} <span style="font-weight: normal;">&#8599;</span>
+		{title} <span style="font-weight: normal;">&#8599;&#xFE0E;</span>
 	</div>
 	<Spacer />
 	<div class="media" class:muted style="--img-fit: {imgScale}">
 		{#if img.endsWith('.webm')}
-			<video autoplay loop muted><source src={img} type="video/webm" /></video>
+			<video autoplay loop muted playsinline style="pointer-events: none;"
+				><source src={img} type="video/webm" /></video
+			>
 		{:else}
 			<img src={img} alt={title} />
 		{/if}
