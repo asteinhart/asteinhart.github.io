@@ -13,7 +13,7 @@ tags: [guide, frontend, tooling]
 
 I have wanted to redesign and rebuild my website for some time now. I built the first version of my site back in the spring of 2024. It's pretty insane to me that this was only ~2.5 years as I feel like I know mountains more now then I did then. Shout out to [graduate school](https://capp.uchicago.edu/) and a lot of tinkering and side projects. 
 
-<img src={oldSite} alt = "my first site" class="siteImg"/>z
+<img src={oldSite} alt = "my first site" class="siteImg"/>
 
 I originally built the site in vanilla HTML, CSS, and Javascript and hosted it on [Github Pages](https://docs.github.com/en/pages) as that's what I knew at the time. It served its purpose and was a great learning tool in dipping my toes into web development. 
 

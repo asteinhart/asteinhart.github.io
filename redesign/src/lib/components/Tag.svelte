@@ -16,9 +16,9 @@
 		height: calc(var(--cell));
 	}
 	.tag {
-		color: rgb(0, 0, 0, 0.7);
+		color: rgb(0, 0, 0, 0.65ç);
 		font-size: calc(var(--cell) * 0.6);
-		height: calc(var(--cell) * 0.8);
+		height: calc(var(--cell) * 0.85);
 		padding-inline: calc(var(--cell) * 0.15);
 		border: none;
 		background: none;
@@ -30,6 +30,6 @@
 		height: 100%;
 	}
 	.tag.active {
-		border: 2px solid rgb(0, 0, 0, 0.5);
+		border: 1.9px solid rgb(0, 0, 0, 0.5);
 	}
 </style>
