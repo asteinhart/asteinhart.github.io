@@ -28,6 +28,7 @@
 		display: flex;
 		align-items: center;
 		height: 100%;
+		letter-spacing: -0.02em;
 	}
 	.tag.active {
 		border: 1.9px solid rgb(0, 0, 0, 0.5);
@@ -35,7 +36,7 @@
 
 	@media screen and (max-width: 768px) {
 		.tag.active {
-			border: 1px solid rgb(0, 0, 0, 0.5);
+			border: 1.5px solid rgb(0, 0, 0, 0.5);
 		}
 	}
 </style>

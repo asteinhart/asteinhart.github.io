@@ -101,7 +101,7 @@
 								aria-label={`Link to ${project.title}`}>{project.title} &#8599;&#xFE0E;</a
 							></td
 						>
-						<td>{project.tags.join(', ').toLowerCase()}</td>
+						<td class="tags">{project.tags.join(', ').toLowerCase()}</td>
 					</tr>
 				{/each}
 			</tbody>
@@ -156,10 +156,6 @@
 		margin-right: 0.5rem;
 	}
 
-	button.view.active {
-		border: 2px solid rgb(0, 0, 0, 0.7);
-	}
-
 	.full-line {
 		position: absolute;
 		width: 100%;
@@ -205,7 +201,14 @@
 			flex-wrap: wrap;
 			/* row-gap 0: each tag row is exactly --cell tall, so wrapped rows
 			   land on the baseline grid. column-gap doesn't affect the baseline. */
-			gap: 0 0.5rem;
+			gap: 0 0.3rem;
+		}
+
+		.project-title {
+			padding-right: calc(var(--cell) * 1);
+		}
+		.tags {
+			padding-right: 0;
 		}
 	}
 </style>
