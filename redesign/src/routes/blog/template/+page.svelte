@@ -2,6 +2,7 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Spacer from '$lib/components/Spacer.svelte';
 	import blogTest from '$lib/assets/blog-test.png';
+	import { base } from '$app/paths';
 </script>
 
 <div class="container">
@@ -15,7 +16,7 @@
 		Here is an optional description for a blog post. It can be a few sentences long and provide an
 		overview of the content of the blog post.
 	</div>
-	<div class="blog-byline">By <a href="/">Austin Steinhart</a> | July 1, 2023</div>
+	<div class="blog-byline">By <a href="{base}/">Austin Steinhart</a> | July 1, 2023</div>
 	<Spacer />
 
 	<hr class="full-line" />

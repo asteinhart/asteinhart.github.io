@@ -1,3 +1,4 @@
+import { base } from '$app/paths';
 import { BLOGS } from './blogs.js';
 
 // Native posts are authored in Markdown at src/routes/blog/<slug>/+page.svx.
@@ -13,7 +14,7 @@ const nativePosts = Object.entries(modules).map(([path, meta]) => {
 	meta = meta ?? {};
 	return {
 		slug,
-		url: `/blog/${slug}`,
+		url: `${base}/blog/${slug}`,
 		title: meta.title ?? slug,
 		description: meta.description ?? '',
 		date: meta.date ?? '',

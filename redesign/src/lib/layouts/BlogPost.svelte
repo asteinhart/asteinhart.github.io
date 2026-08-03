@@ -2,6 +2,7 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Spacer from '$lib/components/Spacer.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import { base } from '$app/paths';
 
 	// Frontmatter from each post is passed in as props by mdsvex.
 	let { title = '', description = '', date = '', author = 'Austin Steinhart', children } = $props();
@@ -35,7 +36,7 @@
 			<div class="blog-desc">{description}</div>
 		{/if}
 		<div class="blog-byline">
-			By <a href="/">{author}</a>
+			By <a href="{base}/">{author}</a>
 			{#if formattedDate}
 				| {formattedDate}{/if}
 		</div>

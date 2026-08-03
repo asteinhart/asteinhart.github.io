@@ -1,5 +1,6 @@
 <script>
 	import Spacer from './Spacer.svelte';
+	import { base } from '$app/paths';
 
 	let {
 		all = false,
@@ -15,17 +16,17 @@
 <div class="header">
 	<div class="name">
 		<b
-			><a href="/">
+			><a href="{base}/">
 				<div>Austin</div>
 				<div>Steinhart</div>
 			</a></b
 		>
 	</div>
 	<div class="nav">
-		<a class:bold={projects | all} href="/projects" data-text={'/projects'}>/projects</a>
-		<a class:bold={blog | all} href="/blog" data-text={'/blog'}>/blog</a>
-		<a class:bold={links | all} href="/links" data-text={'/links'}>/links</a>
-		<a class:bold={photos | all} href="/photos" data-text={'/photos'}>/photos</a>
+		<a class:bold={projects | all} href="{base}/projects" data-text={'/projects'}>/projects</a>
+		<a class:bold={blog | all} href="{base}/blog" data-text={'/blog'}>/blog</a>
+		<a class:bold={links | all} href="{base}/links" data-text={'/links'}>/links</a>
+		<a class:bold={photos | all} href="{base}/photos" data-text={'/photos'}>/photos</a>
 	</div>
 </div>
 

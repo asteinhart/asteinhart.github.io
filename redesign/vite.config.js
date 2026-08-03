@@ -4,6 +4,16 @@ import { defineConfig } from 'vite';
 import { mdsvex } from 'mdsvex';
 import { fileURLToPath } from 'node:url';
 
+// The app is served from this subpath so it can live alongside the existing
+// static site at the domain root.
+const BASE_PATH = '/redesign';
+
+// Pre-built static HTML sub-sites bundled in `static/` (each an `index.html`
+// under its own folder). They're plain assets, not SvelteKit routes, so the
+// prerender crawler can't resolve their directory index and reports a 404 for
+// any internal link into them — even though the files ship in the build.
+const STATIC_SUBSITES = ['ai-in-gov', 'docs', 'reading'];
+
 // Markdown blog posts (`.svx`) render into this shared layout. Frontmatter
 // (title/description/date/tags) is passed to the layout as props.
 const mdsvexOptions = {
@@ -20,6 +30,23 @@ export default defineConfig({
 
 	plugins: [
 		sveltekit({
+			// Every internal link and asset resolves against this base.
+			paths: { base: BASE_PATH },
+
+			prerender: {
+				// Don't fail the build when the crawler can't resolve a link into
+				// one of the bundled static sub-sites (see STATIC_SUBSITES). Every
+				// other broken internal link still throws, which is what caught the
+				// base-path link bugs in the first place.
+				handleHttpError: ({ status, path, message }) => {
+					const isSubsite = STATIC_SUBSITES.some(
+						(dir) => path === `${BASE_PATH}/${dir}` || path.startsWith(`${BASE_PATH}/${dir}/`)
+					);
+					if (status === 404 && isSubsite) return;
+					throw new Error(message);
+				}
+			},
+
 			// Treat `.svx` files as routes/components in addition to `.svelte`.
 			extensions: ['.svelte', '.svx'],
 			preprocess: [mdsvex(mdsvexOptions)],

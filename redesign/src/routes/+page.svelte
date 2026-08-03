@@ -5,6 +5,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { PROJECTS } from '$lib/projects.js';
 	import { siteConfig } from '$lib/config/site.js';
+	import { base } from '$app/paths';
 
 	const personJsonLd = {
 		'@context': 'https://schema.org',
@@ -67,12 +68,12 @@
 		<Spacer />
 		<div class="nav-small">
 			<b
-				><a href="/projects"
+				><a href="{base}/projects"
 					>explore all projects <span style="font-weight: normal;">&#8599;</span>
 				</a></b
 			>
-			<b><a href="/blog">read the blog <span style="font-weight: normal;">&#8599;</span></a></b>
-			<b><a href="/links">follow the links <span style="font-weight: normal;">&#8599;</span></a></b>
+			<b><a href="{base}/blog">read the blog <span style="font-weight: normal;">&#8599;</span></a></b>
+			<b><a href="{base}/links">follow the links <span style="font-weight: normal;">&#8599;</span></a></b>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,82 @@
+name: Deploy to GitHub Pages
+
+# Publishes the existing hand-built static site at the domain root and the
+# SvelteKit app (built with adapter-static) under /redesign, as a single
+# GitHub Pages artifact.
+#
+# One-time setup: in repo Settings > Pages, set "Build and deployment" >
+# "Source" to "GitHub Actions" (instead of "Deploy from a branch").
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; don't cancel an in-progress one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: redesign/.nvmrc
+          cache: npm
+          cache-dependency-path: redesign/package-lock.json
+
+      - name: Build redesign app
+        working-directory: redesign
+        run: |
+          npm ci
+          npm run build
+
+      - name: Assemble site (root static site + /redesign build)
+        run: |
+          mkdir -p _site
+          # Copy the existing root site verbatim, excluding the SvelteKit
+          # source folder (its build output is placed under /redesign below)
+          # and repo/tooling dirs.
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='redesign' \
+            --exclude='_site' \
+            --exclude='node_modules' \
+            --exclude='.DS_Store' \
+            ./ _site/
+          # Drop the built SvelteKit app at /redesign.
+          mkdir -p _site/redesign
+          cp -a redesign/build/. _site/redesign/
+          # Serve the artifact as-is (no Jekyll processing of _app/ etc.).
+          touch _site/.nojekyll
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
