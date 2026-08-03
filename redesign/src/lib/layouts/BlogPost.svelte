@@ -40,9 +40,8 @@
 				| {formattedDate}{/if}
 		</div>
 		<Spacer />
-
-		<hr class="full-line" />
 	</div>
+	<hr class="full-line" />
 	<Spacer />
 
 	<div class="blog-container">
@@ -67,7 +66,7 @@
 	/* Body column: change --text-width to tune. Centered on the page,
 	   text stays left-aligned inside the column. */
 	.blog-container {
-		--text-width: calc(var(--cell) * 25.9); /* 26 of 50 cells → 14-cell margins */
+		--text-width: calc(var(--cell) * 27); /* 26 of 50 cells → 14-cell margins */
 		width: var(--text-width);
 		margin-inline: auto;
 	}
@@ -84,15 +83,21 @@
 	}
 
 	.full-line {
-		margin-left: calc(var(--cell) * -10);
-		margin-right: calc(var(--cell) * -10);
+		position: absolute;
+		/* align with the page's side rails: left rail sits 2 cells in, right rail
+		   is snapped to the grid via round() — mirror that so the ends meet. */
+		left: calc(var(--cell) * 2);
+		width: calc(100% - var(--cell) * 4); /* fallback if round() unsupported */
+		width: calc(round(100% - var(--cell) * 2, var(--cell)) - var(--cell) * 2);
+		margin: 0;
+		z-index: 5;
 	}
 
 	.blog-body :global(img) {
-		width: 100%;
+		max-width: 100%;
 		height: auto;
 		display: block;
-		margin: var(--cell) 0;
+		margin: var(--cell) auto;
 	}
 
 	.blog-body :global(ul),
@@ -141,7 +146,24 @@
 
 	@media screen and (max-width: 768px) {
 		.blog-container {
-			--text-width: calc(var(--cell) * 18); /* 18 of 20 cells → 1-cell margins */
+			margin-left: calc(var(--cell) * 2.1);
+			margin-right: calc(var(--cell) * 2);
+			width: auto;
+		}
+
+		.full-line {
+			/* rails move to 1 cell in on mobile — match them */
+			left: calc(var(--cell) * 1);
+			width: calc(100% - var(--cell) * 2); /* fallback if round() unsupported */
+			width: calc(round(100% - var(--cell) * 1, var(--cell)) - var(--cell) * 1);
+		}
+
+		.blog :global(h1) {
+			font-size: calc(var(--cell) * 1.1);
+		}
+
+		.blog :global(p) {
+			font-size: calc(var(--cell) * 0.65);
 		}
 	}
 </style>

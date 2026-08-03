@@ -52,15 +52,9 @@ Adding new projects is now as easy as adding to a JS object with all the info th
 <style>
 	img {
 		border: .5px solid rgb(0, 0, 0, .2);
-		/* center??? */
-
 	}
 
 	.siteImg {
-		width: 100%;
-		display: flex;
-  		justify-content: center; /* Horizontally centers the image */
-  		align-items: center;    
-		max-width: 600px;
+		width: 600px;
 	}
 </style>
