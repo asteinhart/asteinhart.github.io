@@ -61,9 +61,11 @@
 		</p>
 		<Spacer />
 		<p>
-			find me on <a href="https://www.linkedin.com/in/austin-steinhart/">linkedin</a>,
-			<a href="https://github.com/asteinhart">github</a>, or reach out via email at asteinhart3 at
-			gmail dot com
+			find me on <a class="nav-link" href="https://www.linkedin.com/in/austin-steinhart/"
+				>linkedin</a
+			>,
+			<a class="nav-link" href="https://github.com/asteinhart">github</a>, or reach out via email at
+			asteinhart3 at gmail dot com
 		</p>
 		<Spacer />
 		<div class="nav-small">
@@ -102,6 +104,10 @@
 		width: 80%;
 	}
 
+	.nav-link {
+		text-decoration: underline;
+	}
+
 	.full-line {
 		position: absolute;
 		width: 100%;
@@ -112,6 +118,11 @@
 	@media screen and (max-width: 768px) {
 		.intro {
 			width: 100%;
+		}
+
+		.nav-small {
+			flex-direction: column;
+			gap: 0;
 		}
 	}
 </style>
