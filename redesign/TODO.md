@@ -1,17 +1,26 @@
 TODO
-* migrate over projects
-    * easy
-        * sunset
-        * 
-    * hard
-        * content we love (maybe easy? airtable secret in github?)
-* add in more links
+
+MUST DO
+* add more /links
+* check all links
+* ask someone to look at it (deploy on another link?)
+* confirm works on mobile (how?)
+* add subscribe to 
+    * metro diary
+    * scrolly
+    * blog template
+
+
+WILL DO
+* add more photos
+* move over content we love
+* move over sunset (ensure redirect works) ( i think i can just static deploy on pages)
 * finish blog post
-* add more recent photos
-* add sign up tp
-  * metro diary
-  * scrolly
-  * blog posts?
+
+
+
+
+
 
 
 
