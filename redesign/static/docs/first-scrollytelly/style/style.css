@@ -1,0 +1,561 @@
+header,
+main {
+    width: 100%;
+    max-width: 755px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.header-left {
+    font-size: 1.25rem;
+    font-weight: 550;
+
+}
+
+main {
+    position: relative;
+    margin-top: 1rem;
+}
+
+h1 {
+    font-size: 2.1rem;
+    line-height: 0.9;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.2rem;
+    line-height: 0.9;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    font-weight: 600;
+}
+
+.sphinxsidebarwrapper {
+    width: 200px;
+    position: fixed;
+    left: 10px;
+    top: 1rem;
+}
+
+.sphinxsidebarwrapper h2 {
+    margin-top: 0;
+    font-size: 1rem;
+}
+
+.sphinxsidebarwrapper ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sphinxsidebarwrapper li+li {
+    margin-top: 0.5rem;
+}
+
+.sphinxsidebarwrapper a {
+    color: black;
+    text-decoration: none;
+}
+
+.sphinxsidebarwrapper a:hover {
+    text-decoration: underline;
+}
+
+#demo-scrolly-response {
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+    max-height: 60vh;
+    overflow: auto;
+    margin: 0;
+    padding: 0.5rem;
+    border: 1px solid #d6d6d6;
+}
+
+
+
+.first-next {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+}
+
+.next {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    font-size: 1.25rem;
+}
+
+.nound {
+    text-decoration: none;
+    color: black;
+}
+
+.next a {
+    color: rgb(101, 101, 101);
+    text-decoration: underline;
+}
+
+.first-next a {
+    color: rgb(101, 101, 101);
+    text-decoration: underline;
+}
+
+
+.main-content {
+    max-width: 755px;
+    margin: 0 auto;
+}
+
+.figure.viewport {
+    width: 70%;
+    height: 30vh;
+    margin: 1.5rem auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.figure.viewport .background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 30vh;
+    background-color: steelblue;
+}
+
+.figure.long {
+    width: 70%;
+    height: calc(30vh + 150px);
+    margin: 1.5rem auto;
+    border: 2px dashed black;
+    position: relative;
+}
+
+.figure.long.mode-overflow {
+    height: 30vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.figure.long.mode-full {
+    height: calc(30vh + 150px);
+    overflow: visible;
+}
+
+.figure.long .background {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 30vh;
+    background-color: steelblue;
+}
+
+.figure.long::after {
+    content: "";
+    display: block;
+    height: calc(30vh + 150px);
+}
+
+.figure-toggle {
+    display: block;
+    width: fit-content;
+    margin: 1rem auto 0;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+}
+
+.background {
+    border: 3px solid black;
+    box-sizing: border-box;
+
+}
+
+.non-stick-demo {
+    width: 70%;
+    height: calc(30vh);
+    margin: 1.5rem auto;
+    border: 2px dashed black;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.non-stick-demo.mode-overflow {
+    height: 30vh;
+}
+
+.non-stick-demo.mode-full {
+    height: calc(30vh + 150px);
+}
+
+.non-stick-demo .background {
+    width: 100%;
+    height: calc(30vh);
+    background-color: steelblue;
+}
+
+.background.sticky {
+    position: sticky;
+    top: 0;
+    z-index: -1;
+
+}
+
+.non-stick-demo .foreground {
+    position: relative;
+    inset: 0;
+    width: 100%;
+    height: calc(30vh + 250px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 100px;
+    overflow: visible;
+    padding: 70px 0 220px;
+    z-index: 1;
+    background-color: #1f293339;
+}
+
+
+.non-stick-demo .foreground .card {
+    width: 200px;
+    height: 75px;
+    border: 2px solid black;
+    background: #1F2933;
+    flex: 0 0 auto;
+}
+
+
+
+.figure.long .foreground {
+    position: relative;
+    z-index: 1;
+    width: 88%;
+    height: calc(30vh + 300px);
+    margin: 1rem auto;
+    border: 3px solid black;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.long-figure-demo {
+    width: 70%;
+    height: calc(30vh + 150px);
+    margin: 1.5rem auto;
+    border: 2px dashed black;
+    position: relative;
+}
+
+.long-figure-demo .background {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    background-color: steelblue;
+}
+
+.long-figure-demo .foreground {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+    padding: 70px 0 220px;
+    box-sizing: border-box;
+}
+
+.long-figure-demo .card {
+    width: 50%;
+    height: 50px;
+    border: 2px solid black;
+    background: rgba(255, 255, 255, 0.92);
+    flex: 0 0 auto;
+}
+
+
+
+.mini-scrolly-demo {
+    position: relative;
+}
+
+.mini-scrolly-demo .example-background {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background: steelblue;
+    transition: background-color 250ms ease;
+}
+
+.mini-scrolly-demo .example-foreground {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: -50vh;
+}
+
+.mini-scrolly-demo .example-step {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini-scrolly-demo .example-card {
+    width: 50%;
+    border: 2px solid black;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+#mini-scrolly-response {
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+    max-height: 60vh;
+    overflow: auto;
+    margin: 0;
+    padding: 0.5rem;
+    border: 1px solid #d6d6d6;
+    background: #fff;
+    color: #111;
+}
+
+.is-hidden {
+    display: none;
+}
+
+.background-text {
+    color: steelblue;
+    font-weight: 600;
+}
+
+.foreground-text {
+    color: #1F2933;
+    font-weight: 600;
+}
+
+p, ul, summary {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.5em;
+    font-size: 1.1rem;
+}
+
+summary {
+    margin-bottom: .25rem;
+}
+
+pre {
+    background: #000;
+    color: #fff;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-nav a {
+    color: black;
+    text-decoration: none;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+}
+
+.disclaimer, .disclaimer a {
+    font-size: 1rem;
+    color: #555;
+}
+
+
+@media (max-width: 1175px) {
+    .sphinxsidebarwrapper {
+        width: 150px;
+    }
+
+    #demo-scrolly-response {
+        font-size: 0.6rem;
+
+    }
+}
+
+@media (max-width: 1075px) {
+    .sphinxsidebarwrapper {
+        display: none;
+    }
+}
+
+@media (max-width: 950px) {
+
+    body {
+        padding-top: 20px
+    }
+
+    header,
+    main {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    body {
+        margin-top: 0;
+    }
+
+    .sphinxsidebarwrapper {
+        display: none;
+    }
+
+
+    .header-container {
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+    }
+
+    .header-nav {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .header-left {
+        font-size: 1.1rem;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+        line-height: 1.05;
+    }
+
+    h3 {
+        font-size: 1.15rem;
+        line-height: 1.2;
+    }
+
+    p,
+    ul,
+    summary {
+        font-size: 1.08rem;
+        line-height: 1.45;
+    }
+
+    .figure.viewport,
+    .figure.long,
+    .non-stick-demo,
+    .long-figure-demo,
+    .mini-scrolly-demo {
+        width: 100%;
+    }
+
+    .first-next,
+    .next {
+        font-size: 1rem;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 560px) {
+
+    header,
+    main {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .header-nav {
+        width: 100%;
+        gap: 0.6rem;
+    }
+
+    .header-nav a {
+        padding: 0.1rem 0;
+    }
+
+    h1 {
+        font-size: 1.65rem;
+    }
+
+    h3 {
+        font-size: 1.05rem;
+    }
+
+    p,
+    ul,
+    summary {
+        font-size: 1rem;
+    }
+
+    .first-next,
+    .next {
+        flex-direction: column;
+        gap: 0.1rem;
+        font-size: 0.95rem;
+    }
+
+    .first-next a:last-child,
+    .next a:last-child {
+        text-align: right;
+    }
+}
+
+
+details {
+    margin: 1rem 0 0 0;
+}
+
+details summary {
+    cursor: pointer;
+    user-select: none;
+}
+
+details summary:hover {
+    opacity: 0.7;
+}

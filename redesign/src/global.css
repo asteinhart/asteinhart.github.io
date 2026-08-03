@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700');
+
+:root {
+	container-type: inline-size;
+	/* make :root a query container so descendants can measure its content width */
+	--cell: calc(100cqw / 50);
+	/* grid unit — drives both the background grid and text rhythm.
+	   100cqw is the :root container's content width, which excludes the
+	   scrollbar, so the 50-cell grid stays inside the content box and the
+	   scrollbar sits outside it, never covering the right edge. */
+	scrollbar-gutter: stable;
+	/* reserve the scrollbar's space so 100cqw stays constant across pages */
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Arimo', sans-serif;
+	letter-spacing: -0.02em;
+	font-weight: 400;
+	font-size: calc(var(--cell) * 0.7);
+	/* ~1.6 line-height ratio, constant across viewports */
+	line-height: var(--cell);
+	/* each line advances exactly one grid row */
+	min-height: 100vh;
+	box-sizing: border-box;
+	background-color: #fff;
+	color: rgba(0, 0, 0, 0.7);
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+	background-size: var(--cell) var(--cell);
+}
+
+/* Keep every vertical space a whole multiple of --cell so text stays on the grid */
+p {
+	margin-block: 0 0;
+}
+
+h1 {
+	font-size: calc(var(--cell) * 1.5);
+	line-height: calc(var(--cell) * 2);
+	margin-block: calc(var(--cell) * 2) var(--cell);
+}
+
+h2 {
+	font-size: var(--cell);
+	line-height: calc(var(--cell) * 2);
+	margin-block: calc(var(--cell) * 2) var(--cell);
+}
+
+h3 {
+	font-size: calc(var(--cell) * 0.8);
+	line-height: calc(var(--cell) * 2);
+	margin-block: var(--cell) 0;
+}
+
+a {
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.7);
+	cursor: cell;
+
+}
+
+
+a:hover {
+	text-decoration: underline;
+}
+
+hr {
+	color: rgb(0, 0, 0, 0.7);
+	margin: 0;
+}
+
+.container {
+	margin-left: calc(var(--cell) * 3.1);
+	margin-right: calc(var(--cell) * 3);
+}
+
+table {
+	border-collapse: collapse;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+	:root {
+		--cell: calc(100cqw / 20);
+	}
+
+	body {
+		font-size: calc(var(--cell) * 0.7);
+	}
+
+	.container {
+		margin-left: calc(var(--cell) * 2.1);
+		margin-right: calc(var(--cell) * 2);
+	}
+}
