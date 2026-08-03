@@ -29,6 +29,7 @@
 		border: 1.5px solid rgb(0, 0, 0, 0.5);
 		background: none;
 		cursor: pointer;
+		color: rgb(0, 0, 0, 0.7);
 	}
 
 	@media screen and (max-width: 768px) {
