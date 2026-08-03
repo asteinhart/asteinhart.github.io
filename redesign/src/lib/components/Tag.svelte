@@ -32,4 +32,10 @@
 	.tag.active {
 		border: 1.9px solid rgb(0, 0, 0, 0.5);
 	}
+
+	@media screen and (max-width: 768px) {
+		.tag {
+			border: 1px solid rgb(0, 0, 0, 0.5);
+		}
+	}
 </style>

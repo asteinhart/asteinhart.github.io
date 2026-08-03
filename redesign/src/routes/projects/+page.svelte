@@ -94,8 +94,11 @@
 							project.tags.map((t) => t.toLowerCase()).includes(filter.toLowerCase())}
 					>
 						<td class="project-title"
-							><a href={project.url} target="_blank" rel="noopener noreferrer"
-								>{project.title} &#8599;</a
+							><a
+								href={project.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`Link to ${project.title}`}>{project.title} &#8599;&#xFE0E;</a
 							></td
 						>
 						<td>{project.tags.join(', ').toLowerCase()}</td>
