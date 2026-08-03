@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700');
 
 :root {
-	--cell: 2vw;
-	/* grid unit — drives both the background grid and text rhythm */
+	container-type: inline-size;
+	/* make :root a query container so descendants can measure its content width */
+	--cell: calc(100cqw / 50);
+	/* grid unit — drives both the background grid and text rhythm.
+	   100cqw is the :root container's content width, which excludes the
+	   scrollbar, so the 50-cell grid stays inside the content box and the
+	   scrollbar sits outside it, never covering the right edge. */
+	scrollbar-gutter: stable;
+	/* reserve the scrollbar's space so 100cqw stays constant across pages */
 }
 
 * {
@@ -78,9 +85,12 @@ table {
 	border-collapse: collapse;
 }
 
+
+
+
 @media screen and (max-width: 768px) {
 	:root {
-		--cell: 5vw;
+		--cell: calc(100cqw / 20);
 	}
 
 	body {

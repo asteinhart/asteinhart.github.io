@@ -1,7 +1,7 @@
 <script>
 	import Nav from '$lib/components/Nav.svelte';
 	import Spacer from '$lib/components/Spacer.svelte';
-	import Project from '$lib/components/Project.svelte';
+	import ProjectGrid from '$lib/components/ProjectGrid.svelte';
 	import Tag from '$lib/components/Tag.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { PROJECTS } from '$lib/projects.js';
@@ -76,23 +76,7 @@
 {#if view === 'visual'}
 	<Spacer />
 
-	<div class="container-projects">
-		<hr class="vert-line" />
-		<div class="projects">
-			{#each filteredProjects as project}
-				<Project
-					tags={project.tags}
-					title={project.title}
-					img={project.img}
-					imgScale={project.imgScale}
-					url={project.url}
-					description={project.description}
-					muted={project.muted}
-				/>
-				<hr class="divider" />
-			{/each}
-		</div>
-	</div>
+	<ProjectGrid projects={filteredProjects} />
 {:else if view === 'list'}
 	<hr class="full-line below" />
 	<div class="container">
@@ -109,7 +93,7 @@
 						class:active={filter === 'all' ||
 							project.tags.map((t) => t.toLowerCase()).includes(filter.toLowerCase())}
 					>
-						<td
+						<td class="project-title"
 							><a href={project.url} target="_blank" rel="noopener noreferrer"
 								>{project.title} &#8599;</a
 							></td
@@ -142,30 +126,6 @@
 		gap: 1rem;
 	}
 
-	.vert-line {
-		position: absolute;
-		height: 100%;
-		left: calc(100% / 2); /*middle of the page*/
-		margin: 0;
-		transform: rotate(180deg);
-	}
-
-	.container-projects {
-		position: relative;
-		margin-left: calc(var(--cell) * 2);
-		margin-right: calc(var(--cell) * 2);
-		margin-top: calc(var(--cell) * -1);
-	}
-
-	.divider {
-		display: none;
-	}
-
-	.projects {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}
-
 	button.view {
 		background: none;
 		border: none;
@@ -180,6 +140,10 @@
 	tbody tr.active td,
 	tbody tr.active td a {
 		color: rgb(0, 0, 0, 0.7);
+	}
+
+	.project-title {
+		padding-right: calc(var(--cell) * 2);
 	}
 
 	.views {
@@ -239,20 +203,6 @@
 			/* row-gap 0: each tag row is exactly --cell tall, so wrapped rows
 			   land on the baseline grid. column-gap doesn't affect the baseline. */
 			gap: 0 0.5rem;
-		}
-
-		.projects {
-			grid-template-columns: 1fr;
-		}
-
-		.vert-line {
-			display: none;
-		}
-
-		.divider {
-			display: block;
-			margin-left: calc(var(--cell) * -1);
-			margin-right: calc(var(--cell) * -1);
 		}
 	}
 </style>

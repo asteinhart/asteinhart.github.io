@@ -1,7 +1,7 @@
 <script>
 	import Nav from '$lib/components/Nav.svelte';
 	import Spacer from '$lib/components/Spacer.svelte';
-	import Project from '$lib/components/Project.svelte';
+	import ProjectGrid from '$lib/components/ProjectGrid.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { PROJECTS } from '$lib/projects.js';
 	import { siteConfig } from '$lib/config/site.js';
@@ -81,21 +81,7 @@
 <hr class="full-line" />
 <Spacer />
 
-<div class="container-projects">
-	<hr class="vert-line" />
-	<div class="projects">
-		{#each proj_favs as project}
-			<Project
-				tags={project.tags}
-				title={project.title}
-				img={project.img}
-				url={project.url}
-				description={project.description}
-			/>
-			<hr class="divider" />
-		{/each}
-	</div>
-</div>
+<ProjectGrid projects={proj_favs} />
 
 <style>
 	.nav-small {
@@ -106,25 +92,6 @@
 	.intro {
 		width: 80%;
 	}
-	.vert-line {
-		position: absolute;
-		height: 100%;
-		left: calc(100% / 2); /*middle of the page*/
-		margin: 0;
-		transform: rotate(180deg);
-	}
-
-	.divider {
-		display: none;
-	}
-
-	.container-projects {
-		position: relative;
-
-		margin-left: calc(var(--cell) * 2);
-		margin-right: calc(var(--cell) * 2);
-		margin-top: calc(var(--cell) * -1);
-	}
 
 	.full-line {
 		position: absolute;
@@ -133,28 +100,9 @@
 		z-index: 5;
 	}
 
-	.projects {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}
-
 	@media screen and (max-width: 768px) {
-		.projects {
-			grid-template-columns: 1fr;
-		}
-
-		.vert-line {
-			display: none;
-		}
-
 		.intro {
 			width: 100%;
-		}
-
-		.divider {
-			display: block;
-			margin-left: calc(var(--cell) * -1);
-			margin-right: calc(var(--cell) * -1);
 		}
 	}
 </style>

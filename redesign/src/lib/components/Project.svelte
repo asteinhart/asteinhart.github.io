@@ -47,6 +47,9 @@
 		padding: calc(var(--cell));
 		flex-direction: column;
 		box-shadow: 0 1px 0 0 rgb(0, 0, 0, 0.5);
+		/* allow the card to shrink below its media's intrinsic width so the
+		   grid track can't blow past its half-share and shift the column */
+		min-width: 0;
 	}
 
 	a.card-link {

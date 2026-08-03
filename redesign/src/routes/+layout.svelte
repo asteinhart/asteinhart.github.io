@@ -26,9 +26,13 @@
 	.app {
 		display: flex;
 		flex-direction: column;
-		min-height: 100vh; /* fallback if round() unsupported */
+		min-height: 100%; /* fallback if round() unsupported */
 		/* snap to the grid so the footer's bottom edge lands on a --cell line */
 		min-height: round(down, 100vh, var(--cell));
+		/* positioning context for the rails/lines: :root has container-type, which
+		   makes it the containing block for fixed descendants — so anchor the lines
+		   to .app (content width) instead, and let them span the full document. */
+		position: relative;
 	}
 
 	/* grows to fill leftover space so the footer lands at the bottom of max(content, viewport) */
@@ -37,7 +41,7 @@
 	}
 
 	.side-left {
-		position: fixed;
+		position: absolute;
 		top: 0;
 		left: 0;
 		transform: rotate(180deg);
@@ -47,7 +51,7 @@
 	}
 
 	.side-right {
-		position: fixed;
+		position: absolute;
 		top: 0;
 		/* anchor from the left and snap to the grid (grid originates at the left edge) */
 		left: calc(100% - var(--cell) * 2); /* fallback if round() unsupported */

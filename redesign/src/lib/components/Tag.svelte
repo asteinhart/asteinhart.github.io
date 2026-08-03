@@ -16,7 +16,7 @@
 		height: calc(var(--cell));
 	}
 	.tag {
-		color: rgb(0, 0, 0, 0.65ç);
+		color: rgb(0, 0, 0, 0.67);
 		font-size: calc(var(--cell) * 0.6);
 		height: calc(var(--cell) * 0.85);
 		padding-inline: calc(var(--cell) * 0.15);
