@@ -69,11 +69,19 @@
 		<div class="nav-small">
 			<b
 				><a href="{base}/projects"
-					>explore all projects <span style="font-weight: normal;">&#8599;</span>
+					>explore all projects <span style="font-weight: normal;">&#8599;&#xFE0E;</span>
 				</a></b
 			>
-			<b><a href="{base}/blog">read the blog <span style="font-weight: normal;">&#8599;</span></a></b>
-			<b><a href="{base}/links">follow the links <span style="font-weight: normal;">&#8599;</span></a></b>
+			<b
+				><a href="{base}/blog"
+					>read the blog <span style="font-weight: normal;">&#8599;&#xFE0E;</span></a
+				></b
+			>
+			<b
+				><a href="{base}/links"
+					>follow the links <span style="font-weight: normal;">&#8599;&#xFE0E;</span></a
+				></b
+			>
 		</div>
 	</div>
 </div>

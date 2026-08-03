@@ -5,10 +5,7 @@
 	import { LINKS } from '$lib/links.js';
 </script>
 
-<Seo
-	title="Links"
-	description="Books and articles Austin Steinhart recommends."
-/>
+<Seo title="Links" description="Books and articles Austin Steinhart recommends." />
 
 <div class="container">
 	<Nav links={true} />
@@ -29,7 +26,8 @@
 			{#each Object.values(LINKS.books) as book}
 				<tr>
 					<td
-						><a href={book.url} target="_blank" rel="noopener noreferrer">{book.title} &#8599;</a
+						><a href={book.url} target="_blank" rel="noopener noreferrer"
+							>{book.title} &#8599;&#xFE0E;</a
 						></td
 					>
 				</tr>
@@ -54,7 +52,7 @@
 				<tr>
 					<td
 						><a href={article.url} target="_blank" rel="noopener noreferrer"
-							>{article.title} &#8599;</a
+							>{article.title} &#8599;&#xFE0E;</a
 						></td
 					>
 				</tr>

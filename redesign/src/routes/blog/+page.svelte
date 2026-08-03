@@ -41,7 +41,7 @@
 					<td class="title">
 						{#if blog.external}
 							<a href={blog.url} target="_blank" rel="noopener noreferrer"
-								>{blog.title} &#8599;</a
+								>{blog.title} &#8599;&#xFE0E;</a
 							>
 						{:else}
 							<a href={blog.url}>{blog.title}</a>
