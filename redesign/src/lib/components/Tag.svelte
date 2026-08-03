@@ -34,7 +34,7 @@
 	}
 
 	@media screen and (max-width: 768px) {
-		.tag {
+		.tag.active {
 			border: 1px solid rgb(0, 0, 0, 0.5);
 		}
 	}
