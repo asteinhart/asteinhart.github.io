@@ -3,13 +3,24 @@
 :root {
 	container-type: inline-size;
 	/* make :root a query container so descendants can measure its content width */
-	--cell: calc(100cqw / 50);
+	--cell: calc(100cqw / 50); /* fallback if round() unsupported */
+	--cell: round(down, 100cqw / 50, 1px);
 	/* grid unit — drives both the background grid and text rhythm.
 	   100cqw is the :root container's content width, which excludes the
 	   scrollbar, so the 50-cell grid stays inside the content box and the
-	   scrollbar sits outside it, never covering the right edge. */
+	   scrollbar sits outside it, never covering the right edge.
+	   round(down, …, 1px) pixel-snaps the unit: a fractional cell makes element
+	   edges, text baselines, and the background tiles snap to device pixels
+	   differently on Safari, so N×cell drifts off the painted gridline and the
+	   error accumulates down long lists/tables. Snapping to a whole px keeps
+	   every N×cell — and every round(…, var(--cell)) elsewhere — on the grid. */
 	scrollbar-gutter: stable;
 	/* reserve the scrollbar's space so 100cqw stays constant across pages */
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	/* stop iOS Safari from inflating text in wide blocks (e.g. table cells),
+	   which advances a line by more than one --cell and shifts everything below
+	   it off the baseline grid */
 }
 
 * {
@@ -90,7 +101,8 @@ table {
 
 @media screen and (max-width: 768px) {
 	:root {
-		--cell: calc(100cqw / 20);
+		--cell: calc(100cqw / 20); /* fallback if round() unsupported */
+		--cell: round(down, 100cqw / 20, 1px);
 	}
 
 	body {
