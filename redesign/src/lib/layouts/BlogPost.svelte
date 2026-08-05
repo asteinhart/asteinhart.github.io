@@ -62,6 +62,7 @@
 		line-height: calc(var(--cell));
 		margin-bottom: calc(var(--cell));
 		width: 100%;
+		letter-spacing: 0;
 	}
 
 	/* Body column: change --text-width to tune. Centered on the page,
