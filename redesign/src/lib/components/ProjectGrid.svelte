@@ -29,7 +29,7 @@
 		   the two 1-cell paddings that flank it. */
 		left: calc(var(--cell) * 23);
 		margin: 0;
-		transform: rotate(180deg);
+		width: var(--line-width);
 	}
 
 	.projects {

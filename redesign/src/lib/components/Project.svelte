@@ -47,7 +47,9 @@
 		display: flex;
 		padding: calc(var(--cell));
 		flex-direction: column;
-		box-shadow: 0 1px 0 0 rgb(0, 0, 0, 0.5);
+		/* box-shadow, not border-bottom: a border would add to the card's height and
+		   push it off the baseline grid. the y-offset is the line's thickness. */
+		box-shadow: 0 var(--line-width) 0 0 var(--line-color);
 		/* allow the card to shrink below its media's intrinsic width so the
 		   grid track can't blow past its half-share and shift the column */
 		min-width: 0;

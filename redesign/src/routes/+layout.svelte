@@ -44,10 +44,9 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		transform: rotate(180deg);
 		margin-left: calc(var(--cell) * 2);
 		height: 100%;
-		stroke: var(--color-text);
+		width: var(--line-width);
 	}
 
 	.side-right {
@@ -57,6 +56,7 @@
 		left: calc(100% - var(--cell) * 2); /* fallback if round() unsupported */
 		left: round(100% - var(--cell) * 2, var(--cell));
 		height: 100%;
+		width: var(--line-width);
 	}
 
 	.top {

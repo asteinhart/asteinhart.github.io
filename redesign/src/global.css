@@ -22,6 +22,10 @@
 	/* stop iOS Safari from inflating text in wide blocks (e.g. table cells),
 	   which advances a line by more than one --cell and shifts everything below
 	   it off the baseline grid */
+	/* every structural rule — page rails, dividers, card under-lines — draws with
+	   these two, so weight and tone stay in step across the site */
+	--line-width: 2px;
+	--line-color: rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -83,8 +87,14 @@ a:hover {
 	text-decoration: underline;
 }
 
+/* paint the line with a background, not a border: the UA style is
+   `border-style: inset; border-width: 1px`, which on a zero-height box stacks a
+   top and bottom border into two lines — and WebKit shades `inset` as a 3D
+   bevel, so Safari shows one dark line and one light one. */
 hr {
-	color: rgb(0, 0, 0, 0.7);
+	border: none;
+	height: var(--line-width);
+	background-color: var(--line-color);
 	margin: 0;
 }
 
