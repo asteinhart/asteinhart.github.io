@@ -76,11 +76,10 @@
 		font-size: calc(var(--cell) * 1.2);
 		font-weight: bold;
 	}
-	.blog-desc {
-		font-size: calc(var(--cell) * 0.7);
-	}
-	.blog-byline {
-		font-size: calc(var(--cell) * 0.55);
+
+	.blog-byline,
+	.blog-byline a {
+		font-size: calc(var(--cell) * 0.65);
 	}
 
 	.full-line {
@@ -160,11 +159,13 @@
 		}
 
 		.blog :global(h1) {
-			font-size: calc(var(--cell) * 1.1);
+			font-size: calc(var(--cell) * 1.15);
 		}
 
-		.blog :global(p) {
-			font-size: calc(var(--cell) * 0.65);
+		.blog .blog-body :global(a),
+		.blog .blog-body :global(p),
+		.blog-desc {
+			font-size: calc(var(--cell) * 0.85);
 		}
 	}
 </style>
