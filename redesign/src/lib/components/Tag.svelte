@@ -38,5 +38,9 @@
 		.tag.active {
 			border: 1.5px solid rgb(0, 0, 0, 0.5);
 		}
+		.tag {
+			font-size: calc(var(--cell) * 0.7);
+			padding-inline: calc(var(--cell) * 0.19);
+		}
 	}
 </style>

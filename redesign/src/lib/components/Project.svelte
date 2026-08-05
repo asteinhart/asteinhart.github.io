@@ -111,6 +111,7 @@
 
 		.title {
 			min-height: calc(var(--cell));
+			font-size: calc(var(--cell) * 0.85);
 		}
 
 		/* single full-width column is ~16 cells wide, so a 9-cell box is

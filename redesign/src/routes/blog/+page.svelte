@@ -29,7 +29,7 @@
 	<table>
 		<thead>
 			<tr>
-				<th scope="col">mm/dd/yyyy</th>
+				<th scope="col" class="date">date</th>
 				<th scope="col" class="title">title</th>
 				<th scope="col" class="tags">tags</th>
 			</tr>
@@ -37,7 +37,7 @@
 		<tbody>
 			{#each POSTS as blog}
 				<tr>
-					<td scope="row">{blog.displayDate}</td>
+					<td scope="row" class="date">{blog.displayDate}</td>
 					<td class="title">
 						{#if blog.external}
 							<a href={blog.url} target="_blank" rel="noopener noreferrer"
@@ -95,16 +95,19 @@
 		tr,
 		td,
 		th {
-			font-size: calc(var(--cell) * 0.6);
+			font-size: calc(var(--cell) * 0.75);
 		}
 
 		.title {
-			/* give the title column the available slack so long titles have more room */
-			width: calc(var(--cell) * 7);
-		}
-		.tags {
 			padding-right: 0;
-			padding-left: calc(var(--cell) * -1);
+		}
+
+		.date {
+			padding-right: 15px;
+		}
+
+		.tags {
+			display: none;
 		}
 	}
 </style>

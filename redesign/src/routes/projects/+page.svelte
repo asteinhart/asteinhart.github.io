@@ -83,8 +83,8 @@
 		<table>
 			<thead>
 				<tr>
-					<th scope="col">project</th>
-					<th scope="col">tags</th>
+					<th scope="col" class="project-title">project</th>
+					<th scope="col" class="tags">tags</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -205,10 +205,10 @@
 		}
 
 		.project-title {
-			padding-right: calc(var(--cell) * 1);
+			padding-right: 0;
 		}
 		.tags {
-			padding-right: 0;
+			display: none;
 		}
 	}
 </style>

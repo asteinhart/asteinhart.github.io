@@ -76,5 +76,8 @@
 		.header {
 			margin-top: calc(var(--cell) * 1);
 		}
+		a {
+			font-size: calc(var(--cell) * 0.75);
+		}
 	}
 </style>
