@@ -77,7 +77,7 @@
 			margin-top: calc(var(--cell) * 1);
 		}
 		a {
-			font-size: calc(var(--cell) * 0.75);
+			font-size: calc(var(--cell) * 0.8);
 		}
 	}
 </style>

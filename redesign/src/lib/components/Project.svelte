@@ -96,7 +96,6 @@
 	}
 
 	.description p {
-		font-size: calc(var(--cell) * 0.65);
 		color: rgb(0, 0, 0, 0.7);
 		letter-spacing: -0.03em;
 		padding-left: calc(var(--cell) * 0.1);
