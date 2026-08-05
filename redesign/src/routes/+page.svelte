@@ -37,7 +37,7 @@
 />
 
 <div class="container">
-	<Nav all={true} />
+	<Nav />
 	<Spacer />
 
 	<div class="intro">
