@@ -6,7 +6,7 @@ tags: [guide, frontend, tooling]
 ---
 
 <script>
-	import BlogImg from  "$lib/components/blog/blogImg.svelte"
+	import BlogImg from  "$lib/components/blog/BlogImg.svelte"
 	import Subscribe from  "$lib/components/Subscribe.svelte"
 
 	import oldSite from "$lib/assets/oldSite.webp"
