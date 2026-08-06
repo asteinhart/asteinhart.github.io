@@ -32,20 +32,25 @@
 <div class="blog">
 	<div class="blog-container">
 		<h1 class="blog-title">{title}</h1>
+		<div class="blog-byline">
+			<i
+				>{#if formattedDate}
+					{formattedDate}
+				{/if}</i
+			>
+		</div>
+
 		{#if description}
 			<div class="blog-desc">{description}</div>
 		{/if}
-		<div class="blog-byline">
-			By <a href="{base}/">{author}</a>
-			{#if formattedDate}
-				| {formattedDate}{/if}
-		</div>
-		<Spacer />
 	</div>
-	<hr class="full-line" />
+
 	<Spacer />
+	<hr class="full-line" />
 
 	<div class="blog-container">
+		<Spacer />
+
 		<div class="blog-body">
 			{@render children()}
 		</div>
@@ -76,11 +81,6 @@
 	h1.blog-title {
 		font-size: calc(var(--cell) * 1.2);
 		font-weight: bold;
-	}
-
-	.blog-byline,
-	.blog-byline a {
-		font-size: calc(var(--cell) * 0.65);
 	}
 
 	.full-line {

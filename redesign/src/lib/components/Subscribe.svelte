@@ -1,18 +1,30 @@
-<p>want to stay up to date on my latest projects and blog posts?</p>
-<form
-	action="https://buttondown.com/api/emails/embed-subscribe/asteinhart"
-	method="post"
-	class="embeddable-buttondown-form"
->
-	<label for="bd-email">enter your email</label>
-	<input type="email" name="email" id="bd-email" />
-	<input type="submit" value="subscribe" />
-</form>
+<script>
+	let { justify = 'left', border = false } = $props();
+</script>
+
+<div class="box" class:border style="text-align: {justify}">
+	<p>want to stay up to date on my latest projects and blog posts?</p>
+	<form
+		action="https://buttondown.com/api/emails/embed-subscribe/asteinhart"
+		method="post"
+		class="embeddable-buttondown-form"
+	>
+		<label for="bd-email">enter your email</label>
+		<input type="email" name="email" id="bd-email" />
+		<input type="submit" value="subscribe" />
+	</form>
+</div>
 
 <style>
+	.box p {
+		margin-bottom: 0;
+	}
 	input {
 		font-family: inherit;
 		font-size: calc(var(--cell) * 0.5);
+	}
+	.border {
+		border: 1.5px solid rgb(0, 0, 0, 0.5);
 	}
 
 	input[type='email'] {
@@ -39,6 +51,10 @@
 
 		input[type='submit'] {
 			font-size: calc(var(--cell) * 0.4);
+		}
+
+		.box {
+			text-align: left !important;
 		}
 	}
 </style>
