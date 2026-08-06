@@ -29,7 +29,7 @@ However as I continue in my career, I found myself having different needs and wa
 * move to a modern framework and tooling, specifically [Svelte](https://svelte.dev/)
 
 ## Designing the website
-As I have gotten deeper into the design world I have more of a process now. I started with some collecting some ~vibes~ such as colors and other websites I was inspired by. I took a b&w film picture of a tree (see below) a few years ago and now use it as my profile pic many places. I used this as some color inspiration. As someone that works with data for a living, I was also into the idea of a spreadsheet as the basis for my site and found some sites (like [here](https://sammorr.is/), [here](ecologize.net/), [here](https://elijah.beaton.page/archive/2022-mockup-2.html), and [here](https://hellothisismy.website/work/)) that I drew inspiration from. 
+As I have gotten deeper into the design world I have more of a process now. I started with some collecting some ~vibes~ such as colors and other websites I was inspired by. I took a b&w film picture of a tree (see below) a few years ago and now use it as my profile pic many places. I used this as some color inspiration. As someone that works with data for a living, I was also into the idea of a spreadsheet as the basis for my site and found some sites (like [here](https://sammorr.is/), [here](http://ecologize.net/), [here](https://elijah.beaton.page/archive/2022-mockup-2.html), and [here](https://hellothisismy.website/work/)) that I drew inspiration from. 
 
 <BlogImg src={inspo} alt="site inspo" height = "600px" border/>
 

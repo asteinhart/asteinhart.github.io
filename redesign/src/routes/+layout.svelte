@@ -1,10 +1,28 @@
 <script>
+	import { tick } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
 	import favicon from '$lib/assets/favicon.svg';
 	import Footer from '$lib/components/Footer.svelte';
 
 	import '../global.css';
 
 	let { children } = $props();
+
+	// count.js counts the initial page load on its own, but SvelteKit swaps pages
+	// client-side without a reload, so every navigation after that has to be
+	// counted by hand — otherwise only the entry page ever shows up.
+	afterNavigate(async (nav) => {
+		if (nav.type === 'enter') return; // the full page load count.js already counted
+
+		// Let <svelte:head> flush so the canonical link and title count.js reads
+		// belong to the page we just navigated to, not the one we left.
+		await tick();
+
+		// Empty referrer: document.referrer still holds whatever sent the visitor
+		// to the site, and reusing it here would re-credit that source on every
+		// internal click.
+		window.goatcounter?.count?.({ referrer: '' });
+	});
 </script>
 
 <svelte:head>
