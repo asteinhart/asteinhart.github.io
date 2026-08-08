@@ -1,7 +1,7 @@
 ---
 title: "Rebuilding and Redesigning My Personal Website"
 description: "There are so many ways to make a website today. Here's how I decided to build it as someone who wants a lot of control of my site and likes to write code."
-date: "2026-08-07"
+date: "2026-08-08"
 tags: [guide, frontend, tooling]
 ---
 

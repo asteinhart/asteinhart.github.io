@@ -7,3 +7,6 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# The pre-2026 hand-built site, kept for reference only — not formatted, not built.
+/archive/
