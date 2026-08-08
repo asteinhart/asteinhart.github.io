@@ -75,6 +75,7 @@
 		}
 		.header {
 			margin-top: calc(var(--cell) * 1);
+			margin-right: calc(var(--cell) * -0.75);
 		}
 		a {
 			font-size: calc(var(--cell) * 0.8);

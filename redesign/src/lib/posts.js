@@ -19,7 +19,6 @@ const nativePosts = Object.entries(modules).map(([path, meta]) => {
 		description: meta.description ?? '',
 		date: meta.date ?? '',
 		tags: meta.tags ?? [],
-		external: false,
 		draft: meta.draft ?? false
 	};
 });
@@ -27,7 +26,6 @@ const nativePosts = Object.entries(modules).map(([path, meta]) => {
 // External write-ups that live on other sites (hand-maintained in blogs.js).
 const externalPosts = Object.entries(BLOGS).map(([slug, post]) => ({
 	slug,
-	external: true,
 	draft: false,
 	...post
 }));

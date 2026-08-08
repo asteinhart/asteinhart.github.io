@@ -2,9 +2,10 @@ export const siteConfig = {
 	name: 'Austin Steinhart',
 	url: 'https://austinsteinhart.com',
 	ogImage: '',
-	description: 'Personal blog of Austin Steinhart',
+	description:
+		'Austin Steinhart uses data, design, and engineering to solve problems and tell stories that matter.',
 	links: {
-		linkedin: 'https://linkedin.com/in/austin_steinhart',
+		linkedin: 'https://www.linkedin.com/in/austin-steinhart/',
 		github: 'https://github.com/asteinhart'
 	},
 	keywords: ``,

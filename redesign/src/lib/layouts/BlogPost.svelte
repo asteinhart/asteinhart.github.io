@@ -94,9 +94,14 @@
 		z-index: 5;
 	}
 
-	.blog-body :global(img) {
-		max-width: 100%;
-		height: auto;
+	/* same fixed 16:9-for-this-column box as <BlogImg>: a whole number of cells
+	   tall, so a plain markdown image can't knock the text below it off the
+	   baseline grid. Non-16:9 images letterboxes inside it. */
+	.blog-body :global(img),
+	.blog-body :global(video) {
+		width: 100%;
+		height: calc(var(--cell) * 15);
+		object-fit: contain;
 		display: block;
 		margin: var(--cell) auto;
 	}
@@ -131,6 +136,12 @@
 		font-size: 0.9em;
 		background: rgba(0, 0, 0, 0.05);
 		padding: 0.1em 0.3em;
+		/* a monospace inline box has different font metrics than the surrounding
+		   text, so at the inherited line-height it sticks out of the line box and
+		   makes that line 1–2px taller — enough to walk the rest of the post off
+		   the baseline grid. line-height: 0 keeps its box inside the paragraph's
+		   strut, so a line with code is exactly as tall as one without. */
+		line-height: 0;
 	}
 
 	.blog-body :global(pre) {
@@ -167,6 +178,11 @@
 		.blog .blog-body :global(p),
 		.blog-desc {
 			font-size: calc(var(--cell) * 0.85);
+		}
+
+		.blog-body :global(img),
+		.blog-body :global(video) {
+			height: calc(var(--cell) * 9);
 		}
 	}
 </style>

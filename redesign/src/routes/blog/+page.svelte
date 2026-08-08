@@ -4,12 +4,6 @@
 	import Subscribe from '$lib/components/Subscribe.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { POSTS } from '$lib/posts.js';
-
-	function filterBlog(event) {
-		const filter = event.target.textContent;
-		console.log(`Filtering blog by: ${filter}`);
-		// Implement filtering logic here
-	}
 </script>
 
 <Seo
@@ -39,13 +33,9 @@
 				<tr>
 					<td scope="row" class="date">{blog.displayDate}</td>
 					<td class="title">
-						{#if blog.external}
-							<a href={blog.url} target="_blank" rel="noopener noreferrer"
-								>{blog.title} &#8599;&#xFE0E;</a
-							>
-						{:else}
-							<a href={blog.url}>{blog.title}</a>
-						{/if}
+						<a href={blog.url} target="_blank" rel="noopener noreferrer"
+							>{blog.title} &#8599;&#xFE0E;</a
+						>
 					</td>
 					<td class="tags">{blog.tags.join(', ').toLowerCase()}</td>
 				</tr>

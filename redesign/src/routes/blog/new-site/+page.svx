@@ -16,50 +16,50 @@ tags: [guide, frontend, tooling]
 </script>
 
 
-I have wanted to redesign and rebuild my website for some time now. I built the first version of my site back in the spring of 2024. It's pretty insane to me that this was only ~2.5 years as I feel like I know mountains more now then I did then. Shout out to [graduate school](https://capp.uchicago.edu/) and a lot of tinkering and side projects. 
+I have wanted to redesign and rebuild my website for some time now. I built the first version of my site back in the spring of 2024. It's pretty insane to me that this was only ~2.5 years ago as I feel like I know mountains more now than I did then. Shout out to [graduate school](https://capp.uchicago.edu/) and a lot of tinkering and side projects. 
 
-<BlogImg src={oldSite} alt="my first site" height = "600px"  border/>
+<BlogImg src={oldSite} alt="my first site" border/>
 
-I originally built the site in vanilla HTML, CSS, and Javascript and hosted it on [Github Pages](https://docs.github.com/en/pages) as that's what I knew at the time. It served its purpose and was a great learning tool as I was dipping my toes into web development. 
+I originally built my site in vanilla HTML, CSS, and Javascript and hosted it on [Github Pages](https://docs.github.com/en/pages) as that's what I knew at the time. It served its purpose and was a great learning tool as I was dipping my toes into web development. 
 
-However as I continue in my career, I found myself having different needs and wants for my personal site. In addition to showing off my professional work and side projects, I now also want to:
-* Consolidate where I host different projects. I don't think I fully understood (and might not still) what ~really~ needs a backend. I have two projects that I am hosting on Heroku that could be hosted on Github Pages so I want to move these over.
+However, as I've continued in my career, I've found myself with different needs and wants for my personal site. In addition to showing off my professional work and side projects, I now also want to:
+* Consolidate where I host different projects. I don't think I fully understood (and might not still) what really needs a backend. I have two projects that I am hosting on Heroku that could be hosted on Github Pages so I want to move these over.
 * Start a blog! I am interested in writing about projects I work on, creating guides and learning materials, and the occasional musings about things like taste, friendships, and New York City.
-* Redesign the page with my full human brain and no A.I
-* move to a modern framework and tooling, specifically [Svelte](https://svelte.dev/)
+* Redesign the page with my full human brain and no A.I.
+* Move to a modern framework and tooling, specifically [Svelte](https://svelte.dev/)
 
 ## Designing the website
-As I have gotten deeper into the design world I have more of a process now. I started with some collecting some ~vibes~ such as colors and other websites I was inspired by. I took a b&w film picture of a tree (see below) a few years ago and now use it as my profile pic many places. I used this as some color inspiration. As someone that works with data for a living, I was also into the idea of a spreadsheet as the basis for my site and found some sites (like [here](https://sammorr.is/), [here](http://ecologize.net/), [here](https://elijah.beaton.page/archive/2022-mockup-2.html), and [here](https://hellothisismy.website/work/)) that I drew inspiration from. 
+As I have gotten deeper into the design world, I now have more of a process. I started by collecting some ~vibes~ such as colors and other websites I was inspired by. I took a b&w film picture of a tree (see below) a few years ago and now use it as my profile pic in a lot of places. I used this as color inspiration. As someone who works with data for a living, I was also into the idea of a spreadsheet as the basis for my site and found some sites (like [here](https://sammorr.is/), [here](http://ecologize.net/), [here](https://elijah.beaton.page/archive/2022-mockup-2.html), and [here](https://hellothisismy.website/work/)) that I drew inspiration from. 
 
-<BlogImg src={inspo} alt="site inspo" height = "600px" border/>
+<BlogImg src={inspo} alt="site inspo" border/>
 
-I then tried to mock up a few versions and layouts. I landed on `/projects`, `/blog`, `/links`, and `/photos` as top level routes. I always love when I find a page on someone's site that links to all the great things on the internet that inspired them so am excited to now have my own.
+I then tried to mock up a few versions and layouts. I landed on `/projects`, `/blog`, `/links`, and `/photos` as top level routes. I always love when I find a page on someone's site that links to all the great things on the internet that inspired them, so I'm excited to now have my own.
 
-<BlogImg src={designs} alt="site designs" height = "600px" border/>
+<BlogImg src={designs} alt="site designs" border/>
 
-Mobile design I can find difficult as mockups and even looking at the mobile versions through inspect tools never quite have the real feel of looking at a site on your phone. Most of the progress on the mobile version came after I deployed a beta version and saw how it looked on my phone. The review prompted a few changes that I often have to make for mobile version, namely increase the text size and remove any unnecessary aspects (I removed the tags column from both the blog and project page in list view).
+I often find mockups for mobile design difficult as even looking at the mobile version through inspect tools never quite has the real feel of looking at a site on your phone. Most of the progress on the mobile version came after I deployed a beta version of the site and saw how it looked on my phone. The review prompted a few changes that I find myself often not getting right on the first pass: increasing the text size and simplifying the page (I removed the tags column from both the blog and project pages in list view for the mobile version).
 
-I find I can only do some much designing before I want to turn to code so I tried to make a few rough versions to see what was working for me and then once I had a good sense of my vision, I got to coding.
+I find I can only do so much designing before I want to turn to code. I tried to make a few rough versions to see what was working for me and then once I had a good sense of my vision, I got to coding.
 
 
 ## Building the website
 
-Making and hosting a website can be a daunting task but given my requirements, I was able to pretty quickly rule out static site generators like [Hugo](https://gohugo.io/) or more full featured tools like [Ghost](https://ghost.org/). I found a a [template](https://github.com/YusufCeng1z/sveltekit-shadcn-blog-starter) online from [Yusuf Cengiz](https://github.com/YusufCeng1z) that was pretty close to everything I wanted. It was in Svelte, a blog template aimed at developers, had a script to create an `rss.xml` and `sitemap.xml`, and used MDsveX to render markdown with components. I decided to start from scratch instead of fork this repo as I wanted some but not all of the pieces. I find it easier to not get overwhelmed learning someone else's set up and rather just pull pieces in as I need them. Ultimately here are all the tools I am using:
+Making and hosting a website can be a daunting task, but given my requirements, I was able to pretty quickly rule out static site generators like [Hugo](https://gohugo.io/) or more full featured tools like [Ghost](https://ghost.org/). I found a [template](https://github.com/YusufCeng1z/sveltekit-shadcn-blog-starter) online from [Yusuf Cengiz](https://github.com/YusufCeng1z) that was pretty close to everything I wanted: it was built in Svelte, aimed at developers, had a script to generate `rss.xml` and `sitemap.xml`, and used MDsveX to render markdown with components. I decided to start from scratch instead of forking this repo as I wanted some but not all of the pieces. I find it easier to not get overwhelmed learning someone else's setup and instead just pull pieces in as I need them. Ultimately, here are all the tools I am using:
 * [Svelte](https://svelte.dev/) as a frontend framework
 * [MDsveX](https://github.com/pngwn/mdsvex) to render markdown into a template with Svelte components for my blog
-* [Buttondown](https://buttondown.com/) to manage email subscriptions. It is free under 100 subscribers, $9/mo for the cheapest plan
+* [Buttondown](https://buttondown.com/) to manage email subscriptions. It is free under 100 subscribers, then $9/mo for the cheapest plan
 * [GoatCounter](https://www.goatcounter.com/) for free site analytics
 * [Github Pages](https://docs.github.com/en/pages) to host the static files for free
 
 I may consider switching to something like [trifold](https://www.jpt.sh/projects/trifold/) (developed by [James Turk](https://www.jpt.sh/)) soon to host the static site as Github appears to be a [self destructing ship](https://news.ycombinator.com/item?id=47582984).
 
+I used an LLM (Claude Opus 4.8 specifically) to write some of the code, including the Svelte setup and thinking through some tricky CSS to get this grid layout (mostly) working. I find that having an LLM work on specific files and explain the decisions it makes is a happy medium between using this shiny new tool and still feeling like I am growing as an engineer.
+
 ## All coming together
 
-I used an LLM (Claude specifically) to write some on the code including some Svelte setup and some thinking through some tricky CSS to get this grid layout mostly working. I find some mix of having to work on specific files and explain to me what decisions it makes a happy medium between using this new shiny tool and still feelings like I am growing as an engineer.
+After a decent amount of upfront work, I now have a new site that is completely in my control to customize while also being easy to update with new projects or blog posts. Adding new projects is now as easy as adding to a config file with all the info that will be included. Adding a new blog post is as easy as making a new markdown file (specifically .svx from MDsveX) and adding in text or any custom Svelte components. This then gets styled and added to my [/blog](https://austinsteinhart.com/blog) page.
 
-After a decent amount of upfront work, I know have new site that is completely in my control to customize while also being easy to update with new projects or blog posts. Adding new projects is now as easy as adding to a JS object with all the info that will be included. Adding a new blog post is as easy as making a new markdown file (specifically .svx from MDsveX) and adding in text or any custom Svelte components. This then gets styled and added to my [/blog](https://austinsteinhart/blog) page.
-
-Let me know how you think it came out! As with all my projects, feel free to explore [the code for this site](https://github.com/asteinhart/asteinhart.github.io)
+Let me know how you think it came out! As with all my projects, feel free to explore [the code for this site](https://github.com/asteinhart/asteinhart.github.io).
 
 <Subscribe justify=center />
 

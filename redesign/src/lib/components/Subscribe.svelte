@@ -19,9 +19,19 @@
 	.box p {
 		margin-bottom: 0;
 	}
+	/* flex, not inline flow: inline-block inputs sit on the text baseline and drag
+	   descender space in with them, which made the form 21.8px tall — a fraction of
+	   a cell, so everything under it drifted off the grid. */
+	form {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0 calc(var(--cell) * 0.3);
+	}
 	input {
 		font-family: inherit;
 		font-size: calc(var(--cell) * 0.5);
+		height: var(--cell);
 	}
 	.border {
 		border: 1.5px solid rgb(0, 0, 0, 0.5);

@@ -42,7 +42,7 @@
 
 	<div class="intro">
 		<p>
-			using <b>data</b>, <b>design</b>,and <b>engineering</b> to solve problems and tell stories that
+			using <b>data</b>, <b>design</b>, and <b>engineering</b> to solve problems and tell stories that
 			matter
 		</p>
 		<Spacer />
@@ -54,7 +54,7 @@
 			previously, a <b>research engineer</b> at the
 			<a href="https://miurban.uchicago.edu/">mansueto institute for urban innovation</a>
 			helping academics and journalists understand public transportation, property ownership networks,
-			public finance, property taxes, etc. before that the <b>data editor</b> at the
+			public finance, property taxes, etc. before that, the <b>data editor</b> at the
 			<a href="https://www.chicagomaroon.com/">chicago maroon</a>,
 			<b>analytics</b>
 			at the dnc, and <b>youth programming</b> at <a href="https://changeist.org/">changeist</a>
@@ -66,6 +66,10 @@
 			>,
 			<a class="nav-link" href="https://github.com/asteinhart">github</a>, or reach out via email at
 			asteinhart3 at gmail dot com
+		</p>
+		<p>
+			follow my work via <a class="nav-link" href="{base}/rss.xml">rss</a> or
+			<a class="nav-link" href="https://buttondown.com/asteinhart">email subscription</a>
 		</p>
 		<Spacer />
 		<div class="nav-small">

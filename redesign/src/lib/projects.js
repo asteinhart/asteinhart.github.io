@@ -5,7 +5,7 @@ export const PROJECTS = {
 		title: 'Stories of New York City, Mapped',
 		url: 'https://austinsteinhart.com/metro-diary-map?ref=psite',
 		description:
-			"An interactive map of the New York Times' Metropolitan Diary — reader stories of everyday life in New York City, placed where they happened, 1976–2026.",
+			"An interactive map of the New York Times' Metropolitan Diary placed where they happened, 1976–2026.",
 		img: `${base}/project-imgs/diaries.webm`,
 		tags: ['Frontend', 'Mapping', 'Design']
 	},
@@ -13,7 +13,7 @@ export const PROJECTS = {
 		title: 'First scrollytelling',
 		url: 'https://austinsteinhart.com/docs/first-scrollytelly?ref=psite',
 		description:
-			'A guide to creating scrollytelling stories, including when to use scrollytelling and different types of scrollytelling techniques.',
+			'A guide to creating scrollytelling stories including when the format is worth using, and the different techniques for pulling it off.',
 		img: `${base}/project-imgs/scrolly.webp`,
 		tags: ['Guide', 'Frontend']
 	},
@@ -37,7 +37,7 @@ export const PROJECTS = {
 		title: 'Visualizing 2026: Five Foreign Policy Trends to Watch',
 		url: 'https://www.cfr.org/article/visualizing-2026-five-foreign-policy-trends-watch',
 		description:
-			"What trends are Council on Foreign Relations foreign policy experts watching in 2026? Read about the race for critical minerals, the possible end of arms control, and the rise of the ‘Electrostate' (plus some visuals I contributed).",
+			'What trends are Council on Foreign Relations foreign policy experts watching in 2026? Read about the race for critical minerals, the possible end of arms control, and the rise of the ‘Electrostate’ (plus some visuals I contributed).',
 		img: `${base}/project-imgs/viz2026.webp`,
 		tags: ['Graphics', 'Design'],
 		imgScale: 'contain'
@@ -62,8 +62,7 @@ export const PROJECTS = {
 	cta_bus_service: {
 		title: 'CTA says bus service is back to prepandemic levels. A new analysis says otherwise.',
 		url: 'https://www.chicagotribune.com/2024/12/30/cta-bus-service-analysis/?share=yarmeie3ytbainrsuh1l',
-		description:
-			'Worked on a team to produce the analysis and visualizations used in this story in the Chicago Tribune.',
+		description: 'Contributed analysis and visualizations behind this Chicago Tribune story.',
 		img: `${base}/project-imgs/cta.webp`,
 		tags: ['Data-Eng']
 	},
@@ -87,7 +86,7 @@ export const PROJECTS = {
 		title: 'Who Owns Chicago?',
 		url: 'https://whoownschi.miurban-dashboards.org/',
 		description:
-			'A web app that allows users to identify the owners of every parcel of land in Chicago and Cook County including an interactive map with 1.4M building parcels using MapLibre to allow research and journalists to explore corporate property ownership in Chicago.',
+			'A web app that lets users identify the owner of every parcel of land in Chicago and Cook County, including a MapLibre map of 1.4M building parcels that researchers and journalists can use to explore corporate property ownership in the city.',
 		img: `${base}/project-imgs/chicago.webp`,
 		tags: ['Backend', 'Frontend', 'Mapping']
 	},
@@ -111,7 +110,7 @@ export const PROJECTS = {
 	find_early_voting: {
 		title: 'Find a Chicago Early Voting Location',
 		url: 'https://chicagomaroon.com/l95h',
-		description: 'A map of all 56 Early Voting locations in Chicago.',
+		description: 'A map of all 56 early voting locations in Chicago.',
 		img: `${base}/project-imgs/voting.webp`,
 		tags: ['Writing', 'Mapping']
 	},
@@ -119,7 +118,7 @@ export const PROJECTS = {
 		title: 'StopWatch: Exploring Bus Service in Chicago',
 		url: 'https://ctastopwatch.miurban-dashboards.org/',
 		description:
-			'Built a web app as part of a research project that analyzed a unique dataset of over 100 million real-time bus locations in partnership with the Chicago Tribune.',
+			'A web app for a research project that analyzed a unique dataset of over 100 million real-time bus locations in partnership with the Chicago Tribune.',
 		img: `${base}/project-imgs/sw.webp`,
 		tags: ['Backend', 'Frontend'],
 		imgScale: 'contain'
@@ -128,7 +127,7 @@ export const PROJECTS = {
 		title: 'Common Thread',
 		url: 'https://github.com/uchicago-capp-30320/CommonThread',
 		description:
-			'Currently in development, Common Thread is an open-source collaborative tool that enables users to turn stories into insights. Community-based organizations, journalists, researchers, and community members alike can use the tool to efficiently gather stories, aggregate them, and understand common threads to draw insights for action.',
+			'An open-source collaborative tool, currently in development, that turns stories into insights. Community organizations, journalists, researchers, and community members can use it to gather stories, aggregate them, and find the common threads worth acting on.',
 		img: `${base}/project-imgs/ct.webp`,
 		tags: ['Backend', 'Frontend', 'Design'],
 		imgScale: 'contain'
@@ -196,7 +195,7 @@ export const PROJECTS = {
 		title: 'My Daily Devotion: The NYT Daily Mini Crossword',
 		url: 'https://austinsteinhart.medium.com/my-daily-obsession-the-nyt-daily-mini-crossword-b58450478e6',
 		description:
-			'The New York Times Daily Mini Crossword is a daily puzzle that I have been solving since 2016. I have solved over 2,500 puzzles and have kept track of my streaks, stats, and progress over the years.',
+			'The New York Times Mini Crossword is a puzzle I have been solving every day since 2016. Over 2,500 puzzles later, a look at my streaks, stats, and progress over the years.',
 		img: `${base}/project-imgs/xword.webp`,
 		tags: ['Writing', 'Graphics'],
 		imgScale: 'contain'

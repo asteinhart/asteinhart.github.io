@@ -12,54 +12,31 @@
 	<Spacer />
 </div>
 
-<hr class="full-line above" />
-<hr class="full-line below" />
-
-<div class="container">
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">books</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each Object.values(LINKS.books) as book}
+{#each Object.entries(LINKS) as [category, links]}
+	<hr class="full-line above" />
+	<hr class="full-line below" />
+	<div class="container">
+		<table>
+			<thead>
 				<tr>
-					<td
-						><a href={book.url} target="_blank" rel="noopener noreferrer"
-							>{book.title} &#8599;&#xFE0E;</a
-						></td
-					>
+					<th scope="col">{category}</th>
 				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
-
-<Spacer />
-<Spacer />
-<hr class="full-line above" />
-<hr class="full-line below" />
-<div class="container">
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">articles</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each Object.values(LINKS.articles) as article}
-				<tr>
-					<td
-						><a href={article.url} target="_blank" rel="noopener noreferrer"
-							>{article.title} &#8599;&#xFE0E;</a
-						></td
-					>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
+			</thead>
+			<tbody>
+				{#each Object.values(links) as link}
+					<tr>
+						<td
+							><a href={link.url} target="_blank" rel="noopener noreferrer"
+								>{link.title} &#8599;&#xFE0E;</a
+							></td
+						>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	</div>
+	<Spacer />
+{/each}
 
 <style>
 	table {

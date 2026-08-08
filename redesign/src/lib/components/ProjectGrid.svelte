@@ -9,7 +9,6 @@
 	<div class="projects">
 		{#each projects as project}
 			<Project {...project} />
-			<hr class="divider" />
 		{/each}
 	</div>
 </div>
@@ -45,10 +44,6 @@
 		justify-content: start;
 	}
 
-	.divider {
-		display: none;
-	}
-
 	@media screen and (max-width: 768px) {
 		.projects {
 			grid-template-columns: 1fr;
@@ -56,12 +51,6 @@
 
 		.vert-line {
 			display: none;
-		}
-
-		.divider {
-			display: block;
-			margin-left: calc(var(--cell) * -1);
-			margin-right: calc(var(--cell) * -1);
 		}
 	}
 </style>

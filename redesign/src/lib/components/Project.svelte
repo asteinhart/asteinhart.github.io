@@ -110,6 +110,21 @@
 			box-shadow: none;
 		}
 
+		/* the under-line bleeds 1 cell past the card on each side, which a
+		   box-shadow can't do without also spreading vertically. drawing it as an
+		   absolutely positioned pseudo-element keeps it out of flow, so — like the
+		   desktop box-shadow — it costs the card zero height and can't walk the
+		   cards below it off the baseline grid. */
+		.project::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: calc(var(--cell) * -1);
+			right: calc(var(--cell) * -1);
+			height: var(--line-width);
+			background-color: var(--line-color);
+		}
+
 		.title {
 			min-height: calc(var(--cell));
 			font-size: calc(var(--cell) * 0.85);
