@@ -9,6 +9,10 @@ const gitignorePath = path.resolve(import.meta.dirname, '.gitignore');
 
 export default defineConfig([
 	includeIgnoreFile(gitignorePath),
+	// archive/ is the pre-2026 hand-built site, tracked for reference only.
+	// static/ holds vendored libraries and the hand-built sub-sites, shipped
+	// verbatim — both are excluded from Prettier for the same reason.
+	{ ignores: ['archive/**', 'static/**'] },
 	js.configs.recommended,
 	svelte.configs.recommended,
 	prettier,

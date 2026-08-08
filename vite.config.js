@@ -4,9 +4,9 @@ import { defineConfig } from 'vite';
 import { mdsvex } from 'mdsvex';
 import { fileURLToPath } from 'node:url';
 
-// The app is served from this subpath so it can live alongside the existing
-// static site at the domain root.
-const BASE_PATH = '/redesign';
+// The app is served from the domain root. Kept as a named constant because the
+// prerender error handler below builds sub-site paths from it.
+const BASE_PATH = '';
 
 // Pre-built static HTML sub-sites bundled in `static/` (each an `index.html`
 // under its own folder). They're plain assets, not SvelteKit routes, so the
@@ -60,15 +60,14 @@ export default defineConfig({
 						: true
 			},
 
-			// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
-			// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
-			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
+			// Prerendered to plain HTML and served by GitHub Pages.
 			adapter: adapter({
-				// default options are shown. On some platforms
-				// these options are set automatically — see below
 				pages: 'build',
 				assets: 'build',
-				fallback: undefined,
+				// GitHub Pages serves 404.html for any unmatched path. Emitting the
+				// app shell there lets the client router boot and render
+				// src/routes/+error.svelte instead of GitHub's default 404.
+				fallback: '404.html',
 				precompress: false,
 				strict: true
 			})
