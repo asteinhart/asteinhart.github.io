@@ -29,6 +29,10 @@
 		return favs.map((key) => PROJECTS[key]).filter(Boolean);
 	});
 
+	let isMobile = $derived.by(() => {
+		return window.innerWidth < 768;
+	});
+
 	//$inspect(proj_favs, 'proj_favs');
 </script>
 
@@ -48,7 +52,12 @@
 		<Spacer />
 		<p>
 			<b>data visuals editor</b> at the
-			<a href="https://www.cfr.org/">council on foreign relations</a>
+			<a href="https://www.cfr.org/">
+				council on
+				{#if isMobile}
+					<br />
+				{/if} foreign relations</a
+			>
 		</p>
 		<p>
 			previously, a <b>research engineer</b> at the
