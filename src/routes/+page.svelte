@@ -29,10 +29,6 @@
 		return favs.map((key) => PROJECTS[key]).filter(Boolean);
 	});
 
-	let isMobile = $derived.by(() => {
-		return window.innerWidth < 768;
-	});
-
 	//$inspect(proj_favs, 'proj_favs');
 </script>
 
@@ -53,10 +49,7 @@
 		<p>
 			<b>data visuals editor</b> at the
 			<a href="https://www.cfr.org/">
-				council on
-				{#if isMobile}
-					<br />
-				{/if} foreign relations</a
+				council on<br class="mobile-break" /> foreign relations</a
 			>
 		</p>
 		<p>
@@ -121,6 +114,10 @@
 		text-decoration: underline;
 	}
 
+	.mobile-break {
+		display: none;
+	}
+
 	.full-line {
 		position: absolute;
 		width: 100%;
@@ -136,6 +133,10 @@
 		.nav-small {
 			flex-direction: column;
 			gap: 0;
+		}
+
+		.mobile-break {
+			display: initial;
 		}
 	}
 </style>
