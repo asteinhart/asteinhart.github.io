@@ -1,0 +1,37 @@
+---
+title: "Building an App for an Interactive Musical"
+description: "Theater and technology were always meant to go together"
+date: "2026-08-25"
+tags: [frontend, learning]
+draft: true
+---
+
+<script>
+	import BlogImg from  "$lib/components/blog/BlogImg.svelte"
+	import Subscribe from  "$lib/components/Subscribe.svelte"
+</script>
+
+
+
+This summer my partner wrote(!) and performed (!) an original musical called [Island Dating Show](https://www.broadwayworld.com/off-off-broadway/article/ISLAND-DATING-SHOW-to-Open-at-Off-The-Lane-in-an-Interactive-Reality-TV-Musical-20260724), a paradoy on Love Island.
+
+If you have been living under a rock Love Island is a reality dating show in which hot bombshells "move to a luxury villa in the hope of finding love and the summer of their life." Throughout each season, the at home audience votes for their couples and islanders, ultimately choosing the coupel that wins the cash prize.
+
+It then followed that Island Dating Show, the musical, needed live audience voting as well. And that's where I can in.
+
+
+* reminds of exhibit at the Getty combining artist with engineers (https://news.artnet.com/art-world/experiments-art-technology-eat-getty-show-2555785)
+* other options to consider (just fill out a google form)
+* make it easy to adjust and edit
+    * canva with slides
+    * sheet > csv as source of truth
+* handling a media heavy project
+    * convert everything to webp and webm
+    * host the media on s3
+* polling vs websockets
+* free tier project
+    * neon for db and vercel to host
+
+
+<Subscribe justify=center />
+
