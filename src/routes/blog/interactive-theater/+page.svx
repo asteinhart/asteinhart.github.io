@@ -1,7 +1,7 @@
 ---
 title: "Building an App for an Interactive Musical"
-description: "Theater and technology were always meant to go together"
 date: "2026-08-25"
+description: "Theater and technology were always meant to be together"
 tags: [frontend, learning]
 draft: true
 ---
@@ -9,16 +9,36 @@ draft: true
 <script>
 	import BlogImg from  "$lib/components/blog/BlogImg.svelte"
 	import Subscribe from  "$lib/components/Subscribe.svelte"
+
+    import EAT1 from "$lib/assets/interactive-theater/eat.webp"
+    import EAT2 from "$lib/assets/interactive-theater/eat2.webp"
+
+    import EAT_BK from "$lib/assets/interactive-theater/eat_9ev.webp" 
+    import EAT_9ev from "$lib/assets/interactive-theater/eat_bk.webp"
+
 </script>
 
 
 
-This summer my partner wrote(!) and performed (!) an original musical called [Island Dating Show](https://www.broadwayworld.com/off-off-broadway/article/ISLAND-DATING-SHOW-to-Open-at-Off-The-Lane-in-an-Interactive-Reality-TV-Musical-20260724), a paradoy on Love Island.
+This summer my partner wrote(!) and performed in(!) an original musical called [Island Dating Show](https://www.broadwayworld.com/off-off-broadway/article/ISLAND-DATING-SHOW-to-Open-at-Off-The-Lane-in-an-Interactive-Reality-TV-Musical-20260724),a Love Island parody on Love Island.
 
-If you have been living under a rock Love Island is a reality dating show in which hot bombshells "move to a luxury villa in the hope of finding love and the summer of their life." Throughout each season, the at home audience votes for their couples and islanders, ultimately choosing the coupel that wins the cash prize.
+If you have been living under a rock, Love Island is a reality dating show in which hot bombshells "move to a luxury villa in the hope of finding love and the summer of their life." Throughout each season, the at-home audience votes for their couples and islanders, ultimately choosing the couple that wins the show (and maybe more importantly, the cash prize).
 
-It then followed that Island Dating Show, the musical, needed live audience voting as well. And that's where I can in.
+It then followed that Island Dating Show, the musical, must have live audience voting as well to ensure it stays as close to the source material as possible. And that's where I came in. Having only seen a couple episodes of Love Island and in no way able to write a musical, I was not going to be much help on the content, but I sure can make a website where you click a button and something happens.
 
+## Artists and engineers
+
+Artists working with engineers has a long history that I have always been fascinated by. A few years ago, I saw an exhibit at the [Getty](https://www.getty.edu/), the best museum in Los Angeles, about a 1966 event called "[9 Evenings: Theatre & Engineering](https://news.artnet.com/art-world/experiments-art-technology-eat-getty-show-2555785).” This event brought together 10 artists in collaboration with 30 engineers from Bell Labs, intended to "showcase the possibilities of marrying their skills." The event was planned by a group called [Experiments in Art and Technology (E.A.T.)]() created by artists Robert Rauschenberg and Robert Whitman in collaboration with Bell Labs engineers Billy Klüver and Fred Waldhauer. This group's exhibits laid the groundwork for the much more common "interactive" exhibits we see today. I always view technology as a creative tool and this project is one in a long lineage of collaborations with artists and technologists. 
+
+<div class="side">
+<BlogImg src = {EAT_9ev}/>
+<BlogImg src = {EAT_BK}/>
+</div>
+
+<div class="side">
+<BlogImg src = {EAT1}/>
+<BlogImg src = {EAT2}/>
+</div>
 
 * reminds of exhibit at the Getty combining artist with engineers (https://news.artnet.com/art-world/experiments-art-technology-eat-getty-show-2555785)
 * other options to consider (just fill out a google form)
@@ -34,4 +54,13 @@ It then followed that Island Dating Show, the musical, needed live audience voti
 
 
 <Subscribe justify=center />
+
+<style>
+    .side {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    </style>
+
 
