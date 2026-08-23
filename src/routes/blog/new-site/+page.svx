@@ -9,9 +9,9 @@ tags: [guide, frontend, tooling]
 	import BlogImg from  "$lib/components/blog/BlogImg.svelte"
 	import Subscribe from  "$lib/components/Subscribe.svelte"
 
-	import oldSite from "$lib/assets/oldSite.webp"
-	import inspo from "$lib/assets/inspo.webp"
-	import designs from "$lib/assets/designs.webp"
+	import oldSite from "$lib/assets/new-site/oldSite.webp"
+	import inspo from "$lib/assets/new-site/inspo.webp"
+	import designs from "$lib/assets/new-site/designs.webp"
 
 </script>
 
