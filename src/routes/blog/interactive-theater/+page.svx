@@ -1,6 +1,6 @@
 ---
 title: "Building an App for an Interactive Musical"
-date: "2026-08-25"
+date: "2026-09-16"
 description: "Artists and technology were always meant to be together"
 tags: [frontend, learning]
 draft: true
@@ -24,13 +24,13 @@ This summer my partner wrote(!) and performed in(!) an original musical called [
 
 If you have been living under a rock, Love Island is a reality dating show in which hot bombshells "move to a luxury villa in the hope of finding love and the summer of their life." Throughout each season, the at-home audience votes for their couples and islanders, ultimately choosing the couple that wins the show (and maybe more importantly, the cash prize).
 
-It then followed that Island Dating Show, the musical, must have live audience voting as well to ensure it stays as close to the source material as possible. And that's where I came in. Having only seen a couple episodes of Love Island and in no way able to write a musical, I was not going to be much help on the content, but I sure can make a website where you click a button and something happens.\
+It then followed that Island Dating Show, the musical, must have live audience voting as well to ensure it stays as close to the source material as much as possible. And that's where I came in. Having only seen a couple of episodes of Love Island and in no way able to write a musical, I was not going to be much help on the content, but I sure can make a website where you click a button and something happens.
 
 Before I get into the details of the project, a quick aside.
 
 ## Artists and engineers
 
-Artists working with engineers has a long history that I have always been fascinated by. A few years ago, I saw an exhibit at the [Getty](https://www.getty.edu/), the best museum in Los Angeles, about a 1966 event called "[9 Evenings: Theatre & Engineering](https://news.artnet.com/art-world/experiments-art-technology-eat-getty-show-2555785).” This event brought together 10 artists in collaboration with 30 engineers from Bell Labs, intended to "showcase the possibilities of marrying their skills." The event was planned by a group called [Experiments in Art and Technology (E.A.T.)](https://www.experimentsinartandtechnology.org/) created by artists Robert Rauschenberg and Robert Whitman in collaboration with Bell Labs engineers Billy Klüver and Fred Waldhauer. 
+Artists working with engineers have a long history that I have always been fascinated by. A few years ago, I saw an exhibit at the [Getty](https://www.getty.edu/), the best museum in Los Angeles, about a 1966 event called "[9 Evenings: Theatre & Engineering](https://news.artnet.com/art-world/experiments-art-technology-eat-getty-show-2555785).” This event brought together 10 artists in collaboration with 30 engineers from Bell Labs, intended to "showcase the possibilities of marrying their skills." The event was planned by a group called [Experiments in Art and Technology (E.A.T.)](https://www.experimentsinartandtechnology.org/) created by artists Robert Rauschenberg and Robert Whitman in collaboration with Bell Labs engineers Billy Klüver and Fred Waldhauer. 
 <div class="side">
 <BlogImg src = {EAT_9ev}/>
 <BlogImg src = {EAT_BK}/>
@@ -47,15 +47,15 @@ Now back to the project details for the nerds.
 
 ## The setup
 
-A few requirements and some (self-imposed) constraints helped guide the architecture decisions:
-* there was a specific design aesthetic that the show wanted to capture. I wanted to avoid translating design work into code as possible,
+A few requirements and some (self-imposed) constraints helped guide the architectural decisions:
+* there was a specific design aesthetic that the show wanted to capture. I wanted to avoid translating design work into code as much as possible,
 * audience members needed to be able to vote on their phone,
-* the audience need to see the correct vote at the correct time and be "synced" with the on screen visuals,
-* the on screen visuals should immediately be able to display the vote results,
-* the on screen visuals need to show certain videos or slides depending on the result of an audience vote,
-* there would be edits to the flow of the show/visuals during rehearsals so there needed a way to ingest updates easily and often.
+* the audience needed to see the correct vote at the correct time and be "synced" with the on screen visuals,
+* the on-screen visuals should immediately be able to display the vote results,
+* the on-screen visuals need to show certain videos or slides depending on the result of an audience vote,
+* there would be edits to the flow of the show/visuals during rehearsals so there needed to be a way to ingest updates easily and often.
 
-Given all of this, I landed up a replicable setup that made iteratively building the site easy. The process looked like:
+Given all of this, I landed on a replicable setup that made iteratively building the site easy. The process looked like:
 1. The slides were designed in Canva with placeholder slides for the dynamic slides that depended on the outcome of a vote. A spreadsheet was created that assigned a unique id for each slide in Canva that served as the "run of show."
 2. The Canva slides were exported as a PDF to keep them vectorized and thus high res at any size. Each page was then converted to webp images to retain quality but lower file size.
 3. The spreadsheet was downloaded as a csv and used to link the order of the slides and know when to swap out the placeholders
@@ -69,39 +69,39 @@ The project had a few fun technical challenges.
 ### Live updates: polling vs. websockets
 The app needed to check the results of the votes in real time so when the results slide was shown, it was up to date with the votes. There are two main patterns I considered to do this.
 
-First, the simple option both conceptually and to implement is **polling**. The idea is is to repeatedly ping a source of information as some constant interval. In my case, it would be for the web page to query the database every N seconds to get all the votes that have been recorded. However, it can be resource intensive and if N is too large, there can be a delay before getting new information.
+First, the simple option both conceptually and to implement is **polling**. The idea is to repeatedly ping a source of information at some constant interval. In my case, it would be for the web page to query the database every N seconds to get all the votes that have been recorded. However, it can be resource intensive and if N is too large, there can be a delay before getting new information.
 
-Second, is a more modern approach called **websockets**. The main concept here is that your app and your server open a persistent connection in which information can be sent both directions. Thus, rather than polling the server, wherever the server gets new information, it simply sends the info over to the web app through the open connection. Websockets are often used for multiplayer games or live chat apps where super low latency and real-time udpates are the goal. However, they require a bit more technical set up and you have to worry about dropped connections.
+Second, a more modern approach called **websockets**. The main concept here is that your app and your server open a persistent connection in which information can be sent both directions. Thus, rather than polling the server, whenever the server gets new information, it simply sends the info over to the web app through the open connection. Websockets are often used for multiplayer games or live chat apps where super low latency and real-time updates are the goal. However, they require a bit more technical setup and you have to worry about dropped connections.
 
 While I have wanted to work more with websockets, this wasn't the project for them. I went with polling as there wasn't a need for instant results and there were specific periods that results need to    
 
 ### Media heavy projects
 
-Given the way I architected the site, this meant most of the what was displayed was images or videos, with only a few moments of web built pages. My understanding of best practices here is to convert all the media to a web friendly format, `.webp` and `.webm` for videos. I use `cwebp` built by Google for images and `ffmpeg` to convert the videos. These are formats that maintain almost all the quality to the human eye but can often be a 1/4th of the size. The second optimization was to hosthost all the media cloud server rather then include in the build. 
+Given the way I architected the site, this meant most of what was displayed was images or videos, with only a few moments of web built pages. My understanding of best practices here is to convert all the media to a web-friendly format, `.webp` and `.webm` for videos. I use `cwebp` built by Google for images and `ffmpeg` to convert the videos. These are formats that maintain almost all the quality to the human eye but can often be a 1/4th of the size. The second optimization was to host all the media on cloud storage rather then including in the build. 
 
-There are numerous other optimizations for media that include using a CDN to push the content to the edge for faster loading, delaying loading certain files until needed ("lazy loading"), or prefetching files right before you actually need them so they are loaded by the time you actually need them. Some sites start loading a link when you hover of it instead of when you click to ever so slightly speed things up.
+There are numerous other optimizations for media that include using a CDN to push the content to the edge for faster loading, delaying loading certain files until needed ("lazy loading"), or prefetching files right before you actually need them so they are loaded by the time you actually need them. Some sites start loading a link when you hover over it instead of when you click to ever so slightly speed things up.
 
 ### Free tier projects
 
-As much as I would love to self host everything and get off big tech infrastructure, these companies (AWS, Google, Microsoft, etc.) are behemoths for a reason and their products are stable and relatively simple to use. There are now also many companies whose whole business model is to build services on top of these big tech infrastructure and due to how ever startups and venture capital work, hobbyist/free tiers can be quite generous, making many projects free to host and use.
+As much as I would love to self host everything and get off big tech infrastructure, these companies (AWS, Google, Microsoft, etc.) are behemoths for a reason and their products are stable and relatively simple to use. There are now also many companies whose whole business model is to build services on top of these big tech infrastructure and due to however startups and venture capital work, hobbyist/free tiers can be quite generous, making many projects free to host and use.
 
 This website used:
 - [Vercel Hobby Plan](https://vercel.com/docs/plans/hobby) to host the SvelteKit app. With a simple app, and at most ~50 people using it at once, I was no where near the limits of the tier. 0$ spent.
 - [Neon Free Tier](https://neon.com/pricing) as a serverless database. I had a few tables with ~1,000 rows of data in total. Text is tiny in size and again, was nowhere near the 0.5gb limit for the free tier. 0$ spent.
-- [AWS Free Tier](https://aws.amazon.com/free/storage/s3/) to store the images and videos. Everything was converted to webp or webm to limit file size, but again, I am no where near the 5GB of storage, or 20K get requests. This is the one that I feel most compelled to make a switch to a cheaper cloud storage provider. 0$ spent.
-- [Squarespace Domains](https://domains.squarespace.com/) to buy a domain. Most hosting services make it very easy to set up a custom domain and I think its a nice, cheap touch to replace the weird domain hosting services like Vercel or Heroku will give you. It is ~$15 a year for most domains. 15$ spent.
+- [AWS Free Tier](https://aws.amazon.com/free/storage/s3/) to store the images and videos. Everything was converted to webp or webm to limit file size, but again, I am nowhere near the 5GB of storage, or 20K get requests. This is the one that I feel most compelled to make a switch to a cheaper cloud storage provider. 0$ spent.
+- [Squarespace Domains](https://domains.squarespace.com/) to buy a domain. Most hosting services make it very easy to set up a custom domain and I think it's a nice, cheap touch to replace the weird domain hosting services like Vercel or Heroku will give you. It is ~$15 a year for most domains. 15$ spent.
 
-The total cost pf the project was solely the price of the domain. Otherwise, I did not pay a single dollar to host or run this project which was pretty nice. Something worth exploring more is supporting some shared infrastructure with others to be able to host hobby projects like this and more serious projects on affordable servers, not owned and managed by Big Tech. 
+The total cost of the project was solely the price of the domain. Otherwise, I did not pay a single dollar to host or run this project which was pretty nice. Something worth exploring more is supporting some shared infrastructure with others to be able to host hobby projects like this and more serious projects on affordable servers, not owned and managed by Big Tech. 
 
 ### AI use and the future of writing code
 
-More of more of my projects recently have been using more LLMs to write actual code. I have mixed feelings about this. As you can see above, I still find value in thinking through the implementation of a project even if an LLM will write most of the code. But as a recent blog post put it, we may be at the [end of programming](https://pauldix.com/the-end-of-programming). "What [he] means by this is that [he] think the act of writing code manually and having other humans review it to create useful, working software is headed for extinction." I tend to agree.
+More and more of my recent projects have been using primarily LLMs to write actual code. I have mixed feelings about this. As you can see above, I still find value in thinking through the implementation of a project even if an LLM will write most of the code. But as a recent blog post put it, we may be at the [end of programming](https://pauldix.com/the-end-of-programming). "What [he] means by this is that [he] think the act of writing code manually and having other humans review it to create useful, working software is headed for extinction." I tend to agree.
 
 I think the most likely scenario is that as models get better and compute continues to get cheaper, most engineers will not be using frontier models running on huge computers in a Virginia data center but rather you will have a very good model that is your daily driver that runs on your local device. 
 
-I also thing there is not there much value in “artisanal hand crafted” code in the same way that other hand crafted items still have a demand. For example, items that had craftsmanship (let’s say a wood carved cabinet) can most certainly be created by a machine today but people still find value and are willing to pay money for human craftsmanship. I don’t think people will value “artisanal hand crafted” code in the same way adn thus with no demand, there will be no supply.
+I also think there is not much value in “artisanal hand crafted” code in the same way that other hand crafted items still have a demand. For example, items that had craftsmanship (let’s say a wood carved cabinet) can most certainly be created by a machine today but people still find value and are willing to pay money for human craftsmanship. I don’t think people will value “artisanal hand crafted” code in the same way and thus with no demand, there will be no supply.
 
-Feel ironic to then leave you with this, but as with all my projects, feel free to explore [the code](https://github.com/asteinhart/island-dating-show). Whether its still for humans or just for the bots, only time will tell.
+It feels ironic to then leave you with this, but as with all my projects, feel free to explore [the code](https://github.com/asteinhart/island-dating-show). Whether it's still for humans or just for the bots, only time will tell.
 
 
 
