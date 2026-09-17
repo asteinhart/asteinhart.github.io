@@ -33,6 +33,15 @@ export const PROJECTS = {
 		img: `${base}/project-imgs/property.gif`,
 		tags: ['Writing', 'Frontend', 'Mapping', 'Design']
 	},
+	haiti: {
+		title: 'On the Ground in Haiti: The Growing War Zone Facing U.S. Deportees',
+		url: 'https://www.cfr.org/articles/on-the-ground-in-haiti-the-growing-war-zone-facing-u-s-deportees',
+		description:
+			'Gang warfare, hunger, and a disintegrating health-care chain has hollowed out Haiti’s capital, Port-au-Prince. Seven hundred miles away, the U.S. government has revoked TPS, a humanitarian immigration status used by Haitians since the devastating earthquake in 2010. Up to 350,000 Haitian migrants could now be deported to a country beset by violence.',
+		img: `${base}/project-imgs/haiti.gif`,
+		tags: ['Graphics', 'frontend'],
+		imgScale: 'contain'
+	},
 	viz2026: {
 		title: 'Visualizing 2026: Five Foreign Policy Trends to Watch',
 		url: 'https://www.cfr.org/article/visualizing-2026-five-foreign-policy-trends-watch',
