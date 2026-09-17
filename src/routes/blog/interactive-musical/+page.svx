@@ -1,9 +1,8 @@
 ---
-title: "Building an App for an Interactive Musical"
+title: "Building a Website for an Interactive Musical"
 date: "2026-09-16"
 description: "Artists and technology were always meant to be together"
 tags: [frontend, learning]
-draft: true
 ---
 
 <script>
@@ -11,8 +10,6 @@ draft: true
 	import Subscribe from  "$lib/components/Subscribe.svelte"
     
     import IDS from "$lib/assets/interactive-theater/ids.webp" 
-    import EAT1 from "$lib/assets/interactive-theater/eat.webp"
-    import EAT2 from "$lib/assets/interactive-theater/eat2.webp"
     import EAT_BK from "$lib/assets/interactive-theater/eat_bk.webp" 
     import EAT_9ev from "$lib/assets/interactive-theater/eat_9ev.webp"
 
@@ -20,11 +17,11 @@ draft: true
 
 <BlogImg src = {IDS}/>
 
-This summer my partner wrote(!) and performed in(!) an original musical called [Island Dating Show](https://www.broadwayworld.com/off-off-broadway/article/ISLAND-DATING-SHOW-to-Open-at-Off-The-Lane-in-an-Interactive-Reality-TV-Musical-20260724), a parody of Love Island.
+This summer my partner wrote(!) and performed in(!) an original musical called *[Island Dating Show](https://www.broadwayworld.com/off-off-broadway/article/ISLAND-DATING-SHOW-to-Open-at-Off-The-Lane-in-an-Interactive-Reality-TV-Musical-20260724)*, a parody of *Love Island*.
 
-If you have been living under a rock, Love Island is a reality dating show in which hot bombshells "move to a luxury villa in the hope of finding love and the summer of their life." Throughout each season, the at-home audience votes for their favorite couples and islanders, ultimately choosing the couple that wins the show (and, maybe more importantly, the cash prize).
+If you have been living under a rock, *Love Island* is a reality dating show in which "hot bombshells move to a luxury villa in the hope of finding love and the summer of their life." Throughout each season, the at-home audience votes for their favorite couples and islanders, ultimately choosing the couple that wins the show (and, maybe more importantly, the cash prize).
 
-It then followed that Island Dating Show, the musical, needed live audience voting as well, to stay as close to the source material as possible. And that's where I came in. Having only seen a couple of episodes of Love Island, and in no way able to write a musical, I was not going to be much help on the content. But I sure can make a website where you click a button and something happens.
+It then followed that *Island Dating Show*, needed live audience voting as well, to stay as close to the source material as possible. And that's where I came in. Having only seen a couple of episodes of *Love Island*, and in no way able to write a musical, I was not going to be much help on the content. But I sure can make a website where you click a button and something happens.
 
 ## Artists and engineers
 
@@ -34,12 +31,7 @@ Artists working with engineers have a long history that I have always been fasci
 <BlogImg src = {EAT_9ev} alt = "Poster for '9 evenings: theatre and engineering' at the 25th Street Armory in New York, October 1966, three dollars each evening. A grid of signed Polaroid portraits of the participating artists and Bell Labs engineers fills the top two thirds of the poster."/>
 </div>
 
-This group's exhibits laid the groundwork for the much more common "interactive" exhibits we see today. I have always viewed technology as a creative tool, and this project is one in a long lineage of collaborations between artists and technologists. Here's to more projects like Island Dating Show that merge art with technology!
-
-<div class="side">
-<BlogImg src = {EAT1} alt = "Japanese poster for 'E.A.T.: The Story of Experiments in Art and Technology' at NTT's InterCommunication Center in Tokyo, 2003. Large magenta E.A.T. lettering sits over hand-drawn circuit diagrams and wiring schematics for the group's installations."/>
-<BlogImg src = {EAT2} alt = "Black and white detail of the 'Some More Beginnings' poster artwork: a halftone image assembled from repeated lines of the exhibition's name, dates, and opening hours."/>
-</div>
+This group's exhibits laid the groundwork for the much more common "interactive" exhibits we see today. I have always viewed technology as a creative tool, and this project is one in a long lineage of collaborations between artists and technologists. Here's to more projects like *Island Dating Show* that merge art with technology!
 
 ## The app setup
 
@@ -89,17 +81,7 @@ This website used:
 
 The total cost of the project was the price of the domain. Otherwise, I did not pay a single dollar to host or run it, which was pretty nice. Something worth exploring more is sharing infrastructure with others, so that hobby projects like this one, and more serious ones, can run on affordable servers not owned and managed by Big Tech.
 
-## AI use and the future of writing code
-
-More and more of my recent projects have relied primarily on LLMs to write the actual code. I have mixed feelings about this. As you can see above, I still find value in thinking through the implementation of a project even if an LLM will write most of the code. But as a recent blog post put it, we may be at the [end of programming](https://pauldix.com/the-end-of-programming), meaning "the act of writing code manually and having other humans review it to create useful, working software is headed for extinction." I tend to agree.
-
-I think the most likely scenario is that as models get better and compute keeps getting cheaper, most engineers will not be using frontier models running on huge computers in a Virginia data center. Instead, you will have a very good model as your daily driver, running on your local device.
-
-I also don't think there is much value in "artisanal hand-crafted" code the way there is in other hand-crafted goods. An item that once required craftsmanship (let's say a carved wooden cabinet) can most certainly be made by a machine today, and yet people still find value in the human-made version and are willing to pay for it. I don't think people will value "artisanal hand-crafted" code in the same way, and with no demand, there will be no supply.
-
-It feels ironic to leave you with this, but as with all my projects, feel free to explore [the code](https://github.com/asteinhart/island-dating-show). Whether it's still for humans or just for the bots, only time will tell.
-
-
+As with all my projects, feel free to explore [the code](https://github.com/asteinhart/island-dating-show). 
 
 <Subscribe justify=center />
 

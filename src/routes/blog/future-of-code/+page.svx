@@ -1,0 +1,15 @@
+---
+title: "The Future of Writing Code"
+date: "2026-09-16"
+description: ""
+tags: []
+draft: true
+---
+
+## AI use and the future of writing code
+
+More and more of my recent projects have relied primarily on LLMs to write the actual code. I have mixed feelings about this. As you can see above, I still find value in thinking through the implementation of a project even if an LLM will write most of the code. But as a recent blog post put it, we may be at the [end of programming](https://pauldix.com/the-end-of-programming), meaning "the act of writing code manually and having other humans review it to create useful, working software is headed for extinction." I tend to agree.
+
+I think the most likely scenario is that as models get better and compute keeps getting cheaper, most engineers will not be using frontier models running on huge computers in a Virginia data center. Instead, you will have a very good model as your daily driver, running on your local device.
+
+I also don't think there is much value in "artisanal hand-crafted" code the way there is in other hand-crafted goods. An item that once required craftsmanship (let's say a carved wooden cabinet) can most certainly be made by a machine today, and yet people still find value in the human-made version and are willing to pay for it. I don't think people will value "artisanal hand-crafted" code in the same way, and with no demand, there will be no supply.
