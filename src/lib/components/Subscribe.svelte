@@ -13,6 +13,7 @@
 		<label for="bd-email">enter your email</label>
 		<input type="email" name="email" id="bd-email" />
 		<input type="submit" value="subscribe" />
+		or use <a class="nav-link" href="/rss.xml">rss</a>
 	</form>
 </div>
 
@@ -61,6 +62,10 @@
 		justify-content: center;
 		font-size: calc(var(--cell) * 0.7);
 		background-color: rgb(0, 0, 0, 0.05);
+	}
+
+	.nav-link {
+		text-decoration: underline;
 	}
 
 	@media screen and (max-width: 768px) {
