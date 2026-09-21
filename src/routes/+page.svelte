@@ -15,12 +15,12 @@
 		sameAs: ['https://www.linkedin.com/in/austin-steinhart/', 'https://github.com/asteinhart']
 	};
 	const favs = [
+		'cuba_migration',
 		'stories_nyc_mapped',
 		'food-weap',
 		'scrollytelling',
 		'mapping-uchi',
-		'thesunset',
-		'great_aid_recession'
+		'thesunset'
 	];
 
 	let projects = $state(PROJECTS);
@@ -48,9 +48,7 @@
 		<Spacer />
 		<p>
 			<b>data visuals editor</b> at the
-			<a href="https://www.cfr.org/">
-				council on<br class="mobile-break" /> foreign relations</a
-			>
+			<a href="https://www.cfr.org/"> council on<br class="mobile-break" /> foreign relations</a>
 		</p>
 		<p>
 			previously, a <b>research engineer</b> at the

@@ -1,6 +1,14 @@
 import { base } from '$app/paths';
 
 export const PROJECTS = {
+	cuba_migration: {
+		title: 'Cuba Has Lost a Quarter of Its Population. The Fallout Will Last for Generations.',
+		url: 'https://www.cfr.org/articles/inside-cubas-mass-exodus-how-losing-a-quarter-of-the-population-has-changed-the-island',
+		description:
+			'An unprecedented emigration wave has emptied Cuba of up to a quarter of its population since 2020. The demographic fallout will reverberate for decades to come, affecting any future recovery or political transition.',
+		img: `${base}/project-imgs/cuba.gif`,
+		tags: ['Graphics', 'Mapping', 'Design', 'Frontend']
+	},
 	stories_nyc_mapped: {
 		title: 'Stories of New York City, Mapped',
 		url: 'https://austinsteinhart.com/metro-diary-map?ref=psite',
