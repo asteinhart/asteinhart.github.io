@@ -1,0 +1,109 @@
+---
+title: "My Big List of Data Viz Resources"
+description: "All the things I wish I knew when I started data visuals"
+date: "2026-10-01"
+tags: [guide, tooling]
+draft: false
+---
+
+<script>
+	import Subscribe from  "$lib/components/Subscribe.svelte"
+
+</script>
+
+I started building and designing data visualizations full time about a year ago and I wish a list like this existed so here is an assortment of all my top recommendations for tools, guides, datasets, people, etc. This is from the perceptive of someone in the journalism adjacent world. 
+
+Table of contents
+
+
+## Tools
+
+### Standard charts
+
+Most places use **[Datawrapper](https://www.datawrapper.de/)** to make the standard bar, line, etc. 
+Pros: It works and looks great, has accessibility built in and is responsove (works on mobile) out of the box ,
+Cons: Datawrapper is hosting your graphics so if they go under, no one knows what will happen to most of the graphics in major newsrooms
+
+Many places have am enterprise Datawrapper account which lets you add customize the charts such as fonts and spacing. If you start poking around on website you will Datawrapper every wehre in journalism (NYT, Reuters, XXX, to name a few)
+
+The free tier of Datawrapper is generous for hobbyiest or student newsrooms.
+
+**[Flourish](https://flourish.studio/)** is another popular option. Less design forward (I don't think they look as nice out of the box) but have much more creative chart types and also other features such as scrollytelling options.
+
+Other tools like Google Sheets, Excel, Python (Altair, Vega), R (ggplot) are great for exploration and understanding data but are much more challenging to use for publishable graphics.
+
+### Custom graphics with code
+
+People have been making code with tons of different tools. Learning Javascipt is mandatory for making interactive code based graphics on the web.
+
+**D3**, a javascript package, has become the foundational tool for making graphics. While technically, its simply a tool to simplify manipulating the DOM and SVGs, it have been heavily adopted by the data viz community. 
+
+There have been countless tools build on top of D3, and in all likelihood, your favorite data viz tool probably uses D# under the hood (including things like Datawrapper)
+
+While not necessary for building graphics, much of web development today is done in frameworks, which are large scale packages for javascript. All frameworks are slightly differnet but primarily help manage state and help faciliate creating resuauble components. React is the most popular overall, but I prefer Svelte which has become popular in the data viz community. Observable is another option that uses vanilla (meaning the no framework) javascript. This is similar to jupyter notebook for those familiar with python. 
+
+As for mapping, **Maplibre**, an open source fork of Mapbox, is the clear winner for interactive maps. ALong with PMTiles, they can handle almsot an unlimited amount of data with strong performaance. (ben welsh pm tiles)
+
+This is a map
+
+
+### Custom graphics not with code
+
+Many designers use **Adobe Illustrator** to create pixel perfect graphics that you cant make with a standard charting tool like Datawrapper or Flourish. **Figma** is the new kid on the block and I much prefer it.
+
+Generally the process looks like
+
+1. Use a charting tool to create an SVG as a starting place, such as making a chart in D3 or Datawrapper and exporting  (or start from scratch)
+2. Edit the graphic in a vector based software such as Illustrator or Figma
+3. Make different artboard sizes for desktop and mobile
+4. Export the created graphic with ai2html or figma2html to convert it to an html page that handles breakpoints and resizing.
+5. Embed the output into an iframe or directly on a web page.
+
+## Mapping
+
+Once again **[Datawrapper](https://www.datawrapper.de/)** is an inceidble tool for most of your mapping needs
+
+
+[Natural Earth](https://www.naturalearthdata.com/downloads/) has reputable, free boundaries for most of your mapping needs (countries, oceans, etc[[]])
+
+## Learning good data visualizations
+
+Learn
+* https://www.datawrapper.de/academy
+* https://datavisualizationsociety.org/mentorship/
+* https://www.machlis.com/nicar/
+* https://palewi.re/guides/
+
+
+Consume!
+
+* https://flowingdata.com/
+* https://bsky.app/profile/interactives.bsky.social
+* https://perthirtysix.com/
+* https://palewi.re/docs/coding-the-news/
+* https://www.datawrapper.de/blog/category/data-vis-dispatch
+* https://nightingaledvs.com/
+
+Groups
+
+* https://newsnerdery.org/
+* https://datavisualizationsociety.org/
+* https://www.ire.org/training/conferences/nicar-2026/
+
+
+## How to put graphics on the internet
+
+This is going to be its own full guide. I am going to take a first pass at this here but warning there is a lot.
+
+* https://github.com/nprapps/dailygraphics-next
+* https://github.com/nprapps/pym.js/
+
+
+Other things to add resources for at some point 
+* Preparing graphics for print (RBG > CMYK)
+
+
+*All graphics on this page were made by me!*
+
+<Subscribe justify=center />
+
