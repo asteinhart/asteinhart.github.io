@@ -1,7 +1,7 @@
 ---
 title: "My Big List of Data Viz Resources"
 description: "All the things I wish I knew when I started data visuals"
-date: "2026-10-01"
+lastUpdated: "2026-10-16"
 tags: [guide, tooling]
 draft: true
 ---
