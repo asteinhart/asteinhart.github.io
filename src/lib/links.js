@@ -1,6 +1,10 @@
 export const LINKS = {
 	resources: [
 		{
+			title: 'My Big List of Data Viz Resources',
+			url: '/blog/viz-resources'
+		},
+		{
 			title: 'List of "tech for good" job boards',
 			url: 'https://evanhahn.com/list-of-tech-for-good-job-boards/'
 		},
