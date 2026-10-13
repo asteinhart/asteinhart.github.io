@@ -1,10 +1,16 @@
 <script>
-	let { src, alt, caption = null, border = false } = $props();
+	// mobileSrc: optional alternate image used at the mobile breakpoint (≤768px)
+	let { src, alt, caption = null, border = false, mobileSrc = null } = $props();
 </script>
 
 <div class="img-container">
 	<div class="blog-img" class:border>
-		<img {src} {alt} />
+		<picture>
+			{#if mobileSrc}
+				<source media="(max-width: 768px)" srcset={mobileSrc} />
+			{/if}
+			<img {src} {alt} />
+		</picture>
 	</div>
 	{#if caption}
 		<div class="caption">{caption}</div>
@@ -26,6 +32,11 @@
 	   below it off the grid. */
 	.blog-img.border {
 		outline: 1px solid rgb(0, 0, 0, 0.2);
+	}
+	.blog-img picture {
+		display: block;
+		width: 100%;
+		height: 100%;
 	}
 	.blog-img img {
 		display: block;
