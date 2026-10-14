@@ -5,7 +5,14 @@
 	import { base } from '$app/paths';
 
 	// Frontmatter from each post is passed in as props by mdsvex.
-	let { title = '', description = '', date = '', author = 'Austin Steinhart', children } = $props();
+	let {
+		title = '',
+		description = '',
+		date = '',
+		author = 'Austin Steinhart',
+		lastUpdated = '',
+		children
+	} = $props();
 
 	// Accepts ISO strings ("2025-07-13"), Date objects (unquoted YAML dates),
 	// or an already-formatted string, and renders "July 13, 2025".
@@ -14,6 +21,17 @@
 		const d = date instanceof Date ? date : new Date(`${date}T00:00:00`);
 		return isNaN(d)
 			? String(date)
+			: d.toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric'
+				});
+	});
+	const formattedLastUpdated = $derived.by(() => {
+		if (!lastUpdated) return '';
+		const d = lastUpdated instanceof Date ? lastUpdated : new Date(`${lastUpdated}T00:00:00`);
+		return isNaN(d)
+			? String(lastUpdated)
 			: d.toLocaleDateString('en-US', {
 					year: 'numeric',
 					month: 'long',
@@ -36,8 +54,10 @@
 			<i
 				>{#if formattedDate}
 					{formattedDate}
-				{/if}</i
-			>
+				{:else if formattedLastUpdated}
+					Last updated {formattedLastUpdated}
+				{/if}
+			</i>
 		</div>
 
 		{#if description}

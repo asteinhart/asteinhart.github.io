@@ -2,6 +2,8 @@ import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { mdsvex } from 'mdsvex';
+import rehypeSlug from 'rehype-slug';
+
 import { fileURLToPath } from 'node:url';
 
 // The app is served from the domain root. Kept as a named constant because the
@@ -18,6 +20,9 @@ const STATIC_SUBSITES = ['ai-in-gov', 'docs', 'reading'];
 // (title/description/date/tags) is passed to the layout as props.
 const mdsvexOptions = {
 	extensions: ['.svx'],
+	rehypePlugins: [
+		rehypeSlug // Adds an 'id' attribute to headers automatically
+	],
 	layout: {
 		_: fileURLToPath(new URL('./src/lib/layouts/BlogPost.svelte', import.meta.url))
 	}

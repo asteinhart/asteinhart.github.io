@@ -25,6 +25,14 @@ export const PROJECTS = {
 		img: `${base}/project-imgs/scrolly.webp`,
 		tags: ['Guide', 'Frontend']
 	},
+	'ukr-culture': {
+		title: 'Culture Under Fire: Ukraine’s Fight Against Russia’s Campaign of Erasure',
+		url: 'https://www.cfr.org/articles/culture-under-fire-ukraines-fight-against-russias-campaign-of-erasure',
+		description:
+			'Russia’s attacks on cultural heritage in occupied Ukraine are neither accidental nor merely symbolic, experts say. They are an attempt to rewrite history, erase Ukraine’s identity, and make annexation permanent.',
+		img: `${base}/project-imgs/ukr.gif`,
+		tags: ['Frontend', 'Design']
+	},
 	'food-weap': {
 		title: 'The World Agreed to Stop Using Food as a Weapon. It Hasn’t.',
 		url: 'https://www.cfr.org/articles/the-world-agreed-to-stop-using-food-as-a-weapon-it-hasnt',
