@@ -1,7 +1,7 @@
 ---
-title: "My Big List of Data Viz Resources"
-description: "All the things I wish I knew when I started data visuals"
-lastUpdated: "2026-10-16"
+title: "A Big List of Data Viz Resources"
+description: "All the things I wish I knew when I started making graphics"
+lastUpdated: "2026-10-22"
 tags: [guide, tooling]
 draft: true
 ---
@@ -18,105 +18,113 @@ draft: true
 I started building and designing data visualizations full time only about a year ago but this is the list I wished had existed when I started. So here is an assortment of all my top recommendations for tools, guides, datasets, and people to follow when getting into data visualizations. Expect this list to update periodically.
 
 <Toc depth = 3/>
-
+<!-- 
 Here is a quick lay of the land:
 
-<BlogImg src={oldSite} mobileSrc = {oldSite} alt="iagram of different data viz tools" border/>
+<BlogImg src={oldSite} mobileSrc = {oldSite} alt="iagram of different data viz tools" border/> -->
 
 ## Making a chart
-Here is something about this
+Charts anyone posts on the internet should be explanatory not exploratory. Exploratory chart (think what you see on a data dashboard) are a necessary part of understanding data and an issue. But good data viz is explanatory not exploratory. Explanatory chart often have to be many things but primarily they should be clear, have a point, easy to understand, look good on any screen size, and follow accessability best practices. These are the most common tools I see good explanatory graphics made with (along with the ones I use).
 
 ### Standard charts
-Most places use **[Datawrapper](https://www.datawrapper.de/)** to make the standard bar, line, etc. 
-Pros: It works and looks great, has accessibility built in and is responsove (works on mobile) out of the box.
-Cons: Datawrapper is hosting your graphics so if they go under, no one knows what will happen to most of the graphics in major newsrooms. 
 
-Many places have am enterprise Datawrapper account which lets you add customize the charts such as fonts and spacing. If you start poking around on major newspapers websites, you will Datawrapper everywhere in journalism (such as at the NYT, Reuters, and Washington Post to name a few).
+**[Datawrapper](https://www.datawrapper.de/)** has become one of the most popular ways to make the standard bar, line, etc chart. There are many reasons its used in major newsrooms and hobbyist alike: its free, does not require downloading any software, has an intuitive UI, has lots of charting options, looks great with very minimal design, customizable, responsive by default (resizes on mobile), and makes it easy to post your graphics online.
 
-The free tier of Datawrapper is generous for hobbyiest or student newsrooms.
+[example of stock datawrapper graphic]
 
-[datawrapper example of simple and more complex]
+Many places have am enterprise Datawrapper account which lets you add customize the charts such as fonts and spacing. If you start poking around on major newspapers websites, you will find Datawrapper everywhere in journalism (such as at the NYT, Reuters, and Washington Post to name a few).
 
+[example of cfr complex datawrapper]
 
-**[Flourish](https://flourish.studio/)** is another popular option. Less design forward (I don't think they look as nice out of the box) but have much more creative chart types and also other features such as scrollytelling.
+The free tier of Datawrapper is generous for hobbyist or student newsrooms. Use Datawrapper for your standard chart types. 
 
-Other tools like Google Sheets, Excel, Python (Altair, Vega), R (ggplot) are great for exploration and understanding data but are much more challenging to use for publishable graphics. I would recommend against this. 
+**[Flourish](https://flourish.studio/)** is another popular option. I don't think they look as nice out of the box but have much more creative chart types and tend to add more experimental features (such as scrollytelling).
+
+Other tools like Google Sheets, Excel, Python (Altair, Vega), R (ggplot) are great for exploration and understanding data but are much more challenging to use for publishable graphics. I would recommend against using this if you want to make professional explanatory graphics. 
 
 ### Custom graphics with code
 
-Almost all graphics made with code use some flavor of Javascipt. Coding with AI may change this very soon, but learning Javascipt is mandatory for making interactive code based graphics on the web.
+Almost all graphics made with code use some flavor of Javascipt, HTML, CSS, and SVGs. These are building blocks of websites and graphics online. Coding with AI may change this very soon, but at least having a basic understanding of these things along with web development 101 is mandatory for making interactive code-based graphics on the web as of 2026.
 
-**[D3](https://d3js.org/)**, a Javascipt package, has become the foundational tool for making graphics. While technically its simply a tool to manipulate the DOM and SVGs, it have been heavily adopted by the data viz community to create data driven graphics.
+Most graphics online are built with SVGs, scalable vector graphics. Vectors use shapes based on mathematical formulas to draw shapes as opposed to raster images which use a fixed location of pixels. Vectors can be infinitely scaled and thus stay sharp at any resolutions which is the primarily benefit. 
 
-There have been countless tools build on top of D3, and in all likelihood, your favorite data viz tool probably uses D3 under the hood (including things like Datawrapper).
+**[D3](https://d3js.org/)**, a Javascipt package, has become the foundational tool for making graphics and is a tool to create SVGs using data (such as a json or csv file). While technically its just a tool to manipulate the DOM and SVGs, it have been heavily adopted by the data viz community to create data driven graphics. 
 
-While not necessary for building graphics, much of web development today is done in frameworks, which you can think of as large scale packages for Javascipt. All frameworks are slightly differnet but primarily help manage state and faciliate creating resuauble components. **[React](https://react.dev/)** is the most popular overall, but I prefer **[Svelte](https://svelte.dev/)** which has become popular in the data viz community. **[Observable Framework](https://observablehq.github.io/framework/)** is another option that uses vanilla (meaning no framework) Javascipt. This is similar to a Jupyter Notebook for those familiar with Python or R Markdown. 
+There have been countless tools build on top of D3, and in all likelihood, your [favorite data viz tool](https://github.com/wbkd/awesome-d3#charts) probably uses D3 under the hood (including things like Datawrapper).
 
 [example of d3 graphic]
 
+There are lots of great guides to D3 but it does have a notoriously steep learning curve. Some include: if you prefer [looking at examples](https://observablehq.com/@d3/gallery), or [a book](https://www.manning.com/books/d3-js-in-action), or an [interactive guide](https://observablehq.com/d/c93d3eee860282c0) (that I made).
+
+While not necessary for building graphics, much of web development today is done in frameworks, which you can think of as large scale packages for Javascript. All frameworks are slightly different but primarily help manage state and facilitate creating reuseable components. **[React](https://react.dev/)** is the [most widely](https://survey.stackoverflow.co/2025/technology#1-web-frameworks-and-technologies) used, but I prefer **[Svelte](https://svelte.dev/)** which has become popular in the data viz community. **[Observable Framework](https://observablehq.github.io/framework/)** is another option that uses vanilla (meaning no framework) Javascript. This is similar to a Jupyter Notebook for those familiar with Python or R Markdown. 
 
 ### Custom graphics not with code
 
-Many designers use **[Adobe Illustrator](https://www.adobe.com/products/illustrator.html)** to create pixel perfect graphics that you cant make with a standard charting tool like Datawrapper or Flourish. **[Figma](https://www.figma.com/)** is the new kid on the block and I much prefer it. Its faster,easier to use in my opinion, collaborative, free for the most part and pumping out new features constantly.  
+Even when not working with code, graphics are still created with SVGs. The most common tool to work with SVGs is **[Adobe Illustrator](https://www.adobe.com/products/illustrator.html)** to create pixel perfect graphics that you can't make with a standard charting tool like Datawrapper or Flourish. **[Figma](https://www.figma.com/)** is the new kid on the block which I personally much prefer. Its faster, easier to use, collaborative, free for the most part, and pumping out new features constantly.  
 
-Once you have your design you need to get it on the web, would ideally like the test to actually be html on the page for accessability and SEO and want your graphics to be responsive (adapt/ change for desktop and mobile size screens). This is where ai2html and figma2html come in. **[ai2html](http://ai2html.org/)** (as in Adobe Illustrator, not artificial intelligence) is an open-source script developed at the New York Times to converts Illustrator documents into html and css. There are lots good guides but I would recommend [Jonathaon Soma's guide](https://www.youtube.com/playlist?list=PLewNEVDy7gq3MSrrO3eMEW8PhGMEVh2X2) who teaches data journalism at Columbia's Journalism School.
+Once you have your graphic in Illustrator or Figma, you need to get it on the web. You would ideally like any text on your graphic to actually be HTML on the page for accessability and SEO reasons, and want your graphics to be responsive (adapt/change for desktop and mobile size screens). This is where **[ai2html](http://ai2html.org/)** and **[figma2html](https://www.figma.com/community/plugin/1109185297790825980/figma2html)** come in. ai2html. as in Adobe Illustrator, not artificial intelligence, is an open-source script developed at the New York Times to converts Illustrator documents into html and css. There are lots good guides but I would recommend [Jonathaon Soma's guide](https://www.youtube.com/playlist?list=PLewNEVDy7gq3MSrrO3eMEW8PhGMEVh2X2) who teaches data journalism at Columbia's Journalism School. figma2html is the same concept except for figma
 
-Generally the process looks like
-
-1. Use a charting tool to create an SVG as a starting place, such as making a chart in D3 or Datawrapper and exporting  (or start from scratch)
-2. Edit the graphic in a vector based software such as Illustrator or Figma
-3. Make different artboard sizes for desktop and mobile
-4. Export the created graphic with ai2html or figma2html to convert it to an html page that handles breakpoints and resizing.
+Generally the process looks like:
+1. Use a charting tool to create an SVG as a starting place, such as making a chart in D3 or Datawrapper and exporting. Alternatively, you might start with a blank canvas.
+2. Edit or create the graphic in a vector based software such as Illustrator or Figma
+3. Make multiple versions of the graphic with different widths for different screen sizes (wide for desktop and narrow for mobile for example)
+4. Use ai2html or figma2html to convert the graphics to an html page that handles breakpoints and resizing.
 5. Embed the output into an iframe or directly on a web page.
+
+
+## Maps
+
+### Working with data for maps
+
+Maps use geospatial data which encode some type of geometry, either a point, line, or polygon. Two of the most common formats for geospatial data is `.geojson` and shape files. 
+
+Working with geospatial data often requires specialized tools or libraries. For R users, I would recommend the [sf package](https://r-spatial.github.io/sf/), for python users [geopandas](https://geopandas.org/en/stable/) (that is until [geopolars](https://github.com/pola-rs/geopolars) has a stable version), [mapshaper](https://mapshaper.org/) or [gdal](https://gdal.org/en/stable/) for the nerds, and [QGIS](https://qgis.org/) if you want a GUI.
+
+[Natural Earth](https://www.naturalearthdata.com/downloads/) has reputable, free boundaries for most of your mapping needs (countries, oceans, etc).
+
+### Making a map
+
+Once again **[Datawrapper](https://www.datawrapper.de/)** is an incredible tool for most of your mapping needs. Upload your data, such as points with latitude and longitue, choose a basemap, and you have a create map with lots of customization. 
+
+[datawrapper map]
+
+For complex interactive maps, **[Maplibre](https://maplibre.org/)**, an open source fork of Mapbox, is the clear winner in my books. Paired with [PMTiles](https://docs.protomaps.com/pmtiles/), they can handle almost an unlimited amount of data with strong performance. [Here is a great guide](https://kschaul.com/post/2023/02/16/how-the-post-is-replacing-mapbox-with-open-source-solutions/) by a Washington Post journalist which details this open source mapping stack, which I believe to be the current gold standard. 
+
+[example of maplibre]
+
+D3, of course, can also be used to create great maps with **[d3-geo](https://observablehq.com/@d3/-/collection/d3-geo)**. The upside to `d3-geo` is many more projections and outputs that are SVGs. A common workflow is creating a map in d3 with your custom layers (say points of a hospital or air strike), exporting as an SVG, using Illustrator to style the map, and then ai2html to convert it for posting on the web.
+
+[example of styled d3 map]
 
 ### Designing graphics
 
 Fonts, colors, spacing, the role of titles and subtitles
 
-Creating a style guide, different philopshies, such as the Economist that used very strict style, rigid set of colors all the way to the New York Times which gives their graphics teams a huge amount of freedom design across a wide range of colors.
-This [guide from Datawrapper](https://www.datawrapper.de/blog/colors-for-data-vis-style-guides) does a great job laying out the differnet philopshies of style guides
+Creating a style guide, different philosophies, such as the Economist that used very strict style, rigid set of colors all the way to the New York Times which gives their graphics teams a huge amount of freedom design across a wide range of colors.
+This [guide from Datawrapper](https://www.datawrapper.de/blog/colors-for-data-vis-style-guides) does a great job laying out the different philosophies of style guides
 
-
-## Maps
-
-Once again **[Datawrapper](https://www.datawrapper.de/)** is an inceidble tool for most of your mapping needs
-
-As for mapping, **[Maplibre](https://maplibre.org/)**, an open source fork of Mapbox, is the clear winner for interactive maps. ALong with PMTiles, they can handle almsot an unlimited amount of data with strong performaance. (ben welsh pm tiles). There is also **[d3-geo](https://observablehq.com/@d3/-/collection/d3-geo)**
-
-[example of maplibre]
-
-[Natural Earth](https://www.naturalearthdata.com/downloads/) has reputable, free boundaries for most of your mapping needs (countries, oceans, etc[[]])
+[Color picker](https://gka.github.io/palettes/#/9|s|00429d,96ffea,ffffe0|ffffe0,ff005e,93003a|1|1)
 
 
 ## Working with data
 
-Most of the time, a tool like Excel or Google Sheets is enough to be able to load a CSV, explore the data, join with other data, or make a few transforamtions with pivot tables or forulams. Google Sheets also has the benefit of being collaborative by default.
+Most of the time, a tool like Excel or Google Sheets is enough to be able to load a CSV, explore the data, join with other data, or make a few transformations with pivot tables or forums. Google Sheets also has the benefit of being collaborative by default. Other tools like [Datasette](https://datasette.io/) make exploration data easy and add some more advanced features.
 
-AP Datakit
-
-However, sometimes you need a more power tool to process data repeatedly, open a very large file, or do more advanced transforamtions. This is where a scripting language comes in. The key here is reproducabiltiy. You should be able to give me your process and I should be able to recreate your finding or output data. My prefered tool is Python but R works just as well in most cases
+However, sometimes you need a power tool to process data repeatedly, open a very large file, or do more advanced transformations. This is where a scripting language comes in. The key here is reproducibility. You should be able to give me your process/code and I should be able to recreate your finding or output data. My preferred tool is Python but R works just as well in most cases
 
 ### My favorite Python tools
 * UV as a package manager
-* Polars for fast 
+* Polars for fast data wrangling with simple syntax
+* Geopandas for working with geospatial data
+* 
 
-## How to put graphics on the internet
 
-This is going to be its own full guide. I am going to take a first pass at this here but warning there is a lot.
+## Organizing your project
 
-* https://github.com/nprapps/dailygraphics-next
-* https://github.com/nprapps/pym.js/
-* https://reuters-graphics.github.io/bluprint_graphics-kit/
+There are many ways to keep data and scripts organized but [AP Datakit](https://datakit.ap.org/) provides a simple flexible structure that is highly adaptable. "AP DataKit is an open-source command-line tool designed to better structure and manage projects. It makes it easier to standardize and share work among members of your team, and to keep your past projects organized and easily accessible for future reference."
 
-## Learning good data visualizations
-
-### Where to learn
-* https://www.datawrapper.de/academy
-* https://datavisualizationsociety.org/mentorship/
-* https://www.machlis.com/nicar/
-* https://palewi.re/guides/
-https://jonathansoma.com/everything/
-
+## More resources
+The best way to get better at data viz is to make lots of stuff. The second best way is to consume lots of good data viz. Here are my favorite places to look at good data viz, learn data viz, and a few communities to join to meet others doing this work. 
 
 ### Where to consume data viz
 
@@ -127,6 +135,14 @@ https://jonathansoma.com/everything/
 * https://www.datawrapper.de/blog/category/data-vis-dispatch
 * https://nightingaledvs.com/
 
+
+### Where to learn
+* https://www.datawrapper.de/academy
+* https://datavisualizationsociety.org/mentorship/
+* https://www.machlis.com/nicar/
+* https://palewi.re/guides/
+* https://jonathansoma.com/everything/
+
 ### Where to find community
 
 * https://newsnerdery.org/
@@ -134,7 +150,13 @@ https://jonathansoma.com/everything/
 * https://www.ire.org/training/conferences/nicar-2026/
 
 
-## Other importants things I will add eventually
+## Other important things I will add eventually
+
+### How to put graphics on the internet
+This is going to be its own full guide eventually.
+<!-- * https://github.com/nprapps/dailygraphics-next
+* https://github.com/nprapps/pym.js/
+* https://reuters-graphics.github.io/bluprint_graphics-kit/ -->
 
 ### Preparing graphics for print
 It is helpful to undertstanding the basics of the difference between RBG and CMYK, two ways to express color
