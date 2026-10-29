@@ -50,6 +50,24 @@ export const PROJECTS = {
 		tags: ['Graphics', 'frontend'],
 		imgScale: 'contain'
 	},
+	nuclear: {
+		title: 'Putin’s Nuclear Offer: How to Navigate a New START Extension',
+		url: 'https://www.cfr.org/articles/putins-nuclear-offer-how-navigate-new-start-extension',
+		description:
+			'The United States should not fall for Putin’s gambit to undercut Ukraine. Before agreeing to an extension, it must secure greater verification guarantees and a commitment to further negotiations.',
+		img: `${base}/project-imgs/nuclear.webp`,
+		tags: ['Graphics'],
+		imgScale: 'contain'
+	},
+	guyana: {
+		title: 'How Guyana’s Oil Boom Will Reshape Energy Security',
+		url: 'https://www.cfr.org/articles/how-guyanas-oil-boom-will-reshape-energy-security',
+		description:
+			'Guyana’s offshore oil discoveries have driven remarkable economic growth and transformed the South American country into a significant energy producer, with implications for regional stability and energy markets, as well as U.S. foreign policy.',
+		img: `${base}/project-imgs/guyana.webp`,
+		tags: ['Graphics'],
+		imgScale: 'contain'
+	},
 	viz2026: {
 		title: 'Visualizing 2026: Five Foreign Policy Trends to Watch',
 		url: 'https://www.cfr.org/article/visualizing-2026-five-foreign-policy-trends-watch',
@@ -59,6 +77,53 @@ export const PROJECTS = {
 		tags: ['Graphics', 'Design'],
 		imgScale: 'contain'
 	},
+	great_aid_recession: {
+		title: 'The Great Aid Recession: 2025’s Humanitarian Crash in Nine Charts',
+		url: 'https://www.cfr.org/expert-brief/great-aid-recession-2025s-humanitarian-crash-nine-charts',
+		description:
+			'The world faces unresolved conflicts, growing climate crises, attacks on aid workers, two famines, and diminishing political will—along with significant aid cuts. Altogether, 2025 has earned a grim new superlative: the worst humanitarian year on record. Read the full article by Sam Vigersky with nine charts I helped create to illustrate the crisis.',
+		img: `${base}/project-imgs/hum_aid.webp`,
+		tags: ['Graphics'],
+		imgScale: 'contain'
+	},
+
+	favorabiltiy: {
+		title: 'China Now Outranks the United States in Global Favorability. What Happened?',
+		url: 'https://www.cfr.org/articles/china-now-outranks-the-united-states-in-global-favorability-what-happened',
+		description:
+			'For the first time in nearly two decades, a new Pew Research survey shows China is viewed more favorably than the United States in most countries surveyed—but the findings say more about a decline in U.S. soft power than a Chinese surge.',
+		img: `${base}/project-imgs/favor.webp`,
+		tags: ['Graphics'],
+		imgScale: 'contain'
+	},
+
+	un: {
+		title: 'How Much Does the U.S. Fund the United Nations?',
+		url: 'https://www.cfr.org/articles/funding-united-nations-what-impact-do-us-contributions-have-un-agencies-and-programs',
+		description:
+			'The United States has historically been the single largest donor to the United Nations. However, during his second term, President Trump has reduced U.S. funding, withdrawn from major agencies, and scaled back the country’s involvement in UN initiatives.',
+		img: `${base}/project-imgs/un.webp`,
+		tags: ['Graphics'],
+		imgScale: 'contain'
+	},
+	world_cup: {
+		title: 'FIFA World Cup 2026: The Geopolitical Tensions at Play Off the Pitch',
+		url: 'https://www.cfr.org/articles/the-u-s-is-co-hosting-the-world-cup-but-much-of-the-world-cant-attend',
+		description:
+			'The Iran war, immigration enforcement, and the Trump administration’s travel bans have raised the stakes of this summer’s tournament.',
+		img: `${base}/project-imgs/world-cup.webp`,
+		tags: ['Graphics'],
+		imgScale: 'contain'
+	},
+	red_sea: {
+		title: 'Another Hormuz? What to Know About the Houthi Threat to the Red Sea',
+		url: 'https://www.cfr.org/articles/another-hormuz-the-red-seas-threat-to-the-global-economy',
+		description:
+			'The Yemen-based Houthis’ naval blockade against Saudi shipping and their battle with Saudi-backed Yemeni forces for control of the Red Sea’s critical Bab el-Mandeb Strait add a new dimension to the Iran war, with potentially major consequences for the region and the global economy.',
+		img: `${base}/project-imgs/red-sea.webp`,
+		tags: ['Graphics'],
+		imgScale: 'contain'
+	},
 	opendatle: {
 		title: 'Open Datle',
 		url: 'https://www.open-datle.com',
@@ -66,15 +131,6 @@ export const PROJECTS = {
 			'A daily game to learn more about your city using open data. Each day you get shown a new data set and either have to draw the trend or rank the boroughs.',
 		img: `${base}/project-imgs/open-datle.webp`,
 		tags: ['Backend', 'Frontend', 'Design']
-	},
-	great_aid_recession: {
-		title: 'The Great Aid Recession: 2025’s Humanitarian Crash in Nine Charts',
-		url: 'https://www.cfr.org/expert-brief/great-aid-recession-2025s-humanitarian-crash-nine-charts',
-		description:
-			'The world faces unresolved conflicts, growing climate crises, attacks on aid workers, two famines, and diminishing political will—along with significant aid cuts. Altogether, 2025 has earned a grim new superlative: the worst humanitarian year on record. Read the full article by Sam Vigersky with nine charts I helped create to illustrate the crisis.',
-		img: `${base}/project-imgs/hum_aid.webp`,
-		tags: ['Graphics', 'Design'],
-		imgScale: 'contain'
 	},
 	cta_bus_service: {
 		title: 'CTA says bus service is back to prepandemic levels. A new analysis says otherwise.',
