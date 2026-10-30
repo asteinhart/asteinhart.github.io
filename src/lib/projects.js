@@ -241,6 +241,15 @@ export const PROJECTS = {
 		tags: ['Frontend', 'Design'],
 		imgScale: 'contain'
 	},
+	daily_devotion: {
+		title: 'My Daily Devotion: The NYT Daily Mini Crossword',
+		url: 'https://austinsteinhart.medium.com/my-daily-obsession-the-nyt-daily-mini-crossword-b58450478e6',
+		description:
+			'The New York Times Mini Crossword is a puzzle I have been solving every day since 2016. Over 2,500 puzzles later, a look at my streaks, stats, and progress over the years.',
+		img: `${base}/project-imgs/xword.webp`,
+		tags: ['Writing', 'Graphics'],
+		imgScale: 'contain'
+	},
 	content_we_love: {
 		title: 'Content We Love',
 		url: 'https://contentwelove.austinsteinhart.com',
@@ -280,15 +289,6 @@ export const PROJECTS = {
 		description: 'Follow my reading journey from February 2016 to January 2024.',
 		img: `${base}/project-imgs/reading.webp`,
 		tags: ['Writing', 'Frontend'],
-		imgScale: 'contain'
-	},
-	daily_devotion: {
-		title: 'My Daily Devotion: The NYT Daily Mini Crossword',
-		url: 'https://austinsteinhart.medium.com/my-daily-obsession-the-nyt-daily-mini-crossword-b58450478e6',
-		description:
-			'The New York Times Mini Crossword is a puzzle I have been solving every day since 2016. Over 2,500 puzzles later, a look at my streaks, stats, and progress over the years.',
-		img: `${base}/project-imgs/xword.webp`,
-		tags: ['Writing', 'Graphics'],
 		imgScale: 'contain'
 	}
 };
