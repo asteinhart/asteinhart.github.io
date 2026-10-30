@@ -72,7 +72,7 @@ Generally the process looks like:
 5. Embed the output into an iframe or directly on a web page.
 
 
-## Maps
+## Making a map
 
 ### Working with data for maps
 
@@ -84,7 +84,7 @@ Working with geospatial data often requires specialized tools or libraries. For 
 
 ### Making a map
 
-Once again **[Datawrapper](https://www.datawrapper.de/)** is an incredible tool for most of your mapping needs. Upload your data, such as points with latitude and longitue, choose a basemap, and you have a create map with lots of customization. 
+Once again **[Datawrapper](https://www.datawrapper.de/)** is an incredible tool for most of your mapping needs. Upload your data, such as points with latitude and longitude, choose a basemap, and you have a create map with lots of customization. 
 
 [datawrapper map]
 
@@ -112,12 +112,7 @@ Most of the time, a tool like Excel or Google Sheets is enough to be able to loa
 
 However, sometimes you need a power tool to process data repeatedly, open a very large file, or do more advanced transformations. This is where a scripting language comes in. The key here is reproducibility. You should be able to give me your process/code and I should be able to recreate your finding or output data. My preferred tool is Python but R works just as well in most cases
 
-### My favorite Python tools
-* UV as a package manager
-* Polars for fast data wrangling with simple syntax
-* Geopandas for working with geospatial data
-* 
-
+If you use Python, I highly recommend using [uv](https://docs.astral.sh/uv/) as a package manager (instead of pip or poetry) and have recently liked using [polars](https://pola.rs/)for fast data wrangling with simple syntax instead of pandas.
 
 ## Organizing your project
 
@@ -128,11 +123,10 @@ The best way to get better at data viz is to make lots of stuff. The second best
 
 ### Where to consume data viz
 
-* https://flowingdata.com/
-* https://bsky.app/profile/interactives.bsky.social
-* https://perthirtysix.com/
-* https://palewi.re/docs/coding-the-news/
-* https://www.datawrapper.de/blog/category/data-vis-dispatch
+* [The Pudding](https://pudding.cool/) has been creating some of the coolest, experimental visual stories on the web for last decade. Follow them for great design and creative storytelling techniques.
+[FlowingData](https://flowingdata.com/) is an incredible aggregator or data visual. Nathan Yau, who runs the site, also creates great visuals of this own and great guides on data viz.
+* [Bluesky Interactive Journalism bot](https://bsky.app/profile/interactives.bsky.social) is an account by [Sam Morris](https://sammorr.is/index.html), currently Interactives Editor at The Philadelphia Inquirer, that posts new interactive and visual stories from most major newsrooms.
+* [Datawrapper's Data Vis Dispatch](https://www.datawrapper.de/blog/category/data-vis-dispatch) is another great aggregator of visual stories from across the world.
 * https://nightingaledvs.com/
 
 
@@ -140,6 +134,7 @@ The best way to get better at data viz is to make lots of stuff. The second best
 * https://www.datawrapper.de/academy
 * https://datavisualizationsociety.org/mentorship/
 * https://www.machlis.com/nicar/
+* https://palewi.re/docs/coding-the-news/
 * https://palewi.re/guides/
 * https://jonathansoma.com/everything/
 
@@ -159,11 +154,10 @@ This is going to be its own full guide eventually.
 * https://reuters-graphics.github.io/bluprint_graphics-kit/ -->
 
 ### Preparing graphics for print
-It is helpful to undertstanding the basics of the difference between RBG and CMYK, two ways to express color
+It is helpful to understanding the basics of the difference between RBG and CMYK, two ways to express color
 
 ### AI and data Viz
 	* *sigh* I will come back to this at some point. Generally, I currently think good for implementing an idea or visual, bad at coming up with ideas and designing good visuals. 
-
 
 *All graphics on this page were made by me!*
 
