@@ -47,7 +47,25 @@ export const PROJECTS = {
 		description:
 			'Gang warfare, hunger, and a disintegrating health-care chain has hollowed out Haiti’s capital, Port-au-Prince. Seven hundred miles away, the U.S. government has revoked TPS, a humanitarian immigration status used by Haitians since the devastating earthquake in 2010. Up to 350,000 Haitian migrants could now be deported to a country beset by violence.',
 		img: `${base}/project-imgs/haiti.gif`,
-		tags: ['Graphics', 'frontend'],
+		tags: ['Graphics', 'Frontend'],
+		imgScale: 'contain'
+	},
+	tarifffs: {
+		title: 'The Protectionist Turn',
+		url: 'https://www.cfr.org/articles/the-protectionist-turn',
+		description:
+			'Trump turned tariffs from a response to the China shock into a durable, more sweeping tool of U.S. economic statecraft. Even as courts challenge his methods, future presidents are unlikely to surrender the executive’s expanded trade powers. The result will be a more volatile, bilateral, security-driven trade policy and a weakened WTO. A future pro-trade administration might instead rebuild a smaller system of market economies that excludes China.',
+		img: `${base}/project-imgs/tariffs.mp4`,
+		tags: ['Graphics', 'Frontend'],
+		imgScale: 'contain'
+	},
+	ai_power: {
+		title: 'The AI Balance of Power',
+		url: 'https://www.cfr.org/articles/the-ai-balance-of-power',
+		description:
+			'The AI race is currently a contest between the United States and China in which private labs increasingly rival nation-states in power and reach. To maintain the United States’ lead, policymakers must build strong relationships with the labs and a regulatory environment that supports innovation; politicizing or overstepping that relationship would slow innovation and erode international trust in American technology.',
+		img: `${base}/project-imgs/ai.png`,
+		tags: ['Graphics'],
 		imgScale: 'contain'
 	},
 	nuclear: {

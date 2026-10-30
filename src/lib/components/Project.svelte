@@ -29,6 +29,10 @@
 			<video autoplay loop muted playsinline style="pointer-events: none;"
 				><source src={img} type="video/webm" /></video
 			>
+		{:else if img.endsWith('.mp4')}
+			<video autoplay loop muted playsinline style="pointer-events: none;"
+				><source src={img} type="video/mp4" /></video
+			>
 		{:else}
 			<img src={img} alt={title} />
 		{/if}
