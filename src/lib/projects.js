@@ -86,6 +86,15 @@ export const PROJECTS = {
 		tags: ['Graphics'],
 		imgScale: 'contain'
 	},
+	midterms: {
+		title: 'How War, Tariffs, and Other Foreign Policy Issues Could Affect the U.S. Midterms',
+		url: 'https://www.cfr.org/articles/from-the-iran-war-to-gas-prices-how-foreign-policy-is-driving-the-2026-midterms',
+		description:
+			'What is notable this year is how four foreign policy issues—the Iran war, U.S. trade policy, artificial intelligence (AI), and immigration—could be affecting  voter perception ahead of the midterms.',
+		img: `${base}/project-imgs/midterms.png`,
+		tags: ['Graphics'],
+		imgScale: 'contain'
+	},
 	viz2026: {
 		title: 'Visualizing 2026: Five Foreign Policy Trends to Watch',
 		url: 'https://www.cfr.org/article/visualizing-2026-five-foreign-policy-trends-watch',
